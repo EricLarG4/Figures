@@ -1,5 +1,6 @@
 ---
-title: "Visually communicate your scientific data with R: designing scientific figures"
+title: "Visually communicate your scientific data with R"
+subtitle: "Designing scientific figures"
 format: 
     clean-revealjs:
         # code-fold: false
@@ -19,7 +20,7 @@ date: last-modified
 css: theme/custom.css
 ---
 
-# Introduction to Grammar of Graphics {background-color="#427711"}
+# Introduction to Grammar of Graphics {background-color="#184669"}
 
 ## A framework for data visualization {.smaller}
 
@@ -29,19 +30,19 @@ Graphics can be built up from a set of components:
 
 ::::: columns
 ::: {.column width="50%"}
--   [Data]{.fg style="--col: #427711"}: the dataset to be visualized
--   [Variables]{.fg style="--col: #427711"}: mapping of objects to values
--   [Algebra]{.fg style="--col: #427711"}: operations to combine variables and specify dimensions
--   [Scales]{.fg style="--col: #427711"}: represent variables on measured dimensions
--   [Statistics]{.fg style="--col: #427711"}: functions to change the appearance and representation
+-   [Data]{.fg style="--col: #184669"}: the dataset to be visualized
+-   [Variables]{.fg style="--col: #184669"}: mapping of objects to values
+-   [Algebra]{.fg style="--col: #184669"}: operations to combine variables and specify dimensions
+-   [Scales]{.fg style="--col: #184669"}: represent variables on measured dimensions
+-   [Statistics]{.fg style="--col: #184669"}: functions to change the appearance and representation
 :::
 
 ::: {.column width="50%"}
--   [Geometry]{.fg style="--col: #427711"}: creation of geometric graphs from variables
--   [Coordinates]{.fg style="--col: #427711"}: mapping to coordinate systems
--   [Aesthetics]{.fg style="--col: #427711"}: sensory attributes
--   [Facets]{.fg style="--col: #427711"}: subplots based on subsets of data
--   [Guides]{.fg style="--col: #427711"}: legends and axes to explain the graph
+-   [Geometry]{.fg style="--col: #184669"}: creation of geometric graphs from variables
+-   [Coordinates]{.fg style="--col: #184669"}: mapping to coordinate systems
+-   [Aesthetics]{.fg style="--col: #184669"}: sensory attributes
+-   [Facets]{.fg style="--col: #184669"}: subplots based on subsets of data
+-   [Guides]{.fg style="--col: #184669"}: legends and axes to explain the graph
 :::
 :::::
 
@@ -49,24 +50,31 @@ Graphics can be built up from a set of components:
 
 ![](resources/overview_graphic-1.png)
 
-## Example: Data {.smaller}
+## Example: Data 
 
 ```{r}
+#| label: data
 #| echo: true
 #| eval: true
 #| output-location: column
+#| classes: columns3070
+library(dplyr)
+library(data.table)
+library(DT)
 library(ggplot2)
 
-head(mpg)
+DT::datatable(mpg)
 ```
 ## Example: Data {auto-animate=TRUE}
 
 ```{r}
+#| label: ggplot_data 
 #| echo: true
 #| eval: true
 #| output-location: column
+#| classes: columns4060
+#| fig-width: 7
 #| fig-asp: 1
-#| fig-width: 5
 library(ggplot2)
 
 ggplot(mpg)
@@ -75,11 +83,13 @@ ggplot(mpg)
 ## Example: Mapping {auto-animate=TRUE}
 
 ```{r}
+#| label: ggplot_mapping 
 #| echo: true
 #| eval: true
 #| output-location: column
+#| classes: columns4060
+#| fig-width: 7
 #| fig-asp: 1
-#| fig-width: 5
 library(ggplot2)
 
 ggplot(
@@ -90,11 +100,13 @@ ggplot(
 
 ## Example: Layers {auto-animate=TRUE}
 ```{r}
+#| label: ggplot_layers 
 #| echo: true
 #| eval: true
 #| output-location: column
+#| classes: columns4060
+#| fig-width: 7
 #| fig-asp: 1
-#| fig-width: 5
 library(ggplot2)
 
 ggplot(
@@ -111,11 +123,13 @@ ggplot(
 
 ## Example: Scales {auto-animate=TRUE}
 ```{r}
+#| label: ggplot_scales
 #| echo: true
 #| eval: true
 #| output-location: column
+#| classes: columns4060
+#| fig-width: 7
 #| fig-asp: 1
-#| fig-width: 5
 library(ggplot2)
 
 ggplot(
@@ -132,11 +146,13 @@ ggplot(
 
 ## Example: Facets {auto-animate=TRUE}
 ```{r}
+#| label: ggplot_facets
 #| echo: true
 #| eval: true
 #| output-location: column
+#| classes: columns4060
+#| fig-width: 7
 #| fig-asp: 1
-#| fig-width: 5
 library(ggplot2)
 
 ggplot(
@@ -149,16 +165,18 @@ ggplot(
 ) +
   geom_point() +
   scale_colour_viridis_d() +
-  facet_grid(class ~ year)
+  facet_grid(year ~ class)
 ```
 
 ## Example: Coordinates {auto-animate=TRUE}
 ```{r}
+#| label: ggplot_coordinates
 #| echo: true
 #| eval: true
 #| output-location: column
+#| classes: columns4060
+#| fig-width: 7
 #| fig-asp: 1
-#| fig-width: 5
 library(ggplot2)
 
 ggplot(
@@ -171,20 +189,22 @@ ggplot(
 ) +
   geom_point() +
   scale_colour_viridis_d() +
-  facet_grid(class ~ year) +
+  facet_grid(year ~ class) +
   coord_cartesian(
     xlim = c(0, 8),
     ylim = c(10, 50)
   )
 ```
 
-## Example: Theme {auto-animate=TRUE}
+## Example: Theme {auto-animate=TRUE .code5}
 ```{r}
+#| label: ggplot_theme
 #| echo: true
 #| eval: true
 #| output-location: column
+#| classes: columns4060
+#| fig-width: 7
 #| fig-asp: 1
-#| fig-width: 5
 library(ggplot2)
 
 ggplot(
@@ -197,10 +217,11 @@ ggplot(
 ) +
   geom_point() +
   scale_colour_viridis_d() +
-  facet_grid(class ~ year) +
+  facet_grid(year ~ class) +
   coord_cartesian(
     xlim = c(0, 8),
-    ylim = c(10, 50)
+    ylim = c(10, 50),
+    clip = "off"
   ) +
   theme_minimal() +
   theme(
@@ -209,7 +230,547 @@ ggplot(
     legend.position = "bottom",
     axis.title = element_text(size = 14, face = "bold"),
     axis.line = element_line(color = "black", size = 0.75),
-    legend.title = element_text(face = "bold"),
-    strip.text = element_text(face = "bold")
+    axis.ticks = element_line(color = "black", size = 0.75),
+    legend.title = element_text(face = "bold", size = 10),
+    legend.text = element_text(size = 10),
+    strip.text = element_text(face = "bold", size = 10)
+  ) +
+  scale_x_continuous(
+    name = "Engine Displacement (L)",
+    breaks = seq(0, 8, 4),
+    limits = c(0, 8),
+    expand = c(0, 0)
+  ) +
+  scale_y_continuous(name = "Highway Miles per Gallon") +
+  labs(colour = "Vehicle Class")
+```
+
+# Reminders on variables, data types and basic operations {background-color="#184669"}
+
+## Tidyverse install verification {.out7 .code7} 
+
+```{r}
+#| label: check_environment
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+if (!requireNamespace("tidyverse", quietly = TRUE)) {
+  install.packages("tidyverse")
+} 
+
+library(tidyverse)
+```
+
+## Variables: numerics {auto-animate=TRUE}
+
+```{r}
+#| label: base_r_var_1
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+a <- 42
+
+a
+
+```
+
+## Variables: strings {auto-animate=TRUE}
+
+```{r}
+#| label: base_r_var_2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+a_string <- "fourty-two"
+
+a_string
+
+```
+
+## Variables: booleans {auto-animate=TRUE}
+
+```{r}
+#| label: base_r_var_2prime
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+a_boolean <- TRUE
+b_boolean <- FALSE
+
+c(a_boolean, b_boolean)
+```
+
+## Missing values and infinities {auto-animate=TRUE}
+
+```{r}
+#| label: base_r_var_2second
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+a_missing <- NA
+a_nan <- NaN
+a_inf <- Inf
+char_missing <- NA_character_
+real_missing <- NA_real_
+int_missing <- NA_integer_
+
+tibble(
+  missing = a_missing,
+  not_a_number = a_nan,
+  infinite = a_inf,
+  char_missing = char_missing,
+  real_missing = real_missing,
+  int_missing = int_missing
+)
+```
+
+## Vectors {auto-animate=TRUE .out7}
+
+```{r}
+#| label: base_r_var_3
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+a_vector <- c(1:10, "coucou")
+
+a_vector
+
+```
+
+
+## Vector subsetting {auto-animate=TRUE}
+
+```{r}
+#| label: base_r_var_3second
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+a_vector <- c(1:10, "coucou")
+# R is 1-indexed
+# so the first element is at position 1
+a_vector[c(1:3,11)]
+
+```
+
+## Vector subsetting by many other ways {auto-animate=TRUE}
+
+```{r}
+#| label: base_r_var_3third
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+a_vector <- c(1:10, "coucou")
+
+
+tibble(
+  'index' = a_vector[c(1:3, 11)],
+  'logical' = a_vector[
+    c(TRUE, TRUE, TRUE, rep(FALSE, 7), TRUE)
+  ],
+  'negative' = a_vector[-c(4:10)]
+)
+```
+
+Why are all values characters?
+We will see that in a minute!
+
+## Lists {auto-animate=TRUE}
+
+```{r}
+#| label: base_r_var_4
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+# lists cannot contain different types of data
+# but  can contain different types of objects, 
+# including vectors
+a_list <- list(
+  numeric_vector = c(1, 2, 3, 4),
+  character_vector = c("a", "b", "c"),
+  mixed_vector = c(1, "b", TRUE),
+  nested_list = list(
+    numeric_vector = c(5, 6, 7, 8),
+    character_vector = c("d", "e", "f"),
+    mixed_vector = c(9, "g", FALSE)
   )
+)
+
+a_list
+```
+
+## List item access by name {auto-animate=TRUE} 
+```{r}
+#| label: base_r_var_5
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+#| code-line-numbers: "4,13|4,13,7|4,13,7,15"
+
+# lists cannot contain different types of data
+# but  can contain different types of objects, 
+# including vectors
+a_list <- list(
+  numeric_vector = c(1, 2, 3, 4),
+  character_vector = c("a", "b", "c"),
+  mixed_vector = c(1, "b", TRUE),
+  nested_list = list(
+    numeric_vector = c(5, 6, 7, 8),
+    character_vector = c("d", "e", "f"),
+    mixed_vector = c(9, "g", FALSE)
+  )
+)
+
+a_list$mixed_vector
+```
+
+## List item access by name {auto-animate=TRUE} 
+```{r}
+#| label: base_r_var_6
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+#| code-line-numbers: "4,13|4,13,8,12|4,13,8,12,10|4,13,8,12,10,15"
+
+# lists cannot contain different types of data
+# but  can contain different types of objects, 
+# including vectors
+a_list <- list(
+  numeric_vector = c(1, 2, 3, 4),
+  character_vector = c("a", "b", "c"),
+  mixed_vector = c(1, "b", TRUE),
+  nested_list = list(
+    numeric_vector = c(5, 6, 7, 8),
+    character_vector = c("d", "e", "f"),
+    mixed_vector = c(9, "g", FALSE)
+  )
+)
+
+a_list$nested_list$character_vector
+```
+
+## List item access by many other ways {auto-animate=TRUE .out7} 
+```{r}
+#| label: base_r_var_7
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+# lists cannot contain different types of data
+# but  can contain different types of objects,
+# including vectors
+a_list <- list(
+  numeric_vector = c(1, 2, 3, 4),
+  character_vector = c("a", "b", "c"),
+  mixed_vector = c(1, "b", TRUE),
+  nested_list = list(
+    numeric_vector = c(5, 6, 7, 8),
+    character_vector = c("d", "e", "f"),
+    mixed_vector = c(9, "g", FALSE)
+  )
+)
+
+tibble(
+  'dollar_name' = a_list$character_vector,
+  'bracket_name' = a_list[["character_vector"]],
+  'bracket_index' = a_list[[2]],
+  'bracket_twice' = a_list[2][[1]]
+)
+```
+
+what happens if we access `a_list[2]`?
+
+## Matrices {auto-animate=TRUE}
+
+```{r}
+#| label: base_r_var_8
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+matrix(1:9, nrow = 3, ncol = 3)
+```
+
+## Matrices {auto-animate=TRUE}
+
+```{r}
+#| label: base_r_var_9
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+matrix(1:9, nrow = 3)
+```
+
+## Data frames {auto-animate=TRUE}
+
+```{r}
+#| label: base_r_var_10
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+# Data frame = named list of vectors
+a_df <- data.frame(
+  id = 1:5,
+  group = c("A", "A", "B", "B", "C"),
+  value = c(10.2, 12.5, 9.8, 11.1, 13.0)
+)
+
+a_df
+```
+
+## Data frames {auto-animate=TRUE}
+
+```{r}
+#| label: base_r_var_11
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+# Data frame = named list of vectors
+a_df <- data.frame(
+  id = 1:5,
+  group = c("A", "A", "B", "B", "C"),
+  value = c(10.2, 12.5, 9.8, 11.1, 13.0)
+)
+
+names(a_df)
+```
+
+## Tibbles {auto-animate=TRUE}
+
+```{r}
+#| label: base_r_var_12
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+a_tibble <- tibble(
+  id = 1:5,
+  group = c("A", "A", "B", "B", "C"),
+  value = c(10.2, 12.5, 9.8, 11.1, 13.0)
+)
+
+a_tibble
+```
+
+## Basic operations {auto-animate=TRUE}
+
+```{r}
+#| label: base_r_op_1
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+(1 + 2) * 3 / 4 - 5 * pi
+```
+
+## Basic operations {auto-animate=TRUE}
+
+```{r}
+#| label: base_r_op_2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+a <- 1
+b <- pi
+
+a + b
+```
+
+## Basic operations {auto-animate=TRUE}
+
+```{r}
+#| label: base_r_op_3
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+a <- 1
+
+c <- a + pi
+c
+```
+
+## Basic functions {auto-animate=TRUE}
+
+```{r}
+#| label: base_r_f_1
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+a <- 1
+b <- pi
+c <- a + b
+print(
+  paste(
+    "The result of a + b is:",
+    c
+  )
+)
+```
+
+## Basic functions {auto-animate=TRUE}
+
+```{r}
+#| label: base_f_2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+#| code-line-numbers: "3|4,9"
+
+a <- 1
+b <- 2
+c <- sum(a, b)
+cat(
+  paste(
+    "The result of a + b is:",
+    c
+  )
+)
+```
+
+## Basic functions {auto-animate=TRUE}
+
+```{r}
+#| label: base_r_5
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+#| code-line-numbers: "3"
+
+a <- 1
+b <- 2
+c <- mean(c(a, b))
+cat(
+  paste(
+    "The mean of a and b is:",
+    c
+  )
+)
+```
+
+
+# Data preparation {background-color="#184669"}
+
+## Starting dataset {auto-animate=TRUE .out7}
+```{r}
+#| label: data_preparation_1
+#| echo: true
+#| eval: true
+#| output-location: column
+#| classes: columns4060
+library(ggplot2)
+
+head(mpg)
+```
+
+## Use of glimpse {auto-animate=TRUE .out7}
+```{r}
+#| label: data_preparation_2
+#| echo: true
+#| eval: true
+#| output-location: column
+#| classes: columns4060
+library(ggplot2)
+library(dplyr)
+
+glimpse(mpg)
+```
+
+## Use of select  {auto-animate=TRUE .out7}
+```{r}
+#| label: data_preparation_3
+#| echo: true
+#| eval: true
+#| output-location: column
+#| classes: columns4060
+library(ggplot2)
+library(dplyr)
+
+mpg %>%
+  select(displ, hwy, class, year) |> 
+  glimpse()
+
+
 ```

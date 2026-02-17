@@ -39,7 +39,7 @@ $presentation-font-size-root: 32px;
 //$body-bg: #f0f1eb !default;
 $body-color: $jet !default;
 $link-color: $accent !default;
-$selection-bg: #26351c !default;
+$selection-bg: #e760dca4 !default;
 
 
 /*-- scss:rules --*/
@@ -325,11 +325,78 @@ $selection-bg: #26351c !default;
 // #| classes: columns3070
 // <code>
 // ```
+
+.reveal .columns1090 > div.column:first-child {
+  width: 10%;
+}
+.reveal .columns1090 div.column:not(:first-child) {
+  width: 90%;
+}
+.reveal .columns1585 > div.column:first-child {
+  width: 15%;
+}
+.reveal .columns1585 div.column:not(:first-child) {
+  width: 85%;
+}
+.reveal .columns2080 > div.column:first-child {
+  width: 20%;
+}
+.reveal .columns2080 div.column:not(:first-child) {
+  width: 80%;
+}
+.reveal .columns2575 > div.column:first-child {
+  width: 25%;
+}
+.reveal .columns2575 div.column:not(:first-child) {
+  width: 75%;
+}
 .reveal .columns3070 > div.column:first-child {
   width: 30%;
 }
 .reveal .columns3070 div.column:not(:first-child) {
   width: 70%;
+}
+.reveal .columns3565 > div.column:first-child {
+  width: 35%;
+}
+.reveal .columns3565 div.column:not(:first-child) {
+  width: 65%;
+}
+.reveal .columns4060 > div.column:first-child {
+  width: 40%;
+}
+.reveal .columns4060 div.column:not(:first-child) {
+  width: 60%;
+}
+.reveal .columns4555 > div.column:first-child {
+  width: 45%;
+}
+.reveal .columns4555 div.column:not(:first-child) {
+  width: 55%;
+}
+.reveal .columns5050 > div.column:first-child {
+  width: 50%;
+}
+.reveal .columns5050 div.column:not(:first-child) {
+  width: 50%;
+}
+.reveal .columns5545 > div.column:first-child {
+  width: 55%;
+}
+.reveal .columns5545 div.column:not(:first-child) {
+  width: 45%;
+}
+.reveal .columns6040 > div.column:first-child {
+  width: 60%;
+}
+.reveal .columns6040 div.column:not(:first-child) {
+  width: 40%;
+}
+.reveal .columns6535 > div.column:first-child {
+  width: 65%;
+}
+.reveal .columns6535 div.column:not(:first-child) {
+  width: 35%;
 }
 .reveal .columns7030 > div.column:first-child {
   width: 70%;
@@ -337,15 +404,27 @@ $selection-bg: #26351c !default;
 .reveal .columns7030 div.column:not(:first-child) {
   width: 30%;
 }
-.reveal .columns4060 > div.column:first-child {
-  width: 40%;
+.reveal .columns7525 > div.column:first-child {
+  width: 75%;
 }
-.reveal .columns4060 div.column:not(:first-child) {
-  width: 60%;
-}      
-.reveal .columns6040 > div.column:first-child {
-  width: 60%;
+.reveal .columns7525 div.column:not(:first-child) {
+  width: 25%;
 }
-.reveal .columns6040 div.column:not(:first-child) {
-  width: 40%;
-}      
+.reveal .columns8020 > div.column:first-child {
+  width: 80%;
+}
+.reveal .columns8020 div.column:not(:first-child) {
+  width: 20%;
+}
+.reveal .columns8515 > div.column:first-child {
+  width: 85%;
+}
+.reveal .columns8515 div.column:not(:first-child) {
+  width: 15%;
+}
+.reveal .columns9010 > div.column:first-child {
+  width: 90%;
+}
+.reveal .columns9010 div.column:not(:first-child) {
+  width: 10%;
+}
