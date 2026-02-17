@@ -1,0 +1,40 @@
+.callout-content {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 1.1em !important;
+    font: inherit;
+    /* font-weight: bold; */
+    vertical-align: middle;
+}
+
+div.callout-title {
+    font-size: 1.2em !important;
+}
+
+.reveal ul li::marker {
+	color: #427711;
+}
+
+.reveal h2 {
+	font-weight: normal;
+	font-size: 1.4em;
+    color: #427711;
+}
+
+.reveal a {
+	color: #461177;
+}
+
+.reveal div.sourceCode {
+	border: 0px solid #427711;
+	border-radius: 4px;
+}
+
+/* custom.css */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+
+pre code {
+  font-family: 'Fira Code', monospace !important;
+  font-size: 0.85em !important;
+}

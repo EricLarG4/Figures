@@ -1,0 +1,215 @@
+---
+title: "Visually communicate your scientific data with R: designing scientific figures"
+format: 
+    clean-revealjs:
+        # code-fold: false
+        code-overflow: wrap
+        # code-block-bg: "#e60000"
+        # code-block-border-left: "#31BAE9"
+        code-summary: "Show code"
+        highlight-style: dracula
+author:
+  - name: Eric Largy
+    orcid: 0000-0002-6140-9788
+    email: eric.largy@u-bordeaux.fr
+    affiliations: 
+      - ARNA, INSERM U1212, CNRS UMR 5320, Université de Bordeaux
+      - UFR des Sciences Pharmaceutiques, Université de Bordeaux
+date: last-modified
+css: theme/custom.css
+---
+
+# Introduction to Grammar of Graphics {background-color="#427711"}
+
+## A framework for data visualization {.smaller}
+
+Introduced by Leland Wilkinson ([The Grammar of Graphics](https://link.springer.com/book/10.1007/0-387-28695-0 "Access provided by U. Bordeaux"), 2005).
+
+Graphics can be built up from a set of components:
+
+::::: columns
+::: {.column width="50%"}
+-   [Data]{.fg style="--col: #427711"}: the dataset to be visualized
+-   [Variables]{.fg style="--col: #427711"}: mapping of objects to values
+-   [Algebra]{.fg style="--col: #427711"}: operations to combine variables and specify dimensions
+-   [Scales]{.fg style="--col: #427711"}: represent variables on measured dimensions
+-   [Statistics]{.fg style="--col: #427711"}: functions to change the appearance and representation
+:::
+
+::: {.column width="50%"}
+-   [Geometry]{.fg style="--col: #427711"}: creation of geometric graphs from variables
+-   [Coordinates]{.fg style="--col: #427711"}: mapping to coordinate systems
+-   [Aesthetics]{.fg style="--col: #427711"}: sensory attributes
+-   [Facets]{.fg style="--col: #427711"}: subplots based on subsets of data
+-   [Guides]{.fg style="--col: #427711"}: legends and axes to explain the graph
+:::
+:::::
+
+## Adapted to R in the `ggplot2` package 
+
+![](resources/overview_graphic-1.png)
+
+## Example: Data {.smaller}
+
+```{r}
+#| echo: true
+#| eval: true
+#| output-location: column
+library(ggplot2)
+
+head(mpg)
+```
+## Example: Data {auto-animate=TRUE}
+
+```{r}
+#| echo: true
+#| eval: true
+#| output-location: column
+#| fig-asp: 1
+#| fig-width: 5
+library(ggplot2)
+
+ggplot(mpg)
+```
+
+## Example: Mapping {auto-animate=TRUE}
+
+```{r}
+#| echo: true
+#| eval: true
+#| output-location: column
+#| fig-asp: 1
+#| fig-width: 5
+library(ggplot2)
+
+ggplot(
+  mpg,
+  mapping = aes(x = displ, y = hwy)
+)
+```
+
+## Example: Layers {auto-animate=TRUE}
+```{r}
+#| echo: true
+#| eval: true
+#| output-location: column
+#| fig-asp: 1
+#| fig-width: 5
+library(ggplot2)
+
+ggplot(
+  mpg,
+  mapping = aes(
+    x = cty,
+    y = hwy
+  )
+) +
+  geom_point()
+```
+
+
+
+## Example: Scales {auto-animate=TRUE}
+```{r}
+#| echo: true
+#| eval: true
+#| output-location: column
+#| fig-asp: 1
+#| fig-width: 5
+library(ggplot2)
+
+ggplot(
+  mpg,
+  mapping = aes(
+    x = displ,
+    y = hwy,
+    colour = class
+  )
+) +
+  geom_point() +
+  scale_colour_viridis_d()
+```
+
+## Example: Facets {auto-animate=TRUE}
+```{r}
+#| echo: true
+#| eval: true
+#| output-location: column
+#| fig-asp: 1
+#| fig-width: 5
+library(ggplot2)
+
+ggplot(
+  mpg,
+  mapping = aes(
+    x = displ,
+    y = hwy,
+    colour = class
+  )
+) +
+  geom_point() +
+  scale_colour_viridis_d() +
+  facet_grid(class ~ year)
+```
+
+## Example: Coordinates {auto-animate=TRUE}
+```{r}
+#| echo: true
+#| eval: true
+#| output-location: column
+#| fig-asp: 1
+#| fig-width: 5
+library(ggplot2)
+
+ggplot(
+  mpg,
+  mapping = aes(
+    x = displ,
+    y = hwy,
+    colour = class
+  )
+) +
+  geom_point() +
+  scale_colour_viridis_d() +
+  facet_grid(class ~ year) +
+  coord_cartesian(
+    xlim = c(0, 8),
+    ylim = c(10, 50)
+  )
+```
+
+## Example: Theme {auto-animate=TRUE}
+```{r}
+#| echo: true
+#| eval: true
+#| output-location: column
+#| fig-asp: 1
+#| fig-width: 5
+library(ggplot2)
+
+ggplot(
+  mpg,
+  mapping = aes(
+    x = displ,
+    y = hwy,
+    colour = class
+  )
+) +
+  geom_point() +
+  scale_colour_viridis_d() +
+  facet_grid(class ~ year) +
+  coord_cartesian(
+    xlim = c(0, 8),
+    ylim = c(10, 50)
+  ) +
+  theme_minimal() +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    legend.position = "bottom",
+    axis.title = element_text(size = 14, face = "bold"),
+    axis.line = element_line(color = "black", size = 0.75),
+    legend.title = element_text(face = "bold"),
+    strip.text = element_text(face = "bold")
+  )
+```
