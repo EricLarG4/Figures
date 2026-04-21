@@ -245,7 +245,7 @@ ggplot(
   labs(colour = "Vehicle Class")
 ```
 
-# Reminders on variables, data types and basic operations {background-color="#184669"}
+# Reminders on variables and data types {background-color="#184669"}
 
 ## Tidyverse install verification {.out7 .code7} 
 
@@ -264,6 +264,28 @@ if (!requireNamespace("tidyverse", quietly = TRUE)) {
 
 library(tidyverse)
 ```
+
+## Data.table install verification {.out7 .code7} 
+
+```{r}
+#| label: check_environment_2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+if (!requireNamespace("data.table", quietly = TRUE)) {
+  install.packages("data.table")
+} 
+
+library(data.table)
+
+# version check
+packageVersion("data.table")
+```
+
 
 ## Variables: numerics {auto-animate=TRUE}
 
@@ -330,17 +352,21 @@ c(a_boolean, b_boolean)
 a_missing <- NA
 a_nan <- NaN
 a_inf <- Inf
+b_inf <- -Inf
 char_missing <- NA_character_
 real_missing <- NA_real_
 int_missing <- NA_integer_
 
-tibble(
-  missing = a_missing,
-  not_a_number = a_nan,
-  infinite = a_inf,
-  char_missing = char_missing,
-  real_missing = real_missing,
-  int_missing = int_missing
+glimpse(
+  list(
+    a_missing = a_missing,
+    a_nan = a_nan,
+    a_inf = a_inf,
+    b_inf = b_inf,
+    char_missing = char_missing,
+    real_missing = real_missing,
+    int_missing = int_missing
+  )
 )
 ```
 
@@ -393,7 +419,6 @@ a_vector[c(1:3,11)]
 
 a_vector <- c(1:10, "coucou")
 
-
 tibble(
   'index' = a_vector[c(1:3, 11)],
   'logical' = a_vector[
@@ -406,6 +431,54 @@ tibble(
 Why are all values characters?
 We will see that in a minute!
 
+## Naming elements of a vector {auto-animate=TRUE}
+
+```{r}
+#| label: base_r_var_3fourth
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+b_vector <- c(1:5)
+
+names(b_vector) <- c(
+  "one", "two", "three", "four", "five"
+  )
+
+b_vector
+```
+
+
+## Accessing named elements of a vector {auto-animate=TRUE}
+
+```{r}
+#| label: base_r_var_3fifth
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+b_vector["three"] #named element
+```
+
+
+```{r}
+#| label: base_r_var_3sixth
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+b_vector[["three"]] #scalar element
+```
+
 ## Lists {auto-animate=TRUE}
 
 ```{r}
@@ -417,9 +490,11 @@ We will see that in a minute!
 #| output-location: column
 #| classes: columns5050
 
-# lists cannot contain different types of data
-# but  can contain different types of objects, 
+# lists cannot contain 
+# different types of data
+# but can contain different types of objects, 
 # including vectors
+
 a_list <- list(
   numeric_vector = c(1, 2, 3, 4),
   character_vector = c("a", "b", "c"),
@@ -443,11 +518,9 @@ a_list
 #| message: true
 #| output-location: column
 #| classes: columns5050
-#| code-line-numbers: "4,13|4,13,7|4,13,7,15"
+#| code-line-numbers: "4|4,1,10|4,1,10,12"
 
-# lists cannot contain different types of data
-# but  can contain different types of objects, 
-# including vectors
+
 a_list <- list(
   numeric_vector = c(1, 2, 3, 4),
   character_vector = c("a", "b", "c"),
@@ -462,7 +535,7 @@ a_list <- list(
 a_list$mixed_vector
 ```
 
-## List item access by name {auto-animate=TRUE} 
+## Nested list item access by name {auto-animate=TRUE} 
 ```{r}
 #| label: base_r_var_6
 #| echo: true
@@ -471,11 +544,8 @@ a_list$mixed_vector
 #| message: true
 #| output-location: column
 #| classes: columns5050
-#| code-line-numbers: "4,13|4,13,8,12|4,13,8,12,10|4,13,8,12,10,15"
+#| code-line-numbers: "7|7,5,9|7,5,9,1,10|7,5,9,1,10,12"
 
-# lists cannot contain different types of data
-# but  can contain different types of objects, 
-# including vectors
 a_list <- list(
   numeric_vector = c(1, 2, 3, 4),
   character_vector = c("a", "b", "c"),
@@ -490,6 +560,59 @@ a_list <- list(
 a_list$nested_list$character_vector
 ```
 
+## Check for equality {auto-animate=TRUE} 
+```{r}
+#| label: base_r_var_6second
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns7030
+
+a_list <- list(
+  numeric_vector = c(1, 2, 3, 4),
+  character_vector = c("a", "b", "c"),
+  mixed_vector = c(1, "b", TRUE),
+  nested_list = list(
+    numeric_vector = c(5, 6, 7, 8),
+    character_vector = c("d", "e", "f"),
+    mixed_vector = c(9, "g", FALSE)
+  )
+)
+
+a_list$nested_list$character_vector == a_list$character_vector
+```
+
+::: fragment
+
+```{r}
+#| label: base_r_var_6third
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns8020
+
+all(a_list$nested_list$character_vector == a_list$character_vector)
+```
+:::
+
+::: fragment
+```{r}
+#| label: base_r_var_6fourth
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns8020
+
+(a_list$numeric_vector[1] + 4) == a_list$nested_list$numeric_vector[1]
+```
+:::
+
 ## List item access by many other ways {auto-animate=TRUE .out7} 
 ```{r}
 #| label: base_r_var_7
@@ -500,9 +623,6 @@ a_list$nested_list$character_vector
 #| output-location: column
 #| classes: columns5050
 
-# lists cannot contain different types of data
-# but  can contain different types of objects,
-# including vectors
 a_list <- list(
   numeric_vector = c(1, 2, 3, 4),
   character_vector = c("a", "b", "c"),
@@ -522,7 +642,33 @@ tibble(
 )
 ```
 
-what happens if we access `a_list[2]`?
+What happens if we access `a_list[2]` vs. `a_list[[2]]`?
+
+::: fragment
+```{r}
+#| label: base_r_var_7p
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+a_list[2]
+```
+:::
+
+::: fragment
+```{r}
+#| label: base_r_var_7t
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+a_list[[2]]
+```
+:::
 
 ## Matrices {auto-animate=TRUE}
 
@@ -537,8 +683,7 @@ what happens if we access `a_list[2]`?
 
 matrix(1:9, nrow = 3, ncol = 3)
 ```
-
-## Matrices {auto-animate=TRUE}
+::: fragment
 
 ```{r}
 #| label: base_r_var_9
@@ -551,8 +696,24 @@ matrix(1:9, nrow = 3, ncol = 3)
 
 matrix(1:9, nrow = 3)
 ```
+:::
 
-## Data frames {auto-animate=TRUE}
+::: fragment
+
+```{r}
+#| label: base_r_var_9p
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+matrix(1:8, nrow = 3)
+```
+:::
+
+## Data frames are named list of vectors {auto-animate=TRUE}
 
 ```{r}
 #| label: base_r_var_10
@@ -563,7 +724,6 @@ matrix(1:9, nrow = 3)
 #| output-location: column
 #| classes: columns5050
 
-# Data frame = named list of vectors
 a_df <- data.frame(
   id = 1:5,
   group = c("A", "A", "B", "B", "C"),
@@ -573,7 +733,7 @@ a_df <- data.frame(
 a_df
 ```
 
-## Data frames {auto-animate=TRUE}
+## Names can be accessed with `names` {auto-animate=TRUE}
 
 ```{r}
 #| label: base_r_var_11
@@ -584,7 +744,6 @@ a_df
 #| output-location: column
 #| classes: columns5050
 
-# Data frame = named list of vectors
 a_df <- data.frame(
   id = 1:5,
   group = c("A", "A", "B", "B", "C"),
@@ -594,7 +753,307 @@ a_df <- data.frame(
 names(a_df)
 ```
 
-## Tibbles {auto-animate=TRUE}
+## Vectors can be accessed with `$` {auto-animate=TRUE}
+
+```{r}
+#| label: base_r_var_11p
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+a_df <- data.frame(
+  id = 1:5,
+  group = c("A", "A", "B", "B", "C"),
+  value = c(10.2, 12.5, 9.8, 11.1, 13.0)
+)
+
+a_df$group
+```
+
+::: fragment
+
+```{r}
+#| label: base_r_var_11p2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+cat(
+  "It is",
+  is.vector(a_df$group),
+  "that a_df$group is a vector, containing",
+  class(a_df$group),
+  "data."
+)
+```
+:::
+
+## Vectors can be accessed with `$` {auto-animate=TRUE}
+
+```{r}
+#| label: base_r_var_11t
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+a_df <- data.frame(
+  id = 1:5,
+  group = c("A", "A", "B", "B", "C"),
+  value = c(10.2, 12.5, 9.8, 11.1, 13.0)
+)
+
+unique(a_df$group)
+```
+::: fragment
+```{r}
+#| label: base_r_var_11f
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+sort(a_df$value)
+```
+:::
+
+::: fragment
+```{r}
+#| label: base_r_var_11fi
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+sort(a_df$value, decreasing = TRUE)
+```
+:::
+
+## Dataframes can be subsetted by row/column indices {auto-animate=TRUE} 
+
+```{r}
+#| label: base_r_var_11s1
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+a_df <- data.frame(
+  id = 1:5,
+  group = c("A", "A", "B", "B", "C"),
+  value = c(10.2, 12.5, 9.8, 11.1, 13.0)
+)
+
+# Select rows 1 and 3, all columns
+a_df[c(1, 3), ]
+```
+
+::: fragment
+```{r}
+#| label: base_r_var_11s2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+# Select all rows, columns 1 and 3
+a_df[, c(1, 3)]
+```
+:::
+::: fragment
+```{r}
+#| label: base_r_var_11s3
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+# Select rows 1 to 3, columns "id" and "value"
+a_df[1:3, c("id", "value")]
+```
+:::
+
+::: fragment
+```{r}
+#| label: base_r_var_11s4
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+# Select rows where group is "A" or "B", 
+# and columns 1 to 3
+a_df[
+  a_df$group %in% c("A", "B"),
+  1:3
+]
+```
+:::
+
+## Dataframes can be subsetted by column names {auto-animate=TRUE} 
+
+```{r}
+#| label: base_r_var_11s5
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+a_df <- data.frame(
+  id = 1:5,
+  group = c("A", "A", "B", "B", "C"),
+  value = c(10.2, 12.5, 9.8, 11.1, 13.0)
+)
+
+a_df[c("id", "value")]
+```
+
+::: fragment
+```{r}
+#| label: base_r_var_11s6
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+a_df[["group"]] # access to scalar vector
+```
+:::
+
+## Dataframes can be subsetted by logical statements {auto-animate=TRUE} 
+
+```{r}
+#| label: base_r_var_11s7
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+a_df <- data.frame(
+  id = 1:5,
+  group = c("A", "A", "B", "B", "C"),
+  value = c(10.2, 12.5, 9.8, 11.1, 13.0)
+)
+
+# Rows where value > 10
+a_df[a_df$value > 10, ]
+```
+
+::: fragment
+```{r}
+#| label: base_r_var_11s8
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+# Rows where group is "A" AND value > 10
+a_df[a_df$group == "A" & a_df$value > 10, ]
+```
+:::
+
+## Dataframes can be subsetted with the `subset` function {auto-animate=TRUE} 
+
+```{r}
+#| label: base_r_var_11s9
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns6040
+a_df <- data.frame(
+  id = 1:5,
+  group = c("A", "A", "B", "B", "C"),
+  value = c(10.2, 12.5, 9.8, 11.1, 13.0)
+)
+
+subset(a_df, group %in% c("A", "B") & value > 10)
+```
+
+## Use of `which` to get row indices {auto-animate=TRUE}
+
+```{r}
+#| label: base_r_var_14_2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+a_df <- data.frame(
+  id = 1:5,
+  group = c("A", "A", "B", "B", "C"),
+  value = c(10.2, 12.5, 9.8, 11.1, 13.0)
+)
+
+which(a_df$group == "A")
+
+```
+
+::: fragment
+```{r}
+#| label: base_r_var_14_2p
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+# Extract values for rows where group is "A"
+a_df[which(a_df$group == "A"), ]$value
+
+```
+:::
+
+## Use of `with` to evaluate expressions within a dataframe {auto-animate=TRUE}
+
+```{r}
+#| label: base_r_var_14_3
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+a_df <- data.frame(
+  id = 1:5,
+  group = c("A", "A", "B", "B", "C"),
+  value = c(10.2, 12.5, 9.8, 11.1, 13.0)
+)
+
+# Extract values for rows where group is "A"
+with(a_df, a_df[group == "A", ])
+
+```
+
+## Tibbles are more modern but dependent on the `tibble` package {auto-animate=TRUE}
 
 ```{r}
 #| label: base_r_var_12
@@ -605,14 +1064,209 @@ names(a_df)
 #| output-location: column
 #| classes: columns5050
 
-a_tibble <- tibble(
+a_tb <- tibble(
   id = 1:5,
   group = c("A", "A", "B", "B", "C"),
   value = c(10.2, 12.5, 9.8, 11.1, 13.0)
 )
 
-a_tibble
+a_tb
 ```
+
+## Dataframes and tibbles can be subsetted with `dplyr` functions {auto-animate=TRUE}
+
+```{r}
+#| label: base_r_var_13
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+a_tb <- tibble(
+  id = 1:5,
+  group = c("A", "A", "B", "B", "C"),
+  value = c(10.2, 12.5, 9.8, 11.1, 13.0)
+)
+
+filter(
+  a_tb, 
+  group %in% c("A", "B"), value > 10
+  )
+```
+
+::: fragment
+```{r}
+#| label: base_r_var_13p
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+a_tb |> 
+  filter(group %in% c("A", "B"), value > 10)
+```
+:::
+
+::: fragment
+```{r}
+#| label: base_r_var_13t
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+a_tb |> 
+  filter(group %in% c("A", "B")) |> 
+  filter(value > 10)
+```
+:::
+
+## Dataframes and tibbles can be subsetted with `dplyr` functions {auto-animate=TRUE}
+
+```{r}
+#| label: base_r_var_14
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+a_tb <- tibble(
+  id = 1:5,
+  group = c("A", "A", "B", "B", "C"),
+  value = c(10.2, 12.5, 9.8, 11.1, 13.0)
+)
+
+select(a_df, id, value)
+
+```
+
+::: fragment
+```{r}
+#| label: base_r_var_14p
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+select(a_tb, -group)  # Exclude the group column
+
+```
+:::
+
+::: fragment
+```{r}
+#| label: base_r_var_14t
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+a_tb |> 
+  filter(group == "A") |> 
+  select(id, value)
+
+```
+:::
+
+## The data.table alternative {auto-animate=TRUE}
+
+Think in terms of basic units: [**rows**]{.fg style="--col: #184669"}, [**columns**]{.fg style="--col: #0c9b1f"}, and [**groups**]{.fg style="--col: #cc7504"}.
+
+**DT[[i]{.fg style="--col: #184669"}, [j]{.fg style="--col: #0c9b1f"}, [by]{.fg style="--col: #cc7504"}]** 
+
+  - [**i**]{.fg style="--col: #184669"}: row selection (filtering)
+  - [**j**]{.fg style="--col: #0c9b1f"}: column selection (projection)
+  - [**by**]{.fg style="--col: #cc7504"}: grouping operations
+
+## The data.table alternative {auto-animate=TRUE}
+
+```{r}
+#| label: base_r_var_15
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns6040
+
+a_dt <- data.table(
+  id = 1:5,
+  group = c("A", "A", "B", "B", "C"),
+  value = c(10.2, 12.5, 9.8, 11.1, 13.0)
+)
+
+a_dt
+
+```
+
+::: fragment
+```{r}
+#| label: base_r_var_15p
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns6040
+
+# FROM[WHERE, SELECT, GROUP BY]
+# DT  [i,     j,      by]
+
+# Select rows where group is "A"
+a_dt[group == "A"]
+
+```
+:::
+
+::: fragment
+```{r}
+#| label: base_r_var_15t
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns6040
+
+# Select columns by name
+a_dt[, .(id, value)]  
+
+```
+:::
+
+::: fragment
+```{r}
+#| label: base_r_var_15d
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns6040
+
+# Select rows where group is "A" or "B", and value > 10
+# Yield the corresponding id values
+a_dt[
+  group %in% c("A", "B") & value > 10, 
+  .(id)
+  ]
+
+```
+:::
+
+# Reminders on basic operations {background-color="#184669"}
 
 ## Basic operations {auto-animate=TRUE}
 
@@ -661,6 +1315,8 @@ a <- 1
 c <- a + pi
 c
 ```
+
+# Reminders on basic functions {background-color="#184669"}
 
 ## Basic functions {auto-animate=TRUE}
 
