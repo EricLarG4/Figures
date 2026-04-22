@@ -40,8 +40,6 @@ pre code {
 }
 
 
-
-
 /* Reduce font size and padding for DT tables */
 .dataTables_wrapper .dataTables_length select,
 .dataTables_wrapper .dataTables_filter input,
@@ -120,7 +118,6 @@ pre code {
   margin: 0 !important;
 }
 
-
 .code5 code.sourceCode {
   font-size: 0.5em !important;
 }
@@ -137,7 +134,23 @@ pre code {
     font-size: 0.7em !important;
 }
 
+.out8 .cell-output {
+    font-size: 0.8em !important;
+}
 
+/* Formatting of code in text */
 .reveal code {
-    color: #18693b;
+    color: #71c875;
 }  
+
+/* Coloring of comments in code cells */
+
+.co {
+  color: #95a3ce !important;
+  font-style: italic !important;
+}
+
+/* Add bottom margin for code cells */
+.sourceCode.cell-code {
+    margin-bottom: 0.5em !important;
+}

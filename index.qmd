@@ -18,6 +18,7 @@ author:
       - UFR des Sciences Pharmaceutiques, Université de Bordeaux
 date: last-modified
 css: theme/custom.css
+cache: true
 ---
 
 # Introduction to Grammar of Graphics {background-color="#184669"}
@@ -46,11 +47,11 @@ Graphics can be built up from a set of components:
 :::
 :::::
 
-## Adapted to R in the `ggplot2` package 
+## Adapted to R in the `ggplot2` package
 
 ![](resources/overview_graphic-1.png)
 
-## Example: Data 
+## Example: Data should be formatted with 1 column per variable
 
 ```{r}
 #| label: data
@@ -65,7 +66,8 @@ library(ggplot2)
 
 DT::datatable(mpg)
 ```
-## Example: Data {auto-animate=TRUE}
+
+## ggplot initialization provides a plotting area {auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_data 
@@ -80,7 +82,7 @@ library(ggplot2)
 ggplot(mpg)
 ```
 
-## Example: Mapping {auto-animate=TRUE}
+## Mapping x and y coordinates provide axes {auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_mapping 
@@ -98,7 +100,8 @@ ggplot(
 )
 ```
 
-## Example: Layers {auto-animate=TRUE}
+## Geometries can be added as layers {auto-animate="TRUE"}
+
 ```{r}
 #| label: ggplot_layers 
 #| echo: true
@@ -119,9 +122,8 @@ ggplot(
   geom_point()
 ```
 
+## Scales can be applied to aesthetics {auto-animate="TRUE"}
 
-
-## Example: Scales {auto-animate=TRUE}
 ```{r}
 #| label: ggplot_scales
 #| echo: true
@@ -144,7 +146,8 @@ ggplot(
   scale_colour_viridis_d()
 ```
 
-## Example: Facets {auto-animate=TRUE}
+## Facetting allows generating many subplots {auto-animate="TRUE"}
+
 ```{r}
 #| label: ggplot_facets
 #| echo: true
@@ -168,7 +171,8 @@ ggplot(
   facet_grid(year ~ class)
 ```
 
-## Example: Coordinates {auto-animate=TRUE}
+## Coordinates allows re-scaling {auto-animate="TRUE"}
+
 ```{r}
 #| label: ggplot_coordinates
 #| echo: true
@@ -196,7 +200,8 @@ ggplot(
   )
 ```
 
-## Example: Theme {auto-animate=TRUE .code5}
+## Make it pretty/corporate/legible with a theme {.code5 auto-animate="TRUE"}
+
 ```{r}
 #| label: ggplot_theme
 #| echo: true
@@ -245,9 +250,9 @@ ggplot(
   labs(colour = "Vehicle Class")
 ```
 
-# Reminders on variables and data types {background-color="#184669"}
+# Setup of the environment {background-color="#184669"}
 
-## Tidyverse install verification {.out7 .code7} 
+## Tidyverse install verification {.out7 .code7}
 
 ```{r}
 #| label: check_environment
@@ -257,15 +262,14 @@ ggplot(
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 if (!requireNamespace("tidyverse", quietly = TRUE)) {
   install.packages("tidyverse")
-} 
+}
 
 library(tidyverse)
 ```
 
-## Data.table install verification {.out7 .code7} 
+## Data.table install verification {.out7 .code7}
 
 ```{r}
 #| label: check_environment_2
@@ -275,10 +279,9 @@ library(tidyverse)
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 if (!requireNamespace("data.table", quietly = TRUE)) {
   install.packages("data.table")
-} 
+}
 
 library(data.table)
 
@@ -286,11 +289,63 @@ library(data.table)
 packageVersion("data.table")
 ```
 
+# Reminders on variables and data types and modes {background-color="#184669"}
 
-## Variables: numerics {auto-animate=TRUE}
+## Assigning and printing numeric variables {auto-animate="TRUE"}
 
 ```{r}
-#| label: base_r_var_1
+#| label: base_r_var_1_1
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+a <- 42L
+b <- 42
+c <- pi
+```
+
+::: fragment
+```{r}
+#| label: base_r_var_1_2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+print(a) # prints the value of a
+```
+:::
+
+::: fragment
+```{r}
+#| label: base_r_var_1_3
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+a # also prints the value of a
+```
+:::
+
+::: fragment
+```{r}
+#| label: base_r_var_1_4
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+class(a) # integer is a class
+```
+
+```{r}
+#| label: base_r_var_1_5
 #| echo: true
 #| eval: true
 #| warning: true
@@ -298,13 +353,64 @@ packageVersion("data.table")
 #| output-location: column
 #| classes: columns5050
 
-a <- 42
+# integer is a type
+# (32-bit integer storage)
+typeof(a) 
+```
+:::
 
-a
-
+::: fragment
+```{r}
+#| label: base_r_var_1_6
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+class(b) # numeric is a class
 ```
 
-## Variables: strings {auto-animate=TRUE}
+```{r}
+#| label: base_r_var_1_7
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+# numeric type stored as double
+# (64-bit floating point)
+typeof(b)
+```
+:::
+
+::: fragment
+```{r}
+#| label: base_r_var_1_8
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+class(c)
+```
+
+```{r}
+#| label: base_r_var_1_9
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+typeof(c)
+```
+:::
+
+## Assigning and printing character variables {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_var_2
@@ -314,14 +420,12 @@ a
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 a_string <- "fourty-two"
 
 a_string
-
 ```
 
-## Variables: booleans {auto-animate=TRUE}
+## Assigning and printing boolean variables {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_var_2prime
@@ -331,14 +435,13 @@ a_string
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 a_boolean <- TRUE
 b_boolean <- FALSE
 
 c(a_boolean, b_boolean)
 ```
 
-## Missing values and infinities {auto-animate=TRUE}
+## Null, missing values and infinities {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_var_2second
@@ -348,21 +451,22 @@ c(a_boolean, b_boolean)
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
+a_null <- NULL
 a_missing <- NA
 a_nan <- NaN
 a_inf <- Inf
-b_inf <- -Inf
+a_minus_inf <- -Inf
 char_missing <- NA_character_
 real_missing <- NA_real_
 int_missing <- NA_integer_
 
-glimpse(
+str(
   list(
+    a_null = a_null,
     a_missing = a_missing,
     a_nan = a_nan,
     a_inf = a_inf,
-    b_inf = b_inf,
+    a_minus_inf = a_minus_inf,
     char_missing = char_missing,
     real_missing = real_missing,
     int_missing = int_missing
@@ -370,7 +474,87 @@ glimpse(
 )
 ```
 
-## Vectors {auto-animate=TRUE .out7}
+## A NULL value is not missing {auto-animate="TRUE"}
+
+```{r}
+#| label: base_r_var_2second2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+a_null <- NULL
+a_missing <- NA
+a_nan <- NaN
+a_inf <- Inf
+a_minus_inf <- -Inf
+char_missing <- NA_character_
+real_missing <- NA_real_
+int_missing <- NA_integer_
+
+cat(
+  "NULL represents the absence of a value or object,",
+  "\nwhile NA represents a missing value in a vector.",
+  "\n\nThe length of a NULL value is",
+  length(a_null),
+  ",\nwhile the length of a missing value is",
+  length(a_missing),
+  "."
+)
+```
+
+## Factors are important for ordering elements in visualizations {auto-animate="TRUE"}
+
+```{r}
+#| label: base_r_var_2third
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+a_factor <- factor(
+  c("low", "medium", "high", "medium", "low")
+)
+
+a_factor
+```
+
+::: fragment
+```{r}
+#| label: base_r_var_2third2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+# Removing the "medium" level from the factor
+droplevels(a_factor, "medium")
+```
+:::
+
+::: fragment
+```{r}
+#| label: base_r_var_2third3
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+# Adding data with a new level "very high"
+new_data <- c("very high", "low")
+factor_vec <- c(
+  a_factor,
+  factor(new_data, levels = c(levels(a_factor), "very high"))
+)
+factor_vec
+```
+:::
+
+## Creating vectors {.out7 auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_var_3
@@ -380,15 +564,44 @@ glimpse(
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
+# Explicit creation
 a_vector <- c(1:10, "coucou")
 
 a_vector
-
 ```
 
+::: fragment
+```{r}
+#| label: base_r_var_3_2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+# Implicit integer creation
+int_vector <- 1:10
 
-## Vector subsetting {auto-animate=TRUE}
+int_vector
+```
+:::
+
+## R coerces all elements to the most flexible type {auto-animate="TRUE"}
+
+```{r}
+#| label: base_r_var_3p
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+a_vector <- c(1:10, "coucou")
+
+class(a_vector)
+```
+
+## Subsetting vectors by position, logical and negative indexing {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_var_3second
@@ -398,40 +611,43 @@ a_vector
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 a_vector <- c(1:10, "coucou")
 # R is 1-indexed
 # so the first element is at position 1
-a_vector[c(1:3,11)]
-
+a_vector[c(1:3, 11)]
 ```
 
-## Vector subsetting by many other ways {auto-animate=TRUE}
-
+::: fragment
 ```{r}
-#| label: base_r_var_3third
+#| label: base_r_var_3third2
 #| echo: true
 #| eval: true
 #| warning: true
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
-a_vector <- c(1:10, "coucou")
-
-tibble(
-  'index' = a_vector[c(1:3, 11)],
-  'logical' = a_vector[
-    c(TRUE, TRUE, TRUE, rep(FALSE, 7), TRUE)
-  ],
-  'negative' = a_vector[-c(4:10)]
-)
+# Logical indexing
+a_vector[
+  c(TRUE, TRUE, TRUE, rep(FALSE, 7), TRUE)
+]
 ```
+:::
 
-Why are all values characters?
-We will see that in a minute!
+::: fragment
+```{r}
+#| label: base_r_var_3third3
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+# Negative indexing
+a_vector[-c(4:10)]
+```
+:::
 
-## Naming elements of a vector {auto-animate=TRUE}
+## Naming vector elements {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_var_3fourth
@@ -441,18 +657,20 @@ We will see that in a minute!
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 b_vector <- c(1:5)
 
 names(b_vector) <- c(
-  "one", "two", "three", "four", "five"
-  )
+  "one",
+  "two",
+  "three",
+  "four",
+  "five"
+)
 
 b_vector
 ```
 
-
-## Accessing named elements of a vector {auto-animate=TRUE}
+## Accessing named vector elements with `[]` and `[[]]` {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_var_3fifth
@@ -462,10 +680,8 @@ b_vector
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 b_vector["three"] #named element
 ```
-
 
 ```{r}
 #| label: base_r_var_3sixth
@@ -475,11 +691,62 @@ b_vector["three"] #named element
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 b_vector[["three"]] #scalar element
 ```
 
-## Lists {auto-animate=TRUE}
+## Modifying elements and types of a vector {auto-animate="TRUE"}
+
+```{r}
+#| label: base_r_var_3seventh
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+b_vector <- c(1:5)
+
+a <- 42
+
+b_vector[3] <- a
+
+b_vector[1] <- "one"
+
+b_vector
+```
+
+::: fragment
+```{r}
+#| label: base_r_var_3eighth
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+b_vector[1] <- 1
+
+b_vector
+```
+:::
+
+::: fragment
+```{r}
+#| label: base_r_var_3ninth
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+# Coercion to integer
+# Only for printing here!
+# The original vector is still character!
+as.integer(b_vector)
+```
+:::
+
+## Creating and inspecting lists {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_var_4
@@ -489,10 +756,9 @@ b_vector[["three"]] #scalar element
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
-# lists cannot contain 
+# lists cannot contain
 # different types of data
-# but can contain different types of objects, 
+# but can contain different types of objects,
 # including vectors
 
 a_list <- list(
@@ -509,7 +775,8 @@ a_list <- list(
 a_list
 ```
 
-## List item access by name {auto-animate=TRUE} 
+## Accessing list elements by name with `$` {auto-animate="TRUE"}
+
 ```{r}
 #| label: base_r_var_5
 #| echo: true
@@ -518,9 +785,7 @@ a_list
 #| message: true
 #| output-location: column
 #| classes: columns5050
-#| code-line-numbers: "4|4,1,10|4,1,10,12"
-
-
+#| code-line-numbers: "4|4,1,10"
 a_list <- list(
   numeric_vector = c(1, 2, 3, 4),
   character_vector = c("a", "b", "c"),
@@ -531,11 +796,23 @@ a_list <- list(
     mixed_vector = c(9, "g", FALSE)
   )
 )
-
-a_list$mixed_vector
 ```
 
-## Nested list item access by name {auto-animate=TRUE} 
+::: fragment
+```{r}
+#| label: base_r_var_5p
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+a_list$mixed_vector
+```
+:::
+
+## Accessing nested list elements by name with `$` {auto-animate="TRUE"}
+
 ```{r}
 #| label: base_r_var_6
 #| echo: true
@@ -544,8 +821,7 @@ a_list$mixed_vector
 #| message: true
 #| output-location: column
 #| classes: columns5050
-#| code-line-numbers: "7|7,5,9|7,5,9,1,10|7,5,9,1,10,12"
-
+#| code-line-numbers: "7|7,5,9|7,5,9,1,10"
 a_list <- list(
   numeric_vector = c(1, 2, 3, 4),
   character_vector = c("a", "b", "c"),
@@ -556,11 +832,23 @@ a_list <- list(
     mixed_vector = c(9, "g", FALSE)
   )
 )
-
-a_list$nested_list$character_vector
 ```
 
-## Check for equality {auto-animate=TRUE} 
+::: fragment
+```{r}
+#| label: base_r_var_6p
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+a_list$nested_list$character_vector
+```
+:::
+
+## Comparing list elements for equality {auto-animate="TRUE"}
+
 ```{r}
 #| label: base_r_var_6second
 #| echo: true
@@ -568,8 +856,7 @@ a_list$nested_list$character_vector
 #| warning: true
 #| message: true
 #| output-location: column
-#| classes: columns7030
-
+#| classes: columns5050
 a_list <- list(
   numeric_vector = c(1, 2, 3, 4),
   character_vector = c("a", "b", "c"),
@@ -580,12 +867,22 @@ a_list <- list(
     mixed_vector = c(9, "g", FALSE)
   )
 )
-
-a_list$nested_list$character_vector == a_list$character_vector
 ```
 
 ::: fragment
+```{r}
+#| label: base_r_var_6second2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns8020
+all(a_list$nested_list$character_vector == a_list$character_vector)
+```
+:::
 
+::: fragment
 ```{r}
 #| label: base_r_var_6third
 #| echo: true
@@ -594,7 +891,6 @@ a_list$nested_list$character_vector == a_list$character_vector
 #| message: true
 #| output-location: column
 #| classes: columns8020
-
 all(a_list$nested_list$character_vector == a_list$character_vector)
 ```
 :::
@@ -608,12 +904,12 @@ all(a_list$nested_list$character_vector == a_list$character_vector)
 #| message: true
 #| output-location: column
 #| classes: columns8020
-
 (a_list$numeric_vector[1] + 4) == a_list$nested_list$numeric_vector[1]
 ```
 :::
 
-## List item access by many other ways {auto-animate=TRUE .out7} 
+## Subsetting lists: `[ ]` vs. `[[ ]]` {auto-animate="TRUE"}
+
 ```{r}
 #| label: base_r_var_7
 #| echo: true
@@ -622,7 +918,6 @@ all(a_list$nested_list$character_vector == a_list$character_vector)
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 a_list <- list(
   numeric_vector = c(1, 2, 3, 4),
   character_vector = c("a", "b", "c"),
@@ -634,11 +929,13 @@ a_list <- list(
   )
 )
 
-tibble(
-  'dollar_name' = a_list$character_vector,
-  'bracket_name' = a_list[["character_vector"]],
-  'bracket_index' = a_list[[2]],
-  'bracket_twice' = a_list[2][[1]]
+str(
+  list(
+    'dollar_name' = a_list$character_vector,
+    'bracket_name' = a_list[["character_vector"]],
+    'bracket_index' = a_list[[2]],
+    'bracket_twice' = a_list[2][[1]]
+  )
 )
 ```
 
@@ -670,7 +967,7 @@ a_list[[2]]
 ```
 :::
 
-## Matrices {auto-animate=TRUE}
+## Creating matrices {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_var_8
@@ -680,11 +977,12 @@ a_list[[2]]
 #| message: true
 #| output-location: column
 #| classes: columns5050
+mat <- matrix(1:9, nrow = 3)
 
-matrix(1:9, nrow = 3, ncol = 3)
+mat
 ```
-::: fragment
 
+::: fragment
 ```{r}
 #| label: base_r_var_9
 #| echo: true
@@ -693,13 +991,11 @@ matrix(1:9, nrow = 3, ncol = 3)
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 matrix(1:9, nrow = 3)
 ```
 :::
 
 ::: fragment
-
 ```{r}
 #| label: base_r_var_9p
 #| echo: true
@@ -708,12 +1004,63 @@ matrix(1:9, nrow = 3)
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 matrix(1:8, nrow = 3)
 ```
 :::
 
-## Data frames are named list of vectors {auto-animate=TRUE}
+## Indexing matrices by row and column {auto-animate="TRUE"}
+
+```{r}
+#| label: base_r_var_9t
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+mat <- matrix(1:9, nrow = 3)
+
+mat
+```
+
+```{r}
+#| label: base_r_var_9t2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+mat[1, ] # First row
+```
+
+::: fragment
+```{r}
+#| label: base_r_var_9f
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+mat[, 2] # Second column
+```
+:::
+
+::: fragment
+```{r}
+#| label: base_r_var_9fi
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+mat[1, 2] # Element at row 1, column 2
+```
+:::
+
+## Creating dataframes as named list of vectors {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_var_10
@@ -723,7 +1070,6 @@ matrix(1:8, nrow = 3)
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 a_df <- data.frame(
   id = 1:5,
   group = c("A", "A", "B", "B", "C"),
@@ -733,7 +1079,7 @@ a_df <- data.frame(
 a_df
 ```
 
-## Names can be accessed with `names` {auto-animate=TRUE}
+## Accessing column names with `names()` {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_var_11
@@ -743,7 +1089,6 @@ a_df
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 a_df <- data.frame(
   id = 1:5,
   group = c("A", "A", "B", "B", "C"),
@@ -753,7 +1098,7 @@ a_df <- data.frame(
 names(a_df)
 ```
 
-## Vectors can be accessed with `$` {auto-animate=TRUE}
+## Accessing dataframe columns with `$` {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_var_11p
@@ -763,7 +1108,6 @@ names(a_df)
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 a_df <- data.frame(
   id = 1:5,
   group = c("A", "A", "B", "B", "C"),
@@ -774,7 +1118,6 @@ a_df$group
 ```
 
 ::: fragment
-
 ```{r}
 #| label: base_r_var_11p2
 #| echo: true
@@ -793,7 +1136,7 @@ cat(
 ```
 :::
 
-## Vectors can be accessed with `$` {auto-animate=TRUE}
+## Accessing dataframe columns with `$` {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_var_11t
@@ -803,7 +1146,6 @@ cat(
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 a_df <- data.frame(
   id = 1:5,
   group = c("A", "A", "B", "B", "C"),
@@ -812,6 +1154,7 @@ a_df <- data.frame(
 
 unique(a_df$group)
 ```
+
 ::: fragment
 ```{r}
 #| label: base_r_var_11f
@@ -821,7 +1164,6 @@ unique(a_df$group)
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 sort(a_df$value)
 ```
 :::
@@ -835,12 +1177,11 @@ sort(a_df$value)
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 sort(a_df$value, decreasing = TRUE)
 ```
 :::
 
-## Dataframes can be subsetted by row/column indices {auto-animate=TRUE} 
+## Subsetting dataframes by row/column indices {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_var_11s1
@@ -869,11 +1210,11 @@ a_df[c(1, 3), ]
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 # Select all rows, columns 1 and 3
 a_df[, c(1, 3)]
 ```
 :::
+
 ::: fragment
 ```{r}
 #| label: base_r_var_11s3
@@ -883,7 +1224,6 @@ a_df[, c(1, 3)]
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 # Select rows 1 to 3, columns "id" and "value"
 a_df[1:3, c("id", "value")]
 ```
@@ -898,7 +1238,7 @@ a_df[1:3, c("id", "value")]
 #| message: true
 #| output-location: column
 #| classes: columns5050
-# Select rows where group is "A" or "B", 
+# Select rows where group is "A" or "B",
 # and columns 1 to 3
 a_df[
   a_df$group %in% c("A", "B"),
@@ -907,7 +1247,7 @@ a_df[
 ```
 :::
 
-## Dataframes can be subsetted by column names {auto-animate=TRUE} 
+## Subsetting dataframes by column names {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_var_11s5
@@ -935,12 +1275,11 @@ a_df[c("id", "value")]
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 a_df[["group"]] # access to scalar vector
 ```
 :::
 
-## Dataframes can be subsetted by logical statements {auto-animate=TRUE} 
+## Subsetting dataframes by logical conditions {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_var_11s7
@@ -969,13 +1308,12 @@ a_df[a_df$value > 10, ]
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 # Rows where group is "A" AND value > 10
 a_df[a_df$group == "A" & a_df$value > 10, ]
 ```
 :::
 
-## Dataframes can be subsetted with the `subset` function {auto-animate=TRUE} 
+## Subsetting dataframes can be subsetted with `subset()` {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_var_11s9
@@ -994,7 +1332,7 @@ a_df <- data.frame(
 subset(a_df, group %in% c("A", "B") & value > 10)
 ```
 
-## Use of `which` to get row indices {auto-animate=TRUE}
+## Finding row indices with `which()` {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_var_14_2
@@ -1004,7 +1342,6 @@ subset(a_df, group %in% c("A", "B") & value > 10)
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 a_df <- data.frame(
   id = 1:5,
   group = c("A", "A", "B", "B", "C"),
@@ -1012,7 +1349,6 @@ a_df <- data.frame(
 )
 
 which(a_df$group == "A")
-
 ```
 
 ::: fragment
@@ -1024,14 +1360,12 @@ which(a_df$group == "A")
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 # Extract values for rows where group is "A"
 a_df[which(a_df$group == "A"), ]$value
-
 ```
 :::
 
-## Use of `with` to evaluate expressions within a dataframe {auto-animate=TRUE}
+## Evaluating expressions in datafames with `with()` {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_var_14_3
@@ -1041,7 +1375,6 @@ a_df[which(a_df$group == "A"), ]$value
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 a_df <- data.frame(
   id = 1:5,
   group = c("A", "A", "B", "B", "C"),
@@ -1050,10 +1383,9 @@ a_df <- data.frame(
 
 # Extract values for rows where group is "A"
 with(a_df, a_df[group == "A", ])
-
 ```
 
-## Tibbles are more modern but dependent on the `tibble` package {auto-animate=TRUE}
+## `tibble::tibble()` is a modern dataframe {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_var_12
@@ -1063,7 +1395,6 @@ with(a_df, a_df[group == "A", ])
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 a_tb <- tibble(
   id = 1:5,
   group = c("A", "A", "B", "B", "C"),
@@ -1073,7 +1404,63 @@ a_tb <- tibble(
 a_tb
 ```
 
-## Dataframes and tibbles can be subsetted with `dplyr` functions {auto-animate=TRUE}
+## Tibbles have improved defaults
+
+```{r}
+#| label: base_r_var_12p1
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+# Base R data frame
+
+# "Modern R (>= 4.0.0) no longer converts strings to factors by default. Use stringsAsFactors = TRUE to replicate old behavior."
+str(a_df)
+```
+
+```{r}
+#| label: base_r_var_12p2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+# Tibble
+# category remains a character vector
+str(a_tb)
+```
+
+```{r}
+#| label: base_r_var_12p3
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+# Prints with row numbers
+# and truncates columns
+a_df
+```
+
+```{r}
+#| label: base_r_var_12p4
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+# Prints without row numbers,
+# shows data types,
+# and truncates more cleanly
+a_tb
+```
+
+## Subsetting with `dplyr::filter()` and `dplyr::select()` {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_var_13
@@ -1083,7 +1470,6 @@ a_tb
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 a_tb <- tibble(
   id = 1:5,
   group = c("A", "A", "B", "B", "C"),
@@ -1091,9 +1477,10 @@ a_tb <- tibble(
 )
 
 filter(
-  a_tb, 
-  group %in% c("A", "B"), value > 10
-  )
+  a_tb,
+  group %in% c("A", "B"),
+  value > 10
+)
 ```
 
 ::: fragment
@@ -1105,8 +1492,7 @@ filter(
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
-a_tb |> 
+a_tb |>
   filter(group %in% c("A", "B"), value > 10)
 ```
 :::
@@ -1120,14 +1506,13 @@ a_tb |>
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
-a_tb |> 
-  filter(group %in% c("A", "B")) |> 
+a_tb |>
+  filter(group %in% c("A", "B")) |>
   filter(value > 10)
 ```
 :::
 
-## Dataframes and tibbles can be subsetted with `dplyr` functions {auto-animate=TRUE}
+## Dataframes and tibbles can be subsetted with `dplyr` functions {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_var_14
@@ -1137,7 +1522,6 @@ a_tb |>
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 a_tb <- tibble(
   id = 1:5,
   group = c("A", "A", "B", "B", "C"),
@@ -1145,7 +1529,6 @@ a_tb <- tibble(
 )
 
 select(a_df, id, value)
-
 ```
 
 ::: fragment
@@ -1157,9 +1540,8 @@ select(a_df, id, value)
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
-select(a_tb, -group)  # Exclude the group column
-
+# Exclude the group column
+select(a_tb, -group)
 ```
 :::
 
@@ -1172,25 +1554,25 @@ select(a_tb, -group)  # Exclude the group column
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
-a_tb |> 
-  filter(group == "A") |> 
+a_tb |>
+  filter(group == "A") |>
   select(id, value)
-
 ```
 :::
 
-## The data.table alternative {auto-animate=TRUE}
+## The `data.table` alternative for large dataset and concise syntax {auto-animate="TRUE"}
 
 Think in terms of basic units: [**rows**]{.fg style="--col: #184669"}, [**columns**]{.fg style="--col: #0c9b1f"}, and [**groups**]{.fg style="--col: #cc7504"}.
 
-**DT[[i]{.fg style="--col: #184669"}, [j]{.fg style="--col: #0c9b1f"}, [by]{.fg style="--col: #cc7504"}]** 
+**DT\[[i]{.fg style="--col: #184669"}, [j]{.fg style="--col: #0c9b1f"}, [by]{.fg style="--col: #cc7504"}\]**
 
-  - [**i**]{.fg style="--col: #184669"}: row selection (filtering)
-  - [**j**]{.fg style="--col: #0c9b1f"}: column selection (projection)
-  - [**by**]{.fg style="--col: #cc7504"}: grouping operations
+-   [**i**]{.fg style="--col: #184669"}: row selection (filtering)
+-   [**j**]{.fg style="--col: #0c9b1f"}: column selection (projection)
+-   [**by**]{.fg style="--col: #cc7504"}: grouping operations
 
-## The data.table alternative {auto-animate=TRUE}
+`data.table` is optimized for speed and memory, ideal for large datasets
+
+## The `data.table` alternative for large dataset and concise syntax {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_var_15
@@ -1200,7 +1582,6 @@ Think in terms of basic units: [**rows**]{.fg style="--col: #184669"}, [**column
 #| message: true
 #| output-location: column
 #| classes: columns6040
-
 a_dt <- data.table(
   id = 1:5,
   group = c("A", "A", "B", "B", "C"),
@@ -1208,7 +1589,6 @@ a_dt <- data.table(
 )
 
 a_dt
-
 ```
 
 ::: fragment
@@ -1220,13 +1600,11 @@ a_dt
 #| message: true
 #| output-location: column
 #| classes: columns6040
-
 # FROM[WHERE, SELECT, GROUP BY]
 # DT  [i,     j,      by]
 
 # Select rows where group is "A"
 a_dt[group == "A"]
-
 ```
 :::
 
@@ -1239,10 +1617,8 @@ a_dt[group == "A"]
 #| message: true
 #| output-location: column
 #| classes: columns6040
-
 # Select columns by name
-a_dt[, .(id, value)]  
-
+a_dt[, .(id, value)]
 ```
 :::
 
@@ -1255,20 +1631,450 @@ a_dt[, .(id, value)]
 #| message: true
 #| output-location: column
 #| classes: columns6040
-
 # Select rows where group is "A" or "B", and value > 10
 # Yield the corresponding id values
 a_dt[
-  group %in% c("A", "B") & value > 10, 
+  group %in% c("A", "B") & value > 10,
   .(id)
-  ]
-
+]
 ```
 :::
 
-# Reminders on basic operations {background-color="#184669"}
+# 10 common pitfalls {background-color="#184669"}
 
-## Basic operations {auto-animate=TRUE}
+And how to avoid them
+
+## R is 1-indexed {auto-animate="TRUE"}
+
+```{r}
+#| label: pit_1
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+# R is 1-indexed
+# The first element is at position 1
+R_vector <- c("a", "b", "c")
+
+R_vector[1]
+```
+
+::: fragment
+```{python}
+#| label: pit_1_py
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+# Python is 0-indexed
+# The first element is at position 0
+python_list = ["a", "b", "c"]
+
+python_list[0]
+```
+:::
+
+## \[ \] returns a listis not \[\[ \]\]
+
+```{r}
+#| label: pit_2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+# list of uneven numbers <= 100
+b_list <- as.list(
+  which(1:100 %% 2 == 1, 1:100)
+)
+```
+
+::: fragment
+```{r}
+#| label: pit_2_2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+# Returns a list
+b_list[1:3]
+```
+:::
+
+::: fragment
+```{r}
+#| label: pit_2_3
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+# Returns an element
+b_list[[3]]
+```
+:::
+
+## Check for missing values with `is.na()` {auto-animate="TRUE"}
+
+```{r}
+#| label: pit_3_1
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+vec_1 <- c(1, 2, NA, 4, 5)
+
+vec_1 == NA
+```
+
+::: fragment
+```{r}
+#| label: pit_3_2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+# NA == NA returns NA 
+# because NA is a missing value, 
+# not a comparable one
+NA == NA
+```
+:::
+
+::: fragment
+```{r}
+#| label: pit_3_3
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+is.na(vec_1)
+```
+:::
+
+::: fragment
+```{r}
+#| label: pit_3_4
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+any(is.na(vec_1))
+```
+:::
+
+## R coerces all elements to the most flexible type {auto-animate="TRUE"}
+
+```{r}
+#| label: pit_4_1
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+mixed_vector <- c(1, "b", TRUE)
+
+mixed_vector
+```
+
+```{r}
+#| label: pit_4_2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+mixed_vector <- c(1, "b", TRUE)
+
+class(mixed_vector)
+```
+
+## Modifying a subset does not modify the original {auto-animate="TRUE"}
+
+```{r}
+#| label: pit_5_1
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+mixed_vector <- c(1, "b", TRUE)
+
+mixed_subset <- mixed_vector[1:2]
+
+mixed_subset[1] <- "a"
+
+mixed_subset
+```
+
+::: fragment
+```{r}
+#| label: pit_5_2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+mixed_vector # Unchanged
+```
+:::
+
+## R recycles shorter vectors to match the length of longer vectors {auto-animate="TRUE"}
+
+```{r}
+#| label: pit_6_1
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+1:10 + c(10, 20)
+```
+
+```{r}
+#| label: pit_6_2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+# A warning is issued
+# only if the lengths are not multiples
+# of each other
+1:5 + c(10, 20)
+```
+
+## `NULL` is different from `NA` {auto-animate="TRUE"}
+
+```{r}
+#| label: pit_7_1
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns7030
+#| 
+list_NA_NULL <- list(
+  "missing" = NA,
+  "null_value" = NULL
+)
+
+list_NA_NULL["length_missing"] <- length(list_NA_NULL[[1]])
+list_NA_NULL["length_null"] <- length(list_NA_NULL[[2]])
+list_NA_NULL[5] <- length(list_NA_NULL[2])
+list_NA_NULL["na_check"] <- is.na(list_NA_NULL["missing"])
+list_NA_NULL["null_check"] <- is.null(list_NA_NULL[["null_value"]])
+list_NA_NULL["null_check_2"] <- is.null(list_NA_NULL["null_value"])
+
+# length_null = 0 because NULL has no length
+# [5] = 1 because list_NA_NULL[2] is a list of length 1, not NULL itself 
+
+# null_check = TRUE because the element inside is NULL
+# null_check_2 = FALSE because it is a list of length 1 != NULL 
+
+str(list_NA_NULL)
+```
+
+## Adding a factor level does not add data {auto-animate="TRUE"}
+
+```{r}
+#| label: pit_8_1
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns7030
+factor_vec <- factor(c("A", "B", "C"))
+
+levels(factor_vec) <- c("A", "B", "C", "D")
+
+factor_vec
+```
+
+::: fragment
+```{r}
+#| label: pit_8_2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns7030
+# Data to add
+data_to_add <- c("D", "E")
+
+# Add new levels to factor_vec and generate new levels for the new data
+factor_vec <- c(
+  factor_vec,
+  factor(
+    data_to_add,
+    levels = unique(c(levels(factor_vec), data_to_add))
+  )
+)
+
+factor_vec
+```
+:::
+
+## `[[]]` allow dynamic df access, `$` does not {auto-animate="TRUE"}
+
+```{r}
+#| label: pit_9_1
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns7030
+un_even_tb <- tibble(
+  id = c(1, 2, 3, 4, 5),
+  even = c(2, 4, 6, 8, 10),
+  uneven = c(1, 3, 5, 7, 9)
+)
+
+# $ indexing
+a_tb$id
+```
+
+::: fragment
+```{r}
+#| label: pit_9_2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns7030
+# [[]] indexing
+a_tb[["id"]]
+```
+:::
+
+::: fragment
+```{r}
+#| label: pit_9_3
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns7030
+#| cache: false
+# Extract seconds from current date
+# Check if even or uneven and Subset corresponding column
+seconds <- ifelse(
+  as.numeric(format(Sys.time(), "%S")) %% 2 == 0,
+  "even",
+  "uneven"
+)
+
+cat('The current time is:', format(Sys.time(), "%H:%M:%S"))
+```
+:::
+
+::: {.fragment}
+```{r}
+#| label: pit_9_4_0
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns7030
+#| cache: false
+
+try({a_tb$seconds}, silent = FALSE) 
+```
+:::
+
+::: fragment
+```{r}
+#| label: pit_9_4
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns7030
+#| cache: false
+
+un_even_tb[[seconds]]
+```
+:::
+
+## Use `drop = FALSE` to retain df structure when subsetting a single column {auto-animate="TRUE"}
+
+```{r}
+#| label: pit_10_1
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+un_even_tb <- tibble(
+  id = c(1, 2, 3, 4, 5),
+  even = c(2, 4, 6, 8, 10),
+  uneven = c(1, 3, 5, 7, 9)
+)
+
+un_even_tb[, c("id", seconds)]
+```
+
+```{r}
+#| label: pit_10_2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+un_even_tb[[seconds]]
+```
+
+::: fragment
+```{r}
+#| label: pit_10_3
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+un_even_tb[, seconds, drop = FALSE]
+```
+:::
+
+# Basic operations, operands, functions {background-color="#184669"}
+
+## Basic operations {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_op_1
@@ -1278,11 +2084,10 @@ a_dt[
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 (1 + 2) * 3 / 4 - 5 * pi
 ```
 
-## Basic operations {auto-animate=TRUE}
+## Basic operations {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_op_2
@@ -1292,14 +2097,13 @@ a_dt[
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 a <- 1
 b <- pi
 
 a + b
 ```
 
-## Basic operations {auto-animate=TRUE}
+## Basic operations {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_op_3
@@ -1309,7 +2113,6 @@ a + b
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 a <- 1
 
 c <- a + pi
@@ -1318,7 +2121,7 @@ c
 
 # Reminders on basic functions {background-color="#184669"}
 
-## Basic functions {auto-animate=TRUE}
+## Basic functions {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_f_1
@@ -1328,19 +2131,16 @@ c
 #| message: true
 #| output-location: column
 #| classes: columns5050
-
 a <- 1
 b <- pi
 c <- a + b
-print(
-  paste(
+cat(
     "The result of a + b is:",
     c
-  )
 )
 ```
 
-## Basic functions {auto-animate=TRUE}
+## Basic functions {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_f_2
@@ -1351,19 +2151,16 @@ print(
 #| output-location: column
 #| classes: columns5050
 #| code-line-numbers: "3|4,9"
-
 a <- 1
 b <- 2
 c <- sum(a, b)
 cat(
-  paste(
     "The result of a + b is:",
     c
-  )
 )
 ```
 
-## Basic functions {auto-animate=TRUE}
+## Basic functions {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_5
@@ -1374,22 +2171,19 @@ cat(
 #| output-location: column
 #| classes: columns5050
 #| code-line-numbers: "3"
-
 a <- 1
 b <- 2
 c <- mean(c(a, b))
 cat(
-  paste(
     "The mean of a and b is:",
     c
-  )
 )
 ```
 
-
 # Data preparation {background-color="#184669"}
 
-## Starting dataset {auto-animate=TRUE .out7}
+## Starting dataset {.out7 auto-animate="TRUE"}
+
 ```{r}
 #| label: data_preparation_1
 #| echo: true
@@ -1401,7 +2195,8 @@ library(ggplot2)
 head(mpg)
 ```
 
-## Use of glimpse {auto-animate=TRUE .out7}
+## Use of glimpse {.out7 auto-animate="TRUE"}
+
 ```{r}
 #| label: data_preparation_2
 #| echo: true
@@ -1414,7 +2209,8 @@ library(dplyr)
 glimpse(mpg)
 ```
 
-## Use of select  {auto-animate=TRUE .out7}
+## Use of select {.out7 auto-animate="TRUE"}
+
 ```{r}
 #| label: data_preparation_3
 #| echo: true
@@ -1425,8 +2221,6 @@ library(ggplot2)
 library(dplyr)
 
 mpg %>%
-  select(displ, hwy, class, year) |> 
+  select(displ, hwy, class, year) |>
   glimpse()
-
-
 ```
