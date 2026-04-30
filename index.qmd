@@ -31,19 +31,19 @@ Graphics can be built up from a set of components:
 
 ::::: columns
 ::: {.column width="50%"}
--   [Data]{.fg style="--col: #184669"}: the dataset to be visualized
--   [Variables]{.fg style="--col: #184669"}: mapping of objects to values
--   [Algebra]{.fg style="--col: #184669"}: operations to combine variables and specify dimensions
--   [Scales]{.fg style="--col: #184669"}: represent variables on measured dimensions
--   [Statistics]{.fg style="--col: #184669"}: functions to change the appearance and representation
+- [Data]{.fg style="--col: #184669"}: the dataset to be visualized
+- [Variables]{.fg style="--col: #184669"}: mapping of objects to values
+- [Algebra]{.fg style="--col: #184669"}: operations to combine variables and specify dimensions
+- [Scales]{.fg style="--col: #184669"}: represent variables on measured dimensions
+- [Statistics]{.fg style="--col: #184669"}: functions to change the appearance and representation
 :::
 
 ::: {.column width="50%"}
--   [Geometry]{.fg style="--col: #184669"}: creation of geometric graphs from variables
--   [Coordinates]{.fg style="--col: #184669"}: mapping to coordinate systems
--   [Aesthetics]{.fg style="--col: #184669"}: sensory attributes
--   [Facets]{.fg style="--col: #184669"}: subplots based on subsets of data
--   [Guides]{.fg style="--col: #184669"}: legends and axes to explain the graph
+- [Geometry]{.fg style="--col: #184669"}: creation of geometric graphs from variables
+- [Coordinates]{.fg style="--col: #184669"}: mapping to coordinate systems
+- [Aesthetics]{.fg style="--col: #184669"}: sensory attributes
+- [Facets]{.fg style="--col: #184669"}: subplots based on subsets of data
+- [Guides]{.fg style="--col: #184669"}: legends and axes to explain the graph
 :::
 :::::
 
@@ -1566,9 +1566,9 @@ Think in terms of basic units: [**rows**]{.fg style="--col: #184669"}, [**column
 
 **DT\[[i]{.fg style="--col: #184669"}, [j]{.fg style="--col: #0c9b1f"}, [by]{.fg style="--col: #cc7504"}\]**
 
--   [**i**]{.fg style="--col: #184669"}: row selection (filtering)
--   [**j**]{.fg style="--col: #0c9b1f"}: column selection (projection)
--   [**by**]{.fg style="--col: #cc7504"}: grouping operations
+- [**i**]{.fg style="--col: #184669"}: row selection (filtering)
+- [**j**]{.fg style="--col: #0c9b1f"}: column selection (projection)
+- [**by**]{.fg style="--col: #cc7504"}: grouping operations
 
 `data.table` is optimized for speed and memory, ideal for large datasets
 
@@ -1998,7 +1998,7 @@ cat('The current time is:', format(Sys.time(), "%H:%M:%S"))
 ```
 :::
 
-::: {.fragment}
+::: fragment
 ```{r}
 #| label: pit_9_4_0
 #| echo: true
@@ -2119,9 +2119,133 @@ c <- a + pi
 c
 ```
 
-# Reminders on basic functions {background-color="#184669"}
+## Equality and inequality {auto-animate="TRUE"}
 
-## Basic functions {auto-animate="TRUE"}
+```{r}
+#| label: base_r_op_4_1
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+a <- 1
+b <- 2
+c <- b
+
+a < b
+```
+
+::: fragment
+```{r}
+#| label: base_r_op_4_2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+a == b 
+```
+:::
+
+::: fragment
+```{r}
+#| label: base_r_op_4_3
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+a != b 
+```
+:::
+
+::: fragment
+```{r}
+#| label: base_r_op_4_4
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+c >= b
+```
+:::
+
+## Logical operators {auto-animate="TRUE"}
+
+```{r}
+#| label: base_r_op_5_1
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+a <- TRUE
+b <- FALSE
+c <- TRUE
+
+a & b
+```
+
+::: fragment
+```{r}
+#| label: base_r_op_5_2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+a | b
+```
+:::
+
+::: fragment
+```{r}
+#| label: base_r_op_5_3
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+!a
+```
+:::
+
+::: fragment
+```{r}
+#| label: base_r_op_5_4
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+# n& has higher precedence than |
+# parentheses are needed here 
+# to ensure the correct order of operations
+(a | b) & c 
+
+```
+:::
+
+# Basic functions to prepare your data {background-color="#184669"}
+
+## Printing with `cat` {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_f_1
@@ -2134,13 +2258,14 @@ c
 a <- 1
 b <- pi
 c <- a + b
+
 cat(
     "The result of a + b is:",
     c
 )
 ```
 
-## Basic functions {auto-animate="TRUE"}
+## Summing numeric values with `sum` {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_f_2
@@ -2150,20 +2275,208 @@ cat(
 #| message: true
 #| output-location: column
 #| classes: columns5050
-#| code-line-numbers: "3|4,9"
 a <- 1
-b <- 2
+b <- pi
 c <- sum(a, b)
+
 cat(
     "The result of a + b is:",
     c
 )
 ```
 
-## Basic functions {auto-animate="TRUE"}
+## `round`, `floor`, `ceiling` and `trunc` {auto-animate="TRUE"}
 
 ```{r}
-#| label: base_r_5
+#| label: base_f_3_1
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+a <- 1
+b <- pi
+c <- sum(a, b)
+
+cat(
+    "The result of a + b is:",
+    round(c, 2)
+)
+```
+
+::: fragment
+```{r}
+#| label: base_f_3_2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+floor(c) # rounds down to the nearest integer
+```
+:::
+
+::: fragment
+```{r}
+#| label: base_f_3_3
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+ceiling(c) # rounds up to the nearest integer
+```
+:::
+
+::: fragment
+```{r}
+#| label: base_f_3_4
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+trunc(c) # truncates
+```
+:::
+
+## `mean`, `median`, `min` and `max` {auto-animate="TRUE"}
+
+```{r}
+#| label: base_r_5_1
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+a <- 1
+b <- c(pi, 2, 3)
+c <- mean(c(a, b))
+d <- median(c(a, b))
+
+cat(
+    "The mean of a and b is:",
+    c,
+    "\nThe median of a and b is:",
+    d
+)
+```
+
+::: fragment
+```{r}
+#| label: base_r_5_2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+e <- NA
+
+mean(c(a, b, e))
+```
+:::
+
+::: fragment
+```{r}
+#| label: base_r_5_3
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+mean(c(a, b, e), na.rm = TRUE)
+```
+:::
+
+::: fragment
+```{r}
+#| label: base_r_5_4
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+min(c(a, b, e), na.rm = TRUE)
+```
+:::
+
+::: fragment
+```{r}
+#| label: base_r_5_5
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+max(c(a, b, e), na.rm = TRUE)
+```
+:::
+
+## Extract data by position with `dplyr::nth()` {auto-animate="TRUE"}
+
+```{r}
+#| label: base_r_5_6
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+vec <- c(
+  "first", "second", "third", 
+  "fourth", "fifth"
+  )
+
+cat(
+    "The 1st element is:", 
+    first(vec), "\n",
+    "The 3rd element is:", 
+    nth(vec, 3), "\n",
+    "The last element is:", 
+    last(vec)
+)
+```
+
+## Other mathematical transformations {auto-animate="TRUE"}
+
+```{r}
+#| label: base_r_6_1
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+a <- 1
+b <- exp(1)
+c <- 81L
+d <- -pi
+
+cat(
+    "The natural logarithm of a is:", 
+    log(a, base = exp(1)), "\n",
+    "The common logarithm of b is:", 
+    round(log10(b), 2), "\n",
+    "The exponential of a is:", 
+    round(exp(a), 2)
+)
+```
+
+```{r}
+#| label: base_r_6_2
 #| echo: true
 #| eval: true
 #| warning: true
@@ -2171,16 +2484,495 @@ cat(
 #| output-location: column
 #| classes: columns5050
 #| code-line-numbers: "3"
-a <- 1
-b <- 2
-c <- mean(c(a, b))
-cat(
-    "The mean of a and b is:",
-    c
-)
+
+sqrt(c)
 ```
 
-# Data preparation {background-color="#184669"}
+```{r}
+#| label: base_r_6_3
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+#| code-line-numbers: "3"
+
+abs(d)
+```
+
+## Data type conversion with `as.*` functions {auto-animate="TRUE"}
+
+```{r}
+#| label: base_r_7_1
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+num_vec <- c(-1, 0, 1, 2)
+char_vec <- as.character(num_vec)
+char_vec
+```
+
+::: fragment
+```{r}
+#| label: base_r_7_2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+as.numeric(char_vec)
+```
+:::
+
+::: fragment
+```{r}
+#| label: base_r_7_3
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+as.logical(as.numeric(char_vec))
+```
+:::
+
+::: fragment
+```{r}
+#| label: base_r_7_4
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+as.factor(num_vec)
+
+```
+:::
+
+::: fragment
+```{r}
+#| label: base_r_7_5
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+date <- "27/02/2000"
+
+# indicate the format of the input string
+# to map it to a Date object
+as.Date(date, format = "%d/%m/%Y")
+```
+:::
+
+::: fragment
+```{r}
+#| label: base_r_7_6
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+date_2 <- "270220"
+
+as.Date(date_2, format = "%d%m%y")
+```
+:::
+
+## String pasting basics {auto-animate="TRUE"}
+
+```{r}
+#| label: base_r_8_1
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+num_vec <- c(1, 2, 3)
+
+str_vec <- c("Case")
+
+# num_vec is coerced to character 
+paste(str_vec, num_vec)
+```
+
+::: fragment
+```{r}
+#| label: base_r_8_2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+paste0(str_vec, num_vec) # no space
+```
+:::
+
+::: fragment
+```{r}
+#| label: base_r_8_3
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+paste(str_vec, num_vec, sep = ": ") 
+```
+:::
+
+## String modification and detection with `gsub` and `grepl` {auto-animate="TRUE"}
+
+```{r}
+#| label: base_r_9_1
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+text_vec <- c(
+  "The cat is on the roof", 
+  "The dog is in the yard"
+  )
+
+gsub("cat", "mouse", text_vec)
+
+```
+
+::: fragment
+```{r}
+#| label: base_r_9_2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns6040
+
+grepl("cat", text_vec)
+```
+:::
+
+# `if` and custom functions {background-color="#184669"}
+
+## `if` statements {auto-animate="TRUE"}
+
+```{r}
+#| label: base_r_if_1
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns6040
+
+x <- 5
+if (x > 0) {
+  cat("x is positive")
+} else if (x < 0) {
+  cat("x is negative")
+} else {
+  cat("x is zero")
+} 
+```
+
+::: fragment
+```{r}
+#| label: base_r_if_2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+
+# not efficient 
+# but demonstrates the use of multiple conditions
+if (x > 0 & x %% 2 == 0) {
+  cat("x is positive and even")
+} else if (x > 0 & x %% 2 == 1) {
+  cat("x is positive and odd")
+} else if (x < 0 & x %% 2 == 0) {
+  cat("x is negative and even")
+} else if (x < 0 & x %% 2 == 1) {
+  cat("x is negative and odd")
+} else {
+  cat("x is zero")
+}
+
+```
+:::
+
+## Defining custom functions {auto-animate="TRUE"}
+
+```{r}
+#| label: base_r_fun_1
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+add_and_square <- function(a, b) {
+  sum <- a + b
+  result <- sum^2
+  return(result)
+}
+
+add_and_square(a = 2, b = 3)
+```
+
+## Defining custom functions {auto-animate="TRUE"}
+
+```{r}
+#| label: base_r_fun_2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+add_and_square <- function(a, b) {
+  sum <- a + b
+  result <- sum^2
+  result
+}
+
+add_and_square(2, 3)
+```
+
+## Defining custom functions {auto-animate="TRUE"}
+
+```{r}
+#| label: base_r_fun_3
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+add_and_square <- function(a, b) {
+  sum <- a + b
+  sum^2
+
+}
+
+add_and_square(2, 3)
+```
+
+## Functionalization of code to repeat analysis steps {auto-animate="TRUE"}
+
+```{r}
+#| label: base_r_fun_4_2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns6040
+
+# Ensure x is an integer by rounding
+# then check if it is divisible by 4
+integer_divisible_by_4 <- function(x) {
+  x <- as.integer(round(x, 0))
+  x %% 4 == 0
+}
+
+# Test on a vector of numbers
+integer_divisible_by_4(c(1.1, 2.5, 3.9, 4.0, 5.2, 8.3))
+```
+
+```{r}
+#| label: base_r_fun_5_2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns6040
+
+# make a table of the mpg dataset,
+# add a new column that checks if cty is divisible by 4,
+# then subset the model and cty columns 
+# for rows where cty is divisible by 4
+mpg |>
+  mutate(cty_div_by_4 = integer_divisible_by_4(cty)) |>
+  filter(cty_div_by_4) |>
+  select(manufacturer, model, cty) |>
+  head(10)
+
+```
+
+## Functionalization of code to repeat analysis steps {auto-animate="TRUE"}
+
+```{r}
+#| label: base_r_fun_4
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns6040
+
+# Ensure x is an integer by rounding
+# then check if it is divisible by 4
+integer_divisible_by_4 <- function(x) {
+  x <- as.integer(round(x, 0))
+  x %% 4 == 0
+}
+
+# Test on a vector of numbers
+integer_divisible_by_4(c(1.1, 2.5, 3.9, 4.0, 5.2, 8.3))
+
+
+```
+
+```{r}
+#| label: base_r_fun_5
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns6040
+
+# make a table of the mpg dataset,
+# add a new column that checks if cty is divisible by 4,
+# then subset the model and cty columns 
+# for rows where cty is divisible by 4
+data.table(mpg) |> 
+  _[, cty_div_by_4 := integer_divisible_by_4(cty)] |> 
+  _[cty_div_by_4 == TRUE, .(manufacturer, model, cty)] |>
+  head(10)
+```
+
+## Functionalization of code to repeat analysis steps {auto-animate="TRUE"}
+
+```{r}
+#| label: base_r_fun_4_3
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns6040
+
+# Ensure x is an integer by rounding
+# then check if it is divisible by 4
+integer_divisible_by_4 <- function(x) {
+  x <- as.integer(round(x, 0))
+  x %% 4 == 0
+}
+
+# Test on a vector of numbers
+integer_divisible_by_4(c(1.1, 2.5, 3.9, 4.0, 5.2, 8.3))
+```
+
+```{r}
+#| label: base_r_fun_5_3
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns6040
+
+# Here the function was not necessary
+# For reference, a more concise approach
+data.table(mpg)[
+  round(cty)%%4 == 0, .(manufacturer, model, cty)
+  ] |> 
+  head(10)
+
+```
+
+## Example for ggplots {auto-animate="TRUE"}
+
+```{r}
+#| label: base_r_fun_6
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns8020
+plot_iris <- function(var1, var2) {
+
+  labeller <- function(variable) {
+    gsub("\\.", " ", variable)
+  }
+
+  ggplot(data = iris, 
+  aes(x = .data[[var1]], y = .data[[var2]], color = .data[[var2]])) +
+    geom_point(size = 3, show.legend = FALSE) +
+    labs(title = paste(
+        "Scatter plot of", var1,
+        "vs", var2),
+      x = labeller(var1),
+      y = labeller(var2)
+    ) +
+      scale_color_viridis_c() +
+      theme_minimal() +
+      theme(
+        plot.title = element_text(size = 28, face = "bold"),
+        axis.title = element_text(size = 24, face = "bold")
+      )
+}
+```
+
+## Example for ggplots {auto-animate="TRUE"}
+
+```{r}
+#| label: base_r_fun_7
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns4060
+#| fig-height: 10
+
+
+patchwork::wrap_plots(
+  plot_iris(
+    "Sepal.Length",
+     "Petal.Length"
+     ),
+  plot_iris(
+    "Sepal.Length", 
+    "Petal.Width"
+    )
+) +
+  patchwork::plot_layout(ncol = 1)
+```
+
+# Data preparation with the tidyverse and data.table {background-color="#184669"}
+
+Getting your data ready for visualization
 
 ## Starting dataset {.out7 auto-animate="TRUE"}
 
@@ -2194,33 +2986,13 @@ library(ggplot2)
 
 head(mpg)
 ```
-
-## Use of glimpse {.out7 auto-animate="TRUE"}
-
-```{r}
-#| label: data_preparation_2
+``` {r}
+#| label: data_preparation_1_2
 #| echo: true
 #| eval: true
 #| output-location: column
 #| classes: columns4060
-library(ggplot2)
-library(dplyr)
 
-glimpse(mpg)
-```
-
-## Use of select {.out7 auto-animate="TRUE"}
-
-```{r}
-#| label: data_preparation_3
-#| echo: true
-#| eval: true
-#| output-location: column
-#| classes: columns4060
-library(ggplot2)
-library(dplyr)
-
-mpg %>%
-  select(displ, hwy, class, year) |>
-  glimpse()
+df <- as.tibble(mpg)
+dt <- as.data.table(mpg)
 ```
