@@ -4,6 +4,7 @@ subtitle: "Designing scientific figures"
 format: 
     clean-revealjs:
         # code-fold: false
+        from: markdown+emoji
         code-overflow: wrap
         # code-block-bg: "#e60000"
         # code-block-border-left: "#31BAE9"
@@ -21,37 +22,25 @@ css: theme/custom.css
 cache: true
 ---
 
-# Introduction to Grammar of Graphics {background-color="#184669"}
+# The Grammar of Graphics {background-color="#184669"}
 
-## A framework for data visualization {.smaller}
+## A framework for data visualization {auto-animate="TRUE"}
 
 Introduced by Leland Wilkinson ([The Grammar of Graphics](https://link.springer.com/book/10.1007/0-387-28695-0 "Access provided by U. Bordeaux"), 2005).
 
-Graphics can be built up from a set of components:
-
-::::: columns
-::: {.column width="50%"}
-- [Data]{.fg style="--col: #184669"}: the dataset to be visualized
-- [Variables]{.fg style="--col: #184669"}: mapping of objects to values
-- [Algebra]{.fg style="--col: #184669"}: operations to combine variables and specify dimensions
-- [Scales]{.fg style="--col: #184669"}: represent variables on measured dimensions
-- [Statistics]{.fg style="--col: #184669"}: functions to change the appearance and representation
-:::
-
-::: {.column width="50%"}
-- [Geometry]{.fg style="--col: #184669"}: creation of geometric graphs from variables
-- [Coordinates]{.fg style="--col: #184669"}: mapping to coordinate systems
-- [Aesthetics]{.fg style="--col: #184669"}: sensory attributes
-- [Facets]{.fg style="--col: #184669"}: subplots based on subsets of data
-- [Guides]{.fg style="--col: #184669"}: legends and axes to explain the graph
-:::
-:::::
-
-## Adapted to R in the `ggplot2` package
+Graphics can be built up from a set of components adapted to the `ggplot2` package in R by Hadley Wickham ([ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/), 2016).
 
 ![](resources/overview_graphic-1.png)
 
-## Example: Data should be formatted with 1 column per variable
+## A framework for data visualization {auto-animate="TRUE"}
+
+![](resources/overview_graphic-1.png)
+
+## Aesthetics are layered as geometries</br>on a coordinate system {auto-animate="TRUE"}
+
+![](resources/gg2.png)
+
+## The [data]{.fg style="--col: #cb962a"} to be visualized has one column per variable</br>and one row per observation {auto-animate="TRUE"}
 
 ```{r}
 #| label: data
@@ -67,7 +56,7 @@ library(ggplot2)
 DT::datatable(mpg)
 ```
 
-## ggplot initialization provides a plotting area {auto-animate="TRUE"}
+## [Data]{.fg style="--col: #cb962a"}: the dataset to be visualized initializes the graph {auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_data 
@@ -82,7 +71,7 @@ library(ggplot2)
 ggplot(mpg)
 ```
 
-## Mapping x and y coordinates provide axes {auto-animate="TRUE"}
+## [Mapping]{.fg style="--col: #4596d3"} of objects to values {auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_mapping 
@@ -100,7 +89,7 @@ ggplot(
 )
 ```
 
-## Geometries can be added as layers {auto-animate="TRUE"}
+## Creation of geometric graphs from variables by [layers]{.fg style="--col: #17998e"} {auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_layers 
@@ -122,7 +111,7 @@ ggplot(
   geom_point()
 ```
 
-## Scales can be applied to aesthetics {auto-animate="TRUE"}
+## [Scales]{.fg style="--col: #a5ca0f"} to represent variables on measured dimensions {auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_scales
@@ -146,7 +135,7 @@ ggplot(
   scale_colour_viridis_d()
 ```
 
-## Facetting allows generating many subplots {auto-animate="TRUE"}
+## [Facets]{.fg style="--col: #2934b1"} allows generating many subplots {auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_facets
@@ -171,7 +160,7 @@ ggplot(
   facet_grid(year ~ class)
 ```
 
-## Coordinates allows re-scaling {auto-animate="TRUE"}
+## [Coordinates]{.fg style="--col: #c83c19"} allows re-scaling {auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_coordinates
@@ -200,7 +189,7 @@ ggplot(
   )
 ```
 
-## Make it pretty/corporate/legible with a theme {.code5 auto-animate="TRUE"}
+## Make it pretty/corporate/legible with a [theme]{.fg style="--col: #ff69b4"} {.code5 auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_theme
@@ -250,6 +239,2405 @@ ggplot(
   labs(colour = "Vehicle Class")
 ```
 
+# Elements of visual communication {background-color="#184669"}
+
+## Visuals are an increasingly important form of science communication
+
+Many scientists not well trained in design *principles* for **effective** messaging
+
+Visuals can be improved by taking some simple steps before, during, and after their creation
+
+## Goals of this course
+
+Use R to create figures from raw data that:
+
+- **convey a clear message**
+- are produced at high throughput in a reproducible way
+- can be easily tuned to
+- be adapted to different media (journals, posters, presentations)
+
+## What we will cover
+
+- 10 principles of visual communication
+- Reminders of R basics
+- Building figures with `ggplot2`
+- Going further with "add-on" packages (`patchwork`, `ggtext`, `gganimate`)
+- Application to concrete examples (could be yours!): 🧪
+
+## Tools and sources
+
+- All figures made in R with ggplot with additional packages:
+  - `tidyverse`, `patchwork`, `data.table`, `ggtext`, `scales`, `gt`, `fakir`, `charlatan`,  `ggsci`, `colorblindr`, `gapminder`, `gganimate`, `palmerpenguins`, `png`, `plotly`, `ggalt`
+- Presentation made with revealJS 
+- Biblio
+  - Patterns (N Y). **2020.** *1*, 100141
+  - Nature Communications. **2020**. *11*, 5444
+
+# This presentation is available on [R.largy.fr](https://r.largy.fr) {background-color="#184669"}
+
+# 10 Principles {background-color="#ffdae0 "}
+
+# Principle 1: Diagram first {background-color="#ffdae0 "}
+
+## Focus on information and message
+
+Least technical but very important step
+
+[**Prioritize the information you want to share**]{.fg style="--col: #ffdae0 "} and design it.
+
+- What [**core information**]{.fg style="--col: #ffdae0 "} needs to be conveyed?
+- What about that information is going to make your point?
+- Objective: comparison, ranking, trend?
+- Search the literature for inspiration
+
+You can use the grammar of graphics approach to pick the different necessary elements
+
+# Principle 2: Use the right software {background-color="#ffdae0 "}
+
+## Excel might not be the best tool
+
+- A spreadsheet program may not be sufficient
+  - Data summary by groups
+  - Non-linear fitting, advanced statistics
+- Examples
+  - Origin
+  - GraphPad Prism
+  - Tableau
+  - MATLAB
+  - Python
+  - [**R**]{.fg style="--col: #ffdae0 "}
+
+# Principle 3: Use an Effective Geometry and Show Data {background-color="#ffdae0 "}
+
+## Less is more
+
+- Geometries = representations of data in different forms
+- Often more than one possible geometry
+- High data-ink ratios[^1] are best: Remove as much non-data-ink as possible (Principle 8)
+  - Unnecessary plot elements (grids, colored background)
+  - Busy axis (too many breaks)
+- Do not include too much information
+  - Stick to your message (see principle 1)
+
+[^1]: ratio of ink used on data compared with overall ink used in a figure
+
+## Geometries
+
+- 4 categories
+  - Amounts (or comparisons)
+  - Compositions (or proportions)
+  - Distributions
+  - Relationships
+- One geometry may work in more than one category
+- One dataset may be visualized with more than one geometry
+
+## Amounts
+
+- Examples:
+  - Bar plots
+  - Scatter plots
+  - Heatmaps
+- Only for data without
+  - Distributional information
+  - Uncertainty
+
+## Bar plots
+
+- Bar plots are popular but often a bad choice
+  - Low data density
+  - Always start at zero, they can be misleading
+  - Part of the range covered by the bar might have never been observed
+- Good use of a bar plot: show counts of something
+- Poor use of a bar plot: show group means
+
+## Bar plots: showing counts
+
+Example with a [Drug review dataset from WebMD](https://www.kaggle.com/datasets/rohanharode07/webmd-drug-reviews-dataset):
+
+- How many counts of each *Ease of use* score?
+
+```{r}
+#| label: bar plot data
+#| warning: false
+
+librarian::shelf(
+  tidyverse, patchwork, data.table, ggtext, scales, gt, fakir, paletteer, ggsci, clauswilke/colorblindr, gapminder, gganimate, palmerpenguins, png, plotly, charlatan, hrbrmstr/ggalt
+)
+
+custom.theme <- function(scale = 1){
+  theme_minimal() +
+    theme(
+      panel.grid = element_blank(),
+      axis.line = element_line(linewidth = 0.5*scale),
+      axis.ticks = element_line(linewidth = 0.5*scale),
+      axis.text = element_text(size = 10*scale),
+      axis.title.x = element_markdown(size = 16*scale),
+      axis.title.y = element_markdown(size = 16*scale),
+      legend.title = element_markdown(size = 14*scale, face = 'bold'),
+      # legend.text = element_markdown(size = 12*scale),
+      strip.text = element_markdown(size = 12, face = 'bold'),
+      title = element_markdown(face = 'bold', size = 18 * scale),
+      plot.tag = element_text(face = 'bold', size = 18 * scale),
+      plot.background = element_rect(color = NA, linewidth = NULL),
+      plot.title = element_markdown(face = 'bold', size = 18 * scale),
+      plot.caption = element_markdown(face = 'plain', size = 16 * scale)
+    )
+}
+
+df.webmd <- fread('data/webmd.csv') %>% 
+  mutate(
+    EaseofUse = as.numeric(EaseofUse),
+    gender = if_else(Sex == '', "NA", Sex)
+  ) %>% 
+  filter(EaseofUse <= 5) 
+
+df.webmd %>% 
+  select(-Reviews, -Sides, -Sex) %>%
+  rename("Gender" = 'gender') %>% 
+  sample_n(6) %>% 
+  gt() %>% 
+  opt_stylize(style = 6, color = 'pink') %>% 
+  tab_options(column_labels.background.color = "pink")
+
+```
+
+## Bar plots: showing counts
+
+Bar plot shows data counts with very low information density
+
+```{r}
+#| label: bar plot ex
+(
+  df.webmd %>% 
+  group_by(EaseofUse) %>% 
+  summarise(n = n()) %>% 
+  ggplot(aes(x = EaseofUse, y = n)) +
+  geom_col() +
+  labs(
+    x = 'Ease of Use'
+  ) +
+  custom.theme(1.5)
+  ) +
+  (
+      df.webmd %>% 
+  group_by(EaseofUse) %>% 
+  summarise(n = n()) %>% 
+  ggplot(aes(x = EaseofUse, y = n)) +
+  geom_point(size = 2) +
+  labs(
+    x = 'Ease of Use'
+  ) +
+  custom.theme(1.5)
+  )
+
+```
+
+What differences do you notice?
+
+Which is best? Would you change anything?
+
+## Compositions
+
+Goal: For each *Ease of use* score, what is the proportion of females/males?
+
+```{r}
+#| label: pies
+
+pie.values <- df.webmd %>% 
+  group_by(EaseofUse, gender) %>% 
+  summarise(n = n()) %>% 
+  ungroup()
+
+pieR <- function(gp = 1, data = pie.values){
+  data %>% 
+    filter(EaseofUse == gp) %>% 
+    ggplot(., aes(x = "", y = n, fill = gender)) +
+    geom_bar(stat = "identity", width = 1) +
+    coord_polar("y", start = 0) +
+    custom.theme() +
+    theme(axis.text = element_blank(),
+          axis.line = element_blank(),
+          axis.title.x = element_blank(),
+          axis.title.y = element_blank(),
+          legend.position = 'none'
+    ) +
+    scale_fill_manual(values = c('pink',"steelblue", 'grey')) +
+    geom_text(aes(label = gender), position = position_stack(vjust = 0.5)) +
+    labs(subtitle = paste0('Ease of use = ', gp)) +
+    theme(plot.subtitle = element_text(size = 14))
+}
+
+
+patchwork::wrap_plots(lapply(1:5, pieR)) +
+  plot_layout(nrow = 2)
+```
+
+- Pie charts are a classic that **do not work** in most cases
+  - Inherent difficulties in making visual comparisons
+- Prefer e.g., stacked or clustered bar plots
+
+## Stacked and clustered bars
+
+For each *Ease of use* score, what is the proportion of females/males?
+
+```{r}
+#| label: clusterd and stacked
+(
+  df.webmd %>% 
+    group_by(EaseofUse, gender) %>% 
+    summarise(n = n()) %>% 
+    ggplot(aes(x = EaseofUse, y = n, fill = gender)) +
+    geom_col() +
+    labs(title = 'Stacked')
+) + (
+  df.webmd %>% 
+    group_by(EaseofUse, gender) %>% 
+    summarise(n = n()) %>% 
+    ggplot(aes(x = EaseofUse, y = n, fill = gender)) +
+    geom_col(position = position_dodge()) +
+    labs(title = 'Clustered')
+) +
+  plot_layout(guides = 'collect') &
+  labs(x = 'Ease of Use',
+       y = 'n') &
+  custom.theme(1.3)
+```
+
+Is the message clear? What would you change?
+
+## Normalized bars
+
+- *Normalized* bars better show the composition
+- Loss of information on counts
+  - But was it the intended message?
+
+```{r}
+#| label: normalized bars
+(
+  df.webmd %>% 
+    group_by(EaseofUse, gender) %>% 
+    summarise(n = n()) %>%
+    group_by(EaseofUse) %>% 
+    mutate(prop = n/sum(n)*100) %>% 
+    ggplot(aes(x = EaseofUse, y = prop, fill = gender)) +
+    geom_col() +
+    labs(title = 'Stacked',
+         y = '% Answer')
+) + (
+  df.webmd %>% 
+    group_by(EaseofUse, gender) %>% 
+    summarise(n = n()) %>% 
+    group_by(EaseofUse) %>% 
+    mutate(max.n = max(n)) %>% 
+    mutate(prop = n/max.n) %>% 
+    ggplot(aes(x = EaseofUse, y = prop, fill = gender)) +
+    geom_col(position = position_dodge()) +
+    labs(title = 'Clustered',
+         y = 'Relative answer')
+) +
+  plot_layout(guides = 'collect') &
+  custom.theme(1.3) &
+  labs(x = 'Ease of Use')
+```
+
+## Different message = change of aesthetics
+
+For each gender, what is the proportion of *Ease of use* ?
+
+```{r}
+#| label: propo
+(
+  df.webmd %>% 
+    group_by(EaseofUse, gender) %>% 
+    summarise(n = n()) %>%
+    group_by(gender) %>% 
+    mutate(prop = n/sum(n)*100) %>%  
+    ggplot(aes(x = gender, y = prop, fill = factor(EaseofUse))) +
+    geom_col() +
+    labs(title = 'Stacked',
+         y = '% Answer')
+) + (
+  df.webmd %>% 
+    group_by(EaseofUse, gender) %>% 
+    summarise(n = n()) %>%
+    group_by(gender) %>% 
+    mutate(max.n = max(n)) %>% 
+    mutate(prop = n/max.n) %>% 
+    ggplot(aes(x = gender, y = prop, fill = factor(EaseofUse))) +
+    geom_col(position = position_dodge()) +
+    labs(title = 'Clustered',
+         y = 'Relative answer')
+) +
+  plot_layout(guides = 'collect') &
+  custom.theme(1.3) &
+  labs(x = 'Gender') &
+  scale_fill_discrete('Ease of use')
+```
+
+## Distributions
+
+- Underused category
+- High data density
+- Examples
+  - Box plot
+  - Histogram
+  - Violin plot
+  - Density plot
+- Better to show the data
+
+## Distributions
+
+- Example of a [water temperature in Antibes dataset](https://www.data.gouv.fr/fr/datasets/temperature-de-leau-de-mer-a-antibes-juan-les-pins/)
+  - Goal: compare temperatures across years
+  - 6 first data points:
+
+```{r}
+#| label: antibe table
+df.antibes <- fread('data/antibes-eau-temperature-est-cap.csv') %>% 
+  pivot_longer(
+    cols = 4:7,
+    values_to = 'temp',
+    names_to = 'year'
+  ) %>% 
+  mutate(year = as.factor(as.numeric(gsub('ANNEE ', '', year)))) %>% 
+  filter(!is.na(temp)) %>% 
+  mutate(
+    day = gsub('-', '', substr(JOUR, 1, 2)),
+    month = case_when(
+      grepl('janv', JOUR) ~ 1,
+      grepl('fev', JOUR) ~ 2,
+      grepl('mars', JOUR) ~ 3,
+      grepl('avr', JOUR) ~ 4,
+      grepl('mai', JOUR) ~ 5,
+      grepl('juin', JOUR) ~ 6,
+      grepl('juil', JOUR) ~ 7,
+      grepl('août', JOUR) ~ 8,
+      grepl('sept', JOUR) ~ 9,
+      grepl('oct', JOUR) ~ 10,
+      grepl('nov', JOUR) ~ 11,
+      grepl('dec', JOUR) ~ 12,
+      TRUE~NA
+    ),
+    date = as.Date(paste0(year, '/', month, '/', day))
+  )
+
+df.antibes %>% 
+  sample_n(6) %>% 
+  select(date, temp) %>%
+  magrittr::set_colnames(c('Date', 'Temperature (°C)')) %>% 
+  gt() %>% 
+  opt_stylize(style = 6, color = 'pink') %>% 
+  tab_options(column_labels.background.color = "pink")
+```
+
+## Bar plots: showing mean :vomiting_face:
+
+No distribution information (only mean) and suggests data starts at 0!
+
+```{r}
+#| label: geom_col
+df.antibes %>% 
+  group_by(year) %>% 
+  summarise(
+    sd = sd(temp),
+    temp = mean(temp)
+  ) %>% 
+  ggplot(aes(x = year, y = temp, group = year)) +
+  geom_col() +
+  labs(
+    x = 'Year',
+    y = 'Water T (°C)'
+  ) +
+  custom.theme(1.5) +
+  scale_y_continuous(limits = c(NA, 30))
+```
+
+## Introducing data spread info
+
+Using error bars, but what do they represent here?
+
+```{r}
+#| label: errorbars
+df.antibes %>% 
+  group_by(year) %>% 
+  summarise(
+    sd = sd(temp),
+    temp = mean(temp)
+  ) %>% 
+  ggplot(aes(x = year, y = temp, group = year)) +
+  geom_col() +
+  geom_errorbar(
+    aes(ymin = (temp - sd), ymax = (temp + sd)),
+    width = 0.2,
+    linewidth = 1
+  ) +
+  labs(
+    x = 'Year',
+    y = 'Water T (°C)'
+  ) +
+  custom.theme(1.5) +
+  scale_y_continuous(limits = c(NA, 30))
+```
+
+## Scatter is less misleading
+
+But the distribution information is still lacking
+
+```{r}
+#| label: misled
+df.antibes %>% 
+  group_by(year) %>% 
+  summarise(
+    sd = sd(temp),
+    temp = mean(temp)
+  ) %>% 
+  ggplot(aes(x = year, y = temp, group = year)) +
+  geom_point(size = 3) +
+  geom_errorbar(
+    aes(ymin = (temp - sd), ymax = (temp + sd)),
+    width = 0.2,
+    linewidth = 1
+  ) +
+  labs(
+    x = 'Year',
+    y = 'Water T (°C)'
+  ) +
+  custom.theme(1.5) +
+  scale_y_continuous(limits = c(0, 30))
+```
+
+## Is mean ± sd not enough?
+
+Still insufficient to differentiate these (fake) distributions
+
+```{r}
+#| label: rnormy
+
+
+rnormy <- function(n,mean,sd) { 
+  mean + sd * scale(rnorm(n)) 
+}
+
+df.norm <- data.frame(
+  a = rnormy(100,20,3),
+  b = rnormy(1000,20,3),
+  c = rnormy(10,20,3),
+  d = rnormy(500,20,3),
+  e = rnormy(250,20,3)
+) %>% 
+  pivot_longer(
+    cols = 1:5,
+    names_to = 'Year',
+    values_to = 'Values'
+  ) 
+
+(
+  df.norm %>% 
+    ggplot(aes(x = Year, y = Values)) +
+    geom_jitter(alpha = 0.05) +
+    custom.theme(1) +
+    labs(y = 'Water T (°C)')
+) + (
+  df.norm %>% 
+    group_by(Year) %>% 
+    summarise(
+      Mean = mean(Values),
+      sd = sd(Values)
+    ) %>% 
+    ggplot(aes(x = Year, y = Mean)) +
+    geom_point() +
+    geom_errorbar(aes(ymin = Mean - sd, ymax = Mean + sd),
+                  width = 0.1) +
+    custom.theme(1) +
+    labs(y = 'Mean Water T (°C)')
+) &
+  scale_y_continuous(limits = c(0,30)) 
+```
+
+## Box plots are much better
+
+Box plots show the *spread* of data through their quartiles.
+
+```{r}
+#| label: boxyboxes
+df.antibes %>% 
+  ggplot(aes(x = year, y = temp, group = year)) +
+  geom_boxplot(linewidth = 1) +
+  # geom_jitter(width = 0.25, alpha = 0.25) +
+  labs(
+    x = 'Year',
+    y = 'Water T (°C)'
+  ) +
+  custom.theme(1.5) +
+  scale_y_continuous(limits = c(NA, 30))
+```
+
+## Data points may be added
+
+*Density* can be shown with individual data points with *transparency*
+
+```{r}
+#| label: box and points
+
+df.antibes %>% 
+  ggplot(aes(x = year, y = temp, group = year)) +
+  geom_boxplot(linewidth = 1) +
+  geom_point(alpha = 0.1, size = 3) +
+  labs(
+    x = 'Year',
+    y = 'Water T (°C)'
+  ) +
+  custom.theme(1.5) +
+  scale_y_continuous(limits = c(NA, 30))
+```
+
+## Data points may be added
+
+Or with *jitter*
+
+```{r}
+#| label: jittery
+
+df.antibes %>% 
+  ggplot(aes(x = year, y = temp, group = year)) +
+  geom_boxplot(linewidth = 1) +
+  geom_jitter(width = 0.25, size = 3) +
+  labs(
+    x = 'Year',
+    y = 'Water T (°C)'
+  ) +
+  custom.theme(1.5) +
+  scale_y_continuous(limits = c(NA, 30))
+```
+
+## Data points may be added
+
+Or *both*
+
+```{r}
+#| label: transparentjitter
+df.antibes %>% 
+  ggplot(aes(x = year, y = temp, group = year)) +
+  geom_boxplot(linewidth = 1) +
+  geom_jitter(width = 0.25, alpha = 0.1, size = 3) +
+  labs(
+    x = 'Year',
+    y = 'Water T (°C)'
+  ) +
+  custom.theme(1.5) +
+  scale_y_continuous(limits = c(NA, 30))
+```
+
+## Violin plots
+
+Violin plots even more effective to compare (probability) distributions
+
+```{r}
+#| label: jitteredviolins
+
+df.antibes %>% 
+  ggplot(aes(x = year, y = temp, group = year)) +
+  geom_violin(linewidth = 1) +
+  geom_jitter(width = 0.1, alpha = 0.1, size = 3) +
+  labs(
+    x = 'Year',
+    y = 'Water T (°C)'
+  ) +
+  custom.theme(1.5) +
+  scale_y_continuous(limits = c(NA, 30))
+```
+
+## Violin + boxes
+
+Quantiles can be shown directly of via superimposed boxes
+
+```{r}
+#| label: violin and box
+df.antibes %>% 
+  ggplot(aes(x = year, y = temp, group = year)) +
+  geom_violin(linewidth = 1) +
+  geom_boxplot(width = 0.1, fill = 'grey', outlier.size = 0, linewidth = 0.75) +
+  geom_jitter(width = 0.1, alpha = 0.1, size = 3) +
+  labs(
+    x = 'Year',
+    y = 'Water T (°C)'
+  ) +
+  custom.theme(1.5) +
+  scale_y_continuous(limits = c(NA, 30))
+```
+
+## Relationship
+
+- Most presentations of x- and y-coordinate data
+- Scatter plots are simple and effective
+- Lines may be shown
+- Information can be layered
+  - symbols (e.g. circles, squares)
+  - size
+  - color
+  - line type (e.g. dashed vs. plain)
+
+## Scatter plot
+
+Temperature vs. time with *points*
+
+```{r}
+#| label: scatterplot
+df.antibes %>% 
+  ggplot(aes(date, temp)) +
+  geom_point() +
+  labs(y = 'Water T (°C)',
+       x = 'Date') +
+  scale_y_continuous(limits = c(9, 30)) +
+  custom.theme(1.5)
+
+```
+
+## Scatter plot
+
+Temperature vs. time with *points* and *line*
+
+```{r}
+#| label: plot and lines
+df.antibes %>% 
+  ggplot(aes(date, temp)) +
+  geom_point(size = 1.5) +
+  geom_line(linewidth = 1) +
+  labs(y = 'Water T (°C)',
+       x = 'Date') +
+  scale_y_continuous(limits = c(9, 30)) +
+  custom.theme(1.5)
+
+```
+
+## Scatter plot
+
+Temperature vs. time with *points* and *smoothed line*
+
+```{r}
+#| label: smoothed
+df.antibes %>% 
+  ggplot(aes(date, temp)) +
+  geom_point(size = 1.5) +
+  geom_smooth(method = 'gam') +
+  labs(y = 'Water T (°C)',
+       x = 'Date') +
+  scale_y_continuous(limits = c(9, 30)) +
+  custom.theme(1.5)
+
+```
+
+## Penguin dataset
+
+::::: columns
+::: {.column width="60%"}
+- Source: [Palmer station penguins dimensions](https://github.com/allisonhorst/palmerpenguins)
+  - Repository and Artwork by @allison_horst
+
+```{r}
+#| label: penguin dataset
+penguins %>% 
+  sample_n(6) %>% 
+  gt() %>% 
+  opt_stylize(style = 6, color = 'pink') %>% 
+  tab_options(column_labels.background.color = "pink")
+```
+:::
+
+::: {.column width="40%"}
+![](resources/penguins.png){width="75%"}
+
+![](resources/culmen_depth.png){width="75%"}
+:::
+:::::
+
+## Distributions
+
+Bad and good ways to plot distributions
+
+```{r}
+#| label: distripenguins
+
+(
+  penguins %>%
+  remove_missing() %>%
+  group_by(species, sex) %>%
+  summarise(mean_bmg = mean(body_mass_g),
+            sd_bmg = sd(body_mass_g)) %>% 
+  ggplot(aes(x = species, y = mean_bmg,
+             fill = sex)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  geom_errorbar(aes(ymin = mean_bmg - sd_bmg, 
+                    ymax = mean_bmg + sd_bmg), 
+                width = 0.2,
+                position = position_dodge(0.9)) +
+  labs(x = "Species", 
+       y = "Mean body mass (in g)",
+       title = "Barchart") +
+  scale_fill_manual(values = rev(c("#999999", "#CC79A7"))) +
+  custom.theme(0.9)
+) + (
+  penguins %>%
+  remove_missing() %>%
+  ggplot(aes(x = species, y = body_mass_g,
+             fill = sex, color = sex)) +
+  geom_boxplot(alpha = 0.5, notch = TRUE,
+               linewidth = 0.75) +
+  geom_jitter(alpha = 0.5, position = position_jitter(0.3), size = 1) +
+  labs(x = "Species", 
+       y = "Body mass (in g)",
+       title = "Boxplot with notch and points")  +
+  scale_fill_manual(values = rev(c("#999999", "#CC79A7"))) +
+  scale_color_manual(values = rev(c("#999999", "#CC79A7"))) +
+  custom.theme(0.9)
+) + (
+  penguins %>%
+  remove_missing() %>%
+  ggplot(aes(x = species, y = body_mass_g,
+             fill = sex)) +
+  geom_violin(scale = "area", linewidth = 0.75) +
+  labs(x = "Species", 
+       y = "Body mass (in g)",
+       title = "Violinplot") +
+  scale_fill_manual(values = rev(c("#999999", "#CC79A7"))) +
+  scale_color_manual(values = rev(c("#999999", "#CC79A7"))) +
+  custom.theme(0.9)
+) + (
+  penguins %>%
+  remove_missing() %>%
+  ggplot(aes(x = species, y = body_mass_g,
+             fill = sex, color = sex)) +
+  geom_dotplot(method = "dotdensity", alpha = 0.7,
+               binaxis = 'y', stackdir = 'center',
+               position = position_dodge(1)) +
+  labs(x = "Species", 
+       y = "Body mass (in g)",
+       title = "Violinplot with points (dotplot)") +
+  scale_fill_manual(values = rev(c("#999999", "#CC79A7"))) +
+  scale_color_manual(values = rev(c("#999999", "#CC79A7"))) +
+  custom.theme(0.9)
+) 
+```
+
+## Bubble plot
+
+Adds a symbol scale aesthetics to map an additional variable
+
+```{r}
+#| label: bubble plot
+penguins %>%
+  remove_missing() %>%
+  ggplot(
+    aes(x = bill_length_mm, y = flipper_length_mm,
+        color = species, shape = species, size = body_mass_g)
+  ) +
+  geom_point(alpha = 0.5) +
+  labs(
+    x = "Bill length (mm)", 
+    y = "Flipper length (mm)",
+    title = "Penguins bill v. flipper length by species;\nsize indicates body mass in grams", 
+    size = "body mass (g)"
+  ) +
+  custom.theme(1.35) +
+  scale_color_manual(values = c("#E69F00", "#CC79A7", "#009E73")) +
+  theme(
+    plot.title = element_markdown(size = 14),
+    legend.text = element_text(size = 12)
+    )
+```
+
+## Lollipop plot (Lolliplot)
+
+Analogous to a barplot but less misleading
+
+```{r}
+#| label: lollipop
+
+penguins %>%
+  remove_missing() %>%
+  group_by(year, species, sex) %>%
+  summarise(mean_bmg = mean(body_mass_g)) %>%
+  mutate(species_sex = paste(species, sex, sep = "_"),
+         year = paste0("year_", year)) %>%
+  spread(year, mean_bmg) %>%
+  ggplot() +
+  geom_segment(aes(x = reorder(species_sex, year_2009), xend = reorder(species_sex, -year_2009), 
+                   y = 0, yend = year_2009),
+               color = "#999999", size = 1) +
+  geom_point(aes(x = reorder(species_sex, -year_2009), y = year_2009),
+             size = 5, color = "#CC79A7") +
+  coord_flip(clip = 'off') +
+  labs(x = "Species & sex", 
+       y = "Body mass (g)",
+       subtitle = "Penguin's body mass in 2009") +
+  custom.theme(1.4) +
+  theme(plot.subtitle = element_markdown(size = 16)) +
+  scale_y_continuous(expand = c(0,NA), limits = c(0,6000), breaks = c((1:5)*1000))
+```
+
+## Dumbbell plot
+
+Multiple comparisons between two points.
+
+```{r}
+#| label: dumbbell
+penguins %>%
+  remove_missing() %>%
+  group_by(year, species, sex) %>%
+  summarise(mean_bmg = mean(body_mass_g)) %>%
+  mutate(species_sex = paste(species, sex, sep = "_"),
+         year = paste0("year_", year)) %>%
+  spread(year, mean_bmg) %>%
+  ggplot(aes(x = year_2007, xend = year_2009, 
+             y = reorder(species_sex, year_2009))) +
+  geom_dumbbell(
+    color = "#999999", 
+    size_x = 5, 
+    size_xend = 5,
+    size = 1.5,
+    colour_x = "#999999",
+    colour_xend = "#CC79A7",
+    dot_guide = TRUE, dot_guide_size = 1, dot_guide_colour = "#999999"
+  ) +
+  labs(x = "Body mass (g)", 
+       y = "Species & sex",
+       subtitle = "Penguin's change in body mass from <span style='color:#999999;'>2007</span> 
+       to <span style='color:#CC79A7;'>2009</span>") +
+  custom.theme(1.4) + 
+  theme(plot.subtitle = element_markdown(size = 16)) +
+  scale_x_continuous(expand = c(0,NA), limits = c(0,6000), breaks = c((1:5)*1000))
+```
+
+# Principle 4: Colors mean something {background-color="#ffdae0 "}
+
+## Color is often the first visual information</br>getting across to the reader
+
+- Colors represent information
+  - in a direct and obvious way,
+  - or in an indirect and subtle way
+- Must make the message easier to understand
+  - Not just to make the figure pretty
+
+**Colors should be strategically used to amplify your visual message**
+
+## Classes disinguish between</br>sequential and diverging schemes
+
+![[Source](https://www.nature.com/articles/s41467-020-19160-7)](resources/color_classes.png){fig.cap="right aligned" fig-align="center"}
+
+## Types distinguish between</br>continuous, discrete, and categorical data
+
+![[Source](https://www.nature.com/articles/s41467-020-19160-7)](resources/color_types.png){fig.cap="right aligned" fig-align="center"}
+
+## Sequential coloring can be light to dark</br>with one hue
+
+```{r}
+#| label: single hue
+#| 
+df.antibes %>% 
+  ggplot(aes(date, temp)) +
+  geom_point(aes(color = temp), size = 1.5) +
+  geom_smooth(method = 'gam') +
+  labs(y = 'Water T (°C)',
+       x = 'Date') +
+  scale_y_continuous(limits = c(9, 30)) +
+  custom.theme(1.5) +
+  scale_color_distiller(type = 'seq', palette = 'RdPu', name = 'T (°C)')
+
+```
+
+## Sequential coloring can be light to dark</br>with several hues
+
+```{r}
+#| label: multiple hues
+
+df.antibes %>% 
+  ggplot(aes(date, temp)) +
+  geom_point(aes(color = temp), size = 1.5) +
+  geom_smooth(method = 'gam') +
+  labs(y = 'Water T (°C)',
+       x = 'Date') +
+  scale_y_continuous(limits = c(9, 30)) +
+  custom.theme(1.5) +
+  scale_color_viridis_c(name = 'T (°C)')
+
+```
+
+## Diverging coloring uses two sequential schemes</br>and one neutral color
+
+```{r}
+#| label: div colors
+
+df.antibes %>% 
+  ggplot(aes(date, temp)) +
+  geom_point(aes(color = temp)) +
+  geom_smooth(method = 'gam') +
+  labs(y = 'Water T (°C)',
+       x = 'Date') +
+  scale_y_continuous(limits = c(9, 30)) +
+  scale_color_distiller(type = 'div', palette = 7, name = 'T (°C)') +
+  custom.theme(1.5)
+
+```
+
+## Using meaningful coloring may improve understanding
+
+```{r}
+#| label: obv
+(
+  df.antibes %>% 
+    ggplot(aes(date, temp)) +
+    geom_point(aes(color = temp)) +
+    geom_smooth(
+      aes(color = ..y..),
+      se = FALSE,
+      method = 'gam',
+      size = 1
+    ) +
+    labs(y = 'Water T (°C)',
+         x = 'Date') +
+    scale_y_continuous(limits = c(9, 30)) +
+    scale_color_distiller(type = 'div', palette = 7, name = 'T (°C)') +
+    custom.theme(1)
+) + (
+  df.antibes %>% 
+    ggplot(aes(date, temp)) +
+    geom_point(aes(color = temp)) +
+    geom_smooth(method = 'gam') +
+    labs(y = 'Water T (°C)',
+         x = 'Date') +
+    scale_y_continuous(limits = c(9, 30)) +
+    scale_color_distiller(type = 'div', palette = 3, name = 'T (°C)') +
+    custom.theme(1.25)
+)
+```
+
+## Categorical coloring involves unrelated colors</br>to convey qualitative group differences {auto-animate="TRUE"}
+
+::: data-id="id_01"
+```{r}
+#| label: qual
+#| 
+df.webmd %>% 
+  group_by(EaseofUse, gender) %>% 
+  summarise(n = n()) %>%
+  group_by(EaseofUse) %>% 
+  mutate(prop = n/sum(n)*100) %>% 
+  ggplot(aes(x = EaseofUse, y = prop, fill = gender)) +
+  geom_col() +
+  labs(x = 'Ease of use',
+       y = '% Answer') +
+  custom.theme(1.5)
+
+```
+:::
+
+## Meaningful colors may not be culturally obvious</br>or appropriate for everyone {auto-animate="TRUE"}
+
+::: data-id="id_01"
+```{r}
+#| label: qual2
+
+df.webmd %>% 
+  group_by(EaseofUse, gender) %>% 
+  summarise(n = n()) %>%
+  group_by(EaseofUse) %>% 
+  mutate(prop = n/sum(n)*100) %>% 
+  ggplot(aes(x = EaseofUse, y = prop, fill = gender)) +
+  geom_col() +
+  labs(x = 'Ease of use',
+       y = '% Answer') +
+  scale_fill_manual(values = c('pink', 'steelblue', 'grey')) +
+  custom.theme(1.5)
+
+```
+:::
+
+## Highlighting discrete values can be very effective</br>to convey a message
+
+```{r}
+#| label: high
+df.antibes %>% 
+  ggplot(aes(date, temp)) +
+  geom_point(size = 1.5) +
+  geom_smooth(method = 'gam') +
+  labs(y = 'Water T (°C)',
+       x = 'Date') +
+  scale_y_continuous(limits = c(9, 30)) +
+  custom.theme(1.5) +
+  labs(subtitle = 'Water temperature variations in Antibes') +
+  theme(plot.subtitle = element_markdown(size = 20))
+
+```
+
+## Highlighting discrete values can be very effective</br>to convey a message
+
+```{r}
+#| label: high2
+df.antibes %>% 
+  ggplot(aes(date, temp)) +
+  geom_point(color = 'grey', alpha = 0.7, size = 1.5) +
+  geom_smooth(method = 'gam', color = 'gray', se = FALSE, alpha = 0.25) +
+  labs(y = 'Water T (°C)',
+       x = 'Date') +
+  scale_y_continuous(limits = c(9, 30)) +
+  custom.theme(1.5) +
+  geom_point(
+    data = . %>% 
+      filter(temp > 28),
+    color = '#FF4081'
+  ) +
+  labs(subtitle = "The water temperature in Antibes rose <span style = 'color:#FF4081;'>above 28°C</span> in 2022") +
+  theme(plot.subtitle = element_markdown(size = 20))
+
+```
+
+## Data highlighting can be reinfored by *few* other elements
+
+```{r}
+#| label: high3
+df.antibes %>% 
+  ggplot(aes(date, temp)) +
+  geom_point(color = 'grey', alpha = 0.7, size = 1.5) +
+  geom_smooth(method = 'gam', color = 'gray', se = FALSE, alpha = 0.25) +
+  labs(y = 'Water T (°C)',
+       x = 'Date') +
+  scale_y_continuous(limits = c(9, 30)) +
+  custom.theme(1.5) +
+  geom_point(
+    data = . %>% 
+      filter(temp > 28),
+    color = '#FF4081'
+  ) +
+  labs(subtitle = "The water temperature in Antibes rose <span style = 'color:#FF4081;'>above 28°C</span> in 2022") +
+  theme(plot.subtitle = element_markdown(size = 20)) +
+  geom_hline(color = '#FF4081', linetype = 'dashed', size = 0.75,
+             aes(yintercept = 28))
+
+```
+
+## Design figures that work for everyone
+
+- Use colors that can be distinguished by colorblind people
+  - [Okabe Ito](https://mikemol.github.io/technique/colorblind/2018/02/11/color-safe-palette.html)
+- Use color schemes that are perceptually uniform to prevent data distortion
+  - [Viridis](https://waldyrious.net/viridis-palette-generator/), [Cividis](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0199239), [Brewer](https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3)
+- Combine colors with symbols, line type and other elements to convey same information
+- Use effective redundancy to increase understanding and accessibility
+- Use transparency instead of color for density, background info
+
+## Use effective redundancy to increase understanding and accessibility
+
+Note: use of symbols, direct labeling in title and inset figure (same color, same order)
+
+```{r}
+#| label: penguins
+
+p_penguins <- penguins %>%
+  remove_missing() %>%
+  ggplot(aes(x = bill_length_mm, y = flipper_length_mm,
+             color = species, shape = species)) +
+  geom_point(alpha = 0.7, size = 2.5, show.legend = FALSE) +
+  labs(x = "Bill length (mm)", 
+       y = "Flipper length (mm)",
+       title = "Penguins bill v. flipper length of
+       <span style = 'color:#CC79A7;'>Chinstrap</span>,
+       <span style = 'color:#009E73;'>Gentoo</span> and 
+       <span style = 'color:#E69F00;'>Adelie</span>
+        species",
+  ) +
+  custom.theme(1.4) +
+  scale_color_manual(values = c("#E69F00", "#CC79A7", "#009E73")) +
+  theme(plot.title = element_markdown(size = 12))
+
+p_penguins +
+  inset_element(
+    readPNG("resources/penguins.png", native = TRUE),
+    left = 0.01,
+    bottom = 0.7, 
+    right = 0.3, 
+    top = 0.99
+  ) 
+
+```
+
+## Default colors may cause issues for colorblind people
+
+```{r}
+#| label: bad choices
+
+p1 <- df.webmd %>% 
+  group_by(EaseofUse, gender) %>% 
+  summarise(n = n()) %>%
+  group_by(EaseofUse) %>% 
+  mutate(prop = n/sum(n)*100) %>% 
+  ggplot(aes(x = EaseofUse, y = prop, fill = gender)) +
+  geom_col() +
+  labs(x = 'Ease of use',
+       y = '% Answer') +
+  custom.theme(1)
+
+p1 + cvd_grid(p1) +
+  plot_layout(
+    design = "
+    ABBBB
+    #BBBB
+    "
+  )
+```
+
+## Meaningful colors may also be problematic
+
+```{r}
+#| label: bad choices 2
+
+p2 <- df.webmd %>% 
+  group_by(EaseofUse, gender) %>% 
+  summarise(n = n()) %>%
+  group_by(EaseofUse) %>% 
+  mutate(prop = n/sum(n)*100) %>% 
+  ggplot(aes(x = EaseofUse, y = prop, fill = gender)) +
+  geom_col() +
+  labs(x = 'Ease of use',
+       y = '% Answer') +
+  scale_fill_manual(values = c('pink', 'steelblue', 'grey')) +
+  custom.theme(1)
+
+p2 + cvd_grid(p2) +
+  plot_layout(
+    design = "
+    ABBBB
+    #BBBB
+    "
+  )
+```
+
+## [Okabe Ito](https://mikemol.github.io/technique/colorblind/2018/02/11/color-safe-palette.html) is designed for colorblindness
+
+```{r}
+#| label: okabe gray
+
+p3 <- df.webmd %>% 
+  group_by(EaseofUse, gender) %>% 
+  summarise(n = n()) %>%
+  group_by(EaseofUse) %>% 
+  mutate(prop = n/sum(n)*100) %>% 
+  ggplot(aes(x = EaseofUse, y = prop, fill = gender)) +
+  geom_col() +
+  labs(x = 'Ease of use',
+       y = '% Answer') +
+  scale_fill_OkabeIto() +
+  custom.theme(1)
+
+p3 + cvd_grid(p3) +
+  plot_layout(
+    design = "
+    ABBBB
+    #BBBB
+    "
+  )
+```
+
+## [Viridis](https://waldyrious.net/viridis-palette-generator/) is always a good choice
+
+```{r}
+#| label: cividis gray
+
+p4 <- df.webmd %>% 
+  group_by(EaseofUse, gender) %>% 
+  summarise(n = n()) %>%
+  group_by(EaseofUse) %>% 
+  mutate(prop = n/sum(n)*100) %>% 
+  ggplot(aes(x = EaseofUse, y = prop, fill = gender)) +
+  geom_col() +
+  labs(x = 'Ease of use',
+       y = '% Answer') +
+  scale_fill_viridis_d(option = 'D') +
+  custom.theme(1)
+
+p4 + cvd_grid(p4) +
+  plot_layout(
+    design = "
+    ABBBB
+    #BBBB
+    "
+  )
+```
+
+## [Cividis](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0199239) as well
+
+```{r}
+#| label: viridis gray
+
+p5 <- df.webmd %>% 
+  group_by(EaseofUse, gender) %>% 
+  summarise(n = n()) %>%
+  group_by(EaseofUse) %>% 
+  mutate(prop = n/sum(n)*100) %>% 
+  ggplot(aes(x = EaseofUse, y = prop, fill = gender)) +
+  geom_col() +
+  labs(x = 'Ease of use',
+       y = '% Answer') +
+  scale_fill_viridis_d(option = 'E') +
+  custom.theme(1)
+
+p5 + cvd_grid(p5) +
+  plot_layout(
+    design = "
+    ABBBB
+    #BBBB
+    "
+  )
+```
+
+## Data variation is under- or overrepresented with rainbows
+
+![[Source](https://www.nature.com/articles/s41467-020-19160-7)](resources/jet.png)
+
+## So how do I pick a color palette?
+
+::::: columns
+::: {.column width="50%"}
+Class and type ![](resources/palette%20selection%201.png){width="100%"}
+:::
+
+::: {.column width="50%"}
+Colour combination ![](resources/palette%20selection%202.png){width="100%"}
+:::
+:::::
+
+[Source](https://www.nature.com/articles/s41467-020-19160-7)
+
+# Principle 5: Include Uncertainty {background-color="#ffdae0 "}
+
+## Uncertainty is an inherent part of understanding most systems
+
+Failure to include uncertainty can be **misleading**
+
+Two primary issues with uncertainty:
+
+- Failure to include uncertainty = doubts over other parts of the statistical message
+  - e.g. inference on the mean
+- Misrepresentation (or misinterpretation) of uncertainty
+
+## There are simple ways to include uncertainty in your figures
+
+- Classicly:
+  - Error bars
+  - Shaded intervals (ribbons)
+- Or implicitly, with:
+  - Box plots
+  - Violins
+  - Distributions
+
+## Difficult to assess significance</br>when uncertainty is omitted
+
+```{r}
+#| label: omitted uncertainty
+
+(
+  df.antibes %>% 
+  group_by(year) %>% 
+  summarise(
+    mean.t = mean(temp),
+    sd.t = sd(temp)
+  ) %>% 
+  ggplot(aes(year, mean.t)) +
+  geom_point(size = 3) +
+  custom.theme(1.5) +
+  labs(
+    x = 'Year',
+    y = 'Water T (°C)'
+  ) 
+ ) + (
+  df.antibes %>% 
+  group_by(year) %>% 
+  summarise(
+    mean.t = mean(temp),
+    sd.t = sd(temp)
+  ) %>% 
+  ggplot(aes(year, mean.t)) +
+  geom_point(size = 3) +
+  custom.theme(1.5) +
+  labs(
+    x = 'Year',
+    y = 'Water T (°C)'
+  )  +
+  scale_y_continuous(limits = c(10, 30))
+ )
+
+```
+
+## Error bars are simple but hide data distribution
+
+```{r}
+#| label: error bars
+
+df.antibes %>% 
+  group_by(year) %>% 
+  summarise(
+    mean.t = mean(temp),
+    sd.t = sd(temp)
+  ) %>% 
+  ggplot(aes(year, mean.t)) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = mean.t - sd.t, ymax = mean.t + sd.t), width = 0.2) +
+  custom.theme(1.5) +
+  labs(
+    x = 'Year',
+    y = 'Water T (°C)'
+  )  +
+  scale_y_continuous(limits = c(10, 30))
+
+```
+
+## Transparency shows data density effectively
+
+```{r}
+#| label: all data points
+
+df.antibes %>% 
+  ggplot(aes(x = year, y = temp, group = year)) +
+  geom_jitter(width = 0.25, alpha = 0.25, size = 2.5) +
+  labs(
+    x = 'Year',
+    y = 'Water T (°C)'
+  ) +
+  custom.theme(1.5) +
+  scale_y_continuous(limits = c(10, 30))
+
+```
+
+## Violin/boxes highlight distribution characteristics
+
+```{r}
+#| label: all data points with violin
+
+df.antibes %>% 
+  ggplot(aes(x = year, y = temp, group = year)) +
+  geom_violin(linewidth = 1) +
+  geom_jitter(width = 0.25, alpha = 0.25, size = 2.5) +
+  labs(
+    x = 'Year',
+    y = 'Water T (°C)'
+  ) +
+  custom.theme(1.5) +
+  scale_y_continuous(limits = c(10, 30))
+
+```
+
+## Color can help but should be meaningful
+
+```{r}
+#| label: all data points with violin colored
+
+df.antibes %>% 
+  ggplot(aes(x = year, y = temp, group = year)) +
+  geom_violin(linewidth = 1) +
+  geom_jitter(
+    width = 0.25, alpha = 0.5,
+              aes(color = temp),
+    show.legend = FALSE,
+    size = 2.5
+    ) +
+  labs(
+    x = 'Year',
+    y = 'Water T (°C)'
+  ) +
+  custom.theme(1.5) +
+  scale_color_distiller(type = 'div', palette = 7) +
+  scale_y_continuous(limits = c(10, 30))
+
+```
+
+## Fitting without uncertainty...
+
+```{r}
+#| label: fit no uncertainty
+df.antibes %>% 
+    ggplot(aes(date, temp)) +
+    geom_smooth(
+      se = FALSE,
+      method = 'gam',
+      size = 1
+    ) +
+    labs(y = 'Water T (°C)',
+         x = 'Date') +
+    scale_y_continuous(limits = c(9, 30)) +
+    scale_color_distiller(type = 'div', palette = 7) +
+    custom.theme(1.5)
+```
+
+## Doesn't really tell the full story
+
+```{r}
+#| label: not full story
+df.antibes %>% 
+    ggplot(aes(date, temp)) +
+    geom_point(aes(color = temp),
+               show.legend = FALSE,
+               size = 1.5) +
+    geom_smooth(
+      se = FALSE,
+      method = 'gam',
+      size = 1
+    ) +
+    labs(y = 'Water T (°C)',
+         x = 'Date') +
+    scale_y_continuous(limits = c(9, 30)) +
+    scale_color_distiller(type = 'div', palette = 7) +
+    custom.theme(1.5)
+```
+
+## Uncertainty with ribbon for lines
+
+```{r}
+#| label: uncertain ribbon
+df.antibes %>% 
+    ggplot(aes(date, temp)) +
+    geom_point(aes(color = temp),
+               show.legend = FALSE,
+               size = 1.5) +
+    geom_smooth(
+      se = TRUE,
+      method = 'gam',
+      size = 1
+    ) +
+    labs(y = 'Water T (°C)',
+         x = 'Date') +
+    scale_y_continuous(limits = c(9, 30)) +
+    scale_color_distiller(type = 'div', palette = 7) +
+    custom.theme(1.5)
+```
+
+## Integrating uncertainty with other elements can be effective
+
+```{r}
+#| label: more ribbons
+p_penguins +
+  geom_smooth(method = 'loess',
+              show.legend = FALSE,
+              aes(fill = species)) +
+  scale_fill_manual(values = c("#E69F00", "#CC79A7", "#009E73")) +
+  inset_element(
+    readPNG("resources/penguins.png", native = TRUE),
+    left = 0.01,
+    bottom = 0.7,
+    right = 0.3,
+    top = 0.99
+  ) 
+```
+
+## Many common metrics but each represents a different measure
+
+- Standard deviation
+  - Spread of data: information about entire population
+  - Includes range of expected new values
+- Standard error
+  - Uncertainty in mean (or other estimate)
+  - Strongly influenced by sample size
+- Confidence intervals
+  - To display reliability of measurement
+
+Responsibility of author to adopt the most appropriate measure
+
+When possible: show the data!
+
+## Be cautious with interpretation
+
+A gap between (error) bars does not ensure significance, nor does overlap rule it out --- it depends on the type of bar
+
+Be very clear in stating:
+
+- what type of uncertainty you are sharing
+- what the interpretation is
+
+# Principle 6: Panels {background-color="#ffdae0 "}
+
+## Faceting is a powerful way</br>to split data into digestible chunks
+
+Advice:
+
+- Do not repeat unnecessary axis
+- Keep axis scales identical as far as possible
+  - Different scales can be misleading
+- If it possible to facet with two variables: make a grid!
+  - If the information is complete enough
+
+## Starting from a classical scatterplot
+
+```{r}
+#| label: penguinsbase
+
+p_penguins
+```
+
+## Free scales accomodate data variation</br>but can be misleading
+
+```{r}
+#| label: facet penguins free
+penguins %>%
+  remove_missing() %>%
+  ggplot(aes(x = bill_length_mm, y = flipper_length_mm,
+             color = species, shape = species)) +
+  geom_point(alpha = 0.7, size = 2, show.legend = FALSE) +
+  labs(x = "Bill length (mm)", 
+       y = "Flipper length (mm)",
+       title = "Penguins bill v. flipper length of
+       <span style = 'color:#CC79A7;'>Chinstrap</span>,
+       <span style = 'color:#009E73;'>Gentoo</span> and 
+       <span style = 'color:#E69F00;'>Adelie</span>
+        species",
+  ) +
+  custom.theme(1.25) +
+  scale_color_manual(values = c("#E69F00", "#CC79A7", "#009E73")) +
+  theme(plot.title = element_markdown(size = 12)) +
+  facet_wrap(~species, ncol = 3, scales = 'free') 
+  # scale_y_continuous(breaks = c(170, 200, 230))
+```
+
+
+## Fixed scales allow for direct comparisons
+
+```{r}
+#| label: facet penguins
+fixed_scales <- penguins %>%
+  remove_missing() %>%
+  ggplot(aes(x = bill_length_mm, y = flipper_length_mm,
+             color = species, shape = species)) +
+  geom_point(alpha = 0.7, size = 2, show.legend = FALSE) +
+  labs(x = "Bill length (mm)", 
+       y = "Flipper length (mm)",
+       title = "Penguins bill v. flipper length of
+       <span style = 'color:#CC79A7;'>Chinstrap</span>,
+       <span style = 'color:#009E73;'>Gentoo</span> and 
+       <span style = 'color:#E69F00;'>Adelie</span>
+        species",
+  ) +
+  custom.theme(1.25) +
+  scale_color_manual(values = c("#E69F00", "#CC79A7", "#009E73")) +
+  theme(plot.title = element_markdown(size = 12)) +
+  facet_wrap(~species, ncol = 3) +
+  scale_y_continuous(breaks = c(170, 200, 230))
+
+fixed_scales
+```
+
+## Are symbol colors and shapes still necessary?
+
+```{r}
+#| label: facet penguins_2
+fixed_scales
+```
+
+## Colors can be used to map an additional variable
+
+```{r}
+#| label: facet penguins more vars
+
+penguins %>%
+  remove_missing() %>%
+  ggplot(aes(x = bill_length_mm, y = flipper_length_mm,
+             color = body_mass_g)) +
+  geom_point(alpha = 0.7, size = 2, show.legend = TRUE) +
+  labs(x = "Bill length (mm)", 
+       y = "Flipper length (mm)",
+       title = "Penguins bill v. flipper length of Chinstrap, Gentoo and Adelie species",
+  ) +
+  custom.theme(1.25) +
+  scale_color_viridis_c(name = 'Body mass (g)') +
+  theme(plot.title = element_markdown(size = 12)) +
+  facet_wrap(~species, ncol = 3) +
+  scale_y_continuous(breaks = c(170, 200, 230))
+```
+
+## Exercice: Conveying a message by faceting
+
+Example data [Surface water quality in Loire-Atlantique](https://www.data.gouv.fr/fr/datasets/suivi-qualite-des-eaux-superficielles-en-loire-atlantique-stations-du-reseau-departemental/)
+
+```{r}
+#| label: small
+dh <- fread('data/qualite-eaux.csv') %>% 
+  mutate(
+    date = as.Date(prelevement),
+    parameter = case_when(
+      parametre == "Potentiel en Hydrogène (pH)" ~ 'pH',
+      TRUE ~ parametre
+    )
+  ) %>% 
+  filter(!is.na(resultat)) %>% 
+  group_by(code_station) %>% 
+  mutate(n = n()) %>% 
+  filter(n > 1030) %>% 
+  ungroup() %>% 
+  select(date, code_station, commune_nom, epci_fisc_libelle, parameter, resultat) %>% 
+  rename(
+    'city' = 'commune_nom',
+    'city_group' = "epci_fisc_libelle",
+    'value' = 'resultat'
+  )
+
+dh %>% 
+  sample_n(6) %>%
+  gt() %>% 
+  opt_stylize(style = 6, color = 'pink') %>% 
+  tab_options(column_labels.background.color = "pink")
+```
+
+Goal: Highlight *where* (in which station) and *when* the pH deviated from 7
+
+## Facetting might be necessary
+
+```{r}
+#| label: no faceting
+
+dh %>% 
+  filter(parameter == 'pH', value > 2, !is.na(value)) %>%
+  ggplot(aes(x = date, y = value)) +
+  geom_point(aes(color = code_station)) +
+  geom_line(aes(color = code_station)) +
+  custom.theme(1) +
+  theme(
+    legend.text = element_text(size = 5),
+    legend.position = 'bottom'
+  ) +
+  labs(
+    y = 'pH',
+    x = 'Date'
+  ) +
+  guides(
+    color = guide_legend(ncol = 7)
+  )
+```
+
+## Facets should be simplified
+
+```{r}
+#| label: faceting
+#| 
+dh %>% 
+  filter(parameter == 'pH', value > 2) %>%
+  ggplot(aes(x = date, y = value)) +
+  geom_point() +
+  geom_line() +
+  custom.theme(1) +
+  facet_wrap(~code_station) +
+  labs(
+    y = 'pH',
+    x = 'Date'
+  )
+
+```
+
+What improvements could be made?
+
+## Highlighting, axis simplification, scaling, grid elements
+
+```{r}
+#| label: faceting + colors + transparency
+
+dh %>% 
+  filter(parameter == 'pH', value > 2) %>%
+  mutate(
+    status = case_when(
+      value > 9 ~ 'pH > 9',
+      value < 6 ~ 'pH < 6',
+      TRUE ~ '6 ≤ pH ≤ 9'
+    )
+  ) %>% 
+  ggplot(aes(x = date, y = value)) +
+  geom_point(aes(color = status), alpha = 0.25) +
+  geom_point(
+    data = . %>% filter(value > 9 | value < 6),
+    aes(color = status)) +
+  geom_line(color = 'grey', alpha = 0.25) +
+  scale_color_manual(values = c('grey', 'tomato', 'steelblue')) +
+  custom.theme(0.9) +
+  facet_wrap(~code_station,
+             ncol = 8) +
+  labs(
+    y = 'pH',
+    x = 'Date'
+  ) +
+  scale_y_continuous(breaks = c(6, 9)) +
+  scale_x_date(breaks = '5 years', labels = date_format("%Y")) +
+  geom_hline(
+    yintercept = c(6,9),
+    color = 'grey',
+    linetype = 'dotted'
+  ) +
+  theme(
+    strip.text.x = element_text(size = 7),
+    legend.position = 'none'
+  ) +
+  coord_cartesian(clip = 'off')
+
+```
+
+Color *highlights*, axis simplification, scaling, grid elements
+
+## Faceting statistics summary
+
+Goal: *Where* (groups of cities) did the pH significantly deviate (e.g., more than 1 SD) *over a year* compared to other years?
+
+Choose:
+
+- x and y axis
+- geometries (scatter, bar, ...)
+- colors, shapes, sizes, ...
+- faceting
+- any other plot elements
+
+## Base figure
+
+```{r}
+#| label: base figure
+dh.filtered <- dh %>% 
+  filter(
+    parameter == 'pH',
+    value > 5,
+    value < 10,
+    city_group != ''
+  ) %>% 
+  mutate(
+    year = as.integer(format(date, "%Y"))
+  ) %>% 
+  group_by(city_group, year) %>% 
+  mutate(mean.ph = mean(value)) 
+
+dh.filtered %>% 
+  ggplot(aes(x = year, y = value, color = city_group)) +
+  geom_point() +
+  labs(
+    y = 'pH',
+    x = 'Year'
+  ) +
+  custom.theme(1.5)
+
+```
+
+## Transparency + trends
+
+```{r}
+#| label: transp trned
+dh.filtered %>% 
+  ggplot(aes(x = year, y = value, color = city_group)) +
+  geom_point(alpha = 0.1) +
+  geom_smooth(se = FALSE) +
+  labs(
+    y = 'pH',
+    x = 'Year'
+  ) +
+  custom.theme(1.5)
+
+```
+
+## Faceting per city group
+
+```{r}
+#| label: trendy panels
+dh.filtered %>% 
+  ggplot(aes(x = year, y = value, color = city_group)) +
+  geom_point(alpha = 0.1) +
+  geom_smooth(se = FALSE) +
+  labs(
+    y = 'pH',
+    x = 'Year'
+  ) + 
+  facet_wrap(~city_group, ncol = 4) +
+  coord_cartesian(clip = 'off') +
+  scale_y_continuous(expand = c(0,0), limits = c(5,10)) +
+  custom.theme(0.85) +
+  theme(
+    strip.text.x = element_text(size = 7),
+    legend.position = 'none'
+  ) 
+
+```
+
+## Recoloring
+
+```{r}
+#| label: recoloring
+dh.filtered %>% 
+  ggplot(aes(x = year, y = value, color = value)) +
+  geom_point(alpha = 0.35, show.legend = FALSE) +
+  geom_smooth(se = FALSE) +
+  labs(
+    y = 'pH',
+    x = 'Year'
+  ) + 
+  facet_wrap(~city_group, ncol = 4) +
+  coord_cartesian(clip = 'off') +
+  scale_y_continuous(expand = c(0,0), limits = c(5,10)) +
+  custom.theme(0.85) +
+  scale_color_distiller(type = 'div', palette = 7, direction = -1) +
+  theme(
+    strip.text.x = element_text(size = 7),
+    legend.position = 'none'
+  ) 
+
+```
+
+## Statistical comparison
+
+```{r}
+#| label: stat cmp
+dh.filtered %>% 
+  ggplot(
+    aes(x = year, y = value)
+  ) +
+  geom_boxplot(
+    aes(group = year, fill = mean.ph),
+    outlier.alpha = 0.05
+  ) +
+  geom_jitter(alpha = 0.05, size = 0.5) +
+  facet_wrap(~city_group, ncol = 4) +
+  custom.theme(0.85) +
+  scale_color_distiller(type = 'div', palette = 7) +
+  scale_fill_distiller(type = 'div', palette = 7) +
+  theme(
+    strip.text.x = element_text(size = 7),
+    legend.position = 'none'
+  ) +
+  coord_cartesian(clip = 'off') +
+  labs(
+    y = 'pH',
+    x = 'Year'
+  ) +
+  scale_y_continuous(expand = c(0,0), limits = c(6,9))
+
+```
+
+## Simplification (colors for +/- 1 SD)
+
+```{r}
+#| label: simplification
+dh.filtered %>% 
+  group_by(city_group) %>% 
+  mutate(
+    super.mean.ph = mean(value),
+    sd.mean.ph = sd(value)
+  ) %>% 
+  group_by(city_group, year) %>% 
+  mutate(status = case_when(
+    mean.ph > super.mean.ph + sd.mean.ph ~ 'Increase',
+    mean.ph < super.mean.ph - sd.mean.ph ~ 'Decrease', 
+    TRUE ~ 'None'
+  )) %>% 
+  ggplot(
+    aes(x = year, y = value)
+  ) +
+  geom_hline(
+    data = . %>% 
+      ungroup() %>% 
+      select(sd.mean.ph, super.mean.ph, city_group) %>% 
+      unique(),
+    aes(yintercept = super.mean.ph - sd.mean.ph),
+    color = 'grey', linetype = 'dotted'
+  ) +
+  geom_hline(
+    data = . %>% 
+      ungroup() %>% 
+      select(sd.mean.ph, super.mean.ph, city_group) %>% 
+      unique(),
+    aes(yintercept = super.mean.ph + sd.mean.ph),
+    color = 'grey', linetype = 'dotted'
+  ) +
+  geom_violin(
+    data = . %>% 
+      filter(status == 'None'),
+    aes(group = year, fill = status),
+    alpha = 0.25
+  ) +
+  geom_violin(
+    data = . %>% 
+      filter(status != 'None'),
+    aes(group = year, fill = status)
+  ) +
+  geom_jitter(alpha = 0.025, size = 0.5) +
+  facet_wrap(~city_group, ncol = 4) +
+  custom.theme(0.85) +
+  scale_fill_manual(values = c('steelblue', 'tomato', 'grey')) +
+  theme(
+    strip.text.x = element_text(size = 7),
+    legend.position = 'none'
+  ) +
+  coord_cartesian(clip = 'off') +
+  labs(
+    y = 'pH',
+    x = 'Year'
+  ) +
+  scale_y_continuous(expand = c(0,0), limits = c(6,9))
+
+```
+
+## Application to a grid
+
+The *Région* wants to study the trends of time spent to go to work against the distance from home, as a function of the mode of transportation, per year and per *département*.
+
+::::: columns
+::: {.column width="35%"}
+- Define:
+  - x/y axis
+  - grid layout
+  - geometries
+  - colors, shapes,...
+  - trends and uncertainties
+  - axis titles, labels, use
+  - legend, title, caption
+:::
+
+::: {.column width="65%"}
+```{r}
+#| label: fakir
+df.fakir <- fakir::fake_survey_answers(n = 1000000) %>%
+  filter(
+    year > 2022,
+    region == "Aquitaine",
+    transport %in% c('pied', 'velo', 'bus')
+  ) %>% 
+  mutate(
+    mode = case_when(
+      transport == 'pied' ~ 'walking',
+      transport == 'velo' ~ 'cycling',
+      transport == 'bus' ~ 'bus'
+    )
+  ) 
+
+df.fakir %>%
+  sample_n(6) %>% 
+  select(1:6, 8:12) %>% 
+  magrittr::set_colnames(
+    c('id', 'age', 'sexe', 'region', 'id_departement', 'name_departement', 'year', 'type', 'distance_km', 'mode', 'time_h')
+  ) %>% 
+  gt() %>% 
+  opt_stylize(style = 6, color = 'pink') %>% 
+  tab_options(column_labels.background.color = "pink")
+```
+:::
+:::::
+
+## Application to a grid
+
+```{r}
+#| label: pfakir
+#| 
+df.fakir %>% 
+  ggplot(aes(y = temps_trajet_en_heures, x = distance_km, color = mode)) +
+  # geom_violin() +
+  geom_point(alpha = 0.05, show.legend = FALSE, size = 0.25) +
+  geom_smooth(se = TRUE, method = 'lm',
+              show.legend = FALSE,
+              linewidth = 0.4) +
+  facet_grid(id_departement~year) +
+  custom.theme(0.9) +
+  theme(plot.title = element_markdown(size = 12),
+        plot.caption = element_markdown(size = 12)
+        ) +
+  labs(
+    y = 't (h)',
+    x = 'distance (km)',
+    title = "Relationship between the time spent commuting and the distance home-work, 
+    by <span style = 'color:pink;'>bus</span>, <span style = 'color:forestgreen;'>cycling</span> 
+    and <span style = 'color:steelblue;'>walking</span>",
+    caption = "Points represent an individual answer to the survey. Lines and ribbons (0.95 level) are the results of linear fitting.<br />Each panel represent a year in a département."
+  ) +
+  scale_color_manual(values = c('pink', 'forestgreen', 'steelblue')) +
+  scale_y_continuous(breaks = c(0.5, 1))
+
+```
+
+# Principle 7: Data and models are different things {background-color="#ffdae0 "}
+
+## Plotted information
+
+Typically takes the form of:
+
+- Raw data
+  - Scatter plot
+- Summarized data
+  - Box plot
+  - Violin plot
+- Inferential statistic
+  - Fitter regression line
+
+## Provide necessary information on models
+
+```{r}
+#| label: provide0
+dh %>% 
+  ungroup() %>% 
+  select(parameter, value, date, code_station) %>% 
+  filter(parameter == 'pH') %>%
+  rename(pH = value) %>% 
+  select(-parameter) %>% 
+  left_join(
+    dh %>% 
+      ungroup() %>% 
+      select(parameter, value, date, code_station) %>% 
+      filter(parameter == "Température de l'Eau") %>%
+      rename(temp = value) %>% 
+      select(-parameter)
+  ) %>% 
+  filter(temp < 40) %>% 
+  ggplot(aes(temp, pH)) +
+  geom_point() +
+  custom.theme(1.5) +
+  labs(
+    x = 'Water T (°C)'
+  )
+```
+
+## Information may be included in the caption
+
+```{r}
+#| label: provide
+dh %>% 
+  ungroup() %>% 
+  select(parameter, value, date, code_station) %>% 
+  filter(parameter == 'pH') %>%
+  rename(pH = value) %>% 
+  select(-parameter) %>% 
+  left_join(
+    dh %>% 
+      ungroup() %>% 
+      select(parameter, value, date, code_station) %>% 
+      filter(parameter == "Température de l'Eau") %>%
+      rename(temp = value) %>% 
+      select(-parameter)
+  ) %>% 
+  filter(temp < 40) %>% 
+  ggplot(aes(temp, pH)) +
+  geom_point(alpha = 0.1) +
+  geom_smooth(
+    method = 'lm',
+    formula = y~x,
+    color = 'coral',
+    fill = 'coral',
+    level = 0.9999
+  ) +
+  custom.theme(1.3) +
+  theme(plot.caption = element_markdown(size = 14)) +
+  labs(
+    x = 'Water T (°C)',
+    caption = "Correlation between the pH and the water temperature across all Loire Atlantique measurement stations.<br /> The orange line is the result of linear regression. The grey ribbon is the confidence interval at the 0.99 level."
+  )
+```
+
+## 🧪 Model the pH vs. water T° relationship per city group
+
+```{r}
+#| label: panels0
+
+dh %>% 
+  ungroup() %>% 
+  select(parameter, value, date, city_group) %>% 
+  filter(parameter == 'pH', city_group != '') %>%
+  rename(pH = value) %>% 
+  select(-parameter) %>% 
+  left_join(
+    dh %>% 
+      ungroup() %>% 
+      select(parameter, value, date, city_group) %>% 
+      filter(parameter == "Température de l'Eau", city_group != '') %>%
+      rename(temp = value) %>% 
+      select(-parameter)
+  ) %>% 
+  filter(temp < 40) %>% 
+  ggplot(aes(temp, pH)) +
+  geom_point(alpha = 0.05) +
+  geom_smooth(
+    method = 'lm',
+    formula = y~x,
+    color = 'coral',
+    fill = 'coral',
+    level = 0.9
+  ) +
+  custom.theme(1) +
+  labs(
+    x = 'Water T (°C)',
+    caption = "*Correlation between the pH and the water temperature, for each city group.<br /> The orange line is the result of linear regression. The grey ribbon is the confidence interval at the 0.99 level.*"
+  ) +
+  facet_wrap(~city_group, ncol = 4) +
+  theme(
+    strip.text.x = element_text(size = 6),
+    plot.caption = element_markdown(size = 14)
+  ) +
+  scale_y_continuous(expand = c(0,0), limits = c(5,10), breaks = c(5, 7.5, 10))
+```
+
+# Principle 8: Simple visuals,</br>detailed captions {background-color="#ffdae0 "}
+
+## Self-explanatory
+
+- Graphs should be self-explanatory
+- Captions should be standalone
+
+The major point should be understood *in vacuo* 
+
+## Explain all geometries
+
+```{r}
+#| label: explain0
+dh %>% 
+  ungroup() %>% 
+  select(parameter, value, date, code_station) %>% 
+  filter(parameter == 'pH') %>%
+  rename(pH = value) %>% 
+  select(-parameter) %>% 
+  left_join(
+    dh %>% 
+      ungroup() %>% 
+      select(parameter, value, date, code_station) %>% 
+      filter(parameter == "Température de l'Eau") %>%
+      rename(temp = value) %>% 
+      select(-parameter)
+  ) %>% 
+  filter(temp < 40) %>% 
+  ggplot(aes(temp, pH)) +
+  geom_point(alpha = 0.1) +
+  geom_smooth(
+    method = 'lm',
+    formula = y~x,
+    color = 'coral',
+    fill = 'coral',
+    level = 0.9999
+  ) +
+  custom.theme(1.5) +
+  theme(plot.caption = element_markdown(size = 14)) +
+  labs(
+    x = 'Water T (°C)',
+    caption = "<i>Correlation between the pH and the water temperature across all Loire Atlantique measurement stations. <br /> <b>Black dots represent individual measurements.</b>  <br /> The orange line is the result of linear regression. The grey ribbon is the confidence interval at the 0.99 level.</i>"
+  )
+```
+
+## Explain all geometries
+
+```{r}
+#| label: explain
+
+df.antibes %>% 
+  group_by(year) %>% 
+  mutate(
+    mean.temp = mean(temp),
+    sd.temp = sd(temp)
+  ) %>% 
+  ggplot(aes(x = year, y = temp, group = year)) +
+  geom_boxplot(
+    outlier.alpha = 0,
+    linewidth = 1
+  ) +
+  geom_jitter(
+    data = . %>% 
+      filter(
+        temp <= (mean.temp + sd.temp),
+        temp >= (mean.temp - sd.temp)
+        ),
+    width = 0.25, alpha = 0.25) +
+  geom_jitter(
+    data = . %>% 
+      filter(temp > (mean.temp + sd.temp)),
+    width = 0.25, alpha = 1, color = 'coral'
+  ) +
+  geom_jitter(
+    data = . %>% 
+      filter(temp < (mean.temp - sd.temp)),
+    width = 0.25, alpha = 1, color = 'steelblue'
+  ) +
+  labs(
+    x = 'Year',
+    y = 'Water T (°C)'
+  ) +
+  custom.theme(1.5) +
+  theme(plot.caption = element_markdown(size = 14)) +
+  labs(caption = "<i>Distribution of water temperature (°C) recorded each year in Antibes since 2020. <br /> Individual measurements are shown as dots. <br /> Measurements above (orange) and below (blue) one SD from the mean are colored. <br /> Boxes show the median (bold line) and the first and third quartiles (hinges).<br /> The two whiskers show the spread of the data excluding outliers.</i>")
+
+```
+
+## Legends and axis should be clear and complete,</br>clear and simple
+
+- Names must be understandable
+- Units should be given
+- Legends should not contain more than 6 series
+  - Replace legends with labels, colors in title/caption, ...
+- Legends should be grouped 
+- Redundant axes should be removed
+- A reasonable number of breaks should be used
+  - Use custom breaks for presentations
+
+## Using variables names is not sufficient
+
+```{r}
+#| label: complete0
+
+df.antibes %>% 
+    ggplot(aes(date, temp)) +
+    geom_point(aes(color = temp)) +
+    geom_smooth(
+      se = TRUE,
+      method = 'gam',
+      size = 1.5
+    ) +
+    scale_y_continuous(limits = c(9, 30)) +
+    scale_color_distiller(type = 'div', palette = 7) +
+    custom.theme(1.5)
+```
+
+## Be sufficiently explicit in axis titles and legends
+
+```{r}
+#| label: complete
+df.antibes %>% 
+    ggplot(aes(date, temp)) +
+    geom_point(aes(color = temp)) +
+    geom_smooth(
+      se = TRUE,
+      method = 'gam',
+      size = 1.5
+    ) +
+    labs(y = 'Water T (°C)',
+         x = 'Date') +
+    scale_y_continuous(limits = c(9, 30)) +
+    scale_color_distiller(type = 'div', palette = 7, name = 'T (°C)') +
+    custom.theme(1.5)
+```
+
+## 🧪 Produce an improved version of this figure
+
+```{r}
+#| label: unclear
+di <- readxl::read_excel('data/series_offres_difusees.xlsx') %>% 
+  select(1:4) %>% 
+  magrittr::set_colnames(c('year', 'trimester', 'month', 'n')) %>% 
+  mutate(date = as.Date(paste0(year, '/', month, '/', '01'))) %>% 
+  filter(year < 2023)
+
+di %>% 
+  ggplot(aes(month, n, color = factor(year))) +
+  geom_point(show.legend = TRUE, size = 2.5) +
+  geom_line(show.legend = TRUE, linewidth = 1) +
+  custom.theme(1.5) +
+  scale_x_continuous(n.breaks = 7) +
+  coord_cartesian(clip = 'off')
+
+```
+
+Data: [Job offers posted by the French employement office](https://www.data.gouv.fr/fr/datasets/offres-demploi-diffusees-a-pole-emploi/)
+
+## Explicit direct labeling is best when there are many series
+
+```{r}
+#| label: skipbulk
+
+di %>% 
+  ggplot(aes(month, n, color = factor(year))) +
+  geom_point(show.legend = FALSE, size = 2.5) +
+  geom_line(show.legend = FALSE, linewidth = 1) +
+  ggrepel::geom_text_repel(
+    data = . %>% 
+      group_by(year) %>% 
+      filter(month == max(month)),
+    aes(label = year, x = 12.5),
+    show.legend = FALSE,
+    fontface = 'bold',
+    direction = 'y',
+    force = 5
+  ) +
+  custom.theme(1.5) +
+  scale_x_continuous(n.breaks = 7) +
+  scale_y_continuous(labels = function(x) format(x, scientific = TRUE)) +
+  coord_cartesian(clip = 'off') +
+  labs(y = 'Posted job offers', x = 'Month')
+
+```
+
+Data: [Job offers posted by the French employement office](https://www.data.gouv.fr/fr/datasets/offres-demploi-diffusees-a-pole-emploi/)
+
+## Faceting can also be used
+
+```{r}
+#| label: panels42
+
+di %>% 
+  ggplot(aes(month, n, color = factor(year))) +
+  geom_point(show.legend = FALSE, size = 2.5) +
+  geom_line(show.legend = FALSE, size = 0.75) +
+  custom.theme(1.25) +
+  scale_x_continuous(n.breaks = 7) +
+  scale_y_continuous(labels = function(x) format(x, scientific = TRUE)) +
+  coord_cartesian(clip = 'off') +
+  labs(y = 'Posted job offers', x = 'Month') +
+  facet_wrap(~year, ncol = 4)
+
+```
+
+## 🧪 Label points of interest</br>to get message across *in vacuo*
+
+```{r}
+#| label: Label points of interest
+
+df.antibes %>% 
+  ggplot(aes(date, temp)) +
+  geom_point(color = 'grey', alpha = 0.7) +
+  geom_smooth(method = 'gam', color = 'gray', se = FALSE, alpha = 0.25) +
+  labs(y = 'Water T (°C)',
+       x = 'Date') +
+  scale_y_continuous(limits = c(9, 30)) +
+  custom.theme(1.5) +
+  theme(
+    plot.title = element_markdown(size = 16)
+  ) +
+  geom_hline(color = '#FF4081', linetype = 'dotted', 
+             linewidth = 1,
+             aes(yintercept = 28)) +
+  geom_hline(color = 'steelblue', linetype = 'dotted',
+             linewidth = 1,
+             aes(yintercept = 12)) +
+  geom_point(
+    data = . %>% 
+      filter(temp > 28),
+    color = '#FF4081'
+  ) +
+  geom_point(
+    data = . %>% 
+      filter(temp < 12),
+    color = 'steelblue'
+  ) +
+  labs(title = "The water temperature in Antibes rose <span style = 'color:#FF4081;'>above 28°C</span> five days in 2022<br />
+       and went <span style = 'color:steelblue;'>below 12°C</span> only once, in 2021.") +
+  ggrepel::geom_label_repel(
+    data = . %>% 
+      filter(temp == max(temp)),
+    aes(label = paste0(temp, '°C (', date, ')')), 
+    force = 25,
+    color = '#FF4081',
+    ylim = c(29.5, 30),
+    fontface = 'bold',
+  ) +
+  ggrepel::geom_label_repel(
+    data = . %>% 
+      filter(temp == min(temp)),
+    aes(label = paste0(temp, '°C (', date, ')')), 
+    force = 25,
+    color = 'steelblue',
+    ylim = c(9.25, 9.5),
+    fontface = 'bold',
+    segment.size = 1
+  ) +
+  coord_cartesian(clip = 'off')
+```
+
+# Principle 9: Consider an infographic {background-color="#ffdae0 "}
+
+Infographics typically incorporate text, images, and other diagrammatic elements
+
+# Principle 10: Get an Opinion {background-color="#ffdae0 "}
+
+Most effective visuals are the ones with which readers connect
+
+Seek external reviews of your figures
+
+
 # Setup of the environment {background-color="#184669"}
 
 ## Tidyverse install verification {.out7 .code7}
@@ -289,7 +2677,7 @@ library(data.table)
 packageVersion("data.table")
 ```
 
-# Reminders on variables and data types and modes {background-color="#184669"}
+# Reminders on variables,</br>data types and modes {background-color="#184669"}
 
 ## Assigning and printing numeric variables {auto-animate="TRUE"}
 
@@ -2976,18 +5364,8 @@ Getting your data ready for visualization
 
 ## Starting dataset {.out7 auto-animate="TRUE"}
 
-```{r}
-#| label: data_preparation_1
-#| echo: true
-#| eval: true
-#| output-location: column
-#| classes: columns4060
-library(ggplot2)
-
-head(mpg)
-```
 ``` {r}
-#| label: data_preparation_1_2
+#| label: data_preparation_1_1
 #| echo: true
 #| eval: true
 #| output-location: column

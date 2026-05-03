@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.9.36">
 
   <meta name="author" content="Eric Largy">
-  <meta name="dcterms.date" content="2026-04-30">
+  <meta name="dcterms.date" content="2026-05-03">
   <title>Visually communicate your scientific data with R</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -239,50 +239,37 @@ Eric Largy <a href="https://orcid.org/0000-0002-6140-9788" class="quarto-title-a
     </div>
 </div>
 
-  <p class="date">April 30, 2026</p>
+  <p class="date">May 3, 2026</p>
 </section>
 <section>
-<section id="introduction-to-grammar-of-graphics" class="title-slide slide level1 center" data-background-color="#184669">
-<h1>Introduction to Grammar of Graphics</h1>
+<section id="the-grammar-of-graphics" class="title-slide slide level1 center" data-background-color="#184669">
+<h1>The Grammar of Graphics</h1>
 
 </section>
-<section id="a-framework-for-data-visualization" class="slide level2 smaller">
-<h2>A framework for data visualization</h2>
+<section id="a-framework-for-data-visualization" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">A framework for data visualization</h2>
 <p>Introduced by Leland Wilkinson (<a href="https://link.springer.com/book/10.1007/0-387-28695-0" title="Access provided by U. Bordeaux">The Grammar of Graphics</a>, 2005).</p>
-<p>Graphics can be built up from a set of components:</p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li><span class="fg" style="--col: #184669">Data</span>: the dataset to be visualized</li>
-<li><span class="fg" style="--col: #184669">Variables</span>: mapping of objects to values</li>
-<li><span class="fg" style="--col: #184669">Algebra</span>: operations to combine variables and specify dimensions</li>
-<li><span class="fg" style="--col: #184669">Scales</span>: represent variables on measured dimensions</li>
-<li><span class="fg" style="--col: #184669">Statistics</span>: functions to change the appearance and representation</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<ul>
-<li><span class="fg" style="--col: #184669">Geometry</span>: creation of geometric graphs from variables</li>
-<li><span class="fg" style="--col: #184669">Coordinates</span>: mapping to coordinate systems</li>
-<li><span class="fg" style="--col: #184669">Aesthetics</span>: sensory attributes</li>
-<li><span class="fg" style="--col: #184669">Facets</span>: subplots based on subsets of data</li>
-<li><span class="fg" style="--col: #184669">Guides</span>: legends and axes to explain the graph</li>
-</ul>
-</div></div>
-</section>
-<section id="adapted-to-r-in-the-ggplot2-package" class="slide level2">
-<h2>Adapted to R in the <code>ggplot2</code> package</h2>
+<p>Graphics can be built up from a set of components adapted to the <code>ggplot2</code> package in R by Hadley Wickham (<a href="https://ggplot2-book.org/">ggplot2: Elegant Graphics for Data Analysis</a>, 2016).</p>
 
 <img data-src="resources/overview_graphic-1.png" class="r-stretch"></section>
-<section id="example-data-should-be-formatted-with-1-column-per-variable" class="slide level2">
-<h2>Example: Data should be formatted with 1 column per variable</h2>
+<section id="a-framework-for-data-visualization-1" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">A framework for data visualization</h2>
+
+<img data-src="resources/overview_graphic-1.png" class="r-stretch"></section>
+<section id="aesthetics-are-layered-as-geometrieson-a-coordinate-system" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">Aesthetics are layered as geometries<br>on a coordinate system</h2>
+
+<img data-src="resources/gg2.png" class="r-stretch"></section>
+<section id="the-data-to-be-visualized-has-one-column-per-variableand-one-row-per-observation" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">The <span class="fg" style="--col: #cb962a">data</span> to be visualized has one column per variable<br>and one row per observation</h2>
 <div class="cell columns3070 columns column-output-location">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-2"><a href=""></a><span class="fu">library</span>(data.table)</span>
-<span id="cb1-3"><a href=""></a><span class="fu">library</span>(DT)</span>
-<span id="cb1-4"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-5"><a href=""></a></span>
-<span id="cb1-6"><a href=""></a>DT<span class="sc">::</span><span class="fu">datatable</span>(mpg)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb1-1" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(data.table)</span>
+<span id="cb1-3" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(DT)</span>
+<span id="cb1-4" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-5" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb1-6" class="hljs-ln-code"><a href=""></a>DT<span class="sc">::</span><span class="fu">datatable</span>(mpg)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="datatables html-widget html-fill-item" id="htmlwidget-d3e7797995aea914e955" style="width:100%;height:auto;"></div>
@@ -290,8 +277,8 @@ Eric Largy <a href="https://orcid.org/0000-0002-6140-9788" class="quarto-title-a
 </div>
 </div></div>
 </section>
-<section id="ggplot-initialization-provides-a-plotting-area" class="slide level2" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">ggplot initialization provides a plotting area</h2>
+<section id="data-the-dataset-to-be-visualized-initializes-the-graph" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title"><span class="fg" style="--col: #cb962a">Data</span>: the dataset to be visualized initializes the graph</h2>
 <div class="cell columns4060 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb2-1" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
@@ -307,8 +294,8 @@ Eric Largy <a href="https://orcid.org/0000-0002-6140-9788" class="quarto-title-a
 </div>
 </div></div>
 </section>
-<section id="mapping-x-and-y-coordinates-provide-axes" class="slide level2" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Mapping x and y coordinates provide axes</h2>
+<section id="mapping-of-objects-to-values" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title"><span class="fg" style="--col: #4596d3">Mapping</span> of objects to values</h2>
 <div class="cell columns4060 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb3-1" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
@@ -327,8 +314,8 @@ Eric Largy <a href="https://orcid.org/0000-0002-6140-9788" class="quarto-title-a
 </div>
 </div></div>
 </section>
-<section id="geometries-can-be-added-as-layers" class="slide level2" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Geometries can be added as layers</h2>
+<section id="creation-of-geometric-graphs-from-variables-by-layers" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">Creation of geometric graphs from variables by <span class="fg" style="--col: #17998e">layers</span></h2>
 <div class="cell columns4060 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb4-1" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
@@ -351,8 +338,8 @@ Eric Largy <a href="https://orcid.org/0000-0002-6140-9788" class="quarto-title-a
 </div>
 </div></div>
 </section>
-<section id="scales-can-be-applied-to-aesthetics" class="slide level2" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Scales can be applied to aesthetics</h2>
+<section id="scales-to-represent-variables-on-measured-dimensions" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title"><span class="fg" style="--col: #a5ca0f">Scales</span> to represent variables on measured dimensions</h2>
 <div class="cell columns4060 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb5-1" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
@@ -377,8 +364,8 @@ Eric Largy <a href="https://orcid.org/0000-0002-6140-9788" class="quarto-title-a
 </div>
 </div></div>
 </section>
-<section id="facetting-allows-generating-many-subplots" class="slide level2" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Facetting allows generating many subplots</h2>
+<section id="facets-allows-generating-many-subplots" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title"><span class="fg" style="--col: #2934b1">Facets</span> allows generating many subplots</h2>
 <div class="cell columns4060 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb6-1" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
@@ -405,7 +392,7 @@ Eric Largy <a href="https://orcid.org/0000-0002-6140-9788" class="quarto-title-a
 </div></div>
 </section>
 <section id="coordinates-allows-re-scaling" class="slide level2" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Coordinates allows re-scaling</h2>
+<h2 data-id="quarto-animate-title"><span class="fg" style="--col: #c83c19">Coordinates</span> allows re-scaling</h2>
 <div class="cell columns4060 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb7-1" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
@@ -436,7 +423,7 @@ Eric Largy <a href="https://orcid.org/0000-0002-6140-9788" class="quarto-title-a
 </div></div>
 </section>
 <section id="make-it-prettycorporatelegible-with-a-theme" class="slide level2 code5" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Make it pretty/corporate/legible with a theme</h2>
+<h2 data-id="quarto-animate-title">Make it pretty/corporate/legible with a <span class="fg" style="--col: #ff69b4">theme</span></h2>
 <div class="cell columns4060 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb8-1" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
@@ -488,6 +475,3461 @@ Eric Largy <a href="https://orcid.org/0000-0002-6140-9788" class="quarto-title-a
 </div></div>
 </section></section>
 <section>
+<section id="elements-of-visual-communication" class="title-slide slide level1 center" data-background-color="#184669">
+<h1>Elements of visual communication</h1>
+
+</section>
+<section id="visuals-are-an-increasingly-important-form-of-science-communication" class="slide level2">
+<h2>Visuals are an increasingly important form of science communication</h2>
+<p>Many scientists not well trained in design <em>principles</em> for <strong>effective</strong> messaging</p>
+<p>Visuals can be improved by taking some simple steps before, during, and after their creation</p>
+</section>
+<section id="goals-of-this-course" class="slide level2">
+<h2>Goals of this course</h2>
+<p>Use R to create figures from raw data that:</p>
+<ul>
+<li><strong>convey a clear message</strong></li>
+<li>are produced at high throughput in a reproducible way</li>
+<li>can be easily tuned to</li>
+<li>be adapted to different media (journals, posters, presentations)</li>
+</ul>
+</section>
+<section id="what-we-will-cover" class="slide level2">
+<h2>What we will cover</h2>
+<ul>
+<li>10 principles of visual communication</li>
+<li>Reminders of R basics</li>
+<li>Building figures with <code>ggplot2</code></li>
+<li>Going further with “add-on” packages (<code>patchwork</code>, <code>ggtext</code>, <code>gganimate</code>)</li>
+<li>Application to concrete examples (could be yours!): 🧪</li>
+</ul>
+</section>
+<section id="tools-and-sources" class="slide level2">
+<h2>Tools and sources</h2>
+<ul>
+<li>All figures made in R with ggplot with additional packages:
+<ul>
+<li><code>tidyverse</code>, <code>patchwork</code>, <code>data.table</code>, <code>ggtext</code>, <code>scales</code>, <code>gt</code>, <code>fakir</code>, <code>charlatan</code>, <code>ggsci</code>, <code>colorblindr</code>, <code>gapminder</code>, <code>gganimate</code>, <code>palmerpenguins</code>, <code>png</code>, <code>plotly</code>, <code>ggalt</code></li>
+</ul></li>
+<li>Presentation made with revealJS</li>
+<li>Biblio
+<ul>
+<li>Patterns (N Y). <strong>2020.</strong> <em>1</em>, 100141</li>
+<li>Nature Communications. <strong>2020</strong>. <em>11</em>, 5444</li>
+</ul></li>
+</ul>
+</section></section>
+<section id="this-presentation-is-available-on-r.largy.fr" class="title-slide slide level1 center" data-background-color="#184669">
+<h1>This presentation is available on <a href="https://r.largy.fr">R.largy.fr</a></h1>
+
+</section>
+
+<section id="principles" class="title-slide slide level1 center" data-background-color="#ffdae0 ">
+<h1>10 Principles</h1>
+
+</section>
+
+<section>
+<section id="principle-1-diagram-first" class="title-slide slide level1 center" data-background-color="#ffdae0 ">
+<h1>Principle 1: Diagram first</h1>
+
+</section>
+<section id="focus-on-information-and-message" class="slide level2">
+<h2>Focus on information and message</h2>
+<p>Least technical but very important step</p>
+<p><span class="fg" style="--col: #ffdae0 "><strong>Prioritize the information you want to share</strong></span> and design it.</p>
+<ul>
+<li>What <span class="fg" style="--col: #ffdae0 "><strong>core information</strong></span> needs to be conveyed?</li>
+<li>What about that information is going to make your point?</li>
+<li>Objective: comparison, ranking, trend?</li>
+<li>Search the literature for inspiration</li>
+</ul>
+<p>You can use the grammar of graphics approach to pick the different necessary elements</p>
+</section></section>
+<section>
+<section id="principle-2-use-the-right-software" class="title-slide slide level1 center" data-background-color="#ffdae0 ">
+<h1>Principle 2: Use the right software</h1>
+
+</section>
+<section id="excel-might-not-be-the-best-tool" class="slide level2">
+<h2>Excel might not be the best tool</h2>
+<ul>
+<li>A spreadsheet program may not be sufficient
+<ul>
+<li>Data summary by groups</li>
+<li>Non-linear fitting, advanced statistics</li>
+</ul></li>
+<li>Examples
+<ul>
+<li>Origin</li>
+<li>GraphPad Prism</li>
+<li>Tableau</li>
+<li>MATLAB</li>
+<li>Python</li>
+<li><span class="fg" style="--col: #ffdae0 "><strong>R</strong></span></li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="principle-3-use-an-effective-geometry-and-show-data" class="title-slide slide level1 center" data-background-color="#ffdae0 ">
+<h1>Principle 3: Use an Effective Geometry and Show Data</h1>
+
+</section>
+<section id="less-is-more" class="slide level2">
+<h2>Less is more</h2>
+<ul>
+<li>Geometries = representations of data in different forms</li>
+<li>Often more than one possible geometry</li>
+<li>High data-ink ratios<sup>1</sup> are best: Remove as much non-data-ink as possible (Principle 8)
+<ul>
+<li>Unnecessary plot elements (grids, colored background)</li>
+<li>Busy axis (too many breaks)</li>
+</ul></li>
+<li>Do not include too much information
+<ul>
+<li>Stick to your message (see principle 1)</li>
+</ul></li>
+</ul>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>ratio of ink used on data compared with overall ink used in a figure</p></li></ol></aside></section>
+<section id="geometries" class="slide level2">
+<h2>Geometries</h2>
+<ul>
+<li>4 categories
+<ul>
+<li>Amounts (or comparisons)</li>
+<li>Compositions (or proportions)</li>
+<li>Distributions</li>
+<li>Relationships</li>
+</ul></li>
+<li>One geometry may work in more than one category</li>
+<li>One dataset may be visualized with more than one geometry</li>
+</ul>
+</section>
+<section id="amounts" class="slide level2">
+<h2>Amounts</h2>
+<ul>
+<li>Examples:
+<ul>
+<li>Bar plots</li>
+<li>Scatter plots</li>
+<li>Heatmaps</li>
+</ul></li>
+<li>Only for data without
+<ul>
+<li>Distributional information</li>
+<li>Uncertainty</li>
+</ul></li>
+</ul>
+</section>
+<section id="bar-plots" class="slide level2">
+<h2>Bar plots</h2>
+<ul>
+<li>Bar plots are popular but often a bad choice
+<ul>
+<li>Low data density</li>
+<li>Always start at zero, they can be misleading</li>
+<li>Part of the range covered by the bar might have never been observed</li>
+</ul></li>
+<li>Good use of a bar plot: show counts of something</li>
+<li>Poor use of a bar plot: show group means</li>
+</ul>
+</section>
+<section id="bar-plots-showing-counts" class="slide level2">
+<h2>Bar plots: showing counts</h2>
+<p>Example with a <a href="https://www.kaggle.com/datasets/rohanharode07/webmd-drug-reviews-dataset">Drug review dataset from WebMD</a>:</p>
+<ul>
+<li>How many counts of each <em>Ease of use</em> score?</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div id="dyxickonrt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dyxickonrt table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#dyxickonrt thead, #dyxickonrt tbody, #dyxickonrt tfoot, #dyxickonrt tr, #dyxickonrt td, #dyxickonrt th {
+  border-style: none;
+}
+
+#dyxickonrt p {
+  margin: 0;
+  padding: 0;
+}
+
+#dyxickonrt .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#dyxickonrt .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#dyxickonrt .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#dyxickonrt .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#dyxickonrt .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dyxickonrt .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+}
+
+#dyxickonrt .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dyxickonrt .gt_col_heading {
+  color: #333333;
+  background-color: #FFC0CB;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#dyxickonrt .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFC0CB;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#dyxickonrt .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#dyxickonrt .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#dyxickonrt .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#dyxickonrt .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#dyxickonrt .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#dyxickonrt .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  vertical-align: middle;
+}
+
+#dyxickonrt .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#dyxickonrt .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#dyxickonrt .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: none;
+  border-top-width: 1px;
+  border-top-color: #D5D5D5;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D5D5D5;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D5D5D5;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#dyxickonrt .gt_stub {
+  color: #333333;
+  background-color: #FFC6E3;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D5D5D5;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dyxickonrt .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#dyxickonrt .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#dyxickonrt .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#dyxickonrt .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dyxickonrt .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #5F5F5F;
+}
+
+#dyxickonrt .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#dyxickonrt .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+}
+
+#dyxickonrt .gt_grand_summary_row {
+  color: #333333;
+  background-color: #D5D5D5;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dyxickonrt .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #5F5F5F;
+}
+
+#dyxickonrt .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #5F5F5F;
+}
+
+#dyxickonrt .gt_striped {
+  background-color: #FCF2F7;
+}
+
+#dyxickonrt .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+}
+
+#dyxickonrt .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dyxickonrt .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dyxickonrt .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dyxickonrt .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dyxickonrt .gt_left {
+  text-align: left;
+}
+
+#dyxickonrt .gt_center {
+  text-align: center;
+}
+
+#dyxickonrt .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#dyxickonrt .gt_font_normal {
+  font-weight: normal;
+}
+
+#dyxickonrt .gt_font_bold {
+  font-weight: bold;
+}
+
+#dyxickonrt .gt_font_italic {
+  font-style: italic;
+}
+
+#dyxickonrt .gt_super {
+  font-size: 65%;
+}
+
+#dyxickonrt .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#dyxickonrt .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#dyxickonrt .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#dyxickonrt .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#dyxickonrt .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#dyxickonrt .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#dyxickonrt .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#dyxickonrt .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#dyxickonrt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="Age" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Age</th>
+<th id="Condition" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Condition</th>
+<th id="Date" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Date</th>
+<th id="Drug" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Drug</th>
+<th id="DrugId" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">DrugId</th>
+<th id="EaseofUse" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">EaseofUse</th>
+<th id="Effectiveness" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Effectiveness</th>
+<th id="Satisfaction" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Satisfaction</th>
+<th id="UsefulCount" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">UsefulCount</th>
+<th id="Gender" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Gender</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="Age">55-64</td>
+<td class="gt_row gt_left" headers="Condition">Type 2 Diabetes Mellitus</td>
+<td class="gt_row gt_right" headers="Date">5/3/2014</td>
+<td class="gt_row gt_left" headers="Drug">metformin hcl</td>
+<td class="gt_row gt_right" headers="DrugId">11285</td>
+<td class="gt_row gt_right" headers="EaseofUse">2</td>
+<td class="gt_row gt_right" headers="Effectiveness">3</td>
+<td class="gt_row gt_right" headers="Satisfaction">1</td>
+<td class="gt_row gt_right" headers="UsefulCount">48</td>
+<td class="gt_row gt_left" headers="Gender">Female</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="Age">45-54</td>
+<td class="gt_row gt_left gt_striped" headers="Condition">Bipolar Depression</td>
+<td class="gt_row gt_right gt_striped" headers="Date">12/29/2012</td>
+<td class="gt_row gt_left gt_striped" headers="Drug">geodon</td>
+<td class="gt_row gt_right gt_striped" headers="DrugId">20575</td>
+<td class="gt_row gt_right gt_striped" headers="EaseofUse">2</td>
+<td class="gt_row gt_right gt_striped" headers="Effectiveness">2</td>
+<td class="gt_row gt_right gt_striped" headers="Satisfaction">1</td>
+<td class="gt_row gt_right gt_striped" headers="UsefulCount">6</td>
+<td class="gt_row gt_left gt_striped" headers="Gender">Female</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Age">55-64</td>
+<td class="gt_row gt_left" headers="Condition">Enlarged Prostate</td>
+<td class="gt_row gt_right" headers="Date">11/7/2013</td>
+<td class="gt_row gt_left" headers="Drug">terazosin hcl</td>
+<td class="gt_row gt_right" headers="DrugId">6834</td>
+<td class="gt_row gt_right" headers="EaseofUse">4</td>
+<td class="gt_row gt_right" headers="Effectiveness">4</td>
+<td class="gt_row gt_right" headers="Satisfaction">3</td>
+<td class="gt_row gt_right" headers="UsefulCount">24</td>
+<td class="gt_row gt_left" headers="Gender">Male</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="Age">25-34</td>
+<td class="gt_row gt_left gt_striped" headers="Condition">Genital Herpes</td>
+<td class="gt_row gt_right gt_striped" headers="Date">1/10/2009</td>
+<td class="gt_row gt_left gt_striped" headers="Drug">valtrex</td>
+<td class="gt_row gt_right gt_striped" headers="DrugId">14126</td>
+<td class="gt_row gt_right gt_striped" headers="EaseofUse">4</td>
+<td class="gt_row gt_right gt_striped" headers="Effectiveness">2</td>
+<td class="gt_row gt_right gt_striped" headers="Satisfaction">1</td>
+<td class="gt_row gt_right gt_striped" headers="UsefulCount">2</td>
+<td class="gt_row gt_left gt_striped" headers="Gender">Female</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Age">45-54</td>
+<td class="gt_row gt_left" headers="Condition">Muscle Pain and Stiffness in Shoulder, Neck and Pelvis</td>
+<td class="gt_row gt_right" headers="Date">1/2/2014</td>
+<td class="gt_row gt_left" headers="Drug">prednisone concentrate</td>
+<td class="gt_row gt_right" headers="DrugId">6007</td>
+<td class="gt_row gt_right" headers="EaseofUse">5</td>
+<td class="gt_row gt_right" headers="Effectiveness">5</td>
+<td class="gt_row gt_right" headers="Satisfaction">5</td>
+<td class="gt_row gt_right" headers="UsefulCount">2</td>
+<td class="gt_row gt_left" headers="Gender">NA</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="Age">35-44</td>
+<td class="gt_row gt_left gt_striped" headers="Condition">Bacterial Meningitis caused by Streptococcus</td>
+<td class="gt_row gt_right gt_striped" headers="Date">11/14/2008</td>
+<td class="gt_row gt_left gt_striped" headers="Drug">penicillin g potassium vial</td>
+<td class="gt_row gt_right gt_striped" headers="DrugId">5850</td>
+<td class="gt_row gt_right gt_striped" headers="EaseofUse">1</td>
+<td class="gt_row gt_right gt_striped" headers="Effectiveness">1</td>
+<td class="gt_row gt_right gt_striped" headers="Satisfaction">3</td>
+<td class="gt_row gt_right gt_striped" headers="UsefulCount">0</td>
+<td class="gt_row gt_left gt_striped" headers="Gender">Male</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="bar-plots-showing-counts-1" class="slide level2">
+<h2>Bar plots: showing counts</h2>
+<p>Bar plot shows data counts with very low information density</p>
+
+<img data-src="index_files/figure-revealjs/bar%20plot%20ex-1.png" width="960" class="r-stretch"><p>What differences do you notice?</p>
+<p>Which is best? Would you change anything?</p>
+</section>
+<section id="compositions" class="slide level2">
+<h2>Compositions</h2>
+<p>Goal: For each <em>Ease of use</em> score, what is the proportion of females/males?</p>
+
+<img data-src="index_files/figure-revealjs/pies-1.png" width="960" class="r-stretch"><ul>
+<li>Pie charts are a classic that <strong>do not work</strong> in most cases
+<ul>
+<li>Inherent difficulties in making visual comparisons</li>
+</ul></li>
+<li>Prefer e.g., stacked or clustered bar plots</li>
+</ul>
+</section>
+<section id="stacked-and-clustered-bars" class="slide level2">
+<h2>Stacked and clustered bars</h2>
+<p>For each <em>Ease of use</em> score, what is the proportion of females/males?</p>
+
+<img data-src="index_files/figure-revealjs/clusterd%20and%20stacked-1.png" width="960" class="r-stretch"><p>Is the message clear? What would you change?</p>
+</section>
+<section id="normalized-bars" class="slide level2">
+<h2>Normalized bars</h2>
+<ul>
+<li><em>Normalized</em> bars better show the composition</li>
+<li>Loss of information on counts
+<ul>
+<li>But was it the intended message?</li>
+</ul></li>
+</ul>
+
+<img data-src="index_files/figure-revealjs/normalized%20bars-1.png" width="960" class="r-stretch"></section>
+<section id="different-message-change-of-aesthetics" class="slide level2">
+<h2>Different message = change of aesthetics</h2>
+<p>For each gender, what is the proportion of <em>Ease of use</em> ?</p>
+
+<img data-src="index_files/figure-revealjs/propo-1.png" width="960" class="r-stretch"></section>
+<section id="distributions" class="slide level2">
+<h2>Distributions</h2>
+<ul>
+<li>Underused category</li>
+<li>High data density</li>
+<li>Examples
+<ul>
+<li>Box plot</li>
+<li>Histogram</li>
+<li>Violin plot</li>
+<li>Density plot</li>
+</ul></li>
+<li>Better to show the data</li>
+</ul>
+</section>
+<section id="distributions-1" class="slide level2">
+<h2>Distributions</h2>
+<ul>
+<li>Example of a <a href="https://www.data.gouv.fr/fr/datasets/temperature-de-leau-de-mer-a-antibes-juan-les-pins/">water temperature in Antibes dataset</a>
+<ul>
+<li>Goal: compare temperatures across years</li>
+<li>6 first data points:</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div id="xdtjdwdxst" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xdtjdwdxst table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#xdtjdwdxst thead, #xdtjdwdxst tbody, #xdtjdwdxst tfoot, #xdtjdwdxst tr, #xdtjdwdxst td, #xdtjdwdxst th {
+  border-style: none;
+}
+
+#xdtjdwdxst p {
+  margin: 0;
+  padding: 0;
+}
+
+#xdtjdwdxst .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#xdtjdwdxst .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#xdtjdwdxst .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#xdtjdwdxst .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#xdtjdwdxst .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#xdtjdwdxst .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+}
+
+#xdtjdwdxst .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#xdtjdwdxst .gt_col_heading {
+  color: #333333;
+  background-color: #FFC0CB;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#xdtjdwdxst .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFC0CB;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#xdtjdwdxst .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#xdtjdwdxst .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#xdtjdwdxst .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#xdtjdwdxst .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#xdtjdwdxst .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#xdtjdwdxst .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  vertical-align: middle;
+}
+
+#xdtjdwdxst .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#xdtjdwdxst .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#xdtjdwdxst .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: none;
+  border-top-width: 1px;
+  border-top-color: #D5D5D5;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D5D5D5;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D5D5D5;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#xdtjdwdxst .gt_stub {
+  color: #333333;
+  background-color: #FFC6E3;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D5D5D5;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xdtjdwdxst .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#xdtjdwdxst .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#xdtjdwdxst .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#xdtjdwdxst .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xdtjdwdxst .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #5F5F5F;
+}
+
+#xdtjdwdxst .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#xdtjdwdxst .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+}
+
+#xdtjdwdxst .gt_grand_summary_row {
+  color: #333333;
+  background-color: #D5D5D5;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xdtjdwdxst .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #5F5F5F;
+}
+
+#xdtjdwdxst .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #5F5F5F;
+}
+
+#xdtjdwdxst .gt_striped {
+  background-color: #FCF2F7;
+}
+
+#xdtjdwdxst .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+}
+
+#xdtjdwdxst .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#xdtjdwdxst .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xdtjdwdxst .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#xdtjdwdxst .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xdtjdwdxst .gt_left {
+  text-align: left;
+}
+
+#xdtjdwdxst .gt_center {
+  text-align: center;
+}
+
+#xdtjdwdxst .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#xdtjdwdxst .gt_font_normal {
+  font-weight: normal;
+}
+
+#xdtjdwdxst .gt_font_bold {
+  font-weight: bold;
+}
+
+#xdtjdwdxst .gt_font_italic {
+  font-style: italic;
+}
+
+#xdtjdwdxst .gt_super {
+  font-size: 65%;
+}
+
+#xdtjdwdxst .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#xdtjdwdxst .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#xdtjdwdxst .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#xdtjdwdxst .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#xdtjdwdxst .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#xdtjdwdxst .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#xdtjdwdxst .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#xdtjdwdxst .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#xdtjdwdxst div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="Date" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Date</th>
+<th id="Temperature-(°C)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Temperature (°C)</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="Date">2023-07-21</td>
+<td class="gt_row gt_right" headers="Temperature (°C)">28.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="Date">2020-09-16</td>
+<td class="gt_row gt_right gt_striped" headers="Temperature (°C)">23.8</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Date">2021-06-15</td>
+<td class="gt_row gt_right" headers="Temperature (°C)">23.8</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="Date">2022-05-24</td>
+<td class="gt_row gt_right gt_striped" headers="Temperature (°C)">22.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Date">2021-07-07</td>
+<td class="gt_row gt_right" headers="Temperature (°C)">25.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="Date">2021-06-16</td>
+<td class="gt_row gt_right gt_striped" headers="Temperature (°C)">24.1</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="bar-plots-showing-mean" class="slide level2">
+<h2>Bar plots: showing mean <span class="emoji" data-emoji="vomiting_face">🤮</span></h2>
+<p>No distribution information (only mean) and suggests data starts at 0!</p>
+
+<img data-src="index_files/figure-revealjs/geom_col-1.png" width="960" class="r-stretch"></section>
+<section id="introducing-data-spread-info" class="slide level2">
+<h2>Introducing data spread info</h2>
+<p>Using error bars, but what do they represent here?</p>
+
+<img data-src="index_files/figure-revealjs/errorbars-1.png" width="960" class="r-stretch"></section>
+<section id="scatter-is-less-misleading" class="slide level2">
+<h2>Scatter is less misleading</h2>
+<p>But the distribution information is still lacking</p>
+
+<img data-src="index_files/figure-revealjs/misled-1.png" width="960" class="r-stretch"></section>
+<section id="is-mean-sd-not-enough" class="slide level2">
+<h2>Is mean ± sd not enough?</h2>
+<p>Still insufficient to differentiate these (fake) distributions</p>
+
+<img data-src="index_files/figure-revealjs/rnormy-1.png" width="960" class="r-stretch"></section>
+<section id="box-plots-are-much-better" class="slide level2">
+<h2>Box plots are much better</h2>
+<p>Box plots show the <em>spread</em> of data through their quartiles.</p>
+
+<img data-src="index_files/figure-revealjs/boxyboxes-1.png" width="960" class="r-stretch"></section>
+<section id="data-points-may-be-added" class="slide level2">
+<h2>Data points may be added</h2>
+<p><em>Density</em> can be shown with individual data points with <em>transparency</em></p>
+
+<img data-src="index_files/figure-revealjs/box%20and%20points-1.png" width="960" class="r-stretch"></section>
+<section id="data-points-may-be-added-1" class="slide level2">
+<h2>Data points may be added</h2>
+<p>Or with <em>jitter</em></p>
+
+<img data-src="index_files/figure-revealjs/jittery-1.png" width="960" class="r-stretch"></section>
+<section id="data-points-may-be-added-2" class="slide level2">
+<h2>Data points may be added</h2>
+<p>Or <em>both</em></p>
+
+<img data-src="index_files/figure-revealjs/transparentjitter-1.png" width="960" class="r-stretch"></section>
+<section id="violin-plots" class="slide level2">
+<h2>Violin plots</h2>
+<p>Violin plots even more effective to compare (probability) distributions</p>
+
+<img data-src="index_files/figure-revealjs/jitteredviolins-1.png" width="960" class="r-stretch"></section>
+<section id="violin-boxes" class="slide level2">
+<h2>Violin + boxes</h2>
+<p>Quantiles can be shown directly of via superimposed boxes</p>
+
+<img data-src="index_files/figure-revealjs/violin%20and%20box-1.png" width="960" class="r-stretch"></section>
+<section id="relationship" class="slide level2">
+<h2>Relationship</h2>
+<ul>
+<li>Most presentations of x- and y-coordinate data</li>
+<li>Scatter plots are simple and effective</li>
+<li>Lines may be shown</li>
+<li>Information can be layered
+<ul>
+<li>symbols (e.g.&nbsp;circles, squares)</li>
+<li>size</li>
+<li>color</li>
+<li>line type (e.g.&nbsp;dashed vs.&nbsp;plain)</li>
+</ul></li>
+</ul>
+</section>
+<section id="scatter-plot" class="slide level2">
+<h2>Scatter plot</h2>
+<p>Temperature vs.&nbsp;time with <em>points</em></p>
+
+<img data-src="index_files/figure-revealjs/scatterplot-1.png" width="960" class="r-stretch"></section>
+<section id="scatter-plot-1" class="slide level2">
+<h2>Scatter plot</h2>
+<p>Temperature vs.&nbsp;time with <em>points</em> and <em>line</em></p>
+
+<img data-src="index_files/figure-revealjs/plot%20and%20lines-1.png" width="960" class="r-stretch"></section>
+<section id="scatter-plot-2" class="slide level2">
+<h2>Scatter plot</h2>
+<p>Temperature vs.&nbsp;time with <em>points</em> and <em>smoothed line</em></p>
+
+<img data-src="index_files/figure-revealjs/smoothed-1.png" width="960" class="r-stretch"></section>
+<section id="penguin-dataset" class="slide level2">
+<h2>Penguin dataset</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>Source: <a href="https://github.com/allisonhorst/palmerpenguins">Palmer station penguins dimensions</a>
+<ul>
+<li>Repository and Artwork by <span class="citation" data-cites="allison_horst">@allison_horst</span></li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div id="ahjzcxlduk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ahjzcxlduk table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#ahjzcxlduk thead, #ahjzcxlduk tbody, #ahjzcxlduk tfoot, #ahjzcxlduk tr, #ahjzcxlduk td, #ahjzcxlduk th {
+  border-style: none;
+}
+
+#ahjzcxlduk p {
+  margin: 0;
+  padding: 0;
+}
+
+#ahjzcxlduk .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ahjzcxlduk .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ahjzcxlduk .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ahjzcxlduk .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ahjzcxlduk .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ahjzcxlduk .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+}
+
+#ahjzcxlduk .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ahjzcxlduk .gt_col_heading {
+  color: #333333;
+  background-color: #FFC0CB;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ahjzcxlduk .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFC0CB;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ahjzcxlduk .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ahjzcxlduk .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ahjzcxlduk .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ahjzcxlduk .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ahjzcxlduk .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#ahjzcxlduk .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  vertical-align: middle;
+}
+
+#ahjzcxlduk .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ahjzcxlduk .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ahjzcxlduk .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: none;
+  border-top-width: 1px;
+  border-top-color: #D5D5D5;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D5D5D5;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D5D5D5;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ahjzcxlduk .gt_stub {
+  color: #333333;
+  background-color: #FFC6E3;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D5D5D5;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ahjzcxlduk .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ahjzcxlduk .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ahjzcxlduk .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ahjzcxlduk .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ahjzcxlduk .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #5F5F5F;
+}
+
+#ahjzcxlduk .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ahjzcxlduk .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+}
+
+#ahjzcxlduk .gt_grand_summary_row {
+  color: #333333;
+  background-color: #D5D5D5;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ahjzcxlduk .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #5F5F5F;
+}
+
+#ahjzcxlduk .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #5F5F5F;
+}
+
+#ahjzcxlduk .gt_striped {
+  background-color: #FCF2F7;
+}
+
+#ahjzcxlduk .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+}
+
+#ahjzcxlduk .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ahjzcxlduk .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ahjzcxlduk .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ahjzcxlduk .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ahjzcxlduk .gt_left {
+  text-align: left;
+}
+
+#ahjzcxlduk .gt_center {
+  text-align: center;
+}
+
+#ahjzcxlduk .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ahjzcxlduk .gt_font_normal {
+  font-weight: normal;
+}
+
+#ahjzcxlduk .gt_font_bold {
+  font-weight: bold;
+}
+
+#ahjzcxlduk .gt_font_italic {
+  font-style: italic;
+}
+
+#ahjzcxlduk .gt_super {
+  font-size: 65%;
+}
+
+#ahjzcxlduk .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#ahjzcxlduk .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ahjzcxlduk .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ahjzcxlduk .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ahjzcxlduk .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ahjzcxlduk .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ahjzcxlduk .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#ahjzcxlduk .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#ahjzcxlduk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="species" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">species</th>
+<th id="island" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">island</th>
+<th id="bill_length_mm" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">bill_length_mm</th>
+<th id="bill_depth_mm" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">bill_depth_mm</th>
+<th id="flipper_length_mm" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">flipper_length_mm</th>
+<th id="body_mass_g" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">body_mass_g</th>
+<th id="sex" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">sex</th>
+<th id="year" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">year</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_center" headers="species">Gentoo</td>
+<td class="gt_row gt_center" headers="island">Biscoe</td>
+<td class="gt_row gt_right" headers="bill_length_mm">50.5</td>
+<td class="gt_row gt_right" headers="bill_depth_mm">15.9</td>
+<td class="gt_row gt_right" headers="flipper_length_mm">222</td>
+<td class="gt_row gt_right" headers="body_mass_g">5550</td>
+<td class="gt_row gt_center" headers="sex">male</td>
+<td class="gt_row gt_right" headers="year">2008</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center gt_striped" headers="species">Adelie</td>
+<td class="gt_row gt_center gt_striped" headers="island">Biscoe</td>
+<td class="gt_row gt_right gt_striped" headers="bill_length_mm">35.7</td>
+<td class="gt_row gt_right gt_striped" headers="bill_depth_mm">16.9</td>
+<td class="gt_row gt_right gt_striped" headers="flipper_length_mm">185</td>
+<td class="gt_row gt_right gt_striped" headers="body_mass_g">3150</td>
+<td class="gt_row gt_center gt_striped" headers="sex">female</td>
+<td class="gt_row gt_right gt_striped" headers="year">2008</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="species">Chinstrap</td>
+<td class="gt_row gt_center" headers="island">Dream</td>
+<td class="gt_row gt_right" headers="bill_length_mm">51.3</td>
+<td class="gt_row gt_right" headers="bill_depth_mm">18.2</td>
+<td class="gt_row gt_right" headers="flipper_length_mm">197</td>
+<td class="gt_row gt_right" headers="body_mass_g">3750</td>
+<td class="gt_row gt_center" headers="sex">male</td>
+<td class="gt_row gt_right" headers="year">2007</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center gt_striped" headers="species">Adelie</td>
+<td class="gt_row gt_center gt_striped" headers="island">Dream</td>
+<td class="gt_row gt_right gt_striped" headers="bill_length_mm">40.8</td>
+<td class="gt_row gt_right gt_striped" headers="bill_depth_mm">18.9</td>
+<td class="gt_row gt_right gt_striped" headers="flipper_length_mm">208</td>
+<td class="gt_row gt_right gt_striped" headers="body_mass_g">4300</td>
+<td class="gt_row gt_center gt_striped" headers="sex">male</td>
+<td class="gt_row gt_right gt_striped" headers="year">2008</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="species">Adelie</td>
+<td class="gt_row gt_center" headers="island">Torgersen</td>
+<td class="gt_row gt_right" headers="bill_length_mm">38.9</td>
+<td class="gt_row gt_right" headers="bill_depth_mm">17.8</td>
+<td class="gt_row gt_right" headers="flipper_length_mm">181</td>
+<td class="gt_row gt_right" headers="body_mass_g">3625</td>
+<td class="gt_row gt_center" headers="sex">female</td>
+<td class="gt_row gt_right" headers="year">2007</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center gt_striped" headers="species">Gentoo</td>
+<td class="gt_row gt_center gt_striped" headers="island">Biscoe</td>
+<td class="gt_row gt_right gt_striped" headers="bill_length_mm">50.5</td>
+<td class="gt_row gt_right gt_striped" headers="bill_depth_mm">15.2</td>
+<td class="gt_row gt_right gt_striped" headers="flipper_length_mm">216</td>
+<td class="gt_row gt_right gt_striped" headers="body_mass_g">5000</td>
+<td class="gt_row gt_center gt_striped" headers="sex">female</td>
+<td class="gt_row gt_right gt_striped" headers="year">2009</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<p><img data-src="resources/penguins.png" style="width:75.0%"></p>
+<p><img data-src="resources/culmen_depth.png" style="width:75.0%"></p>
+</div></div>
+</section>
+<section id="distributions-2" class="slide level2">
+<h2>Distributions</h2>
+<p>Bad and good ways to plot distributions</p>
+
+<img data-src="index_files/figure-revealjs/distripenguins-1.png" width="960" class="r-stretch"></section>
+<section id="bubble-plot" class="slide level2">
+<h2>Bubble plot</h2>
+<p>Adds a symbol scale aesthetics to map an additional variable</p>
+
+<img data-src="index_files/figure-revealjs/bubble%20plot-1.png" width="960" class="r-stretch"></section>
+<section id="lollipop-plot-lolliplot" class="slide level2">
+<h2>Lollipop plot (Lolliplot)</h2>
+<p>Analogous to a barplot but less misleading</p>
+
+<img data-src="index_files/figure-revealjs/lollipop-1.png" width="960" class="r-stretch"></section>
+<section id="dumbbell-plot" class="slide level2">
+<h2>Dumbbell plot</h2>
+<p>Multiple comparisons between two points.</p>
+
+<img data-src="index_files/figure-revealjs/dumbbell-1.png" width="960" class="r-stretch"></section></section>
+<section>
+<section id="principle-4-colors-mean-something" class="title-slide slide level1 center" data-background-color="#ffdae0 ">
+<h1>Principle 4: Colors mean something</h1>
+
+</section>
+<section id="color-is-often-the-first-visual-informationgetting-across-to-the-reader" class="slide level2">
+<h2>Color is often the first visual information<br>getting across to the reader</h2>
+<ul>
+<li>Colors represent information
+<ul>
+<li>in a direct and obvious way,</li>
+<li>or in an indirect and subtle way</li>
+</ul></li>
+<li>Must make the message easier to understand
+<ul>
+<li>Not just to make the figure pretty</li>
+</ul></li>
+</ul>
+<p><strong>Colors should be strategically used to amplify your visual message</strong></p>
+</section>
+<section id="classes-disinguish-betweensequential-and-diverging-schemes" class="slide level2">
+<h2>Classes disinguish between<br>sequential and diverging schemes</h2>
+
+<img data-src="resources/color_classes.png" data-fig.cap="right aligned" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://www.nature.com/articles/s41467-020-19160-7">Source</a></p></section>
+<section id="types-distinguish-betweencontinuous-discrete-and-categorical-data" class="slide level2">
+<h2>Types distinguish between<br>continuous, discrete, and categorical data</h2>
+
+<img data-src="resources/color_types.png" data-fig.cap="right aligned" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://www.nature.com/articles/s41467-020-19160-7">Source</a></p></section>
+<section id="sequential-coloring-can-be-light-to-darkwith-one-hue" class="slide level2">
+<h2>Sequential coloring can be light to dark<br>with one hue</h2>
+
+<img data-src="index_files/figure-revealjs/single%20hue-1.png" width="960" class="r-stretch"></section>
+<section id="sequential-coloring-can-be-light-to-darkwith-several-hues" class="slide level2">
+<h2>Sequential coloring can be light to dark<br>with several hues</h2>
+
+<img data-src="index_files/figure-revealjs/multiple%20hues-1.png" width="960" class="r-stretch"></section>
+<section id="diverging-coloring-uses-two-sequential-schemesand-one-neutral-color" class="slide level2">
+<h2>Diverging coloring uses two sequential schemes<br>and one neutral color</h2>
+
+<img data-src="index_files/figure-revealjs/div%20colors-1.png" width="960" class="r-stretch"></section>
+<section id="using-meaningful-coloring-may-improve-understanding" class="slide level2">
+<h2>Using meaningful coloring may improve understanding</h2>
+
+<img data-src="index_files/figure-revealjs/obv-1.png" width="960" class="r-stretch"></section>
+<section id="categorical-coloring-involves-unrelated-colorsto-convey-qualitative-group-differences" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">Categorical coloring involves unrelated colors<br>to convey qualitative group differences</h2>
+<div class="data-id=&quot;id_01&quot;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/qual-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="meaningful-colors-may-not-be-culturally-obviousor-appropriate-for-everyone" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">Meaningful colors may not be culturally obvious<br>or appropriate for everyone</h2>
+<div class="data-id=&quot;id_01&quot;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/qual2-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="highlighting-discrete-values-can-be-very-effectiveto-convey-a-message" class="slide level2">
+<h2>Highlighting discrete values can be very effective<br>to convey a message</h2>
+
+<img data-src="index_files/figure-revealjs/high-1.png" width="960" class="r-stretch"></section>
+<section id="highlighting-discrete-values-can-be-very-effectiveto-convey-a-message-1" class="slide level2">
+<h2>Highlighting discrete values can be very effective<br>to convey a message</h2>
+
+<img data-src="index_files/figure-revealjs/high2-1.png" width="960" class="r-stretch"></section>
+<section id="data-highlighting-can-be-reinfored-by-few-other-elements" class="slide level2">
+<h2>Data highlighting can be reinfored by <em>few</em> other elements</h2>
+
+<img data-src="index_files/figure-revealjs/high3-1.png" width="960" class="r-stretch"></section>
+<section id="design-figures-that-work-for-everyone" class="slide level2">
+<h2>Design figures that work for everyone</h2>
+<ul>
+<li>Use colors that can be distinguished by colorblind people
+<ul>
+<li><a href="https://mikemol.github.io/technique/colorblind/2018/02/11/color-safe-palette.html">Okabe Ito</a></li>
+</ul></li>
+<li>Use color schemes that are perceptually uniform to prevent data distortion
+<ul>
+<li><a href="https://waldyrious.net/viridis-palette-generator/">Viridis</a>, <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0199239">Cividis</a>, <a href="https://colorbrewer2.org/#type=sequential&amp;scheme=BuGn&amp;n=3">Brewer</a></li>
+</ul></li>
+<li>Combine colors with symbols, line type and other elements to convey same information</li>
+<li>Use effective redundancy to increase understanding and accessibility</li>
+<li>Use transparency instead of color for density, background info</li>
+</ul>
+</section>
+<section id="use-effective-redundancy-to-increase-understanding-and-accessibility" class="slide level2">
+<h2>Use effective redundancy to increase understanding and accessibility</h2>
+<p>Note: use of symbols, direct labeling in title and inset figure (same color, same order)</p>
+
+<img data-src="index_files/figure-revealjs/penguins-1.png" width="960" class="r-stretch"></section>
+<section id="default-colors-may-cause-issues-for-colorblind-people" class="slide level2">
+<h2>Default colors may cause issues for colorblind people</h2>
+
+<img data-src="index_files/figure-revealjs/bad%20choices-1.png" width="960" class="r-stretch"></section>
+<section id="meaningful-colors-may-also-be-problematic" class="slide level2">
+<h2>Meaningful colors may also be problematic</h2>
+
+<img data-src="index_files/figure-revealjs/bad%20choices%202-1.png" width="960" class="r-stretch"></section>
+<section id="okabe-ito-is-designed-for-colorblindness" class="slide level2">
+<h2><a href="https://mikemol.github.io/technique/colorblind/2018/02/11/color-safe-palette.html">Okabe Ito</a> is designed for colorblindness</h2>
+
+<img data-src="index_files/figure-revealjs/okabe%20gray-1.png" width="960" class="r-stretch"></section>
+<section id="viridis-is-always-a-good-choice" class="slide level2">
+<h2><a href="https://waldyrious.net/viridis-palette-generator/">Viridis</a> is always a good choice</h2>
+
+<img data-src="index_files/figure-revealjs/cividis%20gray-1.png" width="960" class="r-stretch"></section>
+<section id="cividis-as-well" class="slide level2">
+<h2><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0199239">Cividis</a> as well</h2>
+
+<img data-src="index_files/figure-revealjs/viridis%20gray-1.png" width="960" class="r-stretch"></section>
+<section id="data-variation-is-under--or-overrepresented-with-rainbows" class="slide level2">
+<h2>Data variation is under- or overrepresented with rainbows</h2>
+
+<img data-src="resources/jet.png" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://www.nature.com/articles/s41467-020-19160-7">Source</a></p></section>
+<section id="so-how-do-i-pick-a-color-palette" class="slide level2">
+<h2>So how do I pick a color palette?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Class and type <img data-src="resources/palette%20selection%201.png" style="width:100.0%"></p>
+</div><div class="column" style="width:50%;">
+<p>Colour combination <img data-src="resources/palette%20selection%202.png" style="width:100.0%"></p>
+</div></div>
+<p><a href="https://www.nature.com/articles/s41467-020-19160-7">Source</a></p>
+</section></section>
+<section>
+<section id="principle-5-include-uncertainty" class="title-slide slide level1 center" data-background-color="#ffdae0 ">
+<h1>Principle 5: Include Uncertainty</h1>
+
+</section>
+<section id="uncertainty-is-an-inherent-part-of-understanding-most-systems" class="slide level2">
+<h2>Uncertainty is an inherent part of understanding most systems</h2>
+<p>Failure to include uncertainty can be <strong>misleading</strong></p>
+<p>Two primary issues with uncertainty:</p>
+<ul>
+<li>Failure to include uncertainty = doubts over other parts of the statistical message
+<ul>
+<li>e.g.&nbsp;inference on the mean</li>
+</ul></li>
+<li>Misrepresentation (or misinterpretation) of uncertainty</li>
+</ul>
+</section>
+<section id="there-are-simple-ways-to-include-uncertainty-in-your-figures" class="slide level2">
+<h2>There are simple ways to include uncertainty in your figures</h2>
+<ul>
+<li>Classicly:
+<ul>
+<li>Error bars</li>
+<li>Shaded intervals (ribbons)</li>
+</ul></li>
+<li>Or implicitly, with:
+<ul>
+<li>Box plots</li>
+<li>Violins</li>
+<li>Distributions</li>
+</ul></li>
+</ul>
+</section>
+<section id="difficult-to-assess-significancewhen-uncertainty-is-omitted" class="slide level2">
+<h2>Difficult to assess significance<br>when uncertainty is omitted</h2>
+
+<img data-src="index_files/figure-revealjs/omitted%20uncertainty-1.png" width="960" class="r-stretch"></section>
+<section id="error-bars-are-simple-but-hide-data-distribution" class="slide level2">
+<h2>Error bars are simple but hide data distribution</h2>
+
+<img data-src="index_files/figure-revealjs/error%20bars-1.png" width="960" class="r-stretch"></section>
+<section id="transparency-shows-data-density-effectively" class="slide level2">
+<h2>Transparency shows data density effectively</h2>
+
+<img data-src="index_files/figure-revealjs/all%20data%20points-1.png" width="960" class="r-stretch"></section>
+<section id="violinboxes-highlight-distribution-characteristics" class="slide level2">
+<h2>Violin/boxes highlight distribution characteristics</h2>
+
+<img data-src="index_files/figure-revealjs/all%20data%20points%20with%20violin-1.png" width="960" class="r-stretch"></section>
+<section id="color-can-help-but-should-be-meaningful" class="slide level2">
+<h2>Color can help but should be meaningful</h2>
+
+<img data-src="index_files/figure-revealjs/all%20data%20points%20with%20violin%20colored-1.png" width="960" class="r-stretch"></section>
+<section id="fitting-without-uncertainty" class="slide level2">
+<h2>Fitting without uncertainty…</h2>
+
+<img data-src="index_files/figure-revealjs/fit%20no%20uncertainty-1.png" width="960" class="r-stretch"></section>
+<section id="doesnt-really-tell-the-full-story" class="slide level2">
+<h2>Doesn’t really tell the full story</h2>
+
+<img data-src="index_files/figure-revealjs/not%20full%20story-1.png" width="960" class="r-stretch"></section>
+<section id="uncertainty-with-ribbon-for-lines" class="slide level2">
+<h2>Uncertainty with ribbon for lines</h2>
+
+<img data-src="index_files/figure-revealjs/uncertain%20ribbon-1.png" width="960" class="r-stretch"></section>
+<section id="integrating-uncertainty-with-other-elements-can-be-effective" class="slide level2">
+<h2>Integrating uncertainty with other elements can be effective</h2>
+
+<img data-src="index_files/figure-revealjs/more%20ribbons-1.png" width="960" class="r-stretch"></section>
+<section id="many-common-metrics-but-each-represents-a-different-measure" class="slide level2">
+<h2>Many common metrics but each represents a different measure</h2>
+<ul>
+<li>Standard deviation
+<ul>
+<li>Spread of data: information about entire population</li>
+<li>Includes range of expected new values</li>
+</ul></li>
+<li>Standard error
+<ul>
+<li>Uncertainty in mean (or other estimate)</li>
+<li>Strongly influenced by sample size</li>
+</ul></li>
+<li>Confidence intervals
+<ul>
+<li>To display reliability of measurement</li>
+</ul></li>
+</ul>
+<p>Responsibility of author to adopt the most appropriate measure</p>
+<p>When possible: show the data!</p>
+</section>
+<section id="be-cautious-with-interpretation" class="slide level2">
+<h2>Be cautious with interpretation</h2>
+<p>A gap between (error) bars does not ensure significance, nor does overlap rule it out — it depends on the type of bar</p>
+<p>Be very clear in stating:</p>
+<ul>
+<li>what type of uncertainty you are sharing</li>
+<li>what the interpretation is</li>
+</ul>
+</section></section>
+<section>
+<section id="principle-6-panels" class="title-slide slide level1 center" data-background-color="#ffdae0 ">
+<h1>Principle 6: Panels</h1>
+
+</section>
+<section id="faceting-is-a-powerful-wayto-split-data-into-digestible-chunks" class="slide level2">
+<h2>Faceting is a powerful way<br>to split data into digestible chunks</h2>
+<p>Advice:</p>
+<ul>
+<li>Do not repeat unnecessary axis</li>
+<li>Keep axis scales identical as far as possible
+<ul>
+<li>Different scales can be misleading</li>
+</ul></li>
+<li>If it possible to facet with two variables: make a grid!
+<ul>
+<li>If the information is complete enough</li>
+</ul></li>
+</ul>
+</section>
+<section id="starting-from-a-classical-scatterplot" class="slide level2">
+<h2>Starting from a classical scatterplot</h2>
+
+<img data-src="index_files/figure-revealjs/penguinsbase-1.png" width="960" class="r-stretch"></section>
+<section id="free-scales-accomodate-data-variationbut-can-be-misleading" class="slide level2">
+<h2>Free scales accomodate data variation<br>but can be misleading</h2>
+
+<img data-src="index_files/figure-revealjs/facet%20penguins%20free-1.png" width="960" class="r-stretch"></section>
+<section id="fixed-scales-allow-for-direct-comparisons" class="slide level2">
+<h2>Fixed scales allow for direct comparisons</h2>
+
+<img data-src="index_files/figure-revealjs/facet%20penguins-1.png" width="960" class="r-stretch"></section>
+<section id="are-symbol-colors-and-shapes-still-necessary" class="slide level2">
+<h2>Are symbol colors and shapes still necessary?</h2>
+
+<img data-src="index_files/figure-revealjs/facet%20penguins_2-1.png" width="960" class="r-stretch"></section>
+<section id="colors-can-be-used-to-map-an-additional-variable" class="slide level2">
+<h2>Colors can be used to map an additional variable</h2>
+
+<img data-src="index_files/figure-revealjs/facet%20penguins%20more%20vars-1.png" width="960" class="r-stretch"></section>
+<section id="exercice-conveying-a-message-by-faceting" class="slide level2">
+<h2>Exercice: Conveying a message by faceting</h2>
+<p>Example data <a href="https://www.data.gouv.fr/fr/datasets/suivi-qualite-des-eaux-superficielles-en-loire-atlantique-stations-du-reseau-departemental/">Surface water quality in Loire-Atlantique</a></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="nhmlvprokg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#nhmlvprokg table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#nhmlvprokg thead, #nhmlvprokg tbody, #nhmlvprokg tfoot, #nhmlvprokg tr, #nhmlvprokg td, #nhmlvprokg th {
+  border-style: none;
+}
+
+#nhmlvprokg p {
+  margin: 0;
+  padding: 0;
+}
+
+#nhmlvprokg .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#nhmlvprokg .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#nhmlvprokg .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#nhmlvprokg .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#nhmlvprokg .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#nhmlvprokg .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+}
+
+#nhmlvprokg .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#nhmlvprokg .gt_col_heading {
+  color: #333333;
+  background-color: #FFC0CB;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#nhmlvprokg .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFC0CB;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#nhmlvprokg .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#nhmlvprokg .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#nhmlvprokg .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#nhmlvprokg .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#nhmlvprokg .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#nhmlvprokg .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  vertical-align: middle;
+}
+
+#nhmlvprokg .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#nhmlvprokg .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#nhmlvprokg .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: none;
+  border-top-width: 1px;
+  border-top-color: #D5D5D5;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D5D5D5;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D5D5D5;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#nhmlvprokg .gt_stub {
+  color: #333333;
+  background-color: #FFC6E3;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D5D5D5;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nhmlvprokg .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#nhmlvprokg .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#nhmlvprokg .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#nhmlvprokg .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nhmlvprokg .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #5F5F5F;
+}
+
+#nhmlvprokg .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#nhmlvprokg .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+}
+
+#nhmlvprokg .gt_grand_summary_row {
+  color: #333333;
+  background-color: #D5D5D5;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nhmlvprokg .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #5F5F5F;
+}
+
+#nhmlvprokg .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #5F5F5F;
+}
+
+#nhmlvprokg .gt_striped {
+  background-color: #FCF2F7;
+}
+
+#nhmlvprokg .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+}
+
+#nhmlvprokg .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#nhmlvprokg .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nhmlvprokg .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#nhmlvprokg .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nhmlvprokg .gt_left {
+  text-align: left;
+}
+
+#nhmlvprokg .gt_center {
+  text-align: center;
+}
+
+#nhmlvprokg .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#nhmlvprokg .gt_font_normal {
+  font-weight: normal;
+}
+
+#nhmlvprokg .gt_font_bold {
+  font-weight: bold;
+}
+
+#nhmlvprokg .gt_font_italic {
+  font-style: italic;
+}
+
+#nhmlvprokg .gt_super {
+  font-size: 65%;
+}
+
+#nhmlvprokg .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#nhmlvprokg .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#nhmlvprokg .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#nhmlvprokg .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#nhmlvprokg .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#nhmlvprokg .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#nhmlvprokg .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#nhmlvprokg .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#nhmlvprokg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="date" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">date</th>
+<th id="code_station" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">code_station</th>
+<th id="city" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">city</th>
+<th id="city_group" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">city_group</th>
+<th id="parameter" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">parameter</th>
+<th id="value" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">value</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="date">2009-06-03</td>
+<td class="gt_row gt_right" headers="code_station">04215000</td>
+<td class="gt_row gt_left" headers="city">Issé</td>
+<td class="gt_row gt_left" headers="city_group">CC Châteaubriant-Derval</td>
+<td class="gt_row gt_left" headers="parameter">Température de l'Eau</td>
+<td class="gt_row gt_right" headers="value">18.42</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="date">2010-07-28</td>
+<td class="gt_row gt_right gt_striped" headers="code_station">04136400</td>
+<td class="gt_row gt_left gt_striped" headers="city">Oudon</td>
+<td class="gt_row gt_left gt_striped" headers="city_group">CC du Pays d'Ancenis</td>
+<td class="gt_row gt_left gt_striped" headers="parameter">Conductivité à 25°C</td>
+<td class="gt_row gt_right gt_striped" headers="value">508.00</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="date">2013-02-26</td>
+<td class="gt_row gt_right" headers="code_station">04146900</td>
+<td class="gt_row gt_left" headers="city">Nantes</td>
+<td class="gt_row gt_left" headers="city_group">Nantes Métropole</td>
+<td class="gt_row gt_left" headers="parameter">Nitrates</td>
+<td class="gt_row gt_right" headers="value">14.10</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="date">2016-10-18</td>
+<td class="gt_row gt_right gt_striped" headers="code_station">04136400</td>
+<td class="gt_row gt_left gt_striped" headers="city">Oudon</td>
+<td class="gt_row gt_left gt_striped" headers="city_group">CC du Pays d'Ancenis</td>
+<td class="gt_row gt_left gt_striped" headers="parameter">Ammonium</td>
+<td class="gt_row gt_right gt_striped" headers="value">0.26</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="date">2008-11-26</td>
+<td class="gt_row gt_right" headers="code_station">04215930</td>
+<td class="gt_row gt_left" headers="city">Fégréac</td>
+<td class="gt_row gt_left" headers="city_group">CA Redon Agglomération</td>
+<td class="gt_row gt_left" headers="parameter">Azote Kjeldahl</td>
+<td class="gt_row gt_right" headers="value">1.60</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="date">2008-04-07</td>
+<td class="gt_row gt_right gt_striped" headers="code_station">04136100</td>
+<td class="gt_row gt_left gt_striped" headers="city">Ancenis-Saint-Géréon</td>
+<td class="gt_row gt_left gt_striped" headers="city_group">CC du Pays d'Ancenis</td>
+<td class="gt_row gt_left gt_striped" headers="parameter">Chlorures</td>
+<td class="gt_row gt_right gt_striped" headers="value">16.00</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Goal: Highlight <em>where</em> (in which station) and <em>when</em> the pH deviated from 7</p>
+</section>
+<section id="facetting-might-be-necessary" class="slide level2">
+<h2>Facetting might be necessary</h2>
+
+<img data-src="index_files/figure-revealjs/no%20faceting-1.png" width="960" class="r-stretch"></section>
+<section id="facets-should-be-simplified" class="slide level2">
+<h2>Facets should be simplified</h2>
+
+<img data-src="index_files/figure-revealjs/faceting-1.png" width="960" class="r-stretch"><p>What improvements could be made?</p>
+</section>
+<section id="highlighting-axis-simplification-scaling-grid-elements" class="slide level2">
+<h2>Highlighting, axis simplification, scaling, grid elements</h2>
+
+<img data-src="index_files/figure-revealjs/faceting%20+%20colors%20+%20transparency-1.png" width="960" class="r-stretch"><p>Color <em>highlights</em>, axis simplification, scaling, grid elements</p>
+</section>
+<section id="faceting-statistics-summary" class="slide level2">
+<h2>Faceting statistics summary</h2>
+<p>Goal: <em>Where</em> (groups of cities) did the pH significantly deviate (e.g., more than 1 SD) <em>over a year</em> compared to other years?</p>
+<p>Choose:</p>
+<ul>
+<li>x and y axis</li>
+<li>geometries (scatter, bar, …)</li>
+<li>colors, shapes, sizes, …</li>
+<li>faceting</li>
+<li>any other plot elements</li>
+</ul>
+</section>
+<section id="base-figure" class="slide level2">
+<h2>Base figure</h2>
+
+<img data-src="index_files/figure-revealjs/base%20figure-1.png" width="960" class="r-stretch"></section>
+<section id="transparency-trends" class="slide level2">
+<h2>Transparency + trends</h2>
+
+<img data-src="index_files/figure-revealjs/transp%20trned-1.png" width="960" class="r-stretch"></section>
+<section id="faceting-per-city-group" class="slide level2">
+<h2>Faceting per city group</h2>
+
+<img data-src="index_files/figure-revealjs/trendy%20panels-1.png" width="960" class="r-stretch"></section>
+<section id="recoloring" class="slide level2">
+<h2>Recoloring</h2>
+
+<img data-src="index_files/figure-revealjs/recoloring-1.png" width="960" class="r-stretch"></section>
+<section id="statistical-comparison" class="slide level2">
+<h2>Statistical comparison</h2>
+
+<img data-src="index_files/figure-revealjs/stat%20cmp-1.png" width="960" class="r-stretch"></section>
+<section id="simplification-colors-for---1-sd" class="slide level2">
+<h2>Simplification (colors for +/- 1 SD)</h2>
+
+<img data-src="index_files/figure-revealjs/simplification-1.png" width="960" class="r-stretch"></section>
+<section id="application-to-a-grid" class="slide level2">
+<h2>Application to a grid</h2>
+<p>The <em>Région</em> wants to study the trends of time spent to go to work against the distance from home, as a function of the mode of transportation, per year and per <em>département</em>.</p>
+<div class="columns">
+<div class="column" style="width:35%;">
+<ul>
+<li>Define:
+<ul>
+<li>x/y axis</li>
+<li>grid layout</li>
+<li>geometries</li>
+<li>colors, shapes,…</li>
+<li>trends and uncertainties</li>
+<li>axis titles, labels, use</li>
+<li>legend, title, caption</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:65%;">
+<div class="cell">
+<div class="cell-output-display">
+<div id="bwyihyfwno" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bwyihyfwno table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#bwyihyfwno thead, #bwyihyfwno tbody, #bwyihyfwno tfoot, #bwyihyfwno tr, #bwyihyfwno td, #bwyihyfwno th {
+  border-style: none;
+}
+
+#bwyihyfwno p {
+  margin: 0;
+  padding: 0;
+}
+
+#bwyihyfwno .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#bwyihyfwno .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#bwyihyfwno .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#bwyihyfwno .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#bwyihyfwno .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bwyihyfwno .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+}
+
+#bwyihyfwno .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bwyihyfwno .gt_col_heading {
+  color: #333333;
+  background-color: #FFC0CB;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#bwyihyfwno .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFC0CB;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#bwyihyfwno .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#bwyihyfwno .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#bwyihyfwno .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#bwyihyfwno .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#bwyihyfwno .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#bwyihyfwno .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  vertical-align: middle;
+}
+
+#bwyihyfwno .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#bwyihyfwno .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#bwyihyfwno .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: none;
+  border-top-width: 1px;
+  border-top-color: #D5D5D5;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D5D5D5;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D5D5D5;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#bwyihyfwno .gt_stub {
+  color: #333333;
+  background-color: #FFC6E3;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D5D5D5;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bwyihyfwno .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#bwyihyfwno .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#bwyihyfwno .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#bwyihyfwno .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bwyihyfwno .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #5F5F5F;
+}
+
+#bwyihyfwno .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#bwyihyfwno .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+}
+
+#bwyihyfwno .gt_grand_summary_row {
+  color: #333333;
+  background-color: #D5D5D5;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bwyihyfwno .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #5F5F5F;
+}
+
+#bwyihyfwno .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #5F5F5F;
+}
+
+#bwyihyfwno .gt_striped {
+  background-color: #FCF2F7;
+}
+
+#bwyihyfwno .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+}
+
+#bwyihyfwno .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bwyihyfwno .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bwyihyfwno .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bwyihyfwno .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bwyihyfwno .gt_left {
+  text-align: left;
+}
+
+#bwyihyfwno .gt_center {
+  text-align: center;
+}
+
+#bwyihyfwno .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#bwyihyfwno .gt_font_normal {
+  font-weight: normal;
+}
+
+#bwyihyfwno .gt_font_bold {
+  font-weight: bold;
+}
+
+#bwyihyfwno .gt_font_italic {
+  font-style: italic;
+}
+
+#bwyihyfwno .gt_super {
+  font-size: 65%;
+}
+
+#bwyihyfwno .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#bwyihyfwno .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#bwyihyfwno .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#bwyihyfwno .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#bwyihyfwno .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#bwyihyfwno .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#bwyihyfwno .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#bwyihyfwno .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#bwyihyfwno div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="id" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">id</th>
+<th id="age" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">age</th>
+<th id="sexe" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">sexe</th>
+<th id="region" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">region</th>
+<th id="id_departement" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">id_departement</th>
+<th id="name_departement" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">name_departement</th>
+<th id="year" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">year</th>
+<th id="type" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">type</th>
+<th id="distance_km" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">distance_km</th>
+<th id="mode" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">mode</th>
+<th id="time_h" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">time_h</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="id">ID-ZEOW-919330</td>
+<td class="gt_row gt_right" headers="age">44</td>
+<td class="gt_row gt_left" headers="sexe">NA</td>
+<td class="gt_row gt_left" headers="region">Aquitaine</td>
+<td class="gt_row gt_right" headers="id_departement">33</td>
+<td class="gt_row gt_left" headers="name_departement">Gironde</td>
+<td class="gt_row gt_right" headers="year">2025</td>
+<td class="gt_row gt_left" headers="type">travail</td>
+<td class="gt_row gt_right" headers="distance_km">4.862365</td>
+<td class="gt_row gt_center" headers="mode">velo</td>
+<td class="gt_row gt_right" headers="time_h">0.91</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="id">ID-YAIC-351175</td>
+<td class="gt_row gt_right gt_striped" headers="age">NA</td>
+<td class="gt_row gt_left gt_striped" headers="sexe">NA</td>
+<td class="gt_row gt_left gt_striped" headers="region">Aquitaine</td>
+<td class="gt_row gt_right gt_striped" headers="id_departement">64</td>
+<td class="gt_row gt_left gt_striped" headers="name_departement">Pyrénées-Atlantiques</td>
+<td class="gt_row gt_right gt_striped" headers="year">2024</td>
+<td class="gt_row gt_left gt_striped" headers="type">travail</td>
+<td class="gt_row gt_right gt_striped" headers="distance_km">9.842244</td>
+<td class="gt_row gt_center gt_striped" headers="mode">bus</td>
+<td class="gt_row gt_right gt_striped" headers="time_h">0.95</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="id">ID-VEJY-326762</td>
+<td class="gt_row gt_right" headers="age">89</td>
+<td class="gt_row gt_left" headers="sexe">NA</td>
+<td class="gt_row gt_left" headers="region">Aquitaine</td>
+<td class="gt_row gt_right" headers="id_departement">33</td>
+<td class="gt_row gt_left" headers="name_departement">Gironde</td>
+<td class="gt_row gt_right" headers="year">2025</td>
+<td class="gt_row gt_left" headers="type">travail</td>
+<td class="gt_row gt_right" headers="distance_km">2.557611</td>
+<td class="gt_row gt_center" headers="mode">velo</td>
+<td class="gt_row gt_right" headers="time_h">0.57</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="id">ID-GBZI-927561</td>
+<td class="gt_row gt_right gt_striped" headers="age">26</td>
+<td class="gt_row gt_left gt_striped" headers="sexe">F</td>
+<td class="gt_row gt_left gt_striped" headers="region">Aquitaine</td>
+<td class="gt_row gt_right gt_striped" headers="id_departement">40</td>
+<td class="gt_row gt_left gt_striped" headers="name_departement">Landes</td>
+<td class="gt_row gt_right gt_striped" headers="year">2024</td>
+<td class="gt_row gt_left gt_striped" headers="type">travail</td>
+<td class="gt_row gt_right gt_striped" headers="distance_km">4.826842</td>
+<td class="gt_row gt_center gt_striped" headers="mode">velo</td>
+<td class="gt_row gt_right gt_striped" headers="time_h">0.96</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="id">ID-KYDE-294854</td>
+<td class="gt_row gt_right" headers="age">NA</td>
+<td class="gt_row gt_left" headers="sexe">NA</td>
+<td class="gt_row gt_left" headers="region">Aquitaine</td>
+<td class="gt_row gt_right" headers="id_departement">33</td>
+<td class="gt_row gt_left" headers="name_departement">NA</td>
+<td class="gt_row gt_right" headers="year">2024</td>
+<td class="gt_row gt_left" headers="type">travail</td>
+<td class="gt_row gt_right" headers="distance_km">9.015570</td>
+<td class="gt_row gt_center" headers="mode">bus</td>
+<td class="gt_row gt_right" headers="time_h">0.87</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="id">ID-YBAO-957504</td>
+<td class="gt_row gt_right gt_striped" headers="age">NA</td>
+<td class="gt_row gt_left gt_striped" headers="sexe">F</td>
+<td class="gt_row gt_left gt_striped" headers="region">Aquitaine</td>
+<td class="gt_row gt_right gt_striped" headers="id_departement">47</td>
+<td class="gt_row gt_left gt_striped" headers="name_departement">NA</td>
+<td class="gt_row gt_right gt_striped" headers="year">2023</td>
+<td class="gt_row gt_left gt_striped" headers="type">travail</td>
+<td class="gt_row gt_right gt_striped" headers="distance_km">4.993104</td>
+<td class="gt_row gt_center gt_striped" headers="mode">velo</td>
+<td class="gt_row gt_right gt_striped" headers="time_h">1.06</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="application-to-a-grid-1" class="slide level2">
+<h2>Application to a grid</h2>
+
+<img data-src="index_files/figure-revealjs/pfakir-1.png" width="960" class="r-stretch"></section></section>
+<section>
+<section id="principle-7-data-and-models-are-different-things" class="title-slide slide level1 center" data-background-color="#ffdae0 ">
+<h1>Principle 7: Data and models are different things</h1>
+
+</section>
+<section id="plotted-information" class="slide level2">
+<h2>Plotted information</h2>
+<p>Typically takes the form of:</p>
+<ul>
+<li>Raw data
+<ul>
+<li>Scatter plot</li>
+</ul></li>
+<li>Summarized data
+<ul>
+<li>Box plot</li>
+<li>Violin plot</li>
+</ul></li>
+<li>Inferential statistic
+<ul>
+<li>Fitter regression line</li>
+</ul></li>
+</ul>
+</section>
+<section id="provide-necessary-information-on-models" class="slide level2">
+<h2>Provide necessary information on models</h2>
+
+<img data-src="index_files/figure-revealjs/provide0-1.png" width="960" class="r-stretch"></section>
+<section id="information-may-be-included-in-the-caption" class="slide level2">
+<h2>Information may be included in the caption</h2>
+
+<img data-src="index_files/figure-revealjs/provide-1.png" width="960" class="r-stretch"></section>
+<section id="model-the-ph-vs.-water-t-relationship-per-city-group" class="slide level2">
+<h2>🧪 Model the pH vs.&nbsp;water T° relationship per city group</h2>
+
+<img data-src="index_files/figure-revealjs/panels0-1.png" width="960" class="r-stretch"></section></section>
+<section>
+<section id="principle-8-simple-visualsdetailed-captions" class="title-slide slide level1 center" data-background-color="#ffdae0 ">
+<h1>Principle 8: Simple visuals,<br>detailed captions</h1>
+
+</section>
+<section id="self-explanatory" class="slide level2">
+<h2>Self-explanatory</h2>
+<ul>
+<li>Graphs should be self-explanatory</li>
+<li>Captions should be standalone</li>
+</ul>
+<p>The major point should be understood <em>in vacuo</em></p>
+</section>
+<section id="explain-all-geometries" class="slide level2">
+<h2>Explain all geometries</h2>
+
+<img data-src="index_files/figure-revealjs/explain0-1.png" width="960" class="r-stretch"></section>
+<section id="explain-all-geometries-1" class="slide level2">
+<h2>Explain all geometries</h2>
+
+<img data-src="index_files/figure-revealjs/explain-1.png" width="960" class="r-stretch"></section>
+<section id="legends-and-axis-should-be-clear-and-completeclear-and-simple" class="slide level2">
+<h2>Legends and axis should be clear and complete,<br>clear and simple</h2>
+<ul>
+<li>Names must be understandable</li>
+<li>Units should be given</li>
+<li>Legends should not contain more than 6 series
+<ul>
+<li>Replace legends with labels, colors in title/caption, …</li>
+</ul></li>
+<li>Legends should be grouped</li>
+<li>Redundant axes should be removed</li>
+<li>A reasonable number of breaks should be used
+<ul>
+<li>Use custom breaks for presentations</li>
+</ul></li>
+</ul>
+</section>
+<section id="using-variables-names-is-not-sufficient" class="slide level2">
+<h2>Using variables names is not sufficient</h2>
+
+<img data-src="index_files/figure-revealjs/complete0-1.png" width="960" class="r-stretch"></section>
+<section id="be-sufficiently-explicit-in-axis-titles-and-legends" class="slide level2">
+<h2>Be sufficiently explicit in axis titles and legends</h2>
+
+<img data-src="index_files/figure-revealjs/complete-1.png" width="960" class="r-stretch"></section>
+<section id="produce-an-improved-version-of-this-figure" class="slide level2">
+<h2>🧪 Produce an improved version of this figure</h2>
+
+<img data-src="index_files/figure-revealjs/unclear-1.png" width="960" class="r-stretch"><p>Data: <a href="https://www.data.gouv.fr/fr/datasets/offres-demploi-diffusees-a-pole-emploi/">Job offers posted by the French employement office</a></p>
+</section>
+<section id="explicit-direct-labeling-is-best-when-there-are-many-series" class="slide level2">
+<h2>Explicit direct labeling is best when there are many series</h2>
+
+<img data-src="index_files/figure-revealjs/skipbulk-1.png" width="960" class="r-stretch"><p>Data: <a href="https://www.data.gouv.fr/fr/datasets/offres-demploi-diffusees-a-pole-emploi/">Job offers posted by the French employement office</a></p>
+</section>
+<section id="faceting-can-also-be-used" class="slide level2">
+<h2>Faceting can also be used</h2>
+
+<img data-src="index_files/figure-revealjs/panels42-1.png" width="960" class="r-stretch"></section>
+<section id="label-points-of-interestto-get-message-across-in-vacuo" class="slide level2">
+<h2>🧪 Label points of interest<br>to get message across <em>in vacuo</em></h2>
+
+<img data-src="index_files/figure-revealjs/Label%20points%20of%20interest-1.png" width="960" class="r-stretch"></section></section>
+<section id="principle-9-consider-an-infographic" class="title-slide slide level1 center" data-background-color="#ffdae0 ">
+<h1>Principle 9: Consider an infographic</h1>
+<p>Infographics typically incorporate text, images, and other diagrammatic elements</p>
+</section>
+
+<section id="principle-10-get-an-opinion" class="title-slide slide level1 center" data-background-color="#ffdae0 ">
+<h1>Principle 10: Get an Opinion</h1>
+<p>Most effective visuals are the ones with which readers connect</p>
+<p>Seek external reviews of your figures</p>
+</section>
+
+<section>
 <section id="setup-of-the-environment" class="title-slide slide level1 center" data-background-color="#184669">
 <h1>Setup of the environment</h1>
 
@@ -524,8 +3966,8 @@ Eric Largy <a href="https://orcid.org/0000-0002-6140-9788" class="quarto-title-a
 </div></div>
 </section></section>
 <section>
-<section id="reminders-on-variables-and-data-types-and-modes" class="title-slide slide level1 center" data-background-color="#184669">
-<h1>Reminders on variables and data types and modes</h1>
+<section id="reminders-on-variablesdata-types-and-modes" class="title-slide slide level1 center" data-background-color="#184669">
+<h1>Reminders on variables,<br>data types and modes</h1>
 
 </section>
 <section id="assigning-and-printing-numeric-variables" class="slide level2" data-auto-animate="TRUE">
@@ -2135,7 +5577,7 @@ Levels: A B C D E</code></pre>
 <span id="cb211-9"><a href=""></a><span class="fu">cat</span>(<span class="st">'The current time is:'</span>, <span class="fu">format</span>(<span class="fu">Sys.time</span>(), <span class="st">"%H:%M:%S"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
-<pre><code>The current time is: 21:29:18</code></pre>
+<pre><code>The current time is: 18:53:49</code></pre>
 </div>
 </div></div>
 </div>
@@ -2155,7 +5597,7 @@ Levels: A B C D E</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb215"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb215-1"><a href=""></a>un_even_tb[[seconds]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  2  4  6  8 10</code></pre>
+<pre><code>[1] 1 3 5 7 9</code></pre>
 </div>
 </div></div>
 </div>
@@ -2992,94 +6434,14 @@ Levels: -1 0 1 2</code></pre>
 <h2 data-id="quarto-animate-title">Starting dataset</h2>
 <div class="cell columns4060 columns column-output-location">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb321"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb321-1"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb321-2"><a href=""></a></span>
-<span id="cb321-3"><a href=""></a><span class="fu">head</span>(mpg)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div class="column">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 11
-  manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class 
-  &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; 
-1 audi         a4      1.8  1999     4 auto(l5)   f        18    29 p     compa…
-2 audi         a4      1.8  1999     4 manual(m5) f        21    29 p     compa…
-3 audi         a4      2    2008     4 manual(m6) f        20    31 p     compa…
-4 audi         a4      2    2008     4 auto(av)   f        21    30 p     compa…
-5 audi         a4      2.8  1999     6 auto(l5)   f        16    26 p     compa…
-6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compa…</code></pre>
-</div>
-</div></div>
-<div class="cell columns4060 columns column-output-location">
-<div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb323"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb323-1"><a href=""></a>df <span class="ot">&lt;-</span> <span class="fu">as.tibble</span>(mpg)</span>
-<span id="cb323-2"><a href=""></a>dt <span class="ot">&lt;-</span> <span class="fu">as.data.table</span>(mpg)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb321"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb321-1" class="hljs-ln-code"><a href=""></a>df <span class="ot">&lt;-</span> <span class="fu">as.tibble</span>(mpg)</span>
+<span id="cb321-2" class="hljs-ln-code"><a href=""></a>dt <span class="ot">&lt;-</span> <span class="fu">as.data.table</span>(mpg)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 
-</div></div>
-</section>
-<section id="use-of-str-and-glimpse" class="slide level2 out7" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Use of <code>str</code> and <code>glimpse</code></h2>
-<div class="cell columns4060 columns column-output-location">
-<div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb324"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb324-1"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb324-2"><a href=""></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb324-3"><a href=""></a></span>
-<span id="cb324-4"><a href=""></a><span class="fu">glimpse</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div class="column">
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 234
-Columns: 11
-$ manufacturer &lt;chr&gt; "audi", "audi", "audi", "audi", "audi", "audi", "audi", "…
-$ model        &lt;chr&gt; "a4", "a4", "a4", "a4", "a4", "a4", "a4", "a4 quattro", "…
-$ displ        &lt;dbl&gt; 1.8, 1.8, 2.0, 2.0, 2.8, 2.8, 3.1, 1.8, 1.8, 2.0, 2.0, 2.…
-$ year         &lt;int&gt; 1999, 1999, 2008, 2008, 1999, 1999, 2008, 1999, 1999, 200…
-$ cyl          &lt;int&gt; 4, 4, 4, 4, 6, 6, 6, 4, 4, 4, 4, 6, 6, 6, 6, 6, 6, 8, 8, …
-$ trans        &lt;chr&gt; "auto(l5)", "manual(m5)", "manual(m6)", "auto(av)", "auto…
-$ drv          &lt;chr&gt; "f", "f", "f", "f", "f", "f", "f", "4", "4", "4", "4", "4…
-$ cty          &lt;int&gt; 18, 21, 20, 21, 16, 18, 18, 18, 16, 20, 19, 15, 17, 17, 1…
-$ hwy          &lt;int&gt; 29, 29, 31, 30, 26, 26, 27, 26, 25, 28, 27, 25, 25, 25, 2…
-$ fl           &lt;chr&gt; "p", "p", "p", "p", "p", "p", "p", "p", "p", "p", "p", "p…
-$ class        &lt;chr&gt; "compact", "compact", "compact", "compact", "compact", "c…</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb326"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb326-1"><a href=""></a><span class="fu">str</span>(dt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Classes 'data.table' and 'data.frame':  234 obs. of  11 variables:
- $ manufacturer: chr  "audi" "audi" "audi" "audi" ...
- $ model       : chr  "a4" "a4" "a4" "a4" ...
- $ displ       : num  1.8 1.8 2 2 2.8 2.8 3.1 1.8 1.8 2 ...
- $ year        : int  1999 1999 2008 2008 1999 1999 2008 1999 1999 2008 ...
- $ cyl         : int  4 4 4 4 6 6 6 4 4 4 ...
- $ trans       : chr  "auto(l5)" "manual(m5)" "manual(m6)" "auto(av)" ...
- $ drv         : chr  "f" "f" "f" "f" ...
- $ cty         : int  18 21 20 21 16 18 18 18 16 20 ...
- $ hwy         : int  29 29 31 30 26 26 27 26 25 28 ...
- $ fl          : chr  "p" "p" "p" "p" ...
- $ class       : chr  "compact" "compact" "compact" "compact" ...
- - attr(*, ".internal.selfref")=&lt;externalptr&gt; </code></pre>
-</div>
-</div></div>
-</section>
-<section id="use-of-select" class="slide level2 out7" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Use of select</h2>
-<div class="cell columns4060 columns column-output-location">
-<div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb328"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb328-1" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb328-2" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb328-3" class="hljs-ln-code"><a href=""></a></span>
-<span id="cb328-4" class="hljs-ln-code"><a href=""></a>mpg <span class="sc">%&gt;%</span></span>
-<span id="cb328-5" class="hljs-ln-code"><a href=""></a>  <span class="fu">select</span>(displ, hwy, class, year) <span class="sc">|&gt;</span></span>
-<span id="cb328-6" class="hljs-ln-code"><a href=""></a>  <span class="fu">glimpse</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div class="column">
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 234
-Columns: 4
-$ displ &lt;dbl&gt; 1.8, 1.8, 2.0, 2.0, 2.8, 2.8, 3.1, 1.8, 1.8, 2.0, 2.0, 2.8, 2.8,…
-$ hwy   &lt;int&gt; 29, 29, 31, 30, 26, 26, 27, 26, 25, 28, 27, 25, 25, 25, 25, 24, …
-$ class &lt;chr&gt; "compact", "compact", "compact", "compact", "compact", "compact"…
-$ year  &lt;int&gt; 1999, 1999, 2008, 2008, 1999, 1999, 2008, 1999, 1999, 2008, 2008…</code></pre>
-</div>
 </div></div>
 
 </section></section>
+
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

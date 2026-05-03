@@ -1,34 +1,188 @@
 .callout-content {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 1.1em !important;
-    font: inherit;
-    /* font-weight: bold; */
-    vertical-align: middle;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 1.1em !important;
+  font: inherit;
+  /* font-weight: bold; */
+  vertical-align: middle;
 }
 
 div.callout-title {
-    font-size: 1.2em !important;
+  font-size: 1.2em !important;
 }
 
 .reveal ul li::marker {
-	color: #184669;
+  color: #184669;
 }
 
 .reveal h2 {
-	font-weight: normal;
-	font-size: 1.4em;
-    color: #184669;
+  font-weight: normal;
+  font-size: 1.4em;
+  color: #184669;
 }
 
 .reveal a {
-	color: #691846;
+  color: #42bdae !important;
+  /* White */
+  font-weight: 300 !important;
+  text-decoration: underline !important;
 }
 
-.reveal div.sourceCode {
-	border: 0px solid #184669;
-	border-radius: 4px;
+/* Optional: Change color on hover */
+.reveal a:hover {
+  color: #cccccc !important;
+  /* Light gray */
+}
+
+
+
+
+/* Fonts */
+
+@font-face {
+  font-family: 'Verlag';
+  src: url('fonts/Verlag-Bold.woff2') format('woff2'),
+    url('fonts/Verlag-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Verlag';
+  src: url('fonts/Verlag-Black.woff2') format('woff2'),
+    url('fonts/Verlag-Black.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Verlag';
+  src: url('fonts/Verlag-BlackItalic.woff2') format('woff2'),
+    url('fonts/Verlag-BlackItalic.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Verlag Book';
+  src: url('fonts/Verlag-Book.woff2') format('woff2'),
+    url('fonts/Verlag-Book.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Verlag Compressed';
+  src: url('fonts/VerlagCompressed-Bold.woff2') format('woff2'),
+    url('fonts/VerlagCompressed-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Verlag Condensed Book';
+  src: url('fonts/VerlagCondensed-Book.woff2') format('woff2'),
+    url('fonts/VerlagCondensed-Book.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Verlag Condensed';
+  src: url('fonts/VerlagCondensed-Light.woff2') format('woff2'),
+    url('fonts/VerlagCondensed-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Verlag Condensed XLight';
+  src: url('fonts/VerlagCondensed-XLight.woff2') format('woff2'),
+    url('fonts/VerlagCondensed-XLight.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Verlag';
+  src: url('fonts/Verlag-Light.woff2') format('woff2'),
+    url('fonts/Verlag-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Verlag';
+  src: url('fonts/Verlag-LightItalic.woff2') format('woff2'),
+    url('fonts/Verlag-LightItalic.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Verlag XLight';
+  src: url('fonts/Verlag-XLight.woff2') format('woff2'),
+    url('fonts/Verlag-XLight.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Use verlag with a light but not too light weight */
+/* Base text (slides) */
+.reveal {
+  font-family: "Verlag", sans-serif;
+}
+
+/* Headings */
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  font-family: "Verlag", sans-serif;
+}
+
+/* Body text elements */
+.reveal p,
+.reveal li,
+.reveal blockquote {
+  font-family: "Verlag", sans-serif;
+}
+
+/* Links */
+.reveal a {
+  font-family: "Verlag", sans-serif;
+}
+
+/* Inline code */
+.reveal code {
+  font-family: "Verlag", sans-serif;
+}
+
+/* Callouts */
+.callout-content,
+div.callout-title {
+  font-family: "Verlag", sans-serif;
+}
+
+/* Footnotes (Quarto-specific) */
+.reveal .footnote,
+.reveal .footnotes,
+.reveal .footnote-ref {
+  font-family: "Verlag", sans-serif;
 }
 
 /* custom.css */
@@ -39,6 +193,15 @@ pre code {
   font-size: 0.85em !important;
 }
 
+.reveal pre code,
+.reveal .sourceCode,
+.reveal .sourceCode pre,
+.reveal .sourceCode code {
+  font-family: 'Fira Code', monospace !important;
+  border: 0px solid #184669;
+  border-radius: 4px;
+  font: 0.8em 'Fira Code', monospace !important;
+}
 
 /* Reduce font size and padding for DT tables */
 .dataTables_wrapper .dataTables_length select,
@@ -80,6 +243,7 @@ pre code {
   padding: 0.2em !important;
   height: 2em !important;
 }
+
 .dataTables_wrapper .dataTables_length {
   font-size: 0.6em !important;
   padding: 0.2em !important;
@@ -123,25 +287,25 @@ pre code {
 }
 
 .code6 code.sourceCode {
-    font-size: 0.6em !important;
+  font-size: 0.6em !important;
 }
 
 .code7 code.sourceCode {
-    font-size: 0.7em !important;
+  font-size: 0.7em !important;
 }
 
 .out7 .cell-output {
-    font-size: 0.7em !important;
+  font-size: 0.7em !important;
 }
 
 .out8 .cell-output {
-    font-size: 0.8em !important;
+  font-size: 0.8em !important;
 }
 
 /* Formatting of code in text */
 .reveal code {
-    color: #71c875;
-}  
+  color: #71c875;
+}
 
 /* Coloring of comments in code cells */
 
@@ -152,5 +316,5 @@ pre code {
 
 /* Add bottom margin for code cells */
 .sourceCode.cell-code {
-    margin-bottom: 0.5em !important;
+  margin-bottom: 0.5em !important;
 }
