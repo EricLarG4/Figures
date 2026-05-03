@@ -275,24 +275,24 @@ Use R to create figures from raw data that:
 
 # This presentation is available on [R.largy.fr](https://r.largy.fr) {background-color="#184669"}
 
-# 10 Principles {background-color="#ffdae0 "}
+# 10 Principles {background-color="#ffdae0"}
 
-# Principle 1: Diagram first {background-color="#ffdae0 "}
+# Principle 1:</br>Diagram first {background-color="#ffdae0"}
 
 ## Focus on information and message
 
 Least technical but very important step
 
-[**Prioritize the information you want to share**]{.fg style="--col: #ffdae0 "} and design it.
+[**Prioritize the information you want to share**]{.fg style="--col: #ffdae0"} and design it.
 
-- What [**core information**]{.fg style="--col: #ffdae0 "} needs to be conveyed?
+- What [**core information**]{.fg style="--col: #ffdae0"} needs to be conveyed?
 - What about that information is going to make your point?
 - Objective: comparison, ranking, trend?
 - Search the literature for inspiration
 
 You can use the grammar of graphics approach to pick the different necessary elements
 
-# Principle 2: Use the right software {background-color="#ffdae0 "}
+# Principle 2:</br>Use the right software {background-color="#ffdae0"}
 
 ## Excel might not be the best tool
 
@@ -305,9 +305,9 @@ You can use the grammar of graphics approach to pick the different necessary ele
   - Tableau
   - MATLAB
   - Python
-  - [**R**]{.fg style="--col: #ffdae0 "}
+  - [**R**]{.fg style="--col: #ffdae0"}
 
-# Principle 3: Use an Effective Geometry and Show Data {background-color="#ffdae0 "}
+# Principle 3:</br>Use an Effective Geometry and Show Data {background-color="#ffdae0"}
 
 ## Less is more
 
@@ -1108,7 +1108,7 @@ penguins %>%
   scale_x_continuous(expand = c(0,NA), limits = c(0,6000), breaks = c((1:5)*1000))
 ```
 
-# Principle 4: Colors mean something {background-color="#ffdae0 "}
+# Principle 4:</br>Colors mean something {background-color="#ffdae0"}
 
 ## Color is often the first visual information</br>getting across to the reader
 
@@ -1507,7 +1507,7 @@ Colour combination ![](resources/palette%20selection%202.png){width="100%"}
 
 [Source](https://www.nature.com/articles/s41467-020-19160-7)
 
-# Principle 5: Include Uncertainty {background-color="#ffdae0 "}
+# Principle 5:</br>Include Uncertainty {background-color="#ffdae0"}
 
 ## Uncertainty is an inherent part of understanding most systems
 
@@ -1751,7 +1751,7 @@ Be very clear in stating:
 - what type of uncertainty you are sharing
 - what the interpretation is
 
-# Principle 6: Panels {background-color="#ffdae0 "}
+# Principle 6:</br>Panels {background-color="#ffdae0"}
 
 ## Faceting is a powerful way</br>to split data into digestible chunks
 
@@ -2247,7 +2247,7 @@ df.fakir %>%
 
 ```
 
-# Principle 7: Data and models are different things {background-color="#ffdae0 "}
+# Principle 7:</br>Data and models are different things {background-color="#ffdae0"}
 
 ## Plotted information
 
@@ -2366,7 +2366,7 @@ dh %>%
   scale_y_continuous(expand = c(0,0), limits = c(5,10), breaks = c(5, 7.5, 10))
 ```
 
-# Principle 8: Simple visuals,</br>detailed captions {background-color="#ffdae0 "}
+# Principle 8:</br>Simple visuals, detailed captions {background-color="#ffdae0"}
 
 ## Self-explanatory
 
@@ -2627,11 +2627,222 @@ df.antibes %>%
   coord_cartesian(clip = 'off')
 ```
 
-# Principle 9: Consider an infographic {background-color="#ffdae0 "}
+# Principle 9:</br>Adapt to the Medium {background-color="#ffdae0"}
 
-Infographics typically incorporate text, images, and other diagrammatic elements
+## Word, powerpoint, poster, online?
 
-# Principle 10: Get an Opinion {background-color="#ffdae0 "}
+- Figures should be tailored to the medium
+  - Easier to read legends on article/website than during presentations
+  - PPT: Direct labeling, highlights, custom axis breaks and labels, animations
+- Keep animation simple and useful
+  - Do not animate for fun
+  - Prioritize the message
+- Online figures may incorporate interactivity
+
+## 🧪 Example of simple animation
+
+*Here are the number of job offers posted by Pôle Emploi since 2015*
+
+```{r}
+#| label: base jobs
+
+set.seed(42)
+
+di %>% 
+  ggplot(aes(month, n, color = factor(year))) +
+  geom_point(show.legend = FALSE, size = 3) +
+  geom_line(show.legend = FALSE, linewidth = 1) +
+  ggrepel::geom_text_repel(
+    data = . %>% 
+      group_by(year) %>% 
+      filter(month == max(month)),
+    aes(label = year, x = 12.5),
+    show.legend = FALSE,
+    fontface = 'bold',
+    direction = 'y',
+    force = 5,
+    seed = 69
+  ) +
+  custom.theme(1.5) +
+  scale_x_continuous(n.breaks = 7) +
+  scale_y_continuous(labels = function(x) format(x, scientific = TRUE)) +
+  coord_cartesian(clip = 'off') +
+  labs(y = 'Posted job offers', x = 'Month') +
+  scale_color_manual(values = c("#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#17becf"))
+
+```
+
+## 🧪 Example of simple animation
+
+*As you can see, there was a sharp increase the past two years*
+
+```{r}
+#| label: greyed jobs
+
+di %>% 
+  ggplot(aes(month, n, group = factor(year), color = factor(year))) +
+  geom_point(
+    data = . %>% filter(year < 2021),
+    show.legend = FALSE, color = 'grey', alpha = 0.5, size = 3
+    ) +
+  geom_line(
+    data = . %>% filter(year < 2021),
+    show.legend = FALSE, color = 'grey', alpha = 0.5, linewidth = 1
+    ) +
+  geom_point(
+    data = . %>% filter(year > 2020),
+    show.legend = FALSE,
+    size = 3
+    ) +
+  geom_line(
+    data = . %>% filter(year > 2020),
+    show.legend = FALSE,
+    linewidth = 1.25
+    ) +
+  ggrepel::geom_text_repel(
+    data = . %>% 
+      filter(year > 2020) %>% 
+      group_by(year) %>% 
+      filter(month == max(month)),
+    aes(label = year, x = 12.5),
+    show.legend = FALSE,
+    fontface = 'bold',
+    direction = 'y',
+    force = 5,
+    seed = 69
+  ) +
+  ggrepel::geom_text_repel(
+    data = . %>% 
+      filter(year < 2020) %>% 
+      group_by(year) %>% 
+      filter(month == max(month)),
+    aes(label = year, x = 12.5),
+    show.legend = FALSE,
+    fontface = 'bold',
+    direction = 'y',
+    force = 5,
+    color = 'grey', alpha = 0.5,
+    seed = 69
+  ) +
+  custom.theme(1.5) +
+  scale_x_continuous(n.breaks = 7) +
+  scale_y_continuous(labels = function(x) format(x, scientific = TRUE)) +
+  coord_cartesian(clip = 'off') +
+  labs(y = 'Posted job offers', x = 'Month') +
+    scale_color_manual(values = c("#e377c2", "#17becf"))
+
+```
+
+## 🧪 Example of simple animation
+
+*And the trend continues in 2023*
+
+```{r}
+#| label: greyed jobs 2023
+
+readxl::read_excel('data/series_offres_difusees.xlsx') %>%
+  select(1:4) %>%
+  magrittr::set_colnames(c('year', 'trimester', 'month', 'n')) %>%
+  mutate(date = as.Date(paste0(year, '/', month, '/', '01'))) %>%
+  ggplot(aes(month, n, group = factor(year), color = factor(year))) +
+  geom_point(
+    data = . %>% filter(year < 2021),
+    show.legend = FALSE, color = 'grey', alpha = 0.5, size = 3
+    ) +
+  geom_line(
+    data = . %>% filter(year < 2021),
+    show.legend = FALSE, color = 'grey', alpha = 0.5, linewidth = 1
+    ) +
+  geom_point(
+    data = . %>% filter(year > 2020),
+    show.legend = FALSE,
+    size = 3
+    ) +
+  geom_line(
+    data = . %>% filter(year > 2020),
+    show.legend = FALSE,
+    linewidth = 1.25
+    ) +
+  ggrepel::geom_text_repel(
+    data = . %>% 
+      filter(year > 2020) %>% 
+      group_by(year) %>% 
+      filter(month == max(month)),
+    aes(label = year, x = 12.5),
+    show.legend = FALSE,
+    fontface = 'bold',
+    direction = 'y',
+    force = 5,
+    seed = 69
+  ) +
+  ggrepel::geom_text_repel(
+    data = . %>% 
+      filter(year < 2020) %>% 
+      group_by(year) %>% 
+      filter(month == max(month)),
+    aes(label = year, x = 12.5),
+    show.legend = FALSE,
+    fontface = 'bold',
+    direction = 'y',
+    force = 5,
+    color = 'grey', alpha = 0.5,
+    seed = 69
+  ) +
+  custom.theme(1.5) +
+  scale_x_continuous(n.breaks = 7) +
+  scale_y_continuous(labels = function(x) format(x, scientific = TRUE)) +
+  coord_cartesian(clip = 'off') +
+  labs(y = 'Posted job offers', x = 'Month') +
+    scale_color_manual(values = c("#e377c2", "#17becf", "#bcbd22")) 
+
+```
+
+## More complex animations should be used online only
+
+```{r}
+#| label: gganimate
+#| include: false
+
+# source('R/animations.R')
+```
+
+![](animations/anim1.gif)
+
+## More complex animations should be used online only
+
+![](animations/anim2.gif)
+
+
+## Interactivity can be added easily with `ggplotly`
+
+```{r}
+#| label: interactivity
+#| out-height: 100%
+#| out-width: 100%
+
+(penguins %>%
+    remove_missing() %>%
+    ggplot(
+      aes(x = bill_length_mm, y = flipper_length_mm,
+          color = species, shape = sex, size = body_mass_g)
+    ) +
+    geom_point(alpha = 0.7, show.legend = FALSE) +
+    labs(x = "Bill length (mm)", 
+         y = "Flipper length (mm)",
+         title = "Penguins bill v. flipper length of <span style = 'color:#CC79A7;'>Chinstrap</span>, <span style = 'color:#009E73;'>Gentoo</span> and  <span style = 'color:#E69F00;'>Adelie</span> species",
+    ) +
+    custom.theme(1.25) +
+    scale_color_manual(values = c("#E69F00", "#CC79A7", "#009E73")) +
+    theme(plot.title = element_markdown(size = 12))) %>% 
+  ggplotly(
+    tooltip = c('color', 'size', 'shape'),
+    dynamicTicks = TRUE
+  )
+
+
+```
+
+# Principle 10:</br>Get an Opinion {background-color="#ffdae0"}
 
 Most effective visuals are the ones with which readers connect
 
