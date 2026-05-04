@@ -25,6 +25,36 @@ contributes:
     - name: search
 ---
 
+## Goals of this course
+
+Use R to create figures from raw data that:
+
+-   **convey a clear message**
+-   are produced at high throughput in a reproducible way
+-   can be easily tuned to
+-   be adapted to different media (journals, posters, presentations)
+
+## What we will cover
+
+-   R basics
+-   Building figures with `ggplot2`
+-   Going further with "add-on" packages (`patchwork`, `ggtext`, `gganimate`)
+-   10 principles of visual communication
+-   Application to concrete examples (could be yours!): 🧪
+
+## Tools and sources
+
+-   All figures made in R with ggplot with additional packages:
+    -   `tidyverse`, `patchwork`, `data.table`, `ggtext`, `scales`, `gt`, `fakir`, `charlatan`, `ggsci`, `colorblindr`, `gapminder`, `gganimate`, `palmerpenguins`, `png`, `plotly`, `ggalt`
+-   Presentation made with revealJS
+-   Biblio
+    -   Patterns (N Y). **2020.** *1*, 100141
+    -   Nature Communications. **2020**. *11*, 5444
+
+# This presentation is available on [R.largy.fr](https://r.largy.fr) {background-color="#184669"}
+
+Use Ctrl+Shift+F to search for any topic
+
 # The Grammar of Graphics {background-color="#184669"}
 
 ```{r}
@@ -3583,22 +3613,355 @@ patchwork::wrap_plots(
   patchwork::plot_layout(ncol = 1)
 ```
 
-# Data preparation with the tidyverse and data.table {background-color="#184669"}
+# Plotting with ggplot2 {background-color="#184669"}
 
-Getting your data ready for visualization
-
-## Starting dataset {.out7 auto-animate="TRUE"}
+## Data must be in long format {auto-animate="TRUE"}
 
 ```{r}
-#| label: data_preparation_1_1
+#| label: ggplot_aes_0
 #| echo: true
 #| eval: true
+#| warning: true
+#| message: true
 #| output-location: column
-#| classes: columns4060
+#| classes: columns5050
 
-df <- as.tibble(mpg)
-dt <- as.data.table(mpg)
+head(iris)
 ```
+
+## 1. Specify the dataset {auto-animate="TRUE"}
+```{r}
+#| label: ggplot_aes_1
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+ggplot(
+  data = iris
+)
+```
+
+## 2. Map variables to aesthetics {auto-animate="TRUE"}
+```{r}
+#| label: ggplot_aes_2_1
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "1-8|3-7|4-5|6|1-8"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    color = Species
+  )
+)
+```
+
+## 2. Map variables to aesthetics {auto-animate="TRUE"}
+```{r}
+#| label: ggplot_aes_2_2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "6"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    shape = Species
+  )
+)
+```
+
+## 3. Add geometries {auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_3_1
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    color = Species
+  )
+) +
+  geom_point(
+    size = 3
+  )
+```
+
+## Geometries are layered on top of each others {auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_3_2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    color = Species
+  )
+) +
+  geom_point(
+    size = 3
+  ) +
+  geom_line(
+    linewidth = 0.75
+  )
+```
+
+## Aesthetics can be mapped to different geometries {auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_3_3
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "1-17|11|15-16"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    color = Species
+  )
+) +
+  geom_point(
+    size = 2,
+    aes(shape = Species)
+  ) +
+  geom_line(
+    linewidth = 0.75,
+    inherit.aes = FALSE,
+    aes(x = Sepal.Length, y = Petal.Length)
+  )
+```
+## Aesthetics can be mapped to different geometries {auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_3_4
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "1-18|17"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    color = Species
+  )
+) +
+  geom_point(
+    size = 2,
+    aes(shape = Species)
+  ) +
+  geom_line(
+    linewidth = 0.75,
+    inherit.aes = FALSE,
+    aes(x = Sepal.Length, y = Petal.Length,
+    group = Species)
+  )
+```
+
+## It may be cleaner to specify aesthetics in geometries {auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_3_5
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "1-18|17"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    group = Species
+  )
+) +
+  geom_point(
+    size = 2,
+    aes(shape = Species, color = Species)
+  ) +
+  geom_line(
+    linewidth = 0.75
+  )
+```
+## A geometry can be a model, *e.g*., linear with `lm` {auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_3_6
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "1-19|13-18"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    group = Species
+  )
+) +
+  geom_point(
+    size = 2,
+    aes(shape = Species, color = Species)
+  ) +
+  geom_smooth(
+    method = "lm",
+    formula = y ~ x,
+    se = FALSE,
+    linewidth = 0.75
+  )
+```
+
+## Colors, shapes, sizes can be defined locally {auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_3_7
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "1-20|17-19"
+
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    group = Species
+  )
+) +
+  geom_point(
+    size = 2,
+    aes(shape = Species, color = Species)
+  ) +
+  geom_smooth(
+    method = "lm",
+    formula = y ~ x,
+    se = FALSE,
+    linewidth = 0.75,
+    color = "coral",
+    linetype = "dashed"
+  )
+```
+
+## Including uncertainty is simple {auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_3_8
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "1-20|16"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    group = Species
+  )
+) +
+  geom_point(
+    size = 2,
+    aes(shape = Species, color = Species)
+  ) +
+  geom_smooth(
+    method = "lm",
+    formula = y ~ x,
+    se = TRUE,
+    linewidth = 0.75,
+    color = "coral",
+    linetype = "dashed"
+  )
+```
+
+## Non-linear models use `nls` {auto-animate="TRUE"}
+
+xxx
+
+## Scaling aesthetics {auto-animate="TRUE"}
+
+colors (preset, manual)
+sizes
+shapes
+linetypes
+
+## Scaling axes {auto-animate="TRUE"}
+
+limits, expand
+
+## Saving plots
+
+ggsave png, pdf, dimensions, scaling, dpi
+
+## Themes {auto-animate="TRUE"}
+
+normal theme
+functional theme
 
 # Elements of visual communication {background-color="#184669"}
 
@@ -3607,36 +3970,6 @@ dt <- as.data.table(mpg)
 Many scientists not well trained in design *principles* for **effective** messaging
 
 Visuals can be improved by taking some simple steps before, during, and after their creation
-
-## Goals of this course
-
-Use R to create figures from raw data that:
-
--   **convey a clear message**
--   are produced at high throughput in a reproducible way
--   can be easily tuned to
--   be adapted to different media (journals, posters, presentations)
-
-## What we will cover
-
--   10 principles of visual communication
--   Reminders of R basics
--   Building figures with `ggplot2`
--   Going further with "add-on" packages (`patchwork`, `ggtext`, `gganimate`)
--   Application to concrete examples (could be yours!): 🧪
-
-## Tools and sources
-
--   All figures made in R with ggplot with additional packages:
-    -   `tidyverse`, `patchwork`, `data.table`, `ggtext`, `scales`, `gt`, `fakir`, `charlatan`, `ggsci`, `colorblindr`, `gapminder`, `gganimate`, `palmerpenguins`, `png`, `plotly`, `ggalt`
--   Presentation made with revealJS
--   Biblio
-    -   Patterns (N Y). **2020.** *1*, 100141
-    -   Nature Communications. **2020**. *11*, 5444
-
-# This presentation is available on [R.largy.fr](https://r.largy.fr) {background-color="#184669"}
-
-Use CTRL+Shift+F to search for any topic
 
 # 10 Principles {background-color="#ffdae0"}
 

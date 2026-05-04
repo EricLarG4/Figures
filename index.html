@@ -6,8 +6,8 @@
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-2ff81c2e5dfd9e56c4f590b9591e1eb8.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-51c09c167a706ef208dabe9d498949d7.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.36">
 
   <meta name="author" content="Eric Largy">
   <meta name="dcterms.date" content="2026-05-04">
@@ -18,6 +18,9 @@
   <link rel="stylesheet" href="index_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="index_files/libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -96,7 +99,7 @@
     code span.vs { color: #f1fa8c; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-79b0e40cc22520a641e96a892ed53df1.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-7a78b4e04a888d286f331b3a099ecfce.css">
   <link rel="stylesheet" href="theme/custom.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -246,6 +249,46 @@ Eric Largy <a href="https://orcid.org/0000-0002-6140-9788" class="quarto-title-a
 
   <p class="date">May 4, 2026</p>
 </section>
+<section id="goals-of-this-course" class="slide level2">
+<h2>Goals of this course</h2>
+<p>Use R to create figures from raw data that:</p>
+<ul>
+<li><strong>convey a clear message</strong></li>
+<li>are produced at high throughput in a reproducible way</li>
+<li>can be easily tuned to</li>
+<li>be adapted to different media (journals, posters, presentations)</li>
+</ul>
+</section>
+<section id="what-we-will-cover" class="slide level2">
+<h2>What we will cover</h2>
+<ul>
+<li>R basics</li>
+<li>Building figures with <code>ggplot2</code></li>
+<li>Going further with “add-on” packages (<code>patchwork</code>, <code>ggtext</code>, <code>gganimate</code>)</li>
+<li>10 principles of visual communication</li>
+<li>Application to concrete examples (could be yours!): 🧪</li>
+</ul>
+</section>
+<section id="tools-and-sources" class="slide level2">
+<h2>Tools and sources</h2>
+<ul>
+<li>All figures made in R with ggplot with additional packages:
+<ul>
+<li><code>tidyverse</code>, <code>patchwork</code>, <code>data.table</code>, <code>ggtext</code>, <code>scales</code>, <code>gt</code>, <code>fakir</code>, <code>charlatan</code>, <code>ggsci</code>, <code>colorblindr</code>, <code>gapminder</code>, <code>gganimate</code>, <code>palmerpenguins</code>, <code>png</code>, <code>plotly</code>, <code>ggalt</code></li>
+</ul></li>
+<li>Presentation made with revealJS</li>
+<li>Biblio
+<ul>
+<li>Patterns (N Y). <strong>2020.</strong> <em>1</em>, 100141</li>
+<li>Nature Communications. <strong>2020</strong>. <em>11</em>, 5444</li>
+</ul></li>
+</ul>
+</section>
+<section id="this-presentation-is-available-on-r.largy.fr" class="title-slide slide level1 center" data-background-color="#184669">
+<h1>This presentation is available on <a href="https://r.largy.fr">R.largy.fr</a></h1>
+<p>Use Ctrl+Shift+F to search for any topic</p>
+</section>
+
 <section>
 <section id="the-grammar-of-graphics" class="title-slide slide level1 center" data-background-color="#184669">
 <h1>The Grammar of Graphics</h1>
@@ -3444,7 +3487,7 @@ Levels: A B C D E</code></pre>
 <span id="cb338-9"><a href=""></a><span class="fu">cat</span>(<span class="st">'The current time is:'</span>, <span class="fu">format</span>(<span class="fu">Sys.time</span>(), <span class="st">"%H:%M:%S"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
-<pre><code>The current time is: 18:06:06</code></pre>
+<pre><code>The current time is: 22:49:06</code></pre>
 </div>
 </div></div>
 </div>
@@ -3791,18 +3834,331 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section></section>
 <section>
-<section id="data-preparation-with-the-tidyverse-and-data.table" class="title-slide slide level1 center" data-background-color="#184669">
-<h1>Data preparation with the tidyverse and data.table</h1>
-<p>Getting your data ready for visualization</p>
-</section>
-<section id="starting-dataset" class="slide level2 out7" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Starting dataset</h2>
-<div class="cell columns4060 columns column-output-location">
-<div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb374"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb374-1" class="hljs-ln-code"><a href=""></a>df <span class="ot">&lt;-</span> <span class="fu">as.tibble</span>(mpg)</span>
-<span id="cb374-2" class="hljs-ln-code"><a href=""></a>dt <span class="ot">&lt;-</span> <span class="fu">as.data.table</span>(mpg)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div class="column">
+<section id="plotting-with-ggplot2" class="title-slide slide level1 center" data-background-color="#184669">
+<h1>Plotting with ggplot2</h1>
 
+</section>
+<section id="data-must-be-in-long-format" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">Data must be in long format</h2>
+<div class="cell columns5050 columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb374"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb374-1" class="hljs-ln-code"><a href=""></a><span class="fu">head</span>(iris)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+1          5.1         3.5          1.4         0.2  setosa
+2          4.9         3.0          1.4         0.2  setosa
+3          4.7         3.2          1.3         0.2  setosa
+4          4.6         3.1          1.5         0.2  setosa
+5          5.0         3.6          1.4         0.2  setosa
+6          5.4         3.9          1.7         0.4  setosa</code></pre>
+</div>
+</div></div>
+</section>
+<section id="specify-the-dataset" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">1. Specify the dataset</h2>
+<div class="cell columns5050 columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb376"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb376-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
+<span id="cb376-2" class="hljs-ln-code"><a href=""></a>  <span class="at">data =</span> iris</span>
+<span id="cb376-3" class="hljs-ln-code"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/ggplot_aes_1-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="map-variables-to-aesthetics" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">2. Map variables to aesthetics</h2>
+<div class="cell columns5050 columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb377" data-code-line-numbers="1-8|3-7|4-5|6|1-8"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb377-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
+<span id="cb377-2" class="hljs-ln-code"><a href=""></a>  <span class="at">data =</span> iris,</span>
+<span id="cb377-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">aes</span>(</span>
+<span id="cb377-4" class="hljs-ln-code"><a href=""></a>    <span class="at">x =</span> Sepal.Length,</span>
+<span id="cb377-5" class="hljs-ln-code"><a href=""></a>    <span class="at">y =</span> Petal.Length,</span>
+<span id="cb377-6" class="hljs-ln-code"><a href=""></a>    <span class="at">color =</span> Species</span>
+<span id="cb377-7" class="hljs-ln-code"><a href=""></a>  )</span>
+<span id="cb377-8" class="hljs-ln-code"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/ggplot_aes_2_1-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="map-variables-to-aesthetics-1" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">2. Map variables to aesthetics</h2>
+<div class="cell columns5050 columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb378" data-code-line-numbers="6"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb378-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
+<span id="cb378-2" class="hljs-ln-code"><a href=""></a>  <span class="at">data =</span> iris,</span>
+<span id="cb378-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">aes</span>(</span>
+<span id="cb378-4" class="hljs-ln-code"><a href=""></a>    <span class="at">x =</span> Sepal.Length,</span>
+<span id="cb378-5" class="hljs-ln-code"><a href=""></a>    <span class="at">y =</span> Petal.Length,</span>
+<span id="cb378-6" class="hljs-ln-code"><a href=""></a>    <span class="at">shape =</span> Species</span>
+<span id="cb378-7" class="hljs-ln-code"><a href=""></a>  )</span>
+<span id="cb378-8" class="hljs-ln-code"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/ggplot_aes_2_2-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="add-geometries" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">3. Add geometries</h2>
+<div class="cell columns5050 columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb379"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb379-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
+<span id="cb379-2" class="hljs-ln-code"><a href=""></a>  <span class="at">data =</span> iris,</span>
+<span id="cb379-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">aes</span>(</span>
+<span id="cb379-4" class="hljs-ln-code"><a href=""></a>    <span class="at">x =</span> Sepal.Length,</span>
+<span id="cb379-5" class="hljs-ln-code"><a href=""></a>    <span class="at">y =</span> Petal.Length,</span>
+<span id="cb379-6" class="hljs-ln-code"><a href=""></a>    <span class="at">color =</span> Species</span>
+<span id="cb379-7" class="hljs-ln-code"><a href=""></a>  )</span>
+<span id="cb379-8" class="hljs-ln-code"><a href=""></a>) <span class="sc">+</span></span>
+<span id="cb379-9" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb379-10" class="hljs-ln-code"><a href=""></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb379-11" class="hljs-ln-code"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/ggplot_aes_3_1-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="geometries-are-layered-on-top-of-each-others" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">Geometries are layered on top of each others</h2>
+<div class="cell columns5050 columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb380"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb380-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
+<span id="cb380-2" class="hljs-ln-code"><a href=""></a>  <span class="at">data =</span> iris,</span>
+<span id="cb380-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">aes</span>(</span>
+<span id="cb380-4" class="hljs-ln-code"><a href=""></a>    <span class="at">x =</span> Sepal.Length,</span>
+<span id="cb380-5" class="hljs-ln-code"><a href=""></a>    <span class="at">y =</span> Petal.Length,</span>
+<span id="cb380-6" class="hljs-ln-code"><a href=""></a>    <span class="at">color =</span> Species</span>
+<span id="cb380-7" class="hljs-ln-code"><a href=""></a>  )</span>
+<span id="cb380-8" class="hljs-ln-code"><a href=""></a>) <span class="sc">+</span></span>
+<span id="cb380-9" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb380-10" class="hljs-ln-code"><a href=""></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb380-11" class="hljs-ln-code"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb380-12" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_line</span>(</span>
+<span id="cb380-13" class="hljs-ln-code"><a href=""></a>    <span class="at">linewidth =</span> <span class="fl">0.75</span></span>
+<span id="cb380-14" class="hljs-ln-code"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/ggplot_aes_3_2-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="aesthetics-can-be-mapped-to-different-geometries" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">Aesthetics can be mapped to different geometries</h2>
+<div class="cell columns5050 columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb381" data-code-line-numbers="1-17|11|15-16"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb381-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
+<span id="cb381-2" class="hljs-ln-code"><a href=""></a>  <span class="at">data =</span> iris,</span>
+<span id="cb381-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">aes</span>(</span>
+<span id="cb381-4" class="hljs-ln-code"><a href=""></a>    <span class="at">x =</span> Sepal.Length,</span>
+<span id="cb381-5" class="hljs-ln-code"><a href=""></a>    <span class="at">y =</span> Petal.Length,</span>
+<span id="cb381-6" class="hljs-ln-code"><a href=""></a>    <span class="at">color =</span> Species</span>
+<span id="cb381-7" class="hljs-ln-code"><a href=""></a>  )</span>
+<span id="cb381-8" class="hljs-ln-code"><a href=""></a>) <span class="sc">+</span></span>
+<span id="cb381-9" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb381-10" class="hljs-ln-code"><a href=""></a>    <span class="at">size =</span> <span class="dv">2</span>,</span>
+<span id="cb381-11" class="hljs-ln-code"><a href=""></a>    <span class="fu">aes</span>(<span class="at">shape =</span> Species)</span>
+<span id="cb381-12" class="hljs-ln-code"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb381-13" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_line</span>(</span>
+<span id="cb381-14" class="hljs-ln-code"><a href=""></a>    <span class="at">linewidth =</span> <span class="fl">0.75</span>,</span>
+<span id="cb381-15" class="hljs-ln-code"><a href=""></a>    <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb381-16" class="hljs-ln-code"><a href=""></a>    <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length)</span>
+<span id="cb381-17" class="hljs-ln-code"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/ggplot_aes_3_3-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="aesthetics-can-be-mapped-to-different-geometries-1" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">Aesthetics can be mapped to different geometries</h2>
+<div class="cell columns5050 columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb382" data-code-line-numbers="1-18|17"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb382-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
+<span id="cb382-2" class="hljs-ln-code"><a href=""></a>  <span class="at">data =</span> iris,</span>
+<span id="cb382-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">aes</span>(</span>
+<span id="cb382-4" class="hljs-ln-code"><a href=""></a>    <span class="at">x =</span> Sepal.Length,</span>
+<span id="cb382-5" class="hljs-ln-code"><a href=""></a>    <span class="at">y =</span> Petal.Length,</span>
+<span id="cb382-6" class="hljs-ln-code"><a href=""></a>    <span class="at">color =</span> Species</span>
+<span id="cb382-7" class="hljs-ln-code"><a href=""></a>  )</span>
+<span id="cb382-8" class="hljs-ln-code"><a href=""></a>) <span class="sc">+</span></span>
+<span id="cb382-9" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb382-10" class="hljs-ln-code"><a href=""></a>    <span class="at">size =</span> <span class="dv">2</span>,</span>
+<span id="cb382-11" class="hljs-ln-code"><a href=""></a>    <span class="fu">aes</span>(<span class="at">shape =</span> Species)</span>
+<span id="cb382-12" class="hljs-ln-code"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb382-13" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_line</span>(</span>
+<span id="cb382-14" class="hljs-ln-code"><a href=""></a>    <span class="at">linewidth =</span> <span class="fl">0.75</span>,</span>
+<span id="cb382-15" class="hljs-ln-code"><a href=""></a>    <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb382-16" class="hljs-ln-code"><a href=""></a>    <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length,</span>
+<span id="cb382-17" class="hljs-ln-code"><a href=""></a>    <span class="at">group =</span> Species)</span>
+<span id="cb382-18" class="hljs-ln-code"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/ggplot_aes_3_4-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="it-may-be-cleaner-to-specify-aesthetics-in-geometries" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">It may be cleaner to specify aesthetics in geometries</h2>
+<div class="cell columns5050 columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb383" data-code-line-numbers="1-18|17"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb383-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
+<span id="cb383-2" class="hljs-ln-code"><a href=""></a>  <span class="at">data =</span> iris,</span>
+<span id="cb383-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">aes</span>(</span>
+<span id="cb383-4" class="hljs-ln-code"><a href=""></a>    <span class="at">x =</span> Sepal.Length,</span>
+<span id="cb383-5" class="hljs-ln-code"><a href=""></a>    <span class="at">y =</span> Petal.Length,</span>
+<span id="cb383-6" class="hljs-ln-code"><a href=""></a>    <span class="at">group =</span> Species</span>
+<span id="cb383-7" class="hljs-ln-code"><a href=""></a>  )</span>
+<span id="cb383-8" class="hljs-ln-code"><a href=""></a>) <span class="sc">+</span></span>
+<span id="cb383-9" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb383-10" class="hljs-ln-code"><a href=""></a>    <span class="at">size =</span> <span class="dv">2</span>,</span>
+<span id="cb383-11" class="hljs-ln-code"><a href=""></a>    <span class="fu">aes</span>(<span class="at">shape =</span> Species, <span class="at">color =</span> Species)</span>
+<span id="cb383-12" class="hljs-ln-code"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb383-13" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_line</span>(</span>
+<span id="cb383-14" class="hljs-ln-code"><a href=""></a>    <span class="at">linewidth =</span> <span class="fl">0.75</span></span>
+<span id="cb383-15" class="hljs-ln-code"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/ggplot_aes_3_5-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="a-geometry-can-be-a-model-e.g.-linear-with-lm" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">A geometry can be a model, <em>e.g</em>., linear with <code>lm</code></h2>
+<div class="cell columns5050 columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb384" data-code-line-numbers="1-19|13-18"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb384-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
+<span id="cb384-2" class="hljs-ln-code"><a href=""></a>  <span class="at">data =</span> iris,</span>
+<span id="cb384-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">aes</span>(</span>
+<span id="cb384-4" class="hljs-ln-code"><a href=""></a>    <span class="at">x =</span> Sepal.Length,</span>
+<span id="cb384-5" class="hljs-ln-code"><a href=""></a>    <span class="at">y =</span> Petal.Length,</span>
+<span id="cb384-6" class="hljs-ln-code"><a href=""></a>    <span class="at">group =</span> Species</span>
+<span id="cb384-7" class="hljs-ln-code"><a href=""></a>  )</span>
+<span id="cb384-8" class="hljs-ln-code"><a href=""></a>) <span class="sc">+</span></span>
+<span id="cb384-9" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb384-10" class="hljs-ln-code"><a href=""></a>    <span class="at">size =</span> <span class="dv">2</span>,</span>
+<span id="cb384-11" class="hljs-ln-code"><a href=""></a>    <span class="fu">aes</span>(<span class="at">shape =</span> Species, <span class="at">color =</span> Species)</span>
+<span id="cb384-12" class="hljs-ln-code"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb384-13" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb384-14" class="hljs-ln-code"><a href=""></a>    <span class="at">method =</span> <span class="st">"lm"</span>,</span>
+<span id="cb384-15" class="hljs-ln-code"><a href=""></a>    <span class="at">formula =</span> y <span class="sc">~</span> x,</span>
+<span id="cb384-16" class="hljs-ln-code"><a href=""></a>    <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb384-17" class="hljs-ln-code"><a href=""></a>    <span class="at">linewidth =</span> <span class="fl">0.75</span></span>
+<span id="cb384-18" class="hljs-ln-code"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/ggplot_aes_3_6-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="colors-shapes-sizes-can-be-defined-locally" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">Colors, shapes, sizes can be defined locally</h2>
+<div class="cell columns5050 columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb385" data-code-line-numbers="1-20|17-19"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb385-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
+<span id="cb385-2" class="hljs-ln-code"><a href=""></a>  <span class="at">data =</span> iris,</span>
+<span id="cb385-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">aes</span>(</span>
+<span id="cb385-4" class="hljs-ln-code"><a href=""></a>    <span class="at">x =</span> Sepal.Length,</span>
+<span id="cb385-5" class="hljs-ln-code"><a href=""></a>    <span class="at">y =</span> Petal.Length,</span>
+<span id="cb385-6" class="hljs-ln-code"><a href=""></a>    <span class="at">group =</span> Species</span>
+<span id="cb385-7" class="hljs-ln-code"><a href=""></a>  )</span>
+<span id="cb385-8" class="hljs-ln-code"><a href=""></a>) <span class="sc">+</span></span>
+<span id="cb385-9" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb385-10" class="hljs-ln-code"><a href=""></a>    <span class="at">size =</span> <span class="dv">2</span>,</span>
+<span id="cb385-11" class="hljs-ln-code"><a href=""></a>    <span class="fu">aes</span>(<span class="at">shape =</span> Species, <span class="at">color =</span> Species)</span>
+<span id="cb385-12" class="hljs-ln-code"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb385-13" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb385-14" class="hljs-ln-code"><a href=""></a>    <span class="at">method =</span> <span class="st">"lm"</span>,</span>
+<span id="cb385-15" class="hljs-ln-code"><a href=""></a>    <span class="at">formula =</span> y <span class="sc">~</span> x,</span>
+<span id="cb385-16" class="hljs-ln-code"><a href=""></a>    <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb385-17" class="hljs-ln-code"><a href=""></a>    <span class="at">linewidth =</span> <span class="fl">0.75</span>,</span>
+<span id="cb385-18" class="hljs-ln-code"><a href=""></a>    <span class="at">color =</span> <span class="st">"coral"</span>,</span>
+<span id="cb385-19" class="hljs-ln-code"><a href=""></a>    <span class="at">linetype =</span> <span class="st">"dashed"</span></span>
+<span id="cb385-20" class="hljs-ln-code"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/ggplot_aes_3_7-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="including-uncertainty-is-simple" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">Including uncertainty is simple</h2>
+<div class="cell columns5050 columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb386" data-code-line-numbers="1-20|16"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb386-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
+<span id="cb386-2" class="hljs-ln-code"><a href=""></a>  <span class="at">data =</span> iris,</span>
+<span id="cb386-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">aes</span>(</span>
+<span id="cb386-4" class="hljs-ln-code"><a href=""></a>    <span class="at">x =</span> Sepal.Length,</span>
+<span id="cb386-5" class="hljs-ln-code"><a href=""></a>    <span class="at">y =</span> Petal.Length,</span>
+<span id="cb386-6" class="hljs-ln-code"><a href=""></a>    <span class="at">group =</span> Species</span>
+<span id="cb386-7" class="hljs-ln-code"><a href=""></a>  )</span>
+<span id="cb386-8" class="hljs-ln-code"><a href=""></a>) <span class="sc">+</span></span>
+<span id="cb386-9" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb386-10" class="hljs-ln-code"><a href=""></a>    <span class="at">size =</span> <span class="dv">2</span>,</span>
+<span id="cb386-11" class="hljs-ln-code"><a href=""></a>    <span class="fu">aes</span>(<span class="at">shape =</span> Species, <span class="at">color =</span> Species)</span>
+<span id="cb386-12" class="hljs-ln-code"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb386-13" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb386-14" class="hljs-ln-code"><a href=""></a>    <span class="at">method =</span> <span class="st">"lm"</span>,</span>
+<span id="cb386-15" class="hljs-ln-code"><a href=""></a>    <span class="at">formula =</span> y <span class="sc">~</span> x,</span>
+<span id="cb386-16" class="hljs-ln-code"><a href=""></a>    <span class="at">se =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb386-17" class="hljs-ln-code"><a href=""></a>    <span class="at">linewidth =</span> <span class="fl">0.75</span>,</span>
+<span id="cb386-18" class="hljs-ln-code"><a href=""></a>    <span class="at">color =</span> <span class="st">"coral"</span>,</span>
+<span id="cb386-19" class="hljs-ln-code"><a href=""></a>    <span class="at">linetype =</span> <span class="st">"dashed"</span></span>
+<span id="cb386-20" class="hljs-ln-code"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/ggplot_aes_3_8-1.png" width="960"></p>
+</figure>
+</div>
+</div>
 </div></div>
 </section></section>
 <section>
@@ -3814,47 +4170,7 @@ Levels: A B C D E</code></pre>
 <h2>Visuals are an increasingly important form of science communication</h2>
 <p>Many scientists not well trained in design <em>principles</em> for <strong>effective</strong> messaging</p>
 <p>Visuals can be improved by taking some simple steps before, during, and after their creation</p>
-</section>
-<section id="goals-of-this-course" class="slide level2">
-<h2>Goals of this course</h2>
-<p>Use R to create figures from raw data that:</p>
-<ul>
-<li><strong>convey a clear message</strong></li>
-<li>are produced at high throughput in a reproducible way</li>
-<li>can be easily tuned to</li>
-<li>be adapted to different media (journals, posters, presentations)</li>
-</ul>
-</section>
-<section id="what-we-will-cover" class="slide level2">
-<h2>What we will cover</h2>
-<ul>
-<li>10 principles of visual communication</li>
-<li>Reminders of R basics</li>
-<li>Building figures with <code>ggplot2</code></li>
-<li>Going further with “add-on” packages (<code>patchwork</code>, <code>ggtext</code>, <code>gganimate</code>)</li>
-<li>Application to concrete examples (could be yours!): 🧪</li>
-</ul>
-</section>
-<section id="tools-and-sources" class="slide level2">
-<h2>Tools and sources</h2>
-<ul>
-<li>All figures made in R with ggplot with additional packages:
-<ul>
-<li><code>tidyverse</code>, <code>patchwork</code>, <code>data.table</code>, <code>ggtext</code>, <code>scales</code>, <code>gt</code>, <code>fakir</code>, <code>charlatan</code>, <code>ggsci</code>, <code>colorblindr</code>, <code>gapminder</code>, <code>gganimate</code>, <code>palmerpenguins</code>, <code>png</code>, <code>plotly</code>, <code>ggalt</code></li>
-</ul></li>
-<li>Presentation made with revealJS</li>
-<li>Biblio
-<ul>
-<li>Patterns (N Y). <strong>2020.</strong> <em>1</em>, 100141</li>
-<li>Nature Communications. <strong>2020</strong>. <em>11</em>, 5444</li>
-</ul></li>
-</ul>
 </section></section>
-<section id="this-presentation-is-available-on-r.largy.fr" class="title-slide slide level1 center" data-background-color="#184669">
-<h1>This presentation is available on <a href="https://r.largy.fr">R.largy.fr</a></h1>
-<p>Use CTRL+Shift+F to search for any topic</p>
-</section>
-
 <section id="principles" class="title-slide slide level1 center" data-background-color="#ffdae0">
 <h1>10 Principles</h1>
 
@@ -7317,11 +7633,11 @@ Levels: A B C D E</code></pre>
 <h2>Tidyverse install verification</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb375"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb375-1"><a href=""></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"tidyverse"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb375-2"><a href=""></a>  <span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
-<span id="cb375-3"><a href=""></a>}</span>
-<span id="cb375-4"><a href=""></a></span>
-<span id="cb375-5"><a href=""></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb387"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb387-1"><a href=""></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"tidyverse"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb387-2"><a href=""></a>  <span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb387-3"><a href=""></a>}</span>
+<span id="cb387-4"><a href=""></a></span>
+<span id="cb387-5"><a href=""></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 
 </div></div>
@@ -7330,14 +7646,14 @@ Levels: A B C D E</code></pre>
 <h2>Data.table install verification</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb376"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb376-1"><a href=""></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"data.table"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb376-2"><a href=""></a>  <span class="fu">install.packages</span>(<span class="st">"data.table"</span>)</span>
-<span id="cb376-3"><a href=""></a>}</span>
-<span id="cb376-4"><a href=""></a></span>
-<span id="cb376-5"><a href=""></a><span class="fu">library</span>(data.table)</span>
-<span id="cb376-6"><a href=""></a></span>
-<span id="cb376-7"><a href=""></a><span class="co"># version check</span></span>
-<span id="cb376-8"><a href=""></a><span class="fu">packageVersion</span>(<span class="st">"data.table"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb388"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb388-1"><a href=""></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"data.table"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb388-2"><a href=""></a>  <span class="fu">install.packages</span>(<span class="st">"data.table"</span>)</span>
+<span id="cb388-3"><a href=""></a>}</span>
+<span id="cb388-4"><a href=""></a></span>
+<span id="cb388-5"><a href=""></a><span class="fu">library</span>(data.table)</span>
+<span id="cb388-6"><a href=""></a></span>
+<span id="cb388-7"><a href=""></a><span class="co"># version check</span></span>
+<span id="cb388-8"><a href=""></a><span class="fu">packageVersion</span>(<span class="st">"data.table"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] '1.17.99'</code></pre>
