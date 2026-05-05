@@ -93,7 +93,7 @@ cat(rep(unlist(strsplit(hello, " "))[[1]], 12), sep = "")
 ```{r}
 #| label: libs
 librarian::shelf(
-  tidyverse, patchwork, data.table, ggtext, scales, gt, fakir, paletteer, ggsci, clauswilke/colorblindr, gapminder, gganimate, palmerpenguins, png, plotly, charlatan, hrbrmstr/ggalt
+  tidyverse, patchwork, data.table, ggtext, ggrepel, ggthemes, scales, gt, fakir, paletteer, ggsci, clauswilke/colorblindr, gapminder, gganimate, palmerpenguins, png, plotly, charlatan, hrbrmstr/ggalt, DT, reticulate
 )
 ```
 
@@ -4620,6 +4620,41 @@ ggplot(
   )
 ```
 
+
+## Axes can be transformed with `trans` 🔬 {auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_3_10b2
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "15"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    group = Species
+  )
+) +
+  geom_point(
+    size = 2,
+    aes(shape = Species, color = Species)
+  ) +
+  scale_x_continuous(
+    limits = c(4, 6),
+    trans = "log10" #show log10-transformed data
+  ) +
+  scale_y_continuous(
+    limits = c(0, 2)
+  )
+```
+
 ## Aesthetics can be scaled with `scale_*` 🔬{auto-animate="TRUE" .code7}
 
 ```{r}
@@ -5960,10 +5995,16 @@ data.frame(x = 1:10, y = sample(1:10)) |>
 
 set.seed(42)
 
+data.frame(x = 1:10, y = sample(1:10)) |> 
+  ggplot(aes(x, y)) +
+  geom_bar(stat = "identity") +
+  coord_trans(
+    x = 'log10' #show non-transformed data
+  )
+
 ```
 
-
-## Polar coordinates, angle mapped to x {auto-animate="TRUE"}
+## Polar coordinates, *&theta;* = *x* {auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_aes_3_16a
@@ -5984,7 +6025,7 @@ data.frame(x = 1:10, y = sample(1:10)) |>
   coord_radial(expand = FALSE) #also coord_polar()
 ```
 
-## Polar coordinates, angle mapped to y {auto-animate="TRUE"}
+## Polar coordinates, *&theta;* = *y* {auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_aes_3_16b
@@ -6009,14 +6050,342 @@ data.frame(x = 1:10, y = sample(1:10)) |>
 
 https://r-charts.com/ggplot2/coordinate-systems/
 
-## Saving plots
+# 6. Themes {background-color="#ff69b4"}
+
+## Preset themes {auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_6_1a
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+
+ggplot(
+  data = diamonds,
+  aes(x = carat, y = price, color = cut)
+) +
+  geom_point(alpha = 0.25) +
+  scale_color_viridis_d() 
+```
+
+## Preset themes from `ggplot2` 🔬{auto-animate="TRUE" background-color="#002b36"}
+
+```{r}
+#| label: ggplot_aes_6_1b
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "7"
+
+ggplot(
+  data = diamonds,
+  aes(x = carat, y = price, color = cut)
+) +
+  geom_point(alpha = 0.25) +
+  scale_color_viridis_d() +
+  theme_minimal()
+```
+
+## Preset themes from `ggplot2` 🔬{auto-animate="TRUE" background-color="#002b36"}
+
+```{r}
+#| label: ggplot_aes_6_1c
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "7"
+
+ggplot(
+  data = diamonds,
+  aes(x = carat, y = price, color = cut)
+) +
+  geom_point(alpha = 0.25) +
+  scale_color_viridis_d() +
+  theme_bw()
+```
+
+## Preset themes from `ggplot2` 🔬{auto-animate="TRUE" background-color="#002b36"}
+
+```{r}
+#| label: ggplot_aes_6_1d
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "7"
+
+ggplot(
+  data = diamonds,
+  aes(x = carat, y = price, color = cut)
+) +
+  geom_point(alpha = 0.25) +
+  scale_color_viridis_d() +
+  ggthemes::theme_solarized(light = FALSE)
+```
+
+## Preset themes from other libraries 🔬{auto-animate="TRUE" background-color="#002b36"}
+
+```{r}
+#| label: ggplot_aes_6_1e
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "7"
+
+ggplot(
+  data = diamonds,
+  aes(x = carat, y = price, color = cut)
+) +
+  geom_point(alpha = 0.25) +
+  scale_color_viridis_d() +
+  ggthemes::theme_solarized(light = FALSE)
+```
+## Custom themes 🔬{auto-animate="TRUE" .code6}
+
+```{r}
+#| label: ggplot_aes_6_2a
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "13-30|15|16-20|21-23|24|25-28"
+ggplot(
+  data = diamonds,
+  aes(x = carat, y = price, color = cut)
+) +
+  geom_point(alpha = 0.25) +
+  facet_wrap(~cut) +
+  scale_color_viridis_d() +
+  labs(
+    title = "Diamond price vs. carat",
+    subtitle = "Faceted by cut",
+    caption = "Data from ggplot2::diamonds"
+  ) +
+  theme_minimal() +
+  theme(
+    panel.grid = element_blank(),
+    axis.line = element_line(linewidth = 0.5),
+    axis.ticks = element_line(linewidth = 0.5),
+    axis.text = element_text(size = 10),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    legend.title = element_text(size = 14, face = 'bold'),
+    legend.text = element_text(size = 12),
+    legend.position = "bottom",
+    strip.text = element_text(size = 12, face = 'bold'),
+    title = element_text(face = 'bold', size = 18),
+    plot.tag = element_text(face = 'bold', size = 18),
+    plot.background = element_rect(color = NA, linewidth = NULL),
+    plot.title = element_text(face = 'bold', size = 18),
+    plot.caption = element_text(face = 'italic', size = 12)
+  )
+```
+
+## Custom themes recycling for consistency 🔬{auto-animate="TRUE" .code6}
+
+```{r}
+#| label: ggplot_aes_6_2b
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "1-18|32"
+my_project_theme <- theme_minimal() +
+  theme(
+    panel.grid = element_blank(),
+    axis.line = element_line(linewidth = 0.5),
+    axis.ticks = element_line(linewidth = 0.5),
+    axis.text = element_text(size = 10),
+    axis.title.x = element_text(size = 16),
+    axis.title.y = element_text(size = 16),
+    legend.title = element_text(size = 14, face = 'bold'),
+    legend.text = element_text(size = 12),
+    legend.position = "bottom",
+    strip.text = element_text(size = 12, face = 'bold'),
+    title = element_text(face = 'bold', size = 18),
+    plot.tag = element_text(face = 'bold', size = 18),
+    plot.background = element_rect(color = NA, linewidth = NULL),
+    plot.title = element_text(face = 'bold', size = 18),
+    plot.caption = element_text(face = 'italic', size = 12)
+  )
+
+ggplot(
+  data = diamonds,
+  aes(x = carat, y = price, color = cut)
+) +
+  geom_point(alpha = 0.25) +
+  facet_wrap(~cut) +
+  scale_color_viridis_d() +
+  labs(
+    title = "Diamond price vs. carat",
+    subtitle = "Faceted by cut",
+    caption = "Data from ggplot2::diamonds"
+  ) +
+  my_project_theme
+```
+
+## Functionalize themes for fast tuning 🔬{auto-animate="TRUE" .code6}
+
+```{r}
+#| label: ggplot_aes_6_2c
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "1|5-11,13-15,17-18|12|34"
+my_project_theme <- function(scale = 1, lgd = 'bottom') {
+  theme_minimal() +
+    theme(
+      panel.grid = element_blank(),
+      axis.line = element_line(linewidth = 0.5 * scale),
+      axis.ticks = element_line(linewidth = 0.5 * scale),
+      axis.text = element_text(size = 10 * scale),
+      axis.title.x = element_text(size = 16 * scale),
+      axis.title.y = element_text(size = 16 * scale),
+      legend.title = element_text(size = 14 * scale, face = 'bold'),
+      legend.text = element_text(size = 12 * scale),
+      legend.position = lgd,
+      strip.text = element_text(size = 12 * scale, face = 'bold'),
+      title = element_text(face = 'bold', size = 18 * scale),
+      plot.tag = element_text(face = 'bold', size = 18 * scale),
+      plot.background = element_rect(color = NA, linewidth = NULL),
+      plot.title = element_text(face = 'bold', size = 18 * scale),
+    plot.caption = element_text(face = 'italic', size = 12 * scale)
+    )
+}
+
+ggplot(
+  data = diamonds,
+  aes(x = carat, y = price, color = cut)
+) +
+  geom_point(alpha = 0.25) +
+  facet_wrap(~cut) +
+  scale_color_viridis_d() +
+  labs(
+    title = "Diamond price vs. carat",
+    subtitle = "Faceted by cut",
+    caption = "Data from ggplot2::diamonds"
+  ) +
+  my_project_theme(1)
+```
+
+## Functionalize themes for fast tuning 🔬{auto-animate="TRUE" .code6}
+
+```{r}
+#| label: ggplot_aes_6_2d
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "34"
+my_project_theme <- function(scale = 1, lgd = 'bottom') {
+  theme_minimal() +
+    theme(
+      panel.grid = element_blank(),
+      axis.line = element_line(linewidth = 0.5 * scale),
+      axis.ticks = element_line(linewidth = 0.5 * scale),
+      axis.text = element_text(size = 10 * scale),
+      axis.title.x = element_text(size = 16 * scale),
+      axis.title.y = element_text(size = 16 * scale),
+      legend.title = element_text(size = 14 * scale, face = 'bold'),
+      legend.text = element_text(size = 12 * scale),
+      legend.position = lgd,
+      strip.text = element_text(size = 12 * scale, face = 'bold'),
+      title = element_text(face = 'bold', size = 18 * scale),
+      plot.tag = element_text(face = 'bold', size = 18 * scale),
+      plot.background = element_rect(color = NA, linewidth = NULL),
+      plot.title = element_text(face = 'bold', size = 18 * scale),
+    plot.caption = element_text(face = 'italic', size = 12 * scale)
+    )
+}
+
+ggplot(
+  data = diamonds,
+  aes(x = carat, y = price, color = cut)
+) +
+  geom_point(alpha = 0.25) +
+  facet_wrap(~cut) +
+  scale_color_viridis_d() +
+  labs(
+    title = "Diamond price vs. carat",
+    subtitle = "Faceted by cut",
+    caption = "Data from ggplot2::diamonds"
+  ) +
+  my_project_theme(1.2, 'top')
+```
+
+# 7. Saving and exporting {background-color="#184669"}
+
+## Saving plots {auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_7
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+
+tiny_plot <- ggplot(
+  iris,
+  aes(x = Sepal.Length, y = Petal.Length)
+) +
+  geom_point()
+
+ggsave(
+  filename = "resources/tiny_plot.png",
+  plot = tiny_plot,
+  width = 8,
+  height = 8,
+  units = "cm",
+  dpi = 300
+)
+```
 
 ggsave png, pdf, dimensions, scaling, dpi
-
-## Themes {auto-animate="TRUE"}
-
-normal theme
-functional theme
 
 # Elements of visual communication {background-color="#184669"}
 
