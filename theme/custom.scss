@@ -19,8 +19,8 @@ $font-fira:        "Fira Code", monospace;
 
 @font-face {
     font-family: 'Verlag';
-    src: url('fonts/Verlag-Bold.woff2') format('woff2'),
-             url('fonts/Verlag-Bold.woff') format('woff');
+    src: url('/theme/fonts/Verlag-Bold.woff2') format('woff2'),
+             url('/theme/fonts/Verlag-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
@@ -28,8 +28,8 @@ $font-fira:        "Fira Code", monospace;
 
 @font-face {
     font-family: 'Verlag';
-    src: url('fonts/Verlag-Black.woff2') format('woff2'),
-             url('fonts/Verlag-Black.woff') format('woff');
+    src: url('/theme/fonts/Verlag-Black.woff2') format('woff2'),
+             url('/theme/fonts/Verlag-Black.woff') format('woff');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
@@ -37,8 +37,8 @@ $font-fira:        "Fira Code", monospace;
 
 @font-face {
     font-family: 'Verlag';
-    src: url('fonts/Verlag-BlackItalic.woff2') format('woff2'),
-             url('fonts/Verlag-BlackItalic.woff') format('woff');
+    src: url('/theme/fonts/Verlag-BlackItalic.woff2') format('woff2'),
+             url('/theme/fonts/Verlag-BlackItalic.woff') format('woff');
     font-weight: 500;
     font-style: italic;
     font-display: swap;
@@ -46,8 +46,8 @@ $font-fira:        "Fira Code", monospace;
 
 @font-face {
     font-family: 'Verlag Book';
-    src: url('fonts/Verlag-Book.woff2') format('woff2'),
-             url('fonts/Verlag-Book.woff') format('woff');
+    src: url('/theme/fonts/Verlag-Book.woff2') format('woff2'),
+             url('/theme/fonts/Verlag-Book.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -55,8 +55,8 @@ $font-fira:        "Fira Code", monospace;
 
 @font-face {
     font-family: 'Verlag Compressed';
-    src: url('fonts/VerlagCompressed-Bold.woff2') format('woff2'),
-             url('fonts/VerlagCompressed-Bold.woff') format('woff');
+    src: url('/theme/fonts/VerlagCompressed-Bold.woff2') format('woff2'),
+             url('/theme/fonts/VerlagCompressed-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
@@ -64,8 +64,8 @@ $font-fira:        "Fira Code", monospace;
 
 @font-face {
     font-family: 'Verlag Condensed Book';
-    src: url('fonts/VerlagCondensed-Book.woff2') format('woff2'),
-             url('fonts/VerlagCondensed-Book.woff') format('woff');
+    src: url('/theme/fonts/VerlagCondensed-Book.woff2') format('woff2'),
+             url('/theme/fonts/VerlagCondensed-Book.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -73,8 +73,8 @@ $font-fira:        "Fira Code", monospace;
 
 @font-face {
     font-family: 'Verlag Condensed';
-    src: url('fonts/VerlagCondensed-Light.woff2') format('woff2'),
-             url('fonts/VerlagCondensed-Light.woff') format('woff');
+    src: url('/theme/fonts/VerlagCondensed-Light.woff2') format('woff2'),
+             url('/theme/fonts/VerlagCondensed-Light.woff') format('woff');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -82,8 +82,8 @@ $font-fira:        "Fira Code", monospace;
 
 @font-face {
     font-family: 'Verlag Condensed XLight';
-    src: url('fonts/VerlagCondensed-XLight.woff2') format('woff2'),
-             url('fonts/VerlagCondensed-XLight.woff') format('woff');
+    src: url('/theme/fonts/VerlagCondensed-XLight.woff2') format('woff2'),
+             url('/theme/fonts/VerlagCondensed-XLight.woff') format('woff');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -91,8 +91,8 @@ $font-fira:        "Fira Code", monospace;
 
 @font-face {
     font-family: 'Verlag';
-    src: url('fonts/Verlag-Light.woff2') format('woff2'),
-             url('fonts/Verlag-Light.woff') format('woff');
+    src: url('/theme/fonts/Verlag-Light.woff2') format('woff2'),
+             url('/theme/fonts/Verlag-Light.woff') format('woff');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -100,8 +100,8 @@ $font-fira:        "Fira Code", monospace;
 
 @font-face {
     font-family: 'Verlag';
-    src: url('fonts/Verlag-LightItalic.woff2') format('woff2'),
-             url('fonts/Verlag-LightItalic.woff') format('woff');
+    src: url('/theme/fonts/Verlag-LightItalic.woff2') format('woff2'),
+             url('/theme/fonts/Verlag-LightItalic.woff') format('woff');
     font-weight: 300;
     font-style: italic;
     font-display: swap;
@@ -109,8 +109,8 @@ $font-fira:        "Fira Code", monospace;
 
 @font-face {
     font-family: 'Verlag XLight';
-    src: url('fonts/Verlag-XLight.woff2') format('woff2'),
-             url('fonts/Verlag-XLight.woff') format('woff');
+    src: url('/theme/fonts/Verlag-XLight.woff2') format('woff2'),
+             url('/theme/fonts/Verlag-XLight.woff') format('woff');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
