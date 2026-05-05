@@ -18,7 +18,7 @@ author:
       - ARNA, INSERM U1212, CNRS UMR 5320, Université de Bordeaux
       - UFR des Sciences Pharmaceutiques, Université de Bordeaux
 date: last-modified
-css: theme/custom.css
+theme: theme/custom.scss
 cache: true
 contributes:
   revealjs-plugins:
@@ -53,7 +53,38 @@ Use R to create figures from raw data that:
 
 # This presentation is available on [R.largy.fr](https://r.largy.fr) {background-color="#184669"}
 
-Use Ctrl+Shift+F to search for any topic
+## This presentation is available on [R.largy.fr](https://r.largy.fr) {.code6}
+
+:::: columns
+::: {.column width="50%"}
+- Jump to slide:
+  - Press G, enter a number, press Enter
+- Search
+    - Ctrl+Shift+F, enter word, press Enter
+- Copy code cells 
+  - "Copy code" button top right of code cells
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| label: example_code
+#| echo: true
+
+# This is an example of a code cell 
+# that can be copied with the 
+# "Copy code" button.
+
+hello <- "👋 Welcome!
+  Today we'll turn raw data into figures 
+  so clear even Reviewer #2 might smile."
+
+cat(rep(unlist(strsplit(hello, " "))[[1]], 12), sep = "")
+
+```
+
+:::
+::::
 
 # The Grammar of Graphics {background-color="#184669"}
 
@@ -3615,6 +3646,8 @@ patchwork::wrap_plots(
 
 # Plotting with ggplot2 {background-color="#184669"}
 
+# 1. Data {background-color="#cb962a"}
+
 ## Data must be in long format {auto-animate="TRUE"}
 
 ```{r}
@@ -3629,7 +3662,7 @@ patchwork::wrap_plots(
 head(iris)
 ```
 
-## 1. Specify the dataset {auto-animate="TRUE"}
+## Specify the dataset {auto-animate="TRUE"}
 ```{r}
 #| label: ggplot_aes_1
 #| echo: true
@@ -3645,7 +3678,9 @@ ggplot(
 )
 ```
 
-## 2. Map variables to aesthetics {auto-animate="TRUE"}
+# 2. Aesthetics {background-color="#17998e"}
+
+## Map variables to aesthetics {auto-animate="TRUE"}
 ```{r}
 #| label: ggplot_aes_2_1
 #| echo: true
@@ -3667,7 +3702,7 @@ ggplot(
 )
 ```
 
-## 2. Map variables to aesthetics {auto-animate="TRUE"}
+## Map variables to aesthetics {auto-animate="TRUE"}
 ```{r}
 #| label: ggplot_aes_2_2
 #| echo: true
@@ -3689,7 +3724,9 @@ ggplot(
 )
 ```
 
-## 3. Add geometries {auto-animate="TRUE"}
+# 3. Geometries {background-color="#17998e"}
+
+## Add geometries {auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_aes_3_1
@@ -3868,6 +3905,125 @@ ggplot(
   )
 ```
 
+## A geometry can be a model, *e.g*., nonlinear with `nls` {auto-animate="TRUE" .code5}
+
+```{r}
+#| label: ggplot_aes_3_6b
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "1-28|20-25|12"
+tibble(
+  x = rep(1:100, 3),
+  var = c(rep(0.025, 100), rep(0.05, 100), rep(0.01, 100)),
+  y = exp(-var * x) + var * rnorm(300),
+  Species = rep(c("setosa", "versicolor", "virginica"), 
+  each = 100)
+) |>
+  ggplot(
+    aes(
+      x = x,
+      y = y,
+      group = Species
+    )
+  ) +
+  geom_point(
+    size = 2,
+    aes(shape = Species, color = Species)
+  ) +
+  geom_smooth(
+    method = "nls",
+    formula = y ~ exp(-a * x) + b,
+    method.args = list(
+      start = c(a = 0.01, b = 0.01),
+      control = nls.control(warnOnly = TRUE)
+    ),
+    se = FALSE,
+    linewidth = 0.75
+  )
+```
+
+## A geometry can be a model, *e.g*., nonlinear with `nls` {auto-animate="TRUE" .code5}
+
+```{r}
+#| label: ggplot_aes_3_6c
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "20"
+tibble(
+  x = rep(1:100, 3),
+  var = c(rep(0.025, 100), rep(0.05, 100), rep(0.01, 100)),
+  y = exp(-var * x) + var * rnorm(300),
+  Species = rep(c("setosa", "versicolor", "virginica"), 
+  each = 100)
+) |>
+  ggplot(
+    aes(
+      x = x,
+      y = y,
+      group = Species
+    )
+  ) +
+  geom_point(
+    size = 2,
+    aes(shape = Species, color = Species)
+  ) +
+  geom_smooth(
+    aes(color = Species),
+    method = "nls",
+    formula = y ~ exp(-a * x) + b,
+    method.args = list(
+      start = c(a = 0.01, b = 0.01),
+      control = nls.control(warnOnly = TRUE)
+    ),
+    se = FALSE,
+    linewidth = 0.75
+  )
+```
+
+## Colors, shapes, sizes can be defined locally {auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_3_7z
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    group = Species
+  )
+) +
+  geom_point(
+    size = 2,
+    aes(shape = Species, color = Species)
+  ) +
+  geom_smooth(
+    method = "lm",
+    formula = y ~ x,
+    se = FALSE,
+    linewidth = 0.75
+  )
+```
+
 ## Colors, shapes, sizes can be defined locally {auto-animate="TRUE"}
 
 ```{r}
@@ -3880,7 +4036,7 @@ ggplot(
 #| classes: columns5050
 #| fig-height: 6
 #| fig-width: 6
-#| code-line-numbers: "1-20|17-19"
+#| code-line-numbers: "17-19"
 
 ggplot(
   data = iris,
@@ -3916,7 +4072,7 @@ ggplot(
 #| classes: columns5050
 #| fig-height: 6
 #| fig-width: 6
-#| code-line-numbers: "1-20|16"
+#| code-line-numbers: "16"
 ggplot(
   data = iris,
   aes(
@@ -3939,20 +4095,1559 @@ ggplot(
   )
 ```
 
-## Non-linear models use `nls` {auto-animate="TRUE"}
+## Data can be tuned for each `geom` {auto-animate="TRUE"}
 
-xxx
+```{r}
+#| label: ggplot_aes_3_9
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "14-15"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    group = Species
+  )
+) +
+  geom_point(
+    size = 2,
+    aes(shape = Species, color = Species)
+  ) +
+  geom_smooth(
+    data = iris |>
+      filter(Species != "setosa"),
+    method = "lm",
+    formula = y ~ x,
+    se = TRUE,
+    linewidth = 0.75,
+    color = "coral",
+    linetype = "dashed"
+  )
+```
 
-## Scaling aesthetics {auto-animate="TRUE"}
+## There are many `geoms_*` to choose from {auto-animate="TRUE"}
 
-colors (preset, manual)
-sizes
-shapes
-linetypes
+```{r}
+#| label: ggplot_aes_3_9b
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "8"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    group = Species
+  )
+) +
+  geom_bar()
+```
 
-## Scaling axes {auto-animate="TRUE"}
+## There are many `geoms_*` to choose from {auto-animate="TRUE"}
 
-limits, expand
+```{r}
+#| label: ggplot_aes_3_9c
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "9"
+ggplot(
+  data = iris,
+  aes(
+    x = Species,
+    y = Sepal.Length,
+    color = Species
+  )
+) +
+  geom_boxplot()
+```
+
+## There are many `geoms_*` to choose from {auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_3_9d
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "9"
+ggplot(
+  data = iris,
+  aes(
+    x = Species,
+    y = Sepal.Length,
+    color = Species
+  )
+) +
+  geom_violin()
+```
+
+## There are many `geoms_*` to choose from {auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_3_9e
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "10"
+ggplot(
+  data = iris,
+  aes(
+    x = Species,
+    y = Sepal.Length,
+    color = Species
+  )
+) +
+  geom_violin() +
+  geom_jitter() 
+
+```
+
+## There are many `geoms_*` to choose from {auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_3_9f
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "15-19,2-7"
+ggplot(
+  data = iris |> 
+    group_by(Species) |>
+    summarise(
+      mean = mean(Sepal.Length),
+      sd = sd(Sepal.Length)
+    ),
+  aes(
+    x = Species,
+    y = mean,
+    color = Species
+  )
+) +
+  geom_point(size = 3) +
+  geom_errorbar(
+    aes(ymin = mean - sd, ymax = mean + sd),
+    width = 0.2,
+    linewidth = 1
+  )
+```
+
+## There are many `geoms_*` to choose from {auto-animate="TRUE" .code6}
+
+```{r}
+#| label: ggplot_aes_3_9g
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "14-18|19-23"
+ggplot(
+  data = iris |>
+    group_by(Species) |>
+    summarise(
+      mean = mean(Sepal.Length),
+      sd = sd(Sepal.Length)
+    ),
+  aes(
+    x = Species,
+    y = mean,
+    color = Species
+  )
+) +
+  geom_vline(
+    xintercept = 1:3,
+    linetype = "dashed",
+    linewidth = 1,
+    color = "grey50"
+  ) +
+  geom_hline(
+    yintercept = mean(iris$Sepal.Length),
+    linetype = "dotted",
+    linewidth = 1,
+    color = "goldenrod"
+  ) +
+  geom_point(size = 3)
+```
+
+## Labels can be added with `geom_text` {auto-animate="TRUE" .code6}
+
+```{r}
+#| label: ggplot_aes_3_9h
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "11-22|12-16|17-20|21"
+ggplot(
+  data = iris,
+  aes(
+    x = Species,
+    y = Sepal.Length,
+    color = Species
+  )
+) +
+  geom_violin() +
+  geom_jitter() +
+  geom_text(
+    data = iris |> 
+      group_by(Species) |>
+      summarise(
+        mean = mean(Sepal.Length)
+      ),
+    aes(
+      x = Species, y = mean, 
+      label = paste0("Mean: ", round(mean, 2))
+      ),
+    size = 5, color = "black", fontface = "bold"
+  )
+```
+
+## Labels can be added with `geom_label` {auto-animate="TRUE" .code6}
+
+```{r}
+#| label: ggplot_aes_3_9i
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "11|20,22"
+ggplot(
+  data = iris,
+  aes(
+    x = Species,
+    y = Sepal.Length,
+    color = Species
+  )
+) +
+  geom_violin() +
+  geom_jitter() +
+  geom_label(
+    data = iris |> 
+      group_by(Species) |>
+      summarise(
+        mean = mean(Sepal.Length)
+      ),
+    aes(
+      x = Species, y = mean, 
+      label = paste0("Mean: ", round(mean, 2)),
+      fill = Species
+      ),
+    size = 5, color = "white", fontface = "bold"
+  )
+```
+
+## Going further with text and labelling
+
+Strongly advised libraries to explore:
+
+- `ggtext`
+  - Rich text formatting in ggplot labels, including markdown and HTML
+- `ggrepel`
+  - Labels that repel each other to avoid overlap, improving readability
+
+## Going further with text and labelling {.code5}
+
+```{r}
+#| label: ggplot_aes_3_9j
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+ggplot(
+  data = mpg,
+  aes(
+    x = displ,
+    y = hwy,
+    color = class
+  )
+) +
+  geom_point() +
+  ggrepel::geom_label_repel(
+    aes(label = model)
+  ) +
+  labs(
+    x = '<span style="color:forestgreen;"><b>
+  Displacement (&delta;)
+  </b></span>',
+    y = '<span style="color:tomato;"><b>
+        Highway (m&nbsp;g<sup>-1</sup>)
+        </b></span>'
+  ) +
+  theme(axis.title = ggtext::element_markdown())
+```
+
+# 4.1 Scales {background-color="#a5ca0f"}
+
+Except colours
+
+## Axes can be scaled with `scale_*_continuous` {auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_3_10a
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    group = Species
+  )
+) +
+  geom_point(
+    size = 2,
+    aes(shape = Species, color = Species)
+  ) 
+```
+
+## Axes can be scaled with `scale_*_continuous` {auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_3_10b
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    group = Species
+  )
+) +
+  geom_point(
+    size = 2,
+    aes(shape = Species, color = Species)
+  ) +
+  scale_x_continuous(
+    limits = c(4, 6)
+  ) +
+  scale_y_continuous(
+    limits = c(0, 2)
+  )
+```
+
+## Scaling margin can be tuned with `expand` {auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_3_10c
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "15"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    group = Species
+  )
+) +
+  geom_point(
+    size = 2,
+    aes(shape = Species, color = Species)
+  ) +
+  scale_x_continuous(
+    limits = c(4, 6),
+    expand = c(0, 0)
+  ) +
+  scale_y_continuous(
+    limits = c(0, 2)
+  )
+```
+
+## Open-ended limits using `NA` {auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_3_10d
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "14,17"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    group = Species
+  )
+) +
+  geom_point(
+    size = 2,
+    aes(shape = Species, color = Species)
+  ) +
+  scale_x_continuous(
+    limits = c(4, NA),
+  ) +
+  scale_y_continuous(
+    limits = c(NA, 2)
+  )
+```
+
+## Axis titles can be set up with `scale_*_continuous` {auto-animate="TRUE" .code7}
+
+```{r}
+#| label: ggplot_aes_3_10e
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "14,17"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    group = Species
+  )
+) +
+  geom_point(
+    size = 2,
+    aes(shape = Species, color = Species)
+  ) +
+  scale_x_continuous(
+    name = "Sepal Length",
+  ) +
+  scale_y_continuous(
+    name = "Petal Length"
+  )
+```
+
+## All titles can be set up with `labs` {auto-animate="TRUE" .code5}
+
+```{r}
+#| label: ggplot_aes_3_10f
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "14,15|16|17-19"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    group = Species
+  )
+) +
+  geom_point(
+    size = 2,
+    aes(shape = Species, color = Species)
+  ) +
+  labs(
+    x = "Sepal Length",
+    y = "Petal Length",
+    legend = "Legend",
+    title = "Scatter plot of Sepal Length vs Petal Length",
+    subtitle = "Data from the iris dataset",
+    caption = "Source: R's built-in iris dataset"
+  )
+```
+
+## Aesthetics can be scaled with `scale_*` {auto-animate="TRUE" .code7}
+
+```{r}
+#| label: ggplot_aes_3_11a
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "6,11,12,16"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    color = Species
+  )
+) +
+  geom_point(
+    aes(
+      shape = Species,
+      size = Petal.Width
+    )
+  ) +
+  geom_smooth(
+    aes(linetype = Species),
+    method = "lm",
+    formula = y ~ x,
+    se = FALSE,
+    linewidth = 0.75
+  ) 
+```
+
+## Size can be scaled with `scale_size_*` {auto-animate="TRUE" .code6}
+
+```{r}
+#| label: ggplot_aes_3_11b
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "22-25,12"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    color = Species
+  )
+) +
+  geom_point(
+    aes(
+      shape = Species,
+      size = Petal.Width
+    )
+  ) +
+  geom_smooth(
+    aes(linetype = Species),
+    method = "lm",
+    formula = y ~ x,
+    se = FALSE,
+    linewidth = 0.75
+  ) +
+  scale_size_continuous(
+    range = c(1, 5),
+    breaks = seq(0.5, 2.5, by = 0.25)
+  ) 
+```
+
+## Shape can be scaled with `scale_shape_*` {auto-animate="TRUE" .code6}
+
+```{r}
+#| label: ggplot_aes_3_11c
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "11,22-24"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    color = Species
+  )
+) +
+  geom_point(
+    aes(
+      shape = Species,
+      size = Petal.Width
+    )
+  ) +
+  geom_smooth(
+    aes(linetype = Species),
+    method = "lm",
+    formula = y ~ x,
+    se = FALSE,
+    linewidth = 0.75
+  ) +
+  scale_shape_manual(
+    values = c(15, 16, 17)
+  ) +
+  scale_size_continuous(
+    range = c(1, 5),
+    breaks = seq(0.5, 2.5, by = 1)
+  ) 
+```
+
+## Shape can be scaled with `scale_shape_*` {auto-animate="TRUE" .code6}
+
+![](resources/shape_table.svg)
+
+## Linetype can be scaled with `scale_linetype_*` {auto-animate="TRUE" .code6}
+
+```{r}
+#| label: ggplot_aes_3_11d
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "16,22-24"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    color = Species
+  )
+) +
+  geom_point(
+    aes(
+      shape = Species,
+      size = Petal.Width
+    )
+  ) +
+  geom_smooth(
+    aes(linetype = Species),
+    method = "lm",
+    formula = y ~ x,
+    se = FALSE,
+    linewidth = 0.75
+  ) +
+  scale_linetype_manual(
+    values = c("dashed", "dotted", "solid")
+  ) +
+  scale_size_continuous(
+    range = c(1, 5),
+    breaks = seq(0.5, 2.5, by = 1)
+  )  +
+  scale_shape_manual(
+    values = c(15, 16, 17)
+  ) 
+```
+
+## Linetype can be scaled with `scale_linetype_*` {auto-animate="TRUE"}
+
+![](resources/linetype_table.svg)
+
+## Naming scales impacts the legend {auto-animate="TRUE" .code6}
+
+```{r}
+#| label: ggplot_aes_3_11e
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "23"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    color = Species
+  )
+) +
+  geom_point(
+    aes(
+      shape = Species,
+      size = Petal.Width
+    )
+  ) +
+  geom_smooth(
+    aes(linetype = Species),
+    method = "lm",
+    formula = y ~ x,
+    se = FALSE,
+    linewidth = 0.75
+  ) +
+  scale_linetype_manual(
+    name = "species",
+    values = c("dashed", "dotted", "solid")
+  ) +
+  scale_size_continuous(
+    range = c(1, 5),
+    breaks = seq(0.5, 2.5, by = 1)
+  )  +
+  scale_shape_manual(
+    values = c(15, 16, 17)
+  ) 
+```
+
+## Naming scales also possible with `guides` {auto-animate="TRUE" .code6}
+
+```{r}
+#| label: ggplot_aes_3_11f
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "22-27"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    color = Species
+  )
+) +
+  geom_point(
+    aes(
+      shape = Species,
+      size = Petal.Width
+    )
+  ) +
+  geom_smooth(
+    aes(linetype = Species),
+    method = "lm",
+    formula = y ~ x,
+    se = FALSE,
+    linewidth = 0.75
+  ) +
+  guides(
+    linetype = guide_legend(title = "species"),
+    colour = guide_legend(title = "species"),
+    shape = guide_legend(title = "species"),
+    size = guide_legend(title = "petal width")
+  ) +
+  scale_linetype_manual(
+    values = c("dashed", "dotted", "solid")
+  ) +
+  scale_size_continuous(
+    range = c(1, 5),
+    breaks = seq(0.5, 2.5, by = 1)
+  )  +
+  scale_shape_manual(
+    values = c(15, 16, 17)
+  ) 
+```
+
+## Reordering legend `guides` with `order` {auto-animate="TRUE" .code6}
+
+```{r}
+#| label: ggplot_aes_3_11f2
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "22-27"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    color = Species
+  )
+) +
+  geom_point(
+    aes(
+      shape = Species,
+      size = Petal.Width
+    )
+  ) +
+  geom_smooth(
+    aes(linetype = Species),
+    method = "lm",
+    formula = y ~ x,
+    se = FALSE,
+    linewidth = 0.75
+  ) +
+  guides(
+    linetype = guide_legend(order = 4),
+    colour = guide_legend(order = 1),
+    shape = guide_legend(order = 3),
+    size = guide_legend(order = 2)
+  ) +
+  scale_linetype_manual(
+    values = c("dashed", "dotted", "solid")
+  ) +
+  scale_size_continuous(
+    range = c(1, 5),
+    breaks = seq(0.5, 2.5, by = 1)
+  )  +
+  scale_shape_manual(
+    values = c(15, 16, 17)
+  ) 
+```
+
+## Hiding a legend with `guides` or `show.legend` {auto-animate="TRUE" .code6}
+
+```{r}
+#| label: ggplot_aes_3_11g
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "23-25|15,21"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    color = Species
+  )
+) +
+  geom_point(
+    aes(
+      shape = Species,
+      size = Petal.Width
+    )
+  ) +
+  geom_smooth(
+    aes(linetype = Species),
+    method = "lm",
+    formula = y ~ x,
+    se = FALSE,
+    linewidth = 0.75,
+    show.legend = FALSE
+  ) +
+  guides(
+    size = "none"
+  ) +
+  scale_linetype_manual(
+    values = c("dashed", "dotted", "solid")
+  ) +
+  scale_size_continuous(
+    range = c(1, 5),
+    breaks = seq(0.5, 2.5, by = 1)
+  )  +
+  scale_shape_manual(
+    values = c(15, 16, 17)
+  ) 
+
+```
+
+# 4.2 scales {background-color="#a5ca0f"}
+
+## Discrete coloring by default for categorical variables {auto-animate="TRUE" .code7}
+
+```{r}
+#| label: ggplot_aes_3_12a
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    color = Species
+  )
+) +
+  geom_point(size = 3) +
+  geom_smooth(
+    aes(linetype = Species),
+    method = "lm",
+    formula = y ~ x,
+    se = FALSE,
+    linewidth = 0.75
+  ) +
+  labs(
+    title = paste(
+      "The class of Species is",
+      class(iris$Species)
+    )
+  )
+```
+
+## Discrete coloring with `scale_color_manual` using names {auto-animate="TRUE" .code7}
+
+```{r}
+#| label: ggplot_aes_3_12b
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "17-23"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    color = Species
+  )
+) +
+  geom_point(size = 3) +
+  geom_smooth(
+    aes(linetype = Species),
+    method = "lm",
+    formula = y ~ x,
+    se = FALSE,
+    linewidth = 0.75
+  ) +
+  scale_color_manual(
+    values = c(
+      "coral", 
+      "steelblue", 
+      "seagreen"
+      )
+  ) 
+```
+
+## Discrete coloring with using hex codes {auto-animate="TRUE" .code7}
+
+```{r}
+#| label: ggplot_aes_3_12c
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "17-23"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    color = Species
+  )
+) +
+  geom_point(size = 3) +
+  geom_smooth(
+    aes(linetype = Species),
+    method = "lm",
+    formula = y ~ x,
+    se = FALSE,
+    linewidth = 0.75
+  ) +
+  scale_color_manual(
+    values = c(
+      "#ff7f0e", 
+      "#1f77b4",
+      "#2ca02c"
+      )
+  ) 
+```
+
+## Explicit mapping to values {auto-animate="TRUE" .code7}
+
+```{r}
+#| label: ggplot_aes_3_12c2
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "17-23"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    color = Species
+  )
+) +
+  geom_point(size = 3) +
+  geom_smooth(
+    aes(linetype = Species),
+    method = "lm",
+    formula = y ~ x,
+    se = FALSE,
+    linewidth = 0.75
+  ) +
+  scale_color_manual(
+    values = c(
+      "versicolor" = "#ff7f0e",
+      "setosa" = "#1f77b4",
+      "virginica" = "#2ca02c"
+    )
+  ) 
+```
+
+## Explicit mapping to values for consistency across plots {auto-animate="TRUE" .code7}
+
+```{r}
+#| label: ggplot_aes_3_12c3
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "1-5|23-25"
+color_scale <- c(
+  "versicolor" = "#ff7f0e",
+  "setosa" = "#1f77b4",
+  "virginica" = "#2ca02c"
+)
+
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    color = Species
+  )
+) +
+  geom_point(size = 3) +
+  geom_smooth(
+    aes(linetype = Species),
+    method = "lm",
+    formula = y ~ x,
+    se = FALSE,
+    linewidth = 0.75
+  ) +
+  scale_color_manual(
+    values = color_scale
+  ) 
+```
+
+## Discrete coloring with palettes {auto-animate="TRUE" .code7}
+
+```{r}
+#| label: ggplot_aes_3_12d
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "17-19"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    color = Species
+  )
+) +
+  geom_point(size = 3) +
+  geom_smooth(
+    aes(linetype = Species),
+    method = "lm",
+    formula = y ~ x,
+    se = FALSE,
+    linewidth = 0.75
+  ) +
+  scale_color_viridis_d(
+    option = "D"
+  )
+```
+
+## Discrete coloring with palettes {auto-animate="TRUE" .code7}
+
+```{r}
+#| label: ggplot_aes_3_12e
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "17-19"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    color = Species
+  )
+) +
+  geom_point(size = 3) +
+  geom_smooth(
+    aes(linetype = Species),
+    method = "lm",
+    formula = y ~ x,
+    se = FALSE,
+    linewidth = 0.75
+  ) +
+  scale_color_viridis_d(
+    option = "E"
+  )
+```
+
+## Default coloring for continuous variables {auto-animate="TRUE" .code7}
+
+```{r}
+#| label: ggplot_aes_3_12f
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "17-19"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    color = Petal.Length
+  )
+) +
+  geom_point(size = 3) 
+```
+
+## Continuous coloring with `scale_color_gradient` {auto-animate="TRUE" .code7}
+
+```{r}
+#| label: ggplot_aes_3_12f2
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "10-14"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    color = Petal.Length
+  )
+) +
+  geom_point(size = 3) +
+  scale_color_gradient(
+    name = 'Tequila sunrise',
+    low = "coral",
+    high = "palegoldenrod"
+  )
+```
+
+## Continuous coloring with `scale_color_gradientn` {auto-animate="TRUE" .code7}
+
+```{r}
+#| label: ggplot_aes_3_12g
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "10-14"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    color = Petal.Length
+  )
+) +
+  geom_point(size = 3) +
+  scale_color_gradientn(
+    name = 'Irish flag',
+    colors = c("forestgreen", "white", "orange")
+  )
+```
+
+## Continuous coloring with palettes {auto-animate="TRUE" .code7}
+
+```{r}
+#| label: ggplot_aes_3_12h
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "10-12"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    color = Petal.Length
+  )
+) +
+  geom_point(size = 3) +
+  scale_color_viridis_c(
+    option = "C"
+  )
+```
+
+## Continuous coloring with palettes {auto-animate="TRUE" .code7}
+
+```{r}
+#| label: ggplot_aes_3_12i
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "12"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    color = Petal.Length
+  )
+) +
+  geom_point(size = 3) +
+  scale_color_viridis_c(
+    option = "G",
+    breaks = seq(0, 8, by = 2)
+  )
+```
+
+## The same applies to `fill` aesthetics {auto-animate="TRUE" .code7}
+
+```{r}
+#| label: ggplot_aes_3_13a
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "11"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    color = Petal.Length
+  )
+) +
+  geom_point(
+    size = 3,
+    shape = 21
+  )
+```
+
+## The same applies to `fill` aesthetics {auto-animate="TRUE" .code7}
+
+```{r}
+#| label: ggplot_aes_3_13b
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "6,12,13"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    color = Petal.Length
+  )
+) +
+  geom_point(
+    size = 3,
+    shape = 21,
+    color = 'black',
+    stroke = 1
+  )
+```
+
+## The same applies to `fill` aesthetics {auto-animate="TRUE" .code7}
+
+```{r}
+#| label: ggplot_aes_3_13c
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "6,9-11"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    fill = Petal.Length
+  )
+) +
+  scale_fill_viridis_c(
+    option = "A",
+  ) +
+  geom_point(
+    size = 3,
+    shape = 21,
+    color = 'black',
+    stroke = 1
+  )
+```
+
+## Combining `color` and `fill` aesthetics {auto-animate="TRUE" .code5}
+
+```{r}
+#| label: ggplot_aes_3_13d
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "6,22|7,23-30"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    fill = Petal.Width,
+    color = Species
+  )
+) +
+  geom_point(
+    size = 3,
+    shape = 21,
+    color = 'black',
+    stroke = 1
+  ) +
+  geom_smooth(
+    method = "lm",
+    formula = y ~ x,
+    se = FALSE,
+    linewidth = 0.75
+  ) +
+  scale_fill_viridis_c() +
+  scale_color_manual(
+    values = c(
+      "versicolor" = "#ff7f0e",
+      "setosa" = "#1f77b4",
+      "virginica" = "#2ca02c"
+    )
+  ) +
+  labs(
+    x = "Sepal Length",
+    y = "Petal Length"
+  )
+```
+
+## Remember that `geom` elements are layered {auto-animate="TRUE" .code5}
+
+```{r}
+#| label: ggplot_aes_3_13e1
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "10-21"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    fill = Petal.Width,
+    color = Species
+  )
+) +
+  geom_point(
+    size = 3,
+    shape = 21,
+    color = 'black',
+    stroke = 1
+  ) +
+  geom_smooth(
+    method = "lm",
+    formula = y ~ x,
+    se = FALSE,
+    linewidth = 0.75
+  ) +
+  scale_fill_viridis_c() +
+  scale_color_manual(
+    values = c(
+      "versicolor" = "#ff7f0e",
+      "setosa" = "#1f77b4",
+      "virginica" = "#2ca02c"
+    )
+  ) +
+  labs(
+    x = "Sepal Length",
+    y = "Petal Length"
+  )
+```
+
+## Remember that `geom` elements are layered {auto-animate="TRUE" .code5}
+
+```{r}
+#| label: ggplot_aes_3_13e2
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "10-21"
+ggplot(
+  data = iris,
+  aes(
+    x = Sepal.Length,
+    y = Petal.Length,
+    fill = Petal.Width,
+    color = Species
+  )
+) +
+  geom_smooth(
+    method = "lm",
+    formula = y ~ x,
+    se = FALSE,
+    linewidth = 0.75
+  ) +
+  geom_point(
+    size = 3,
+    shape = 21,
+    color = 'black',
+    stroke = 1
+  ) +
+  scale_fill_viridis_c() +
+  scale_color_manual(
+    values = c(
+      "versicolor" = "#ff7f0e",
+      "setosa" = "#1f77b4",
+      "virginica" = "#2ca02c"
+    )
+  ) +
+  labs(
+    x = "Sepal Length",
+    y = "Petal Length"
+  )
+```
+
+# 5. Facets {background-color="#2934b1"}
+
+## Facets {auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_3_14
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+
+ggplot(
+  data = mpg,
+  aes(
+    x = displ,
+    y = hwy
+  )
+) +
+  geom_point()
+```
+
 
 ## Saving plots
 

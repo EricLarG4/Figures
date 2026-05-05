@@ -1,0 +1,299 @@
+/*-- scss:defaults --*/
+// ============================================================
+// Variables
+// ============================================================
+
+$color-primary:    #184669;
+$color-accent:     #42bdae;
+$color-hover:      #cccccc;
+$color-code:       #71c875;
+$color-comment:    #95a3ce;
+$color-green:      #186937;
+
+$font-verlag:      "Verlag", sans-serif;
+$font-fira:        "Fira Code", monospace;
+
+// ============================================================
+// Font faces
+// ============================================================
+
+@font-face {
+    font-family: 'Verlag';
+    src: url('fonts/Verlag-Bold.woff2') format('woff2'),
+             url('fonts/Verlag-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Verlag';
+    src: url('fonts/Verlag-Black.woff2') format('woff2'),
+             url('fonts/Verlag-Black.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Verlag';
+    src: url('fonts/Verlag-BlackItalic.woff2') format('woff2'),
+             url('fonts/Verlag-BlackItalic.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Verlag Book';
+    src: url('fonts/Verlag-Book.woff2') format('woff2'),
+             url('fonts/Verlag-Book.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Verlag Compressed';
+    src: url('fonts/VerlagCompressed-Bold.woff2') format('woff2'),
+             url('fonts/VerlagCompressed-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Verlag Condensed Book';
+    src: url('fonts/VerlagCondensed-Book.woff2') format('woff2'),
+             url('fonts/VerlagCondensed-Book.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Verlag Condensed';
+    src: url('fonts/VerlagCondensed-Light.woff2') format('woff2'),
+             url('fonts/VerlagCondensed-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Verlag Condensed XLight';
+    src: url('fonts/VerlagCondensed-XLight.woff2') format('woff2'),
+             url('fonts/VerlagCondensed-XLight.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Verlag';
+    src: url('fonts/Verlag-Light.woff2') format('woff2'),
+             url('fonts/Verlag-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Verlag';
+    src: url('fonts/Verlag-LightItalic.woff2') format('woff2'),
+             url('fonts/Verlag-LightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Verlag XLight';
+    src: url('fonts/Verlag-XLight.woff2') format('woff2'),
+             url('fonts/Verlag-XLight.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+// ============================================================
+// Google Fonts
+// ============================================================
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+
+// ============================================================
+// Callouts
+// ============================================================
+
+.callout-content {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 1.1em !important;
+    font: inherit;
+    vertical-align: middle;
+    font-family: $font-verlag;
+}
+
+div.callout-title {
+    font-size: 1.2em !important;
+    font-family: $font-verlag;
+}
+
+/*-- scss:uses --*/
+/*-- scss:mixins --*/
+/*-- scss:functions --*/
+/*-- scss:rules --*/
+// ============================================================
+// Reveal.js
+// ============================================================
+
+.reveal {
+    font-family: $font-verlag;
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: $font-verlag;
+    }
+
+    h2 {
+        font-weight: normal !important;
+        font-size: 1.4em;
+        color: $color-primary !important;
+    }
+
+    p, li, blockquote, a {
+        font-family: $font-verlag;
+    }
+
+    ul li::marker {
+        color: $color-primary;
+    }
+
+    a {
+        color: $color-accent !important;
+        font-weight: 300 !important;
+        text-decoration: underline !important;
+
+        &:hover {
+            color: $color-hover !important;
+        }
+    }
+
+    code {
+        font-family: $font-verlag;
+        color: $color-code;
+    }
+
+    .footnote,
+    .footnotes,
+    .footnote-ref {
+        font-family: $font-verlag;
+    }
+
+    pre code,
+    .sourceCode,
+    .sourceCode pre,
+    .sourceCode code {
+        font-family: $font-fira !important;
+        border: 0px solid $color-primary;
+        border-radius: 0px;
+        font-size: 0.8em !important;
+    }
+}
+
+// ============================================================
+// Code blocks
+// ============================================================
+
+pre code {
+    font-family: $font-fira !important;
+    font-size: 0.85em !important;
+}
+
+.sourceCode.cell-code {
+    margin-bottom: 0.5em !important;
+}
+
+// Code size utility classes
+$code-sizes: (5: 0.5em, 6: 0.6em, 7: 0.7em, 8: 0.8em);
+
+@each $n, $size in $code-sizes {
+    .code#{$n} code.sourceCode {
+        font-size: $size !important;
+    }
+
+    .out#{$n} .cell-output {
+        font-size: $size !important;
+    }
+}
+
+// Comment color in code cells
+.co {
+    color: $color-comment !important;
+    font-style: italic !important;
+}
+
+// ============================================================
+// DataTables
+// ============================================================
+
+.dataTables_wrapper {
+    margin: 0 !important;
+
+    table.dataTable {
+        width: 100% !important;
+        margin: 0 !important;
+    }
+
+    .dataTables_filter {
+        font-size: 0.6em !important;
+
+        input {
+            font-size: 0.6em !important;
+            padding: 0.3em !important;
+            height: 2em !important;
+            width: 100px !important;
+        }
+    }
+
+    .dataTables_length {
+        font-size: 0.6em !important;
+        padding: 0.2em !important;
+        height: 2em !important;
+
+        select {
+            font-size: 0.8em !important;
+            padding: 0.2em !important;
+            height: 2em !important;
+        }
+    }
+
+    .dataTables_info {
+        font-size: 0.6em !important;
+        margin-top: 0.3em !important;
+    }
+
+    .dataTables_paginate .paginate_button {
+        font-size: 0.5em !important;
+        padding: 0.1em 0.5em !important;
+        margin: 0 !important;
+    }
+
+    table.dataTable {
+        thead th,
+        tbody td {
+            padding: 0.3em !important;
+            font-size: 0.7em !important;
+        }
+    }
+}
+
+// ============================================================
+// Section colors
+// ============================================================
+
+.green-section h2 {
+    color: $color-green;
+}
