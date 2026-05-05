@@ -40,7 +40,7 @@ Use R to create figures from raw data that:
 -   Building figures with `ggplot2`
 -   Going further with "add-on" packages (`patchwork`, `ggtext`, `gganimate`)
 -   10 principles of visual communication
--   Application to concrete examples (could be yours!): 🧪
+-   Application to concrete examples (could be yours!)
 
 ## Tools and sources
 
@@ -63,6 +63,8 @@ Use R to create figures from raw data that:
     - Ctrl+Shift+F, enter word, press Enter
 - Copy code cells 
   - "Copy code" button top right of code cells
+- Code under the microscope: 🔬
+- Test it by yourself: 🧪
 :::
 
 :::{.column width="50%"}
@@ -798,7 +800,7 @@ a_list <- list(
 a_list
 ```
 
-## Accessing list elements by name with `$` {auto-animate="TRUE"}
+## Accessing list elements by name with `$` 🔬 {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_var_5
@@ -834,7 +836,7 @@ a_list$mixed_vector
 ```
 :::
 
-## Accessing nested list elements by name with `$` {auto-animate="TRUE"}
+## Accessing nested list elements by name with `$` 🔬 {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_var_6
@@ -1417,7 +1419,7 @@ cat(
 )
 ```
 
-## Other mathematical transformations {auto-animate="TRUE"}
+## Other mathematical transformations 🔬{auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_6_1
@@ -2529,8 +2531,7 @@ wide_tb |>
   geom_smooth(method = "lm", se = FALSE)
 ```
 
-## The `data.table` alternative for large dataset
-and concise syntax {auto-animate="TRUE"}
+## The `data.table` alternative for large dataset</br>and concise syntax {auto-animate="TRUE"}
 
 Think in terms of basic units: [**rows**]{.fg style="--col: #184669"}, [**columns**]{.fg style="--col: #0c9b1f"}, and [**groups**]{.fg style="--col: #cc7504"}.
 
@@ -2542,8 +2543,7 @@ Think in terms of basic units: [**rows**]{.fg style="--col: #184669"}, [**column
 
 `data.table` is optimized for speed and memory, ideal for large datasets
 
-## The `data.table` alternative for large dataset
-and concise syntax {auto-animate="TRUE"}
+## The `data.table` alternative for large dataset</br>and concise syntax {auto-animate="TRUE" .code6}
 
 ```{r}
 #| label: base_r_var_15
@@ -2724,7 +2724,7 @@ as.data.table(c_tb)[,
 ]
 ```
 
-## Summarizing by groups in a single step {auto-animate="TRUE" .code7}
+## Summarizing by groups in a single step 🔬 {auto-animate="TRUE" .code7}
 ```{r}
 #| label: base_r_var_16_0
 #| echo: true
@@ -3680,7 +3680,7 @@ ggplot(
 
 # 2. Aesthetics {background-color="#17998e"}
 
-## Map variables to aesthetics {auto-animate="TRUE"}
+## Map variables to aesthetics 🔬{auto-animate="TRUE"}
 ```{r}
 #| label: ggplot_aes_2_1
 #| echo: true
@@ -3702,7 +3702,7 @@ ggplot(
 )
 ```
 
-## Map variables to aesthetics {auto-animate="TRUE"}
+## Map variables to aesthetics 🔬{auto-animate="TRUE"}
 ```{r}
 #| label: ggplot_aes_2_2
 #| echo: true
@@ -3779,7 +3779,7 @@ ggplot(
   )
 ```
 
-## Aesthetics can be mapped to different geometries {auto-animate="TRUE"}
+## Aesthetics can be mapped to different geometries 🔬{auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_aes_3_3
@@ -3810,7 +3810,7 @@ ggplot(
     aes(x = Sepal.Length, y = Petal.Length)
   )
 ```
-## Aesthetics can be mapped to different geometries {auto-animate="TRUE"}
+## Aesthetics can be mapped to different geometries 🔬{auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_aes_3_4
@@ -3843,7 +3843,7 @@ ggplot(
   )
 ```
 
-## It may be cleaner to specify aesthetics in geometries {auto-animate="TRUE"}
+## It may be cleaner to specify aesthetics in geometries 🔬{auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_aes_3_5
@@ -3872,7 +3872,7 @@ ggplot(
     linewidth = 0.75
   )
 ```
-## A geometry can be a model, *e.g*., linear with `lm` {auto-animate="TRUE"}
+## A geometry can be a model, *e.g*., linear with `lm` 🔬{auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_aes_3_6
@@ -3905,7 +3905,7 @@ ggplot(
   )
 ```
 
-## A geometry can be a model, *e.g*., nonlinear with `nls` {auto-animate="TRUE" .code5}
+## A geometry can be a model, *e.g*., nonlinear with `nls` 🔬{auto-animate="TRUE" .code5}
 
 ```{r}
 #| label: ggplot_aes_3_6b
@@ -3948,7 +3948,7 @@ tibble(
   )
 ```
 
-## A geometry can be a model, *e.g*., nonlinear with `nls` {auto-animate="TRUE" .code5}
+## A geometry can be a model, *e.g*., nonlinear with `nls` 🔬{auto-animate="TRUE" .code5}
 
 ```{r}
 #| label: ggplot_aes_3_6c
@@ -4024,7 +4024,7 @@ ggplot(
   )
 ```
 
-## Colors, shapes, sizes can be defined locally {auto-animate="TRUE"}
+## Colors, shapes, sizes can be defined locally 🔬{auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_aes_3_7
@@ -4060,7 +4060,7 @@ ggplot(
   )
 ```
 
-## Including uncertainty is simple {auto-animate="TRUE"}
+## Including uncertainty is simple 🔬{auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_aes_3_8
@@ -4095,7 +4095,7 @@ ggplot(
   )
 ```
 
-## Data can be tuned for each `geom` {auto-animate="TRUE"}
+## Data can be tuned for each `geom` 🔬{auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_aes_3_9
@@ -4132,7 +4132,7 @@ ggplot(
   )
 ```
 
-## There are many `geoms_*` to choose from {auto-animate="TRUE"}
+## There are many `geoms_*` to choose from 🔬{auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_aes_3_9b
@@ -4155,7 +4155,7 @@ ggplot(
   geom_bar()
 ```
 
-## There are many `geoms_*` to choose from {auto-animate="TRUE"}
+## There are many `geoms_*` to choose from 🔬{auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_aes_3_9c
@@ -4179,7 +4179,7 @@ ggplot(
   geom_boxplot()
 ```
 
-## There are many `geoms_*` to choose from {auto-animate="TRUE"}
+## There are many `geoms_*` to choose from 🔬{auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_aes_3_9d
@@ -4203,7 +4203,7 @@ ggplot(
   geom_violin()
 ```
 
-## There are many `geoms_*` to choose from {auto-animate="TRUE"}
+## There are many `geoms_*` to choose from 🔬{auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_aes_3_9e
@@ -4229,7 +4229,7 @@ ggplot(
 
 ```
 
-## There are many `geoms_*` to choose from {auto-animate="TRUE"}
+## There are many `geoms_*` to choose from 🔬{auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_aes_3_9f
@@ -4263,7 +4263,7 @@ ggplot(
   )
 ```
 
-## There are many `geoms_*` to choose from {auto-animate="TRUE" .code6}
+## There are many `geoms_*` to choose from 🔬{auto-animate="TRUE" .code6}
 
 ```{r}
 #| label: ggplot_aes_3_9g
@@ -4304,7 +4304,7 @@ ggplot(
   geom_point(size = 3)
 ```
 
-## Labels can be added with `geom_text` {auto-animate="TRUE" .code6}
+## Labels can be added with `geom_text` 🔬{auto-animate="TRUE" .code6}
 
 ```{r}
 #| label: ggplot_aes_3_9h
@@ -4341,7 +4341,7 @@ ggplot(
   )
 ```
 
-## Labels can be added with `geom_label` {auto-animate="TRUE" .code6}
+## Labels can be added with `geom_label` 🔬{auto-animate="TRUE" .code6}
 
 ```{r}
 #| label: ggplot_aes_3_9i
@@ -4485,7 +4485,7 @@ ggplot(
   )
 ```
 
-## Scaling margin can be tuned with `expand` {auto-animate="TRUE"}
+## Scaling margin can be tuned with `expand` 🔬{auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_aes_3_10c
@@ -4519,7 +4519,7 @@ ggplot(
   )
 ```
 
-## Open-ended limits using `NA` {auto-animate="TRUE"}
+## Open-ended limits using `NA` 🔬{auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_aes_3_10d
@@ -4552,7 +4552,7 @@ ggplot(
   )
 ```
 
-## Axis titles can be set up with `scale_*_continuous` {auto-animate="TRUE" .code7}
+## Axis titles can be set up with `scale_*_continuous` 🔬{auto-animate="TRUE" .code7}
 
 ```{r}
 #| label: ggplot_aes_3_10e
@@ -4585,7 +4585,7 @@ ggplot(
   )
 ```
 
-## All titles can be set up with `labs` {auto-animate="TRUE" .code5}
+## All titles can be set up with `labs` 🔬{auto-animate="TRUE" .code5}
 
 ```{r}
 #| label: ggplot_aes_3_10f
@@ -4620,7 +4620,7 @@ ggplot(
   )
 ```
 
-## Aesthetics can be scaled with `scale_*` {auto-animate="TRUE" .code7}
+## Aesthetics can be scaled with `scale_*` 🔬{auto-animate="TRUE" .code7}
 
 ```{r}
 #| label: ggplot_aes_3_11a
@@ -4656,7 +4656,7 @@ ggplot(
   ) 
 ```
 
-## Size can be scaled with `scale_size_*` {auto-animate="TRUE" .code6}
+## Size can be scaled with `scale_size_*` 🔬{auto-animate="TRUE" .code6}
 
 ```{r}
 #| label: ggplot_aes_3_11b
@@ -4696,7 +4696,7 @@ ggplot(
   ) 
 ```
 
-## Shape can be scaled with `scale_shape_*` {auto-animate="TRUE" .code6}
+## Shape can be scaled with `scale_shape_*` 🔬{auto-animate="TRUE" .code6}
 
 ```{r}
 #| label: ggplot_aes_3_11c
@@ -4743,7 +4743,7 @@ ggplot(
 
 ![](resources/shape_table.svg)
 
-## Linetype can be scaled with `scale_linetype_*` {auto-animate="TRUE" .code6}
+## Linetype can be scaled with `scale_linetype_*` 🔬{auto-animate="TRUE" .code6}
 
 ```{r}
 #| label: ggplot_aes_3_11d
@@ -4793,7 +4793,7 @@ ggplot(
 
 ![](resources/linetype_table.svg)
 
-## Naming scales impacts the legend {auto-animate="TRUE" .code6}
+## Naming scales impacts the legend 🔬{auto-animate="TRUE" .code6}
 
 ```{r}
 #| label: ggplot_aes_3_11e
@@ -4840,7 +4840,7 @@ ggplot(
   ) 
 ```
 
-## Naming scales also possible with `guides` {auto-animate="TRUE" .code6}
+## Naming scales also possible with `guides` 🔬{auto-animate="TRUE" .code6}
 
 ```{r}
 #| label: ggplot_aes_3_11f
@@ -4892,7 +4892,7 @@ ggplot(
   ) 
 ```
 
-## Reordering legend `guides` with `order` {auto-animate="TRUE" .code6}
+## Reordering legend `guides` with `order` 🔬{auto-animate="TRUE" .code6}
 
 ```{r}
 #| label: ggplot_aes_3_11f2
@@ -4944,7 +4944,7 @@ ggplot(
   ) 
 ```
 
-## Hiding a legend with `guides` or `show.legend` {auto-animate="TRUE" .code6}
+## Hiding a legend with `guides` or `show.legend` 🔬{auto-animate="TRUE" .code6}
 
 ```{r}
 #| label: ggplot_aes_3_11g
@@ -5033,7 +5033,7 @@ ggplot(
   )
 ```
 
-## Discrete coloring with `scale_color_manual` using names {auto-animate="TRUE" .code7}
+## Discrete coloring with `scale_color_manual` using names 🔬{auto-animate="TRUE" .code7}
 
 ```{r}
 #| label: ggplot_aes_3_12b
@@ -5071,7 +5071,7 @@ ggplot(
   ) 
 ```
 
-## Discrete coloring with using hex codes {auto-animate="TRUE" .code7}
+## Discrete coloring with using hex codes 🔬{auto-animate="TRUE" .code7}
 
 ```{r}
 #| label: ggplot_aes_3_12c
@@ -5109,7 +5109,7 @@ ggplot(
   ) 
 ```
 
-## Explicit mapping to values {auto-animate="TRUE" .code7}
+## Explicit mapping to values 🔬{auto-animate="TRUE" .code7}
 
 ```{r}
 #| label: ggplot_aes_3_12c2
@@ -5147,7 +5147,7 @@ ggplot(
   ) 
 ```
 
-## Explicit mapping to values for consistency across plots {auto-animate="TRUE" .code7}
+## Explicit mapping to values for consistency across plots 🔬{auto-animate="TRUE" .code7}
 
 ```{r}
 #| label: ggplot_aes_3_12c3
@@ -5187,7 +5187,7 @@ ggplot(
   ) 
 ```
 
-## Discrete coloring with palettes {auto-animate="TRUE" .code7}
+## Discrete coloring with palettes 🔬{auto-animate="TRUE" .code7}
 
 ```{r}
 #| label: ggplot_aes_3_12d
@@ -5221,7 +5221,7 @@ ggplot(
   )
 ```
 
-## Discrete coloring with palettes {auto-animate="TRUE" .code7}
+## Discrete coloring with palettes 🔬{auto-animate="TRUE" .code7}
 
 ```{r}
 #| label: ggplot_aes_3_12e
@@ -5255,7 +5255,7 @@ ggplot(
   )
 ```
 
-## Default coloring for continuous variables {auto-animate="TRUE" .code7}
+## Default coloring for continuous variables 🔬{auto-animate="TRUE" .code7}
 
 ```{r}
 #| label: ggplot_aes_3_12f
@@ -5279,7 +5279,7 @@ ggplot(
   geom_point(size = 3) 
 ```
 
-## Continuous coloring with `scale_color_gradient` {auto-animate="TRUE" .code7}
+## Continuous coloring with `scale_color_gradient` 🔬{auto-animate="TRUE" .code7}
 
 ```{r}
 #| label: ggplot_aes_3_12f2
@@ -5308,7 +5308,7 @@ ggplot(
   )
 ```
 
-## Continuous coloring with `scale_color_gradientn` {auto-animate="TRUE" .code7}
+## Continuous coloring with `scale_color_gradientn` 🔬{auto-animate="TRUE" .code7}
 
 ```{r}
 #| label: ggplot_aes_3_12g
@@ -5336,7 +5336,7 @@ ggplot(
   )
 ```
 
-## Continuous coloring with palettes {auto-animate="TRUE" .code7}
+## Continuous coloring with palettes 🔬{auto-animate="TRUE" .code7}
 
 ```{r}
 #| label: ggplot_aes_3_12h
@@ -5363,7 +5363,7 @@ ggplot(
   )
 ```
 
-## Continuous coloring with palettes {auto-animate="TRUE" .code7}
+## Continuous coloring with palettes 🔬{auto-animate="TRUE" .code7}
 
 ```{r}
 #| label: ggplot_aes_3_12i
@@ -5391,7 +5391,7 @@ ggplot(
   )
 ```
 
-## The same applies to `fill` aesthetics {auto-animate="TRUE" .code7}
+## The same applies to `fill` aesthetics 🔬{auto-animate="TRUE" .code7}
 
 ```{r}
 #| label: ggplot_aes_3_13a
@@ -5418,7 +5418,7 @@ ggplot(
   )
 ```
 
-## The same applies to `fill` aesthetics {auto-animate="TRUE" .code7}
+## The same applies to `fill` aesthetics 🔬{auto-animate="TRUE" .code7}
 
 ```{r}
 #| label: ggplot_aes_3_13b
@@ -5447,7 +5447,7 @@ ggplot(
   )
 ```
 
-## The same applies to `fill` aesthetics {auto-animate="TRUE" .code7}
+## The same applies to `fill` aesthetics 🔬{auto-animate="TRUE" .code7}
 
 ```{r}
 #| label: ggplot_aes_3_13c
@@ -5479,7 +5479,7 @@ ggplot(
   )
 ```
 
-## Combining `color` and `fill` aesthetics {auto-animate="TRUE" .code5}
+## Combining `color` and `fill` aesthetics 🔬{auto-animate="TRUE" .code5}
 
 ```{r}
 #| label: ggplot_aes_3_13d
@@ -5527,7 +5527,7 @@ ggplot(
   )
 ```
 
-## Remember that `geom` elements are layered {auto-animate="TRUE" .code5}
+## Remember that `geom` elements are layered 🔬{auto-animate="TRUE" .code5}
 
 ```{r}
 #| label: ggplot_aes_3_13e1
@@ -5575,7 +5575,7 @@ ggplot(
   )
 ```
 
-## Remember that `geom` elements are layered {auto-animate="TRUE" .code5}
+## Remember that `geom` elements are layered 🔬{auto-animate="TRUE" .code5}
 
 ```{r}
 #| label: ggplot_aes_3_13e2
@@ -5625,10 +5625,278 @@ ggplot(
 
 # 5. Facets {background-color="#2934b1"}
 
-## Facets {auto-animate="TRUE"}
+## Split figures into panels with `facet_wrap()` {auto-animate="TRUE" .out7}
 
 ```{r}
-#| label: ggplot_aes_3_14
+#| label: ggplot_aes_3_14a2
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns4060
+
+str(mpg)
+```
+
+::: fragment
+```{r}
+#| label: ggplot_aes_3_14a
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns4060
+#| fig-height: 4
+#| fig-width: 6
+ggplot(
+  data = mpg,
+  aes(
+    x = displ,
+    y = hwy,
+    color = class
+  )
+) +
+  geom_point()
+```
+
+:::
+
+## Split figures into panels with `facet_wrap()` {auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_3_14b
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns4060
+#| fig-height: 6
+#| fig-width: 7
+ggplot(
+  data = mpg,
+  aes(
+    x = displ,
+    y = hwy,
+    color = class
+  )
+) +
+  geom_point() +
+  facet_wrap(~class)
+```
+
+## Arrange panels by `ncol` 🔬{auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_3_14c
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns4060
+#| fig-height: 6
+#| fig-width: 7
+#| code-line-numbers: "12"
+ggplot(
+  data = mpg,
+  aes(
+    x = displ,
+    y = hwy,
+    color = class
+  )
+) +
+  geom_point() +
+  facet_wrap(
+    ~class,
+    ncol = 4
+  )
+```
+
+## Arrange panels by `nrow` 🔬{auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_3_14c2
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns4060
+#| fig-height: 6
+#| fig-width: 7
+#| code-line-numbers: "12"
+ggplot(
+  data = mpg,
+  aes(
+    x = displ,
+    y = hwy,
+    color = class
+  )
+) +
+  geom_point() +
+  facet_wrap(
+    ~class,
+    nrow = 3
+  )
+```
+
+## Free scales with `scales = "free_*"` (dangerous) 🔬{auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_3_14d
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns4060
+#| fig-height: 6
+#| fig-width: 7
+#| code-line-numbers: "13"
+ggplot(
+  data = mpg,
+  aes(
+    x = displ,
+    y = hwy,
+    color = class
+  )
+) +
+  geom_point() +
+  facet_wrap(
+    ~class,
+    nrow = 3,
+    scales = "free"
+  )
+```
+
+## Free scales with `scales = "free_*"` (dangerous) 🔬{auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_3_14e
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns4060
+#| fig-height: 6
+#| fig-width: 7
+#| code-line-numbers: "13"
+ggplot(
+  data = mpg,
+  aes(
+    x = displ,
+    y = hwy,
+    color = class
+  )
+) +
+  geom_point() +
+  facet_wrap(
+    ~class,
+    nrow = 3,
+    scales = "free_x"
+  )
+```
+
+## Make a grid of panels along 2 variableswith `facet_grid()` {auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_3_14f
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns4060
+#| fig-height: 6
+#| fig-width: 7
+#| code-line-numbers: "10-12"
+ggplot(
+  data = mpg,
+  aes(
+    x = displ,
+    y = hwy,
+    color = class
+  )
+) +
+  geom_point() +
+  facet_grid(
+    class ~ cyl
+  )
+```
+
+## Make a grid of panels along 2 variableswith `facet_grid()` {auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_3_14g
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns4060
+#| fig-height: 6
+#| fig-width: 7
+#| code-line-numbers: "10-12"
+ggplot(
+  data = mpg,
+  aes(
+    x = displ,
+    y = hwy,
+    color = class
+  )
+) +
+  geom_point() +
+  facet_grid(
+    cyl ~ class
+  )
+```
+
+## Leverage what we've seen so far 🔬{auto-animate="TRUE" .code6}
+
+```{r}
+#| label: ggplot_aes_3_14h
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns4060
+#| fig-height: 6
+#| fig-width: 7
+#| code-line-numbers: "11|6,13|14-17|18-21"
+ggplot(
+  data = mpg,
+  aes(
+    x = displ,
+    y = hwy,
+    color = hwy
+  )
+) +
+  geom_point() +
+  facet_grid(
+    paste(cyl, "cylinders") ~ class
+  ) +
+  scale_color_viridis_c("mpg") +
+  scale_x_continuous(
+    name = "Engine displacement (L)",
+    breaks = seq(0, 7, by = 2),
+  ) +
+  scale_y_continuous(
+    name = "Highway miles per gallon",
+    breaks = seq(0, 50, by = 10),
+  )
+```
+
+# 6. Coordinates {background-color="#c83c19"}
+
+## Cartesian coordinates {auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_3_15a
 #| echo: true
 #| eval: true
 #| warning: false
@@ -5638,16 +5906,108 @@ ggplot(
 #| fig-height: 6
 #| fig-width: 6
 
-ggplot(
-  data = mpg,
-  aes(
-    x = displ,
-    y = hwy
+set.seed(42)
+
+data.frame(x = 1:10, y = sample(1:10)) |> 
+  ggplot(aes(x, y)) +
+  geom_bar(stat = "identity") +
+  coord_cartesian(
+    xlim = c(2, 8), 
+    ylim = c(0, NA),
+  expand = FALSE
   )
-) +
-  geom_point()
+
 ```
 
+## Flipped cartesian coordinates {auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_3_15b
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+
+set.seed(42)
+
+data.frame(x = 1:10, y = sample(1:10)) |> 
+  ggplot(aes(x, y)) +
+  geom_bar(stat = "identity") +
+  coord_flip(
+    xlim = c(2, 8), 
+    ylim = c(0, NA),
+  expand = FALSE
+  )
+
+```
+
+## Log cartesian coordinates {auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_3_15c
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+
+set.seed(42)
+
+```
+
+
+## Polar coordinates, angle mapped to x {auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_3_16a
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+
+set.seed(42)
+
+data.frame(x = 1:10, y = sample(1:10)) |> 
+  ggplot(aes(x, y)) +
+  geom_bar(stat = "identity") +
+  coord_radial(expand = FALSE) #also coord_polar()
+```
+
+## Polar coordinates, angle mapped to y {auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_3_16b
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+
+set.seed(42)
+
+data.frame(x = 1:10, y = sample(1:10)) |> 
+  ggplot(aes(x, y)) +
+  geom_bar(stat = "identity") +
+  coord_radial(theta = "y") #also coord_polar()
+```
+
+## Map projections {auto-animate="TRUE"}
+
+https://r-charts.com/ggplot2/coordinate-systems/
 
 ## Saving plots
 

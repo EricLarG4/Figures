@@ -96,7 +96,7 @@
     code span.vs { color: #f1fa8c; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-843695ec0f72492f97259ce68218bc3b.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-998312d88cad99482888e8e153cfbc32.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -262,7 +262,7 @@ Eric Largy <a href="https://orcid.org/0000-0002-6140-9788" class="quarto-title-a
 <li>Building figures with <code>ggplot2</code></li>
 <li>Going further with “add-on” packages (<code>patchwork</code>, <code>ggtext</code>, <code>gganimate</code>)</li>
 <li>10 principles of visual communication</li>
-<li>Application to concrete examples (could be yours!): 🧪</li>
+<li>Application to concrete examples (could be yours!)</li>
 </ul>
 </section>
 <section id="tools-and-sources" class="slide level2">
@@ -302,6 +302,8 @@ Eric Largy <a href="https://orcid.org/0000-0002-6140-9788" class="quarto-title-a
 <ul>
 <li>“Copy code” button top right of code cells</li>
 </ul></li>
+<li>Code under the microscope: 🔬</li>
+<li>Test it by yourself: 🧪</li>
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="cell">
@@ -1005,7 +1007,7 @@ $nested_list$mixed_vector
 </div></div>
 </section>
 <section id="accessing-list-elements-by-name-with" class="slide level2" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Accessing list elements by name with <code>$</code></h2>
+<h2 data-id="quarto-animate-title">Accessing list elements by name with <code>$</code> 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68" data-code-line-numbers="4|4,1,10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href=""></a>a_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
@@ -1033,7 +1035,7 @@ $nested_list$mixed_vector
 </div>
 </section>
 <section id="accessing-nested-list-elements-by-name-with" class="slide level2" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Accessing nested list elements by name with <code>$</code></h2>
+<h2 data-id="quarto-animate-title">Accessing nested list elements by name with <code>$</code> 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71" data-code-line-numbers="7|7,5,9|7,5,9,1,10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href=""></a>a_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
@@ -1519,7 +1521,7 @@ The median of a and b is: 2.5</code></pre>
 </div></div>
 </section>
 <section id="other-mathematical-transformations" class="slide level2" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Other mathematical transformations</h2>
+<h2 data-id="quarto-animate-title">Other mathematical transformations 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb137"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href=""></a>a <span class="ot">&lt;-</span> <span class="dv">1</span></span>
@@ -2686,9 +2688,8 @@ $ sd_value   &lt;dbl&gt; 3.950496, 3.950496, 3.950496, 3.950496, 3.950496</code>
 </div>
 </div></div>
 </section>
-<section id="the-data.table-alternative-for-large-dataset" class="slide level2">
-<h2>The <code>data.table</code> alternative for large dataset</h2>
-<p>and concise syntax {auto-animate=“TRUE”}</p>
+<section id="the-data.table-alternative-for-large-datasetand-concise-syntax" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">The <code>data.table</code> alternative for large dataset<br>and concise syntax</h2>
 <p>Think in terms of basic units: <span class="fg" style="--col: #184669"><strong>rows</strong></span>, <span class="fg" style="--col: #0c9b1f"><strong>columns</strong></span>, and <span class="fg" style="--col: #cc7504"><strong>groups</strong></span>.</p>
 <p><strong>DT[<span class="fg" style="--col: #184669">i</span>, <span class="fg" style="--col: #0c9b1f">j</span>, <span class="fg" style="--col: #cc7504">by</span>]</strong></p>
 <ul>
@@ -2698,9 +2699,8 @@ $ sd_value   &lt;dbl&gt; 3.950496, 3.950496, 3.950496, 3.950496, 3.950496</code>
 </ul>
 <p><code>data.table</code> is optimized for speed and memory, ideal for large datasets</p>
 </section>
-<section id="the-data.table-alternative-for-large-dataset-1" class="slide level2">
-<h2>The <code>data.table</code> alternative for large dataset</h2>
-<p>and concise syntax {auto-animate=“TRUE”}</p>
+<section id="the-data.table-alternative-for-large-datasetand-concise-syntax-1" class="slide level2 code6" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">The <code>data.table</code> alternative for large dataset<br>and concise syntax</h2>
 <div class="cell columns6040 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb263"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb263-1"><a href=""></a>a_dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(</span>
@@ -2909,7 +2909,7 @@ $ sd_value   &lt;dbl&gt; 3.950496, 3.950496, 3.950496, 3.950496, 3.950496</code>
 </div></div>
 </section>
 <section id="summarizing-by-groups-in-a-single-step-1" class="slide level2 code7" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Summarizing by groups in a single step</h2>
+<h2 data-id="quarto-animate-title">Summarizing by groups in a single step 🔬</h2>
 <div class="cell columns6040 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb283" data-code-line-numbers="1-8|2|3-6|7|1-8"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb283-1" class="hljs-ln-code"><a href=""></a><span class="fu">as.data.table</span>(c_tb)[</span>
@@ -3518,7 +3518,7 @@ Levels: A B C D E</code></pre>
 <span id="cb340-9"><a href=""></a><span class="fu">cat</span>(<span class="st">'The current time is:'</span>, <span class="fu">format</span>(<span class="fu">Sys.time</span>(), <span class="st">"%H:%M:%S"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
-<pre><code>The current time is: 14:53:02</code></pre>
+<pre><code>The current time is: 18:46:39</code></pre>
 </div>
 </div></div>
 </div>
@@ -3538,7 +3538,7 @@ Levels: A B C D E</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb344"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb344-1"><a href=""></a>un_even_tb[[seconds]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  2  4  6  8 10</code></pre>
+<pre><code>[1] 1 3 5 7 9</code></pre>
 </div>
 </div></div>
 </div>
@@ -3914,7 +3914,7 @@ Levels: A B C D E</code></pre>
 
 </section>
 <section id="map-variables-to-aesthetics" class="slide level2" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Map variables to aesthetics</h2>
+<h2 data-id="quarto-animate-title">Map variables to aesthetics 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb379" data-code-line-numbers="1-8|3-7|4-5|6|1-8"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb379-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -3936,7 +3936,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="map-variables-to-aesthetics-1" class="slide level2" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Map variables to aesthetics</h2>
+<h2 data-id="quarto-animate-title">Map variables to aesthetics 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb380" data-code-line-numbers="6"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb380-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -4016,7 +4016,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="aesthetics-can-be-mapped-to-different-geometries" class="slide level2" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Aesthetics can be mapped to different geometries</h2>
+<h2 data-id="quarto-animate-title">Aesthetics can be mapped to different geometries 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb383" data-code-line-numbers="1-17|11|15-16"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb383-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -4047,7 +4047,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="aesthetics-can-be-mapped-to-different-geometries-1" class="slide level2" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Aesthetics can be mapped to different geometries</h2>
+<h2 data-id="quarto-animate-title">Aesthetics can be mapped to different geometries 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb384" data-code-line-numbers="1-18|17"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb384-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -4079,7 +4079,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="it-may-be-cleaner-to-specify-aesthetics-in-geometries" class="slide level2" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">It may be cleaner to specify aesthetics in geometries</h2>
+<h2 data-id="quarto-animate-title">It may be cleaner to specify aesthetics in geometries 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb385" data-code-line-numbers="1-18|17"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb385-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -4108,7 +4108,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="a-geometry-can-be-a-model-e.g.-linear-with-lm" class="slide level2" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">A geometry can be a model, <em>e.g</em>., linear with <code>lm</code></h2>
+<h2 data-id="quarto-animate-title">A geometry can be a model, <em>e.g</em>., linear with <code>lm</code> 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb386" data-code-line-numbers="1-19|13-18"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb386-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -4140,7 +4140,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="a-geometry-can-be-a-model-e.g.-nonlinear-with-nls" class="slide level2 code5" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">A geometry can be a model, <em>e.g</em>., nonlinear with <code>nls</code></h2>
+<h2 data-id="quarto-animate-title">A geometry can be a model, <em>e.g</em>., nonlinear with <code>nls</code> 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb387" data-code-line-numbers="1-28|20-25|12"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb387-1" class="hljs-ln-code"><a href=""></a><span class="fu">tibble</span>(</span>
@@ -4182,7 +4182,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="a-geometry-can-be-a-model-e.g.-nonlinear-with-nls-1" class="slide level2 code5" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">A geometry can be a model, <em>e.g</em>., nonlinear with <code>nls</code></h2>
+<h2 data-id="quarto-animate-title">A geometry can be a model, <em>e.g</em>., nonlinear with <code>nls</code> 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb388" data-code-line-numbers="20"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb388-1" class="hljs-ln-code"><a href=""></a><span class="fu">tibble</span>(</span>
@@ -4257,7 +4257,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="colors-shapes-sizes-can-be-defined-locally-1" class="slide level2" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Colors, shapes, sizes can be defined locally</h2>
+<h2 data-id="quarto-animate-title">Colors, shapes, sizes can be defined locally 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb390" data-code-line-numbers="17-19"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb390-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -4291,7 +4291,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="including-uncertainty-is-simple" class="slide level2" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Including uncertainty is simple</h2>
+<h2 data-id="quarto-animate-title">Including uncertainty is simple 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb391" data-code-line-numbers="16"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb391-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -4325,7 +4325,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="data-can-be-tuned-for-each-geom" class="slide level2" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Data can be tuned for each <code>geom</code></h2>
+<h2 data-id="quarto-animate-title">Data can be tuned for each <code>geom</code> 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb392" data-code-line-numbers="14-15"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb392-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -4361,7 +4361,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="there-are-many-geoms_-to-choose-from" class="slide level2" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">There are many <code>geoms_*</code> to choose from</h2>
+<h2 data-id="quarto-animate-title">There are many <code>geoms_*</code> to choose from 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb393" data-code-line-numbers="8"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb393-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -4383,7 +4383,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="there-are-many-geoms_-to-choose-from-1" class="slide level2" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">There are many <code>geoms_*</code> to choose from</h2>
+<h2 data-id="quarto-animate-title">There are many <code>geoms_*</code> to choose from 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb394" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb394-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -4406,7 +4406,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="there-are-many-geoms_-to-choose-from-2" class="slide level2" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">There are many <code>geoms_*</code> to choose from</h2>
+<h2 data-id="quarto-animate-title">There are many <code>geoms_*</code> to choose from 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb395" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb395-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -4429,7 +4429,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="there-are-many-geoms_-to-choose-from-3" class="slide level2" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">There are many <code>geoms_*</code> to choose from</h2>
+<h2 data-id="quarto-animate-title">There are many <code>geoms_*</code> to choose from 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb396" data-code-line-numbers="10"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb396-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -4453,7 +4453,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="there-are-many-geoms_-to-choose-from-4" class="slide level2" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">There are many <code>geoms_*</code> to choose from</h2>
+<h2 data-id="quarto-animate-title">There are many <code>geoms_*</code> to choose from 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb397" data-code-line-numbers="15-19,2-7"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb397-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -4486,7 +4486,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="there-are-many-geoms_-to-choose-from-5" class="slide level2 code6" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">There are many <code>geoms_*</code> to choose from</h2>
+<h2 data-id="quarto-animate-title">There are many <code>geoms_*</code> to choose from 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb398" data-code-line-numbers="14-18|19-23"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb398-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -4526,7 +4526,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="labels-can-be-added-with-geom_text" class="slide level2 code6" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Labels can be added with <code>geom_text</code></h2>
+<h2 data-id="quarto-animate-title">Labels can be added with <code>geom_text</code> 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb399" data-code-line-numbers="11-22|12-16|17-20|21"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb399-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -4562,7 +4562,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="labels-can-be-added-with-geom_label" class="slide level2 code6" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Labels can be added with <code>geom_label</code></h2>
+<h2 data-id="quarto-animate-title">Labels can be added with <code>geom_label</code> 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb400" data-code-line-numbers="11|20,22"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb400-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -4711,7 +4711,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="scaling-margin-can-be-tuned-with-expand" class="slide level2" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Scaling margin can be tuned with <code>expand</code></h2>
+<h2 data-id="quarto-animate-title">Scaling margin can be tuned with <code>expand</code> 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb404" data-code-line-numbers="15"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb404-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -4744,7 +4744,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="open-ended-limits-using-na" class="slide level2" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Open-ended limits using <code>NA</code></h2>
+<h2 data-id="quarto-animate-title">Open-ended limits using <code>NA</code> 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb405" data-code-line-numbers="14,17"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb405-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -4776,7 +4776,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="axis-titles-can-be-set-up-with-scale__continuous" class="slide level2 code7" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Axis titles can be set up with <code>scale_*_continuous</code></h2>
+<h2 data-id="quarto-animate-title">Axis titles can be set up with <code>scale_*_continuous</code> 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb406" data-code-line-numbers="14,17"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb406-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -4808,7 +4808,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="all-titles-can-be-set-up-with-labs" class="slide level2 code5" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">All titles can be set up with <code>labs</code></h2>
+<h2 data-id="quarto-animate-title">All titles can be set up with <code>labs</code> 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb407" data-code-line-numbers="14,15|16|17-19"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb407-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -4842,7 +4842,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="aesthetics-can-be-scaled-with-scale_" class="slide level2 code7" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Aesthetics can be scaled with <code>scale_*</code></h2>
+<h2 data-id="quarto-animate-title">Aesthetics can be scaled with <code>scale_*</code> 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb408" data-code-line-numbers="6,11,12,16"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb408-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -4877,7 +4877,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="size-can-be-scaled-with-scale_size_" class="slide level2 code6" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Size can be scaled with <code>scale_size_*</code></h2>
+<h2 data-id="quarto-animate-title">Size can be scaled with <code>scale_size_*</code> 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb409" data-code-line-numbers="22-25,12"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb409-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -4916,7 +4916,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="shape-can-be-scaled-with-scale_shape_" class="slide level2 code6" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Shape can be scaled with <code>scale_shape_*</code></h2>
+<h2 data-id="quarto-animate-title">Shape can be scaled with <code>scale_shape_*</code> 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb410" data-code-line-numbers="11,22-24"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb410-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -4962,7 +4962,7 @@ Levels: A B C D E</code></pre>
 
 <img data-src="resources/shape_table.svg" class="r-stretch"></section>
 <section id="linetype-can-be-scaled-with-scale_linetype_" class="slide level2 code6" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Linetype can be scaled with <code>scale_linetype_*</code></h2>
+<h2 data-id="quarto-animate-title">Linetype can be scaled with <code>scale_linetype_*</code> 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb411" data-code-line-numbers="16,22-24"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb411-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -5011,7 +5011,7 @@ Levels: A B C D E</code></pre>
 
 <img data-src="resources/linetype_table.svg" class="r-stretch"></section>
 <section id="naming-scales-impacts-the-legend" class="slide level2 code6" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Naming scales impacts the legend</h2>
+<h2 data-id="quarto-animate-title">Naming scales impacts the legend 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb412" data-code-line-numbers="23"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb412-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -5057,7 +5057,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="naming-scales-also-possible-with-guides" class="slide level2 code6" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Naming scales also possible with <code>guides</code></h2>
+<h2 data-id="quarto-animate-title">Naming scales also possible with <code>guides</code> 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb413" data-code-line-numbers="22-27"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb413-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -5108,7 +5108,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="reordering-legend-guides-with-order" class="slide level2 code6" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Reordering legend <code>guides</code> with <code>order</code></h2>
+<h2 data-id="quarto-animate-title">Reordering legend <code>guides</code> with <code>order</code> 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb414" data-code-line-numbers="22-27"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb414-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -5159,7 +5159,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="hiding-a-legend-with-guides-or-show.legend" class="slide level2 code6" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Hiding a legend with <code>guides</code> or <code>show.legend</code></h2>
+<h2 data-id="quarto-animate-title">Hiding a legend with <code>guides</code> or <code>show.legend</code> 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb415" data-code-line-numbers="23-25|15,21"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb415-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -5249,7 +5249,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="discrete-coloring-with-scale_color_manual-using-names" class="slide level2 code7" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Discrete coloring with <code>scale_color_manual</code> using names</h2>
+<h2 data-id="quarto-animate-title">Discrete coloring with <code>scale_color_manual</code> using names 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb417" data-code-line-numbers="17-23"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb417-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -5286,7 +5286,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="discrete-coloring-with-using-hex-codes" class="slide level2 code7" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Discrete coloring with using hex codes</h2>
+<h2 data-id="quarto-animate-title">Discrete coloring with using hex codes 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb418" data-code-line-numbers="17-23"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb418-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -5323,7 +5323,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="explicit-mapping-to-values" class="slide level2 code7" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Explicit mapping to values</h2>
+<h2 data-id="quarto-animate-title">Explicit mapping to values 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb419" data-code-line-numbers="17-23"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb419-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -5360,7 +5360,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="explicit-mapping-to-values-for-consistency-across-plots" class="slide level2 code7" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Explicit mapping to values for consistency across plots</h2>
+<h2 data-id="quarto-animate-title">Explicit mapping to values for consistency across plots 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb420" data-code-line-numbers="1-5|23-25"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb420-1" class="hljs-ln-code"><a href=""></a>color_scale <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
@@ -5399,7 +5399,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="discrete-coloring-with-palettes" class="slide level2 code7" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Discrete coloring with palettes</h2>
+<h2 data-id="quarto-animate-title">Discrete coloring with palettes 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb421" data-code-line-numbers="17-19"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb421-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -5432,7 +5432,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="discrete-coloring-with-palettes-1" class="slide level2 code7" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Discrete coloring with palettes</h2>
+<h2 data-id="quarto-animate-title">Discrete coloring with palettes 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb422" data-code-line-numbers="17-19"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb422-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -5465,7 +5465,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="default-coloring-for-continuous-variables" class="slide level2 code7" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Default coloring for continuous variables</h2>
+<h2 data-id="quarto-animate-title">Default coloring for continuous variables 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb423" data-code-line-numbers="17-19"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb423-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -5488,7 +5488,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="continuous-coloring-with-scale_color_gradient" class="slide level2 code7" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Continuous coloring with <code>scale_color_gradient</code></h2>
+<h2 data-id="quarto-animate-title">Continuous coloring with <code>scale_color_gradient</code> 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb424" data-code-line-numbers="10-14"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb424-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -5516,7 +5516,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="continuous-coloring-with-scale_color_gradientn" class="slide level2 code7" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Continuous coloring with <code>scale_color_gradientn</code></h2>
+<h2 data-id="quarto-animate-title">Continuous coloring with <code>scale_color_gradientn</code> 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb425" data-code-line-numbers="10-14"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb425-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -5543,7 +5543,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="continuous-coloring-with-palettes" class="slide level2 code7" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Continuous coloring with palettes</h2>
+<h2 data-id="quarto-animate-title">Continuous coloring with palettes 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb426" data-code-line-numbers="10-12"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb426-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -5569,7 +5569,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="continuous-coloring-with-palettes-1" class="slide level2 code7" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Continuous coloring with palettes</h2>
+<h2 data-id="quarto-animate-title">Continuous coloring with palettes 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb427" data-code-line-numbers="12"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb427-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -5596,7 +5596,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="the-same-applies-to-fill-aesthetics" class="slide level2 code7" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">The same applies to <code>fill</code> aesthetics</h2>
+<h2 data-id="quarto-animate-title">The same applies to <code>fill</code> aesthetics 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb428" data-code-line-numbers="11"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb428-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -5622,7 +5622,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="the-same-applies-to-fill-aesthetics-1" class="slide level2 code7" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">The same applies to <code>fill</code> aesthetics</h2>
+<h2 data-id="quarto-animate-title">The same applies to <code>fill</code> aesthetics 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb429" data-code-line-numbers="6,12,13"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb429-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -5650,7 +5650,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="the-same-applies-to-fill-aesthetics-2" class="slide level2 code7" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">The same applies to <code>fill</code> aesthetics</h2>
+<h2 data-id="quarto-animate-title">The same applies to <code>fill</code> aesthetics 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb430" data-code-line-numbers="6,9-11"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb430-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -5681,7 +5681,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="combining-color-and-fill-aesthetics" class="slide level2 code5" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Combining <code>color</code> and <code>fill</code> aesthetics</h2>
+<h2 data-id="quarto-animate-title">Combining <code>color</code> and <code>fill</code> aesthetics 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb431" data-code-line-numbers="6,22|7,23-30"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb431-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -5728,7 +5728,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="remember-that-geom-elements-are-layered" class="slide level2 code5" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Remember that <code>geom</code> elements are layered</h2>
+<h2 data-id="quarto-animate-title">Remember that <code>geom</code> elements are layered 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb432" data-code-line-numbers="10-21"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb432-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -5775,7 +5775,7 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section>
 <section id="remember-that-geom-elements-are-layered-1" class="slide level2 code5" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Remember that <code>geom</code> elements are layered</h2>
+<h2 data-id="quarto-animate-title">Remember that <code>geom</code> elements are layered 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb433" data-code-line-numbers="10-21"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb433-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
@@ -5826,27 +5826,376 @@ Levels: A B C D E</code></pre>
 <h1>5. Facets</h1>
 
 </section>
-<section id="facets-1" class="slide level2" data-auto-animate="TRUE">
-<h2 data-id="quarto-animate-title">Facets</h2>
-<div class="cell columns5050 columns column-output-location">
+<section id="split-figures-into-panels-with-facet_wrap" class="slide level2 out7" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">Split figures into panels with <code>facet_wrap()</code></h2>
+<div class="cell columns4060 columns column-output-location">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb434"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb434-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
-<span id="cb434-2" class="hljs-ln-code"><a href=""></a>  <span class="at">data =</span> mpg,</span>
-<span id="cb434-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">aes</span>(</span>
-<span id="cb434-4" class="hljs-ln-code"><a href=""></a>    <span class="at">x =</span> displ,</span>
-<span id="cb434-5" class="hljs-ln-code"><a href=""></a>    <span class="at">y =</span> hwy</span>
-<span id="cb434-6" class="hljs-ln-code"><a href=""></a>  )</span>
-<span id="cb434-7" class="hljs-ln-code"><a href=""></a>) <span class="sc">+</span></span>
-<span id="cb434-8" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb434"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb434-1"><a href=""></a><span class="fu">str</span>(mpg)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [234 × 11] (S3: tbl_df/tbl/data.frame)
+ $ manufacturer: chr [1:234] "audi" "audi" "audi" "audi" ...
+ $ model       : chr [1:234] "a4" "a4" "a4" "a4" ...
+ $ displ       : num [1:234] 1.8 1.8 2 2 2.8 2.8 3.1 1.8 1.8 2 ...
+ $ year        : int [1:234] 1999 1999 2008 2008 1999 1999 2008 1999 1999 2008 ...
+ $ cyl         : int [1:234] 4 4 4 4 6 6 6 4 4 4 ...
+ $ trans       : chr [1:234] "auto(l5)" "manual(m5)" "manual(m6)" "auto(av)" ...
+ $ drv         : chr [1:234] "f" "f" "f" "f" ...
+ $ cty         : int [1:234] 18 21 20 21 16 18 18 18 16 20 ...
+ $ hwy         : int [1:234] 29 29 31 30 26 26 27 26 25 28 ...
+ $ fl          : chr [1:234] "p" "p" "p" "p" ...
+ $ class       : chr [1:234] "compact" "compact" "compact" "compact" ...</code></pre>
+</div>
+</div></div>
+<div class="fragment">
+<div class="cell columns4060 columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb436"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb436-1"><a href=""></a><span class="fu">ggplot</span>(</span>
+<span id="cb436-2"><a href=""></a>  <span class="at">data =</span> mpg,</span>
+<span id="cb436-3"><a href=""></a>  <span class="fu">aes</span>(</span>
+<span id="cb436-4"><a href=""></a>    <span class="at">x =</span> displ,</span>
+<span id="cb436-5"><a href=""></a>    <span class="at">y =</span> hwy,</span>
+<span id="cb436-6"><a href=""></a>    <span class="at">color =</span> class</span>
+<span id="cb436-7"><a href=""></a>  )</span>
+<span id="cb436-8"><a href=""></a>) <span class="sc">+</span></span>
+<span id="cb436-9"><a href=""></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="index_files/figure-revealjs/ggplot_aes_3_14-1.png" width="576"></p>
+<p><img data-src="index_files/figure-revealjs/ggplot_aes_3_14a-1.png" width="576"></p>
 </figure>
 </div>
 </div>
 </div></div>
+</div>
+</section>
+<section id="split-figures-into-panels-with-facet_wrap-1" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">Split figures into panels with <code>facet_wrap()</code></h2>
+<div class="cell columns4060 columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb437"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb437-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
+<span id="cb437-2" class="hljs-ln-code"><a href=""></a>  <span class="at">data =</span> mpg,</span>
+<span id="cb437-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">aes</span>(</span>
+<span id="cb437-4" class="hljs-ln-code"><a href=""></a>    <span class="at">x =</span> displ,</span>
+<span id="cb437-5" class="hljs-ln-code"><a href=""></a>    <span class="at">y =</span> hwy,</span>
+<span id="cb437-6" class="hljs-ln-code"><a href=""></a>    <span class="at">color =</span> class</span>
+<span id="cb437-7" class="hljs-ln-code"><a href=""></a>  )</span>
+<span id="cb437-8" class="hljs-ln-code"><a href=""></a>) <span class="sc">+</span></span>
+<span id="cb437-9" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb437-10" class="hljs-ln-code"><a href=""></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>class)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/ggplot_aes_3_14b-1.png" width="672"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="arrange-panels-by-ncol" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">Arrange panels by <code>ncol</code> 🔬</h2>
+<div class="cell columns4060 columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb438" data-code-line-numbers="12"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb438-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
+<span id="cb438-2" class="hljs-ln-code"><a href=""></a>  <span class="at">data =</span> mpg,</span>
+<span id="cb438-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">aes</span>(</span>
+<span id="cb438-4" class="hljs-ln-code"><a href=""></a>    <span class="at">x =</span> displ,</span>
+<span id="cb438-5" class="hljs-ln-code"><a href=""></a>    <span class="at">y =</span> hwy,</span>
+<span id="cb438-6" class="hljs-ln-code"><a href=""></a>    <span class="at">color =</span> class</span>
+<span id="cb438-7" class="hljs-ln-code"><a href=""></a>  )</span>
+<span id="cb438-8" class="hljs-ln-code"><a href=""></a>) <span class="sc">+</span></span>
+<span id="cb438-9" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb438-10" class="hljs-ln-code"><a href=""></a>  <span class="fu">facet_wrap</span>(</span>
+<span id="cb438-11" class="hljs-ln-code"><a href=""></a>    <span class="sc">~</span>class,</span>
+<span id="cb438-12" class="hljs-ln-code"><a href=""></a>    <span class="at">ncol =</span> <span class="dv">4</span></span>
+<span id="cb438-13" class="hljs-ln-code"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/ggplot_aes_3_14c-1.png" width="672"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="arrange-panels-by-nrow" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">Arrange panels by <code>nrow</code> 🔬</h2>
+<div class="cell columns4060 columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb439" data-code-line-numbers="12"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb439-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
+<span id="cb439-2" class="hljs-ln-code"><a href=""></a>  <span class="at">data =</span> mpg,</span>
+<span id="cb439-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">aes</span>(</span>
+<span id="cb439-4" class="hljs-ln-code"><a href=""></a>    <span class="at">x =</span> displ,</span>
+<span id="cb439-5" class="hljs-ln-code"><a href=""></a>    <span class="at">y =</span> hwy,</span>
+<span id="cb439-6" class="hljs-ln-code"><a href=""></a>    <span class="at">color =</span> class</span>
+<span id="cb439-7" class="hljs-ln-code"><a href=""></a>  )</span>
+<span id="cb439-8" class="hljs-ln-code"><a href=""></a>) <span class="sc">+</span></span>
+<span id="cb439-9" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb439-10" class="hljs-ln-code"><a href=""></a>  <span class="fu">facet_wrap</span>(</span>
+<span id="cb439-11" class="hljs-ln-code"><a href=""></a>    <span class="sc">~</span>class,</span>
+<span id="cb439-12" class="hljs-ln-code"><a href=""></a>    <span class="at">nrow =</span> <span class="dv">3</span></span>
+<span id="cb439-13" class="hljs-ln-code"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/ggplot_aes_3_14c2-1.png" width="672"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="free-scales-with-scales-free_-dangerous" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">Free scales with <code>scales = "free_*"</code> (dangerous) 🔬</h2>
+<div class="cell columns4060 columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb440" data-code-line-numbers="13"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb440-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
+<span id="cb440-2" class="hljs-ln-code"><a href=""></a>  <span class="at">data =</span> mpg,</span>
+<span id="cb440-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">aes</span>(</span>
+<span id="cb440-4" class="hljs-ln-code"><a href=""></a>    <span class="at">x =</span> displ,</span>
+<span id="cb440-5" class="hljs-ln-code"><a href=""></a>    <span class="at">y =</span> hwy,</span>
+<span id="cb440-6" class="hljs-ln-code"><a href=""></a>    <span class="at">color =</span> class</span>
+<span id="cb440-7" class="hljs-ln-code"><a href=""></a>  )</span>
+<span id="cb440-8" class="hljs-ln-code"><a href=""></a>) <span class="sc">+</span></span>
+<span id="cb440-9" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb440-10" class="hljs-ln-code"><a href=""></a>  <span class="fu">facet_wrap</span>(</span>
+<span id="cb440-11" class="hljs-ln-code"><a href=""></a>    <span class="sc">~</span>class,</span>
+<span id="cb440-12" class="hljs-ln-code"><a href=""></a>    <span class="at">nrow =</span> <span class="dv">3</span>,</span>
+<span id="cb440-13" class="hljs-ln-code"><a href=""></a>    <span class="at">scales =</span> <span class="st">"free"</span></span>
+<span id="cb440-14" class="hljs-ln-code"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/ggplot_aes_3_14d-1.png" width="672"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="free-scales-with-scales-free_-dangerous-1" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">Free scales with <code>scales = "free_*"</code> (dangerous) 🔬</h2>
+<div class="cell columns4060 columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb441" data-code-line-numbers="13"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb441-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
+<span id="cb441-2" class="hljs-ln-code"><a href=""></a>  <span class="at">data =</span> mpg,</span>
+<span id="cb441-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">aes</span>(</span>
+<span id="cb441-4" class="hljs-ln-code"><a href=""></a>    <span class="at">x =</span> displ,</span>
+<span id="cb441-5" class="hljs-ln-code"><a href=""></a>    <span class="at">y =</span> hwy,</span>
+<span id="cb441-6" class="hljs-ln-code"><a href=""></a>    <span class="at">color =</span> class</span>
+<span id="cb441-7" class="hljs-ln-code"><a href=""></a>  )</span>
+<span id="cb441-8" class="hljs-ln-code"><a href=""></a>) <span class="sc">+</span></span>
+<span id="cb441-9" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb441-10" class="hljs-ln-code"><a href=""></a>  <span class="fu">facet_wrap</span>(</span>
+<span id="cb441-11" class="hljs-ln-code"><a href=""></a>    <span class="sc">~</span>class,</span>
+<span id="cb441-12" class="hljs-ln-code"><a href=""></a>    <span class="at">nrow =</span> <span class="dv">3</span>,</span>
+<span id="cb441-13" class="hljs-ln-code"><a href=""></a>    <span class="at">scales =</span> <span class="st">"free_x"</span></span>
+<span id="cb441-14" class="hljs-ln-code"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/ggplot_aes_3_14e-1.png" width="672"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="make-a-grid-of-panels-along-2-variableswith-facet_grid" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">Make a grid of panels along 2 variableswith <code>facet_grid()</code></h2>
+<div class="cell columns4060 columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb442" data-code-line-numbers="10-12"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb442-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
+<span id="cb442-2" class="hljs-ln-code"><a href=""></a>  <span class="at">data =</span> mpg,</span>
+<span id="cb442-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">aes</span>(</span>
+<span id="cb442-4" class="hljs-ln-code"><a href=""></a>    <span class="at">x =</span> displ,</span>
+<span id="cb442-5" class="hljs-ln-code"><a href=""></a>    <span class="at">y =</span> hwy,</span>
+<span id="cb442-6" class="hljs-ln-code"><a href=""></a>    <span class="at">color =</span> class</span>
+<span id="cb442-7" class="hljs-ln-code"><a href=""></a>  )</span>
+<span id="cb442-8" class="hljs-ln-code"><a href=""></a>) <span class="sc">+</span></span>
+<span id="cb442-9" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb442-10" class="hljs-ln-code"><a href=""></a>  <span class="fu">facet_grid</span>(</span>
+<span id="cb442-11" class="hljs-ln-code"><a href=""></a>    class <span class="sc">~</span> cyl</span>
+<span id="cb442-12" class="hljs-ln-code"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/ggplot_aes_3_14f-1.png" width="672"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="make-a-grid-of-panels-along-2-variableswith-facet_grid-1" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">Make a grid of panels along 2 variableswith <code>facet_grid()</code></h2>
+<div class="cell columns4060 columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb443" data-code-line-numbers="10-12"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb443-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
+<span id="cb443-2" class="hljs-ln-code"><a href=""></a>  <span class="at">data =</span> mpg,</span>
+<span id="cb443-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">aes</span>(</span>
+<span id="cb443-4" class="hljs-ln-code"><a href=""></a>    <span class="at">x =</span> displ,</span>
+<span id="cb443-5" class="hljs-ln-code"><a href=""></a>    <span class="at">y =</span> hwy,</span>
+<span id="cb443-6" class="hljs-ln-code"><a href=""></a>    <span class="at">color =</span> class</span>
+<span id="cb443-7" class="hljs-ln-code"><a href=""></a>  )</span>
+<span id="cb443-8" class="hljs-ln-code"><a href=""></a>) <span class="sc">+</span></span>
+<span id="cb443-9" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb443-10" class="hljs-ln-code"><a href=""></a>  <span class="fu">facet_grid</span>(</span>
+<span id="cb443-11" class="hljs-ln-code"><a href=""></a>    cyl <span class="sc">~</span> class</span>
+<span id="cb443-12" class="hljs-ln-code"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/ggplot_aes_3_14g-1.png" width="672"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="leverage-what-weve-seen-so-far" class="slide level2 code6" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">Leverage what we’ve seen so far 🔬</h2>
+<div class="cell columns4060 columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb444" data-code-line-numbers="11|6,13|14-17|18-21"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb444-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
+<span id="cb444-2" class="hljs-ln-code"><a href=""></a>  <span class="at">data =</span> mpg,</span>
+<span id="cb444-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">aes</span>(</span>
+<span id="cb444-4" class="hljs-ln-code"><a href=""></a>    <span class="at">x =</span> displ,</span>
+<span id="cb444-5" class="hljs-ln-code"><a href=""></a>    <span class="at">y =</span> hwy,</span>
+<span id="cb444-6" class="hljs-ln-code"><a href=""></a>    <span class="at">color =</span> hwy</span>
+<span id="cb444-7" class="hljs-ln-code"><a href=""></a>  )</span>
+<span id="cb444-8" class="hljs-ln-code"><a href=""></a>) <span class="sc">+</span></span>
+<span id="cb444-9" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb444-10" class="hljs-ln-code"><a href=""></a>  <span class="fu">facet_grid</span>(</span>
+<span id="cb444-11" class="hljs-ln-code"><a href=""></a>    <span class="fu">paste</span>(cyl, <span class="st">"cylinders"</span>) <span class="sc">~</span> class</span>
+<span id="cb444-12" class="hljs-ln-code"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb444-13" class="hljs-ln-code"><a href=""></a>  <span class="fu">scale_color_viridis_c</span>(<span class="st">"mpg"</span>) <span class="sc">+</span></span>
+<span id="cb444-14" class="hljs-ln-code"><a href=""></a>  <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb444-15" class="hljs-ln-code"><a href=""></a>    <span class="at">name =</span> <span class="st">"Engine displacement (L)"</span>,</span>
+<span id="cb444-16" class="hljs-ln-code"><a href=""></a>    <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">7</span>, <span class="at">by =</span> <span class="dv">2</span>),</span>
+<span id="cb444-17" class="hljs-ln-code"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb444-18" class="hljs-ln-code"><a href=""></a>  <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb444-19" class="hljs-ln-code"><a href=""></a>    <span class="at">name =</span> <span class="st">"Highway miles per gallon"</span>,</span>
+<span id="cb444-20" class="hljs-ln-code"><a href=""></a>    <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="at">by =</span> <span class="dv">10</span>),</span>
+<span id="cb444-21" class="hljs-ln-code"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/ggplot_aes_3_14h-1.png" width="672"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section></section>
+<section>
+<section id="coordinates" class="title-slide slide level1 center" data-background-color="#c83c19">
+<h1>6. Coordinates</h1>
+
+</section>
+<section id="cartesian-coordinates" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">Cartesian coordinates</h2>
+<div class="cell columns5050 columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb445"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb445-1" class="hljs-ln-code"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb445-2" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb445-3" class="hljs-ln-code"><a href=""></a><span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">y =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb445-4" class="hljs-ln-code"><a href=""></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<span id="cb445-5" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb445-6" class="hljs-ln-code"><a href=""></a>  <span class="fu">coord_cartesian</span>(</span>
+<span id="cb445-7" class="hljs-ln-code"><a href=""></a>    <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">8</span>), </span>
+<span id="cb445-8" class="hljs-ln-code"><a href=""></a>    <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="cn">NA</span>),</span>
+<span id="cb445-9" class="hljs-ln-code"><a href=""></a>  <span class="at">expand =</span> <span class="cn">FALSE</span></span>
+<span id="cb445-10" class="hljs-ln-code"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/ggplot_aes_3_15a-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="flipped-cartesian-coordinates" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">Flipped cartesian coordinates</h2>
+<div class="cell columns5050 columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb446"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb446-1" class="hljs-ln-code"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb446-2" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb446-3" class="hljs-ln-code"><a href=""></a><span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">y =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb446-4" class="hljs-ln-code"><a href=""></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<span id="cb446-5" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb446-6" class="hljs-ln-code"><a href=""></a>  <span class="fu">coord_flip</span>(</span>
+<span id="cb446-7" class="hljs-ln-code"><a href=""></a>    <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">8</span>), </span>
+<span id="cb446-8" class="hljs-ln-code"><a href=""></a>    <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="cn">NA</span>),</span>
+<span id="cb446-9" class="hljs-ln-code"><a href=""></a>  <span class="at">expand =</span> <span class="cn">FALSE</span></span>
+<span id="cb446-10" class="hljs-ln-code"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/ggplot_aes_3_15b-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="log-cartesian-coordinates" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">Log cartesian coordinates</h2>
+<div class="cell columns5050 columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb447"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb447-1" class="hljs-ln-code"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+
+</div></div>
+</section>
+<section id="polar-coordinates-angle-mapped-to-x" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">Polar coordinates, angle mapped to x</h2>
+<div class="cell columns5050 columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb448"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb448-1" class="hljs-ln-code"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb448-2" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb448-3" class="hljs-ln-code"><a href=""></a><span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">y =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb448-4" class="hljs-ln-code"><a href=""></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<span id="cb448-5" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb448-6" class="hljs-ln-code"><a href=""></a>  <span class="fu">coord_radial</span>(<span class="at">expand =</span> <span class="cn">FALSE</span>) <span class="co">#also coord_polar()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/ggplot_aes_3_16a-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="polar-coordinates-angle-mapped-to-y" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">Polar coordinates, angle mapped to y</h2>
+<div class="cell columns5050 columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb449"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb449-1" class="hljs-ln-code"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb449-2" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb449-3" class="hljs-ln-code"><a href=""></a><span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">y =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb449-4" class="hljs-ln-code"><a href=""></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<span id="cb449-5" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb449-6" class="hljs-ln-code"><a href=""></a>  <span class="fu">coord_radial</span>(<span class="at">theta =</span> <span class="st">"y"</span>) <span class="co">#also coord_polar()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/ggplot_aes_3_16b-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="map-projections" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">Map projections</h2>
+<p>https://r-charts.com/ggplot2/coordinate-systems/</p>
 </section>
 <section id="saving-plots" class="slide level2">
 <h2>Saving plots</h2>
@@ -9328,11 +9677,11 @@ Levels: A B C D E</code></pre>
 <h2>Tidyverse install verification</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb435"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb435-1"><a href=""></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"tidyverse"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb435-2"><a href=""></a>  <span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
-<span id="cb435-3"><a href=""></a>}</span>
-<span id="cb435-4"><a href=""></a></span>
-<span id="cb435-5"><a href=""></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb450"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb450-1"><a href=""></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"tidyverse"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb450-2"><a href=""></a>  <span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb450-3"><a href=""></a>}</span>
+<span id="cb450-4"><a href=""></a></span>
+<span id="cb450-5"><a href=""></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 
 </div></div>
@@ -9341,14 +9690,14 @@ Levels: A B C D E</code></pre>
 <h2>Data.table install verification</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb436"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb436-1"><a href=""></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"data.table"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb436-2"><a href=""></a>  <span class="fu">install.packages</span>(<span class="st">"data.table"</span>)</span>
-<span id="cb436-3"><a href=""></a>}</span>
-<span id="cb436-4"><a href=""></a></span>
-<span id="cb436-5"><a href=""></a><span class="fu">library</span>(data.table)</span>
-<span id="cb436-6"><a href=""></a></span>
-<span id="cb436-7"><a href=""></a><span class="co"># version check</span></span>
-<span id="cb436-8"><a href=""></a><span class="fu">packageVersion</span>(<span class="st">"data.table"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb451"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb451-1"><a href=""></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"data.table"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb451-2"><a href=""></a>  <span class="fu">install.packages</span>(<span class="st">"data.table"</span>)</span>
+<span id="cb451-3"><a href=""></a>}</span>
+<span id="cb451-4"><a href=""></a></span>
+<span id="cb451-5"><a href=""></a><span class="fu">library</span>(data.table)</span>
+<span id="cb451-6"><a href=""></a></span>
+<span id="cb451-7"><a href=""></a><span class="co"># version check</span></span>
+<span id="cb451-8"><a href=""></a><span class="fu">packageVersion</span>(<span class="st">"data.table"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] '1.17.99'</code></pre>
