@@ -6984,11 +6984,19 @@ For each gender, what is the proportion of *Ease of use* ?
 
 ## Make your own figure 🧪
 
+- Try to reproduce, improve or create your own figure with the WebMD dataset
 
+- Data
+  - [Source](https://www.kaggle.com/datasets/rohanharode07/webmd-drug-reviews-dataset)
+  - [Pre-cleaned dataset](https://raw.githubusercontent.com/EricLarG4/Figures/a10b6fdc24cfaa421b98aeae2f97544fe624bbba/data/webmd_clean.csv?token=GHSAT0AAAAAAD4ISQMEZNXUKFXHIJDANEYS2P3EGHA)
 
-## Distributions
+- Remember: you can read the file directly from the URL with 
+  - `read.csv()`
+  - `readr::read_csv()`
+  - `data.table::fread()`
 
--   Underused category
+## Distributions are an underused category
+
 -   High data density
 -   Examples
     -   Box plot
@@ -7032,6 +7040,8 @@ df.antibes <- fread('data/antibes-eau-temperature-est-cap.csv') %>%
     ),
     date = as.Date(paste0(year, '/', month, '/', day))
   )
+
+fwrite(df.antibes, 'data/antibes_clean.csv')
 
 df.antibes %>% 
   sample_n(6) %>% 

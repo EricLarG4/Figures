@@ -3586,7 +3586,7 @@ Levels: A B C D E</code></pre>
 <span id="cb348-9"><a href=""></a><span class="fu">cat</span>(<span class="st">'The current time is:'</span>, <span class="fu">format</span>(<span class="fu">Sys.time</span>(), <span class="st">"%H:%M:%S"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
-<pre><code>The current time is: 12:04:04</code></pre>
+<pre><code>The current time is: 12:15:41</code></pre>
 </div>
 </div></div>
 </div>
@@ -3606,7 +3606,7 @@ Levels: A B C D E</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb352"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb352-1"><a href=""></a>un_even_tb[[seconds]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  2  4  6  8 10</code></pre>
+<pre><code>[1] 1 3 5 7 9</code></pre>
 </div>
 </div></div>
 </div>
@@ -7534,11 +7534,24 @@ Levels: A B C D E</code></pre>
 <img data-src="index_files/figure-revealjs/propo-1.png" width="960" class="r-stretch"></section>
 <section id="make-your-own-figure" class="slide level2">
 <h2>Make your own figure 🧪</h2>
-</section>
-<section id="distributions" class="slide level2">
-<h2>Distributions</h2>
 <ul>
-<li>Underused category</li>
+<li><p>Try to reproduce, improve or create your own figure with the WebMD dataset</p></li>
+<li><p>Data</p>
+<ul>
+<li><a href="https://www.kaggle.com/datasets/rohanharode07/webmd-drug-reviews-dataset">Source</a></li>
+<li><a href="https://raw.githubusercontent.com/EricLarG4/Figures/a10b6fdc24cfaa421b98aeae2f97544fe624bbba/data/webmd_clean.csv?token=GHSAT0AAAAAAD4ISQMEZNXUKFXHIJDANEYS2P3EGHA">Pre-cleaned dataset</a></li>
+</ul></li>
+<li><p>Remember: you can read the file directly from the URL with</p>
+<ul>
+<li><code>read.csv()</code></li>
+<li><code>readr::read_csv()</code></li>
+<li><code>data.table::fread()</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="distributions-are-an-underused-category" class="slide level2">
+<h2>Distributions are an underused category</h2>
+<ul>
 <li>High data density</li>
 <li>Examples
 <ul>
@@ -7550,7 +7563,7 @@ Levels: A B C D E</code></pre>
 <li>Better to show the data</li>
 </ul>
 </section>
-<section id="distributions-1" class="slide level2">
+<section id="distributions" class="slide level2">
 <h2>Distributions</h2>
 <ul>
 <li>Example of a <a href="https://www.data.gouv.fr/fr/datasets/temperature-de-leau-de-mer-a-antibes-juan-les-pins/">water temperature in Antibes dataset</a>
@@ -8677,7 +8690,7 @@ Levels: A B C D E</code></pre>
 <p><img data-src="resources/culmen_depth.png" style="width:75.0%"></p>
 </div></div>
 </section>
-<section id="distributions-2" class="slide level2">
+<section id="distributions-1" class="slide level2">
 <h2>Distributions</h2>
 <p>Bad and good ways to plot distributions</p>
 
