@@ -10,6 +10,7 @@ format:
         # code-block-border-left: "#31BAE9"
         code-summary: "Show code"
         highlight-style: dracula
+        code-block-height: 650px
 author:
   - name: Eric Largy
     orcid: 0000-0002-6140-9788
@@ -6425,7 +6426,7 @@ ggplot(
   my_project_theme(1.2, 'top')
 ```
 
-# 7. Saving and exporting {background-color="#184669"}
+# 7. Interactivity, combining and exporting {background-color="#184669"}
 
 ## Combine figures with `patchwork` 🔬{auto-animate="TRUE"}
 
@@ -6605,6 +6606,11 @@ ggsave(
 :::
 ::::
 
+::: footnote
+[link to png file](https://github.com/EricLarG4/Figures/blob/28d00e6b8035acee4bf5403e70fe880db84227a8/resources/iris_patch.png)
+:::
+
+
 ## Multiple formats are available {auto-animate="TRUE"}
 
 :::: columns
@@ -6635,13 +6641,48 @@ ggsave(
 :::
 ::::
 
+::: footnote
+[link to svg file](https://github.com/EricLarG4/Figures/blob/28d00e6b8035acee4bf5403e70fe880db84227a8/resources/iris_patch.svg)
+:::
+
+## Use `ggplotly` to make plots interactive in 1 line 🔬{auto-animate="TRUE" .code6}
+
+```{r}
+#| label: ggplot_aes_9
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns4060
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "16"
+library(plotly)
+
+(ggplot(
+  data = mpg,
+  aes(
+    x = displ,
+    y = hwy,
+    color = class,
+    label = model
+  )
+) +
+  geom_point() +
+  scale_color_viridis_d() +
+  my_project_theme(0.8) +
+  theme(legend.position = "none")) |>
+  ggplotly(tooltip = c("color", "label"))
+```
+
 # Elements of visual communication {background-color="#184669"}
 
 ## Visuals are an increasingly important form of science communication
 
-Many scientists not well trained in design *principles* for **effective** messaging
+Many scientists not well trained in design *principles* for [**effective**]{.fg style="--col: #fcbac5"} messaging
 
-Visuals can be improved by taking some simple steps before, during, and after their creation
+Visuals can be improved by taking some simple steps</br>before, during, and after their creation
 
 # 10 Principles {background-color="#ffdae0"}
 
@@ -6651,9 +6692,9 @@ Visuals can be improved by taking some simple steps before, during, and after th
 
 Least technical but very important step
 
-[**Prioritize the information you want to share**]{.fg style="--col: #ffdae0"} and design it.
+[**Prioritize the information you want to share**]{.fg style="--col: #fcbac5"} and design it.
 
--   What [**core information**]{.fg style="--col: #ffdae0"} needs to be conveyed?
+-   What [**core information**]{.fg style="--col: #fcbac5"} needs to be conveyed?
 -   What about that information is going to make your point?
 -   Objective: comparison, ranking, trend?
 -   Search the literature for inspiration
@@ -6673,21 +6714,19 @@ You can use the grammar of graphics approach to pick the different necessary ele
     -   Tableau
     -   MATLAB
     -   Python
-    -   [**R**]{.fg style="--col: #ffdae0"}
+    -   [**R**]{.fg style="--col: #fcbac5"}
 
-# Principle 3:</br>Use an Effective Geometry and Show Data {background-color="#ffdae0"}
+# Principle 3:</br>Use an Effective Geometry</br>and Show Data {background-color="#ffdae0"}
 
 ## Less is more
 
--   Geometries = representations of data in different forms
--   Often more than one possible geometry
--   High data-ink ratios[^1] are best: Remove as much non-data-ink as possible (Principle 8)
+-   Remove as much non-data-ink as possible
     -   Unnecessary plot elements (grids, colored background)
     -   Busy axis (too many breaks)
 -   Do not include too much information
     -   Stick to your message (see principle 1)
+    -   Different message? Different figure!
 
-[^1]: ratio of ink used on data compared with overall ink used in a figure
 
 ## Geometries
 
@@ -6754,6 +6793,11 @@ df.webmd <- fread('data/webmd.csv') %>%
     gender = if_else(Sex == '', "NA", Sex)
   ) %>% 
   filter(EaseofUse <= 5) 
+
+df.webmd %>% 
+  select(-Reviews, -Sides, -Sex) %>%
+  rename("Gender" = 'gender') |> 
+  fwrite('data/webmd_clean.csv')
 
 df.webmd %>% 
   select(-Reviews, -Sides, -Sex) %>%
@@ -6937,6 +6981,10 @@ For each gender, what is the proportion of *Ease of use* ?
   labs(x = 'Gender') &
   scale_fill_discrete('Ease of use')
 ```
+
+## Make your own figure 🧪
+
+
 
 ## Distributions
 

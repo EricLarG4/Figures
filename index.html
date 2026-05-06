@@ -96,7 +96,7 @@
     code span.vs { color: #f1fa8c; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-998312d88cad99482888e8e153cfbc32.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-5390dd5e9a3ef51a92dd836bfd045fbd.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -3586,7 +3586,7 @@ Levels: A B C D E</code></pre>
 <span id="cb348-9"><a href=""></a><span class="fu">cat</span>(<span class="st">'The current time is:'</span>, <span class="fu">format</span>(<span class="fu">Sys.time</span>(), <span class="st">"%H:%M:%S"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
-<pre><code>The current time is: 11:11:47</code></pre>
+<pre><code>The current time is: 12:04:04</code></pre>
 </div>
 </div></div>
 </div>
@@ -3606,7 +3606,7 @@ Levels: A B C D E</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb352"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb352-1"><a href=""></a>un_even_tb[[seconds]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1 3 5 7 9</code></pre>
+<pre><code>[1]  2  4  6  8 10</code></pre>
 </div>
 </div></div>
 </div>
@@ -6607,8 +6607,8 @@ Levels: A B C D E</code></pre>
 </div></div>
 </section></section>
 <section>
-<section id="saving-and-exporting" class="title-slide slide level1 center" data-background-color="#184669">
-<h1>7. Saving and exporting</h1>
+<section id="interactivity-combining-and-exporting" class="title-slide slide level1 center" data-background-color="#184669">
+<h1>7. Interactivity, combining and exporting</h1>
 
 </section>
 <section id="combine-figures-with-patchwork" class="slide level2" data-auto-animate="TRUE">
@@ -6766,6 +6766,9 @@ Levels: A B C D E</code></pre>
 </div><div class="column" style="width:50%;">
 <p><img data-src="resources/iris_patch.png"></p>
 </div></div>
+<div class="footnote">
+<p><a href="https://github.com/EricLarG4/Figures/blob/28d00e6b8035acee4bf5403e70fe880db84227a8/resources/iris_patch.png">link to png file</a></p>
+</div>
 </section>
 <section id="multiple-formats-are-available" class="slide level2" data-auto-animate="TRUE">
 <h2 data-id="quarto-animate-title">Multiple formats are available</h2>
@@ -6785,6 +6788,36 @@ Levels: A B C D E</code></pre>
 </div><div class="column" style="width:50%;">
 <p><img data-src="resources/iris_patch.svg"></p>
 </div></div>
+<div class="footnote">
+<p><a href="https://github.com/EricLarG4/Figures/blob/28d00e6b8035acee4bf5403e70fe880db84227a8/resources/iris_patch.svg">link to svg file</a></p>
+</div>
+</section>
+<section id="use-ggplotly-to-make-plots-interactive-in-1-line" class="slide level2 code6" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">Use <code>ggplotly</code> to make plots interactive in 1 line 🔬</h2>
+<div class="cell columns4060 columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb475" data-code-line-numbers="16"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb475-1" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(plotly)</span>
+<span id="cb475-2" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb475-3" class="hljs-ln-code"><a href=""></a>(<span class="fu">ggplot</span>(</span>
+<span id="cb475-4" class="hljs-ln-code"><a href=""></a>  <span class="at">data =</span> mpg,</span>
+<span id="cb475-5" class="hljs-ln-code"><a href=""></a>  <span class="fu">aes</span>(</span>
+<span id="cb475-6" class="hljs-ln-code"><a href=""></a>    <span class="at">x =</span> displ,</span>
+<span id="cb475-7" class="hljs-ln-code"><a href=""></a>    <span class="at">y =</span> hwy,</span>
+<span id="cb475-8" class="hljs-ln-code"><a href=""></a>    <span class="at">color =</span> class,</span>
+<span id="cb475-9" class="hljs-ln-code"><a href=""></a>    <span class="at">label =</span> model</span>
+<span id="cb475-10" class="hljs-ln-code"><a href=""></a>  )</span>
+<span id="cb475-11" class="hljs-ln-code"><a href=""></a>) <span class="sc">+</span></span>
+<span id="cb475-12" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb475-13" class="hljs-ln-code"><a href=""></a>  <span class="fu">scale_color_viridis_d</span>() <span class="sc">+</span></span>
+<span id="cb475-14" class="hljs-ln-code"><a href=""></a>  <span class="fu">my_project_theme</span>(<span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb475-15" class="hljs-ln-code"><a href=""></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb475-16" class="hljs-ln-code"><a href=""></a>  <span class="fu">ggplotly</span>(<span class="at">tooltip =</span> <span class="fu">c</span>(<span class="st">"color"</span>, <span class="st">"label"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-2e17466358a46d139971" style="width:576px;height:576px;"></div>
+<script type="application/json" data-for="htmlwidget-2e17466358a46d139971">{"x":{"data":[{"x":[5.7000000000000002,5.7000000000000002,6.2000000000000002,6.2000000000000002,7],"y":[26,23,26,25,24],"text":"class: 2seater<br />model: corvette","type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(68,1,84,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(68,1,84,1)"}},"hoveron":"points","name":"2seater","legendgroup":"2seater","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1.8,1.8,2,2,2.7999999999999998,2.7999999999999998,3.1000000000000001,1.8,1.8,2,2,2.7999999999999998,2.7999999999999998,3.1000000000000001,3.1000000000000001,2.3999999999999999,2.3999999999999999,2.5,2.5,2.5,2.5,2.2000000000000002,2.2000000000000002,2.3999999999999999,2.3999999999999999,3,3,3.2999999999999998,1.8,1.8,1.8,1.8,1.8,2,2,2,2,2.7999999999999998,1.8999999999999999,2,2,2,2,2.5,2.5,2.7999999999999998,2.7999999999999998],"y":[29,29,31,30,26,26,27,26,25,28,27,25,25,25,25,29,27,25,27,25,27,27,29,31,31,26,26,27,30,33,35,37,35,29,26,29,29,24,44,29,26,29,29,29,29,23,24],"text":["class: compact<br />model: a4","class: compact<br />model: a4","class: compact<br />model: a4","class: compact<br />model: a4","class: compact<br />model: a4","class: compact<br />model: a4","class: compact<br />model: a4","class: compact<br />model: a4 quattro","class: compact<br />model: a4 quattro","class: compact<br />model: a4 quattro","class: compact<br />model: a4 quattro","class: compact<br />model: a4 quattro","class: compact<br />model: a4 quattro","class: compact<br />model: a4 quattro","class: compact<br />model: a4 quattro","class: compact<br />model: altima","class: compact<br />model: altima","class: compact<br />model: impreza awd","class: compact<br />model: impreza awd","class: compact<br />model: impreza awd","class: compact<br />model: impreza awd","class: compact<br />model: camry solara","class: compact<br />model: camry solara","class: compact<br />model: camry solara","class: compact<br />model: camry solara","class: compact<br />model: camry solara","class: compact<br />model: camry solara","class: compact<br />model: camry solara","class: compact<br />model: corolla","class: compact<br />model: corolla","class: compact<br />model: corolla","class: compact<br />model: corolla","class: compact<br />model: corolla","class: compact<br />model: gti","class: compact<br />model: gti","class: compact<br />model: gti","class: compact<br />model: gti","class: compact<br />model: gti","class: compact<br />model: jetta","class: compact<br />model: jetta","class: compact<br />model: jetta","class: compact<br />model: jetta","class: compact<br />model: jetta","class: compact<br />model: jetta","class: compact<br />model: jetta","class: compact<br />model: jetta","class: compact<br />model: jetta"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(68,58,131,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(68,58,131,1)"}},"hoveron":"points","name":"compact","legendgroup":"compact","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2.7999999999999998,3.1000000000000001,4.2000000000000002,2.3999999999999999,2.3999999999999999,3.1000000000000001,3.5,3.6000000000000001,2.3999999999999999,2.3999999999999999,2.3999999999999999,2.3999999999999999,2.5,2.5,3.2999999999999998,2.5,2.5,3.5,3.5,3,3,3.5,3.1000000000000001,3.7999999999999998,3.7999999999999998,3.7999999999999998,5.2999999999999998,2.2000000000000002,2.2000000000000002,2.3999999999999999,2.3999999999999999,3,3,3.5,1.8,1.8,2,2,2.7999999999999998,2.7999999999999998,3.6000000000000001],"y":[24,25,23,27,30,26,29,26,26,27,30,31,26,26,28,31,32,27,26,26,25,25,26,26,27,28,25,29,27,31,31,26,26,28,29,29,28,29,26,26,26],"text":["class: midsize<br />model: a6 quattro","class: midsize<br />model: a6 quattro","class: midsize<br />model: a6 quattro","class: midsize<br />model: malibu","class: midsize<br />model: malibu","class: midsize<br />model: malibu","class: midsize<br />model: malibu","class: midsize<br />model: malibu","class: midsize<br />model: sonata","class: midsize<br />model: sonata","class: midsize<br />model: sonata","class: midsize<br />model: sonata","class: midsize<br />model: sonata","class: midsize<br />model: sonata","class: midsize<br />model: sonata","class: midsize<br />model: altima","class: midsize<br />model: altima","class: midsize<br />model: altima","class: midsize<br />model: altima","class: midsize<br />model: maxima","class: midsize<br />model: maxima","class: midsize<br />model: maxima","class: midsize<br />model: grand prix","class: midsize<br />model: grand prix","class: midsize<br />model: grand prix","class: midsize<br />model: grand prix","class: midsize<br />model: grand prix","class: midsize<br />model: camry","class: midsize<br />model: camry","class: midsize<br />model: camry","class: midsize<br />model: camry","class: midsize<br />model: camry","class: midsize<br />model: camry","class: midsize<br />model: camry","class: midsize<br />model: passat","class: midsize<br />model: passat","class: midsize<br />model: passat","class: midsize<br />model: passat","class: midsize<br />model: passat","class: midsize<br />model: passat","class: midsize<br />model: passat"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(49,104,142,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(49,104,142,1)"}},"hoveron":"points","name":"midsize","legendgroup":"midsize","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2.3999999999999999,3,3.2999999999999998,3.2999999999999998,3.2999999999999998,3.2999999999999998,3.2999999999999998,3.7999999999999998,3.7999999999999998,3.7999999999999998,4],"y":[24,24,22,22,24,24,17,22,21,23,23],"text":"class: minivan<br />model: caravan 2wd","type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(33,144,140,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(33,144,140,1)"}},"hoveron":"points","name":"minivan","legendgroup":"minivan","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[3.7000000000000002,3.7000000000000002,3.8999999999999999,3.8999999999999999,4.7000000000000002,4.7000000000000002,4.7000000000000002,5.2000000000000002,5.2000000000000002,4.7000000000000002,4.7000000000000002,4.7000000000000002,4.7000000000000002,4.7000000000000002,4.7000000000000002,5.2000000000000002,5.2000000000000002,5.7000000000000002,5.9000000000000004,4.2000000000000002,4.2000000000000002,4.5999999999999996,4.5999999999999996,4.5999999999999996,5.4000000000000004,5.4000000000000004,2.7000000000000002,2.7000000000000002,2.7000000000000002,3.3999999999999999,3.3999999999999999,4,4],"y":[19,18,17,17,19,19,12,17,15,16,12,17,17,16,12,15,16,17,15,17,17,16,16,17,15,17,20,20,22,17,19,18,20],"text":["class: pickup<br />model: dakota pickup 4wd","class: pickup<br />model: dakota pickup 4wd","class: pickup<br />model: dakota pickup 4wd","class: pickup<br />model: dakota pickup 4wd","class: pickup<br />model: dakota pickup 4wd","class: pickup<br />model: dakota pickup 4wd","class: pickup<br />model: dakota pickup 4wd","class: pickup<br />model: dakota pickup 4wd","class: pickup<br />model: dakota pickup 4wd","class: pickup<br />model: ram 1500 pickup 4wd","class: pickup<br />model: ram 1500 pickup 4wd","class: pickup<br />model: ram 1500 pickup 4wd","class: pickup<br />model: ram 1500 pickup 4wd","class: pickup<br />model: ram 1500 pickup 4wd","class: pickup<br />model: ram 1500 pickup 4wd","class: pickup<br />model: ram 1500 pickup 4wd","class: pickup<br />model: ram 1500 pickup 4wd","class: pickup<br />model: ram 1500 pickup 4wd","class: pickup<br />model: ram 1500 pickup 4wd","class: pickup<br />model: f150 pickup 4wd","class: pickup<br />model: f150 pickup 4wd","class: pickup<br />model: f150 pickup 4wd","class: pickup<br />model: f150 pickup 4wd","class: pickup<br />model: f150 pickup 4wd","class: pickup<br />model: f150 pickup 4wd","class: pickup<br />model: f150 pickup 4wd","class: pickup<br />model: toyota tacoma 4wd","class: pickup<br />model: toyota tacoma 4wd","class: pickup<br />model: toyota tacoma 4wd","class: pickup<br />model: toyota tacoma 4wd","class: pickup<br />model: toyota tacoma 4wd","class: pickup<br />model: toyota tacoma 4wd","class: pickup<br />model: toyota tacoma 4wd"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(53,183,121,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(53,183,121,1)"}},"hoveron":"points","name":"pickup","legendgroup":"pickup","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[3.7999999999999998,3.7999999999999998,4,4,4.5999999999999996,4.5999999999999996,4.5999999999999996,4.5999999999999996,5.4000000000000004,1.6000000000000001,1.6000000000000001,1.6000000000000001,1.6000000000000001,1.6000000000000001,1.8,1.8,1.8,2,2,2,2,2,2.7000000000000002,2.7000000000000002,2.7000000000000002,2.2000000000000002,2.2000000000000002,2.5,2.5,1.8999999999999999,1.8999999999999999,2,2,2.5,2.5],"y":[26,25,26,24,21,22,23,22,20,33,32,32,29,32,34,36,36,29,26,29,28,27,24,24,24,26,26,26,26,44,41,29,26,28,29],"text":["class: subcompact<br />model: mustang","class: subcompact<br />model: mustang","class: subcompact<br />model: mustang","class: subcompact<br />model: mustang","class: subcompact<br />model: mustang","class: subcompact<br />model: mustang","class: subcompact<br />model: mustang","class: subcompact<br />model: mustang","class: subcompact<br />model: mustang","class: subcompact<br />model: civic","class: subcompact<br />model: civic","class: subcompact<br />model: civic","class: subcompact<br />model: civic","class: subcompact<br />model: civic","class: subcompact<br />model: civic","class: subcompact<br />model: civic","class: subcompact<br />model: civic","class: subcompact<br />model: civic","class: subcompact<br />model: tiburon","class: subcompact<br />model: tiburon","class: subcompact<br />model: tiburon","class: subcompact<br />model: tiburon","class: subcompact<br />model: tiburon","class: subcompact<br />model: tiburon","class: subcompact<br />model: tiburon","class: subcompact<br />model: impreza awd","class: subcompact<br />model: impreza awd","class: subcompact<br />model: impreza awd","class: subcompact<br />model: impreza awd","class: subcompact<br />model: new beetle","class: subcompact<br />model: new beetle","class: subcompact<br />model: new beetle","class: subcompact<br />model: new beetle","class: subcompact<br />model: new beetle","class: subcompact<br />model: new beetle"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(143,215,68,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(143,215,68,1)"}},"hoveron":"points","name":"subcompact","legendgroup":"subcompact","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[5.2999999999999998,5.2999999999999998,5.2999999999999998,5.7000000000000002,6,5.2999999999999998,5.2999999999999998,5.7000000000000002,6.5,3.8999999999999999,4.7000000000000002,4.7000000000000002,4.7000000000000002,5.2000000000000002,5.7000000000000002,5.9000000000000004,4.5999999999999996,5.4000000000000004,5.4000000000000004,4,4,4,4,4.5999999999999996,5,3,3.7000000000000002,4,4.7000000000000002,4.7000000000000002,4.7000000000000002,5.7000000000000002,6.0999999999999996,4,4.2000000000000002,4.4000000000000004,4.5999999999999996,5.4000000000000004,5.4000000000000004,5.4000000000000004,4,4,4.5999999999999996,5,3.2999999999999998,3.2999999999999998,4,5.5999999999999996,2.5,2.5,2.5,2.5,2.5,2.5,2.7000000000000002,2.7000000000000002,3.3999999999999999,3.3999999999999999,4,4.7000000000000002,4.7000000000000002,5.7000000000000002],"y":[20,15,20,17,17,19,14,15,17,17,17,12,17,16,18,15,17,17,18,17,19,17,19,19,17,22,19,20,17,12,19,18,14,15,18,18,15,17,16,18,17,19,19,17,17,17,20,18,25,24,27,25,26,23,20,20,19,17,20,17,15,18],"text":["class: suv<br />model: c1500 suburban 2wd","class: suv<br />model: c1500 suburban 2wd","class: suv<br />model: c1500 suburban 2wd","class: suv<br />model: c1500 suburban 2wd","class: suv<br />model: c1500 suburban 2wd","class: suv<br />model: k1500 tahoe 4wd","class: suv<br />model: k1500 tahoe 4wd","class: suv<br />model: k1500 tahoe 4wd","class: suv<br />model: k1500 tahoe 4wd","class: suv<br />model: durango 4wd","class: suv<br />model: durango 4wd","class: suv<br />model: durango 4wd","class: suv<br />model: durango 4wd","class: suv<br />model: durango 4wd","class: suv<br />model: durango 4wd","class: suv<br />model: durango 4wd","class: suv<br />model: expedition 2wd","class: suv<br />model: expedition 2wd","class: suv<br />model: expedition 2wd","class: suv<br />model: explorer 4wd","class: suv<br />model: explorer 4wd","class: suv<br />model: explorer 4wd","class: suv<br />model: explorer 4wd","class: suv<br />model: explorer 4wd","class: suv<br />model: explorer 4wd","class: suv<br />model: grand cherokee 4wd","class: suv<br />model: grand cherokee 4wd","class: suv<br />model: grand cherokee 4wd","class: suv<br />model: grand cherokee 4wd","class: suv<br />model: grand cherokee 4wd","class: suv<br />model: grand cherokee 4wd","class: suv<br />model: grand cherokee 4wd","class: suv<br />model: grand cherokee 4wd","class: suv<br />model: range rover","class: suv<br />model: range rover","class: suv<br />model: range rover","class: suv<br />model: range rover","class: suv<br />model: navigator 2wd","class: suv<br />model: navigator 2wd","class: suv<br />model: navigator 2wd","class: suv<br />model: mountaineer 4wd","class: suv<br />model: mountaineer 4wd","class: suv<br />model: mountaineer 4wd","class: suv<br />model: mountaineer 4wd","class: suv<br />model: pathfinder 4wd","class: suv<br />model: pathfinder 4wd","class: suv<br />model: pathfinder 4wd","class: suv<br />model: pathfinder 4wd","class: suv<br />model: forester awd","class: suv<br />model: forester awd","class: suv<br />model: forester awd","class: suv<br />model: forester awd","class: suv<br />model: forester awd","class: suv<br />model: forester awd","class: suv<br />model: 4runner 4wd","class: suv<br />model: 4runner 4wd","class: suv<br />model: 4runner 4wd","class: suv<br />model: 4runner 4wd","class: suv<br />model: 4runner 4wd","class: suv<br />model: 4runner 4wd","class: suv<br />model: land cruiser wagon 4wd","class: suv<br />model: land cruiser wagon 4wd"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(253,231,37,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(253,231,37,1)"}},"hoveron":"points","name":"suv","legendgroup":"suv","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":23.305936073059364,"r":7.3059360730593621,"b":38.58862598588626,"l":38.58862598588626},"paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[1.3300000000000001,7.2699999999999996],"tickmode":"array","ticktext":["2","3","4","5","6","7"],"tickvals":[2,3,4,5,6,7],"categoryorder":"array","categoryarray":["2","3","4","5","6","7"],"nticks":null,"ticks":"outside","tickcolor":"rgba(0,0,0,1)","ticklen":3.6529680365296811,"tickwidth":0.5313408053134081,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":10.62681610626816},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.5313408053134081,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"<b> displ <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":17.002905770029059}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[10.4,45.600000000000001],"tickmode":"array","ticktext":["20","30","40"],"tickvals":[20,30,40],"categoryorder":"array","categoryarray":["20","30","40"],"nticks":null,"ticks":"outside","tickcolor":"rgba(0,0,0,1)","ticklen":3.6529680365296811,"tickwidth":0.5313408053134081,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":10.62681610626816},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.5313408053134081,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"<b> hwy <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":17.002905770029059}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":12.7521793275218}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"79dc29546b84":{"x":{},"y":{},"colour":{},"label":{},"type":"scatter"}},"cur_data":"79dc29546b84","visdat":{"79dc29546b84":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div></div>
 </section></section>
 <section>
 <section id="elements-of-visual-communication" class="title-slide slide level1 center" data-background-color="#184669">
@@ -6793,8 +6826,8 @@ Levels: A B C D E</code></pre>
 </section>
 <section id="visuals-are-an-increasingly-important-form-of-science-communication" class="slide level2">
 <h2>Visuals are an increasingly important form of science communication</h2>
-<p>Many scientists not well trained in design <em>principles</em> for <strong>effective</strong> messaging</p>
-<p>Visuals can be improved by taking some simple steps before, during, and after their creation</p>
+<p>Many scientists not well trained in design <em>principles</em> for <span class="fg" style="--col: #fcbac5"><strong>effective</strong></span> messaging</p>
+<p>Visuals can be improved by taking some simple steps<br>before, during, and after their creation</p>
 </section></section>
 <section id="principles" class="title-slide slide level1 center" data-background-color="#ffdae0">
 <h1>10 Principles</h1>
@@ -6809,9 +6842,9 @@ Levels: A B C D E</code></pre>
 <section id="focus-on-information-and-message" class="slide level2">
 <h2>Focus on information and message</h2>
 <p>Least technical but very important step</p>
-<p><span class="fg" style="--col: #ffdae0"><strong>Prioritize the information you want to share</strong></span> and design it.</p>
+<p><span class="fg" style="--col: #fcbac5"><strong>Prioritize the information you want to share</strong></span> and design it.</p>
 <ul>
-<li>What <span class="fg" style="--col: #ffdae0"><strong>core information</strong></span> needs to be conveyed?</li>
+<li>What <span class="fg" style="--col: #fcbac5"><strong>core information</strong></span> needs to be conveyed?</li>
 <li>What about that information is going to make your point?</li>
 <li>Objective: comparison, ranking, trend?</li>
 <li>Search the literature for inspiration</li>
@@ -6838,21 +6871,19 @@ Levels: A B C D E</code></pre>
 <li>Tableau</li>
 <li>MATLAB</li>
 <li>Python</li>
-<li><span class="fg" style="--col: #ffdae0"><strong>R</strong></span></li>
+<li><span class="fg" style="--col: #fcbac5"><strong>R</strong></span></li>
 </ul></li>
 </ul>
 </section></section>
 <section>
-<section id="principle-3use-an-effective-geometry-and-show-data" class="title-slide slide level1 center" data-background-color="#ffdae0">
-<h1>Principle 3:<br>Use an Effective Geometry and Show Data</h1>
+<section id="principle-3use-an-effective-geometryand-show-data" class="title-slide slide level1 center" data-background-color="#ffdae0">
+<h1>Principle 3:<br>Use an Effective Geometry<br>and Show Data</h1>
 
 </section>
 <section id="less-is-more" class="slide level2">
 <h2>Less is more</h2>
 <ul>
-<li>Geometries = representations of data in different forms</li>
-<li>Often more than one possible geometry</li>
-<li>High data-ink ratios<sup>1</sup> are best: Remove as much non-data-ink as possible (Principle 8)
+<li>Remove as much non-data-ink as possible
 <ul>
 <li>Unnecessary plot elements (grids, colored background)</li>
 <li>Busy axis (too many breaks)</li>
@@ -6860,9 +6891,10 @@ Levels: A B C D E</code></pre>
 <li>Do not include too much information
 <ul>
 <li>Stick to your message (see principle 1)</li>
+<li>Different message? Different figure!</li>
 </ul></li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>ratio of ink used on data compared with overall ink used in a figure</p></li></ol></aside></section>
+</section>
 <section id="geometries-1" class="slide level2">
 <h2>Geometries</h2>
 <ul>
@@ -6914,23 +6946,23 @@ Levels: A B C D E</code></pre>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<div id="wmxddwkhbp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wmxddwkhbp table {
+<div id="metbhczajx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#metbhczajx table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wmxddwkhbp thead, #wmxddwkhbp tbody, #wmxddwkhbp tfoot, #wmxddwkhbp tr, #wmxddwkhbp td, #wmxddwkhbp th {
+#metbhczajx thead, #metbhczajx tbody, #metbhczajx tfoot, #metbhczajx tr, #metbhczajx td, #metbhczajx th {
   border-style: none;
 }
 
-#wmxddwkhbp p {
+#metbhczajx p {
   margin: 0;
   padding: 0;
 }
 
-#wmxddwkhbp .gt_table {
+#metbhczajx .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -6956,12 +6988,12 @@ Levels: A B C D E</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#wmxddwkhbp .gt_caption {
+#metbhczajx .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wmxddwkhbp .gt_title {
+#metbhczajx .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -6973,7 +7005,7 @@ Levels: A B C D E</code></pre>
   border-bottom-width: 0;
 }
 
-#wmxddwkhbp .gt_subtitle {
+#metbhczajx .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -6985,7 +7017,7 @@ Levels: A B C D E</code></pre>
   border-top-width: 0;
 }
 
-#wmxddwkhbp .gt_heading {
+#metbhczajx .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -6997,13 +7029,13 @@ Levels: A B C D E</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#wmxddwkhbp .gt_bottom_border {
+#metbhczajx .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #5F5F5F;
 }
 
-#wmxddwkhbp .gt_col_headings {
+#metbhczajx .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #5F5F5F;
@@ -7018,7 +7050,7 @@ Levels: A B C D E</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#wmxddwkhbp .gt_col_heading {
+#metbhczajx .gt_col_heading {
   color: #333333;
   background-color: #FFC0CB;
   font-size: 100%;
@@ -7038,7 +7070,7 @@ Levels: A B C D E</code></pre>
   overflow-x: hidden;
 }
 
-#wmxddwkhbp .gt_column_spanner_outer {
+#metbhczajx .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFC0CB;
   font-size: 100%;
@@ -7050,15 +7082,15 @@ Levels: A B C D E</code></pre>
   padding-right: 4px;
 }
 
-#wmxddwkhbp .gt_column_spanner_outer:first-child {
+#metbhczajx .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wmxddwkhbp .gt_column_spanner_outer:last-child {
+#metbhczajx .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wmxddwkhbp .gt_column_spanner {
+#metbhczajx .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #5F5F5F;
@@ -7070,11 +7102,11 @@ Levels: A B C D E</code></pre>
   width: 100%;
 }
 
-#wmxddwkhbp .gt_spanner_row {
+#metbhczajx .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wmxddwkhbp .gt_group_heading {
+#metbhczajx .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7100,7 +7132,7 @@ Levels: A B C D E</code></pre>
   text-align: left;
 }
 
-#wmxddwkhbp .gt_empty_group_heading {
+#metbhczajx .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -7115,15 +7147,15 @@ Levels: A B C D E</code></pre>
   vertical-align: middle;
 }
 
-#wmxddwkhbp .gt_from_md > :first-child {
+#metbhczajx .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wmxddwkhbp .gt_from_md > :last-child {
+#metbhczajx .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wmxddwkhbp .gt_row {
+#metbhczajx .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7142,7 +7174,7 @@ Levels: A B C D E</code></pre>
   overflow-x: hidden;
 }
 
-#wmxddwkhbp .gt_stub {
+#metbhczajx .gt_stub {
   color: #333333;
   background-color: #FFC6E3;
   font-size: 100%;
@@ -7155,7 +7187,7 @@ Levels: A B C D E</code></pre>
   padding-right: 5px;
 }
 
-#wmxddwkhbp .gt_stub_row_group {
+#metbhczajx .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -7169,15 +7201,15 @@ Levels: A B C D E</code></pre>
   vertical-align: top;
 }
 
-#wmxddwkhbp .gt_row_group_first td {
+#metbhczajx .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wmxddwkhbp .gt_row_group_first th {
+#metbhczajx .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wmxddwkhbp .gt_summary_row {
+#metbhczajx .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -7187,16 +7219,16 @@ Levels: A B C D E</code></pre>
   padding-right: 5px;
 }
 
-#wmxddwkhbp .gt_first_summary_row {
+#metbhczajx .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #5F5F5F;
 }
 
-#wmxddwkhbp .gt_first_summary_row.thick {
+#metbhczajx .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wmxddwkhbp .gt_last_summary_row {
+#metbhczajx .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7206,7 +7238,7 @@ Levels: A B C D E</code></pre>
   border-bottom-color: #5F5F5F;
 }
 
-#wmxddwkhbp .gt_grand_summary_row {
+#metbhczajx .gt_grand_summary_row {
   color: #333333;
   background-color: #D5D5D5;
   text-transform: inherit;
@@ -7216,7 +7248,7 @@ Levels: A B C D E</code></pre>
   padding-right: 5px;
 }
 
-#wmxddwkhbp .gt_first_grand_summary_row {
+#metbhczajx .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7226,7 +7258,7 @@ Levels: A B C D E</code></pre>
   border-top-color: #5F5F5F;
 }
 
-#wmxddwkhbp .gt_last_grand_summary_row_top {
+#metbhczajx .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7236,11 +7268,11 @@ Levels: A B C D E</code></pre>
   border-bottom-color: #5F5F5F;
 }
 
-#wmxddwkhbp .gt_striped {
+#metbhczajx .gt_striped {
   background-color: #FCF2F7;
 }
 
-#wmxddwkhbp .gt_table_body {
+#metbhczajx .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #5F5F5F;
@@ -7249,7 +7281,7 @@ Levels: A B C D E</code></pre>
   border-bottom-color: #5F5F5F;
 }
 
-#wmxddwkhbp .gt_footnotes {
+#metbhczajx .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -7263,7 +7295,7 @@ Levels: A B C D E</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#wmxddwkhbp .gt_footnote {
+#metbhczajx .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -7272,7 +7304,7 @@ Levels: A B C D E</code></pre>
   padding-right: 5px;
 }
 
-#wmxddwkhbp .gt_sourcenotes {
+#metbhczajx .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -7286,7 +7318,7 @@ Levels: A B C D E</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#wmxddwkhbp .gt_sourcenote {
+#metbhczajx .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -7294,72 +7326,72 @@ Levels: A B C D E</code></pre>
   padding-right: 5px;
 }
 
-#wmxddwkhbp .gt_left {
+#metbhczajx .gt_left {
   text-align: left;
 }
 
-#wmxddwkhbp .gt_center {
+#metbhczajx .gt_center {
   text-align: center;
 }
 
-#wmxddwkhbp .gt_right {
+#metbhczajx .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wmxddwkhbp .gt_font_normal {
+#metbhczajx .gt_font_normal {
   font-weight: normal;
 }
 
-#wmxddwkhbp .gt_font_bold {
+#metbhczajx .gt_font_bold {
   font-weight: bold;
 }
 
-#wmxddwkhbp .gt_font_italic {
+#metbhczajx .gt_font_italic {
   font-style: italic;
 }
 
-#wmxddwkhbp .gt_super {
+#metbhczajx .gt_super {
   font-size: 65%;
 }
 
-#wmxddwkhbp .gt_footnote_marks {
+#metbhczajx .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wmxddwkhbp .gt_asterisk {
+#metbhczajx .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wmxddwkhbp .gt_indent_1 {
+#metbhczajx .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wmxddwkhbp .gt_indent_2 {
+#metbhczajx .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wmxddwkhbp .gt_indent_3 {
+#metbhczajx .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wmxddwkhbp .gt_indent_4 {
+#metbhczajx .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wmxddwkhbp .gt_indent_5 {
+#metbhczajx .gt_indent_5 {
   text-indent: 25px;
 }
 
-#wmxddwkhbp .katex-display {
+#metbhczajx .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#wmxddwkhbp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#metbhczajx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -7381,75 +7413,75 @@ Levels: A B C D E</code></pre>
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td class="gt_row gt_right" headers="Age">25-34</td>
-<td class="gt_row gt_left" headers="Condition">Neuropathic Pain</td>
-<td class="gt_row gt_right" headers="Date">6/16/2010</td>
-<td class="gt_row gt_left" headers="Drug">oxycodone hcl er</td>
-<td class="gt_row gt_right" headers="DrugId">1025</td>
-<td class="gt_row gt_right" headers="EaseofUse">4</td>
-<td class="gt_row gt_right" headers="Effectiveness">4</td>
+<td class="gt_row gt_right" headers="Age">45-54</td>
+<td class="gt_row gt_left" headers="Condition">Other</td>
+<td class="gt_row gt_right" headers="Date">11/2/2009</td>
+<td class="gt_row gt_left" headers="Drug">nasonex aerosol, spray with pump</td>
+<td class="gt_row gt_right" headers="DrugId">4820</td>
+<td class="gt_row gt_right" headers="EaseofUse">5</td>
+<td class="gt_row gt_right" headers="Effectiveness">3</td>
 <td class="gt_row gt_right" headers="Satisfaction">3</td>
-<td class="gt_row gt_right" headers="UsefulCount">0</td>
+<td class="gt_row gt_right" headers="UsefulCount">1</td>
 <td class="gt_row gt_left" headers="Gender">Male</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_right gt_striped" headers="Age">45-54</td>
-<td class="gt_row gt_left gt_striped" headers="Condition">Blood Clots in Deep Veins and in Blood Vessel of the Lung</td>
-<td class="gt_row gt_right gt_striped" headers="Date">8/14/2010</td>
-<td class="gt_row gt_left gt_striped" headers="Drug">warfarin sodium</td>
-<td class="gt_row gt_right gt_striped" headers="DrugId">3949</td>
-<td class="gt_row gt_right gt_striped" headers="EaseofUse">5</td>
-<td class="gt_row gt_right gt_striped" headers="Effectiveness">4</td>
-<td class="gt_row gt_right gt_striped" headers="Satisfaction">4</td>
-<td class="gt_row gt_right gt_striped" headers="UsefulCount">0</td>
-<td class="gt_row gt_left gt_striped" headers="Gender">Male</td>
+<td class="gt_row gt_left gt_striped" headers="Condition">Arthritis</td>
+<td class="gt_row gt_right gt_striped" headers="Date">3/30/2010</td>
+<td class="gt_row gt_left gt_striped" headers="Drug">diclofenac sodium</td>
+<td class="gt_row gt_right gt_striped" headers="DrugId">4284</td>
+<td class="gt_row gt_right gt_striped" headers="EaseofUse">3</td>
+<td class="gt_row gt_right gt_striped" headers="Effectiveness">5</td>
+<td class="gt_row gt_right gt_striped" headers="Satisfaction">5</td>
+<td class="gt_row gt_right gt_striped" headers="UsefulCount">12</td>
+<td class="gt_row gt_left gt_striped" headers="Gender">Female</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_right" headers="Age">25-34</td>
-<td class="gt_row gt_left" headers="Condition">Tension Headache</td>
-<td class="gt_row gt_right" headers="Date">12/27/2015</td>
-<td class="gt_row gt_left" headers="Drug">butalb-caff-acetaminoph-codein</td>
-<td class="gt_row gt_right" headers="DrugId">1869</td>
-<td class="gt_row gt_right" headers="EaseofUse">5</td>
+<td class="gt_row gt_right" headers="Age">45-54</td>
+<td class="gt_row gt_left" headers="Condition">""Change of Life"" Signs</td>
+<td class="gt_row gt_right" headers="Date">10/2/2011</td>
+<td class="gt_row gt_left" headers="Drug">mimvey</td>
+<td class="gt_row gt_right" headers="DrugId">154151</td>
+<td class="gt_row gt_right" headers="EaseofUse">4</td>
 <td class="gt_row gt_right" headers="Effectiveness">4</td>
-<td class="gt_row gt_right" headers="Satisfaction">5</td>
-<td class="gt_row gt_right" headers="UsefulCount">2</td>
+<td class="gt_row gt_right" headers="Satisfaction">2</td>
+<td class="gt_row gt_right" headers="UsefulCount">8</td>
 <td class="gt_row gt_left" headers="Gender">Female</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_right gt_striped" headers="Age"></td>
-<td class="gt_row gt_left gt_striped" headers="Condition">Increased Triglycerides and Cholesterol</td>
-<td class="gt_row gt_right gt_striped" headers="Date">7/5/2010</td>
-<td class="gt_row gt_left gt_striped" headers="Drug">zocor</td>
-<td class="gt_row gt_right gt_striped" headers="DrugId">6040</td>
-<td class="gt_row gt_right gt_striped" headers="EaseofUse">4</td>
-<td class="gt_row gt_right gt_striped" headers="Effectiveness">2</td>
-<td class="gt_row gt_right gt_striped" headers="Satisfaction">2</td>
+<td class="gt_row gt_right gt_striped" headers="Age">13-18</td>
+<td class="gt_row gt_left gt_striped" headers="Condition">Painful Periods</td>
+<td class="gt_row gt_right gt_striped" headers="Date">3/20/2015</td>
+<td class="gt_row gt_left gt_striped" headers="Drug">naproxen sodium cr</td>
+<td class="gt_row gt_right gt_striped" headers="DrugId">11643</td>
+<td class="gt_row gt_right gt_striped" headers="EaseofUse">5</td>
+<td class="gt_row gt_right gt_striped" headers="Effectiveness">4</td>
+<td class="gt_row gt_right gt_striped" headers="Satisfaction">5</td>
 <td class="gt_row gt_right gt_striped" headers="UsefulCount">0</td>
 <td class="gt_row gt_left gt_striped" headers="Gender">Female</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_right" headers="Age">25-34</td>
-<td class="gt_row gt_left" headers="Condition">Other</td>
-<td class="gt_row gt_right" headers="Date">9/26/2009</td>
-<td class="gt_row gt_left" headers="Drug">prednisone concentrate</td>
-<td class="gt_row gt_right" headers="DrugId">6007</td>
-<td class="gt_row gt_right" headers="EaseofUse">4</td>
-<td class="gt_row gt_right" headers="Effectiveness">4</td>
-<td class="gt_row gt_right" headers="Satisfaction">1</td>
-<td class="gt_row gt_right" headers="UsefulCount">77</td>
-<td class="gt_row gt_left" headers="Gender">Female</td>
+<td class="gt_row gt_left" headers="Condition">Additional Medications to Treat Depression</td>
+<td class="gt_row gt_right" headers="Date">5/31/2009</td>
+<td class="gt_row gt_left" headers="Drug">seroquel</td>
+<td class="gt_row gt_right" headers="DrugId">4718</td>
+<td class="gt_row gt_right" headers="EaseofUse">5</td>
+<td class="gt_row gt_right" headers="Effectiveness">5</td>
+<td class="gt_row gt_right" headers="Satisfaction">5</td>
+<td class="gt_row gt_right" headers="UsefulCount">4</td>
+<td class="gt_row gt_left" headers="Gender">Male</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_right gt_striped" headers="Age">45-54</td>
-<td class="gt_row gt_left gt_striped" headers="Condition">Stop Smoking</td>
-<td class="gt_row gt_right gt_striped" headers="Date">9/30/2009</td>
-<td class="gt_row gt_left gt_striped" headers="Drug">wellbutrin sr</td>
-<td class="gt_row gt_right gt_striped" headers="DrugId">14211</td>
+<td class="gt_row gt_right gt_striped" headers="Age">35-44</td>
+<td class="gt_row gt_left gt_striped" headers="Condition">Other</td>
+<td class="gt_row gt_right gt_striped" headers="Date">9/15/2009</td>
+<td class="gt_row gt_left gt_striped" headers="Drug">baclofen</td>
+<td class="gt_row gt_right gt_striped" headers="DrugId">8615</td>
 <td class="gt_row gt_right gt_striped" headers="EaseofUse">5</td>
-<td class="gt_row gt_right gt_striped" headers="Effectiveness">1</td>
-<td class="gt_row gt_right gt_striped" headers="Satisfaction">1</td>
-<td class="gt_row gt_right gt_striped" headers="UsefulCount">2</td>
+<td class="gt_row gt_right gt_striped" headers="Effectiveness">5</td>
+<td class="gt_row gt_right gt_striped" headers="Satisfaction">3</td>
+<td class="gt_row gt_right gt_striped" headers="UsefulCount">5</td>
 <td class="gt_row gt_left gt_striped" headers="Gender">Female</td>
 </tr>
 </tbody>
@@ -7500,6 +7532,9 @@ Levels: A B C D E</code></pre>
 <p>For each gender, what is the proportion of <em>Ease of use</em> ?</p>
 
 <img data-src="index_files/figure-revealjs/propo-1.png" width="960" class="r-stretch"></section>
+<section id="make-your-own-figure" class="slide level2">
+<h2>Make your own figure 🧪</h2>
+</section>
 <section id="distributions" class="slide level2">
 <h2>Distributions</h2>
 <ul>
@@ -10258,11 +10293,11 @@ Levels: A B C D E</code></pre>
 <h2>Tidyverse install verification</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb475"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb475-1"><a href=""></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"tidyverse"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb475-2"><a href=""></a>  <span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
-<span id="cb475-3"><a href=""></a>}</span>
-<span id="cb475-4"><a href=""></a></span>
-<span id="cb475-5"><a href=""></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb476"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb476-1"><a href=""></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"tidyverse"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb476-2"><a href=""></a>  <span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb476-3"><a href=""></a>}</span>
+<span id="cb476-4"><a href=""></a></span>
+<span id="cb476-5"><a href=""></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 
 </div></div>
@@ -10271,14 +10306,14 @@ Levels: A B C D E</code></pre>
 <h2>Data.table install verification</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb476"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb476-1"><a href=""></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"data.table"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb476-2"><a href=""></a>  <span class="fu">install.packages</span>(<span class="st">"data.table"</span>)</span>
-<span id="cb476-3"><a href=""></a>}</span>
-<span id="cb476-4"><a href=""></a></span>
-<span id="cb476-5"><a href=""></a><span class="fu">library</span>(data.table)</span>
-<span id="cb476-6"><a href=""></a></span>
-<span id="cb476-7"><a href=""></a><span class="co"># version check</span></span>
-<span id="cb476-8"><a href=""></a><span class="fu">packageVersion</span>(<span class="st">"data.table"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb477"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb477-1"><a href=""></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"data.table"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb477-2"><a href=""></a>  <span class="fu">install.packages</span>(<span class="st">"data.table"</span>)</span>
+<span id="cb477-3"><a href=""></a>}</span>
+<span id="cb477-4"><a href=""></a></span>
+<span id="cb477-5"><a href=""></a><span class="fu">library</span>(data.table)</span>
+<span id="cb477-6"><a href=""></a></span>
+<span id="cb477-7"><a href=""></a><span class="co"># version check</span></span>
+<span id="cb477-8"><a href=""></a><span class="fu">packageVersion</span>(<span class="st">"data.table"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] '1.17.99'</code></pre>
@@ -10286,7 +10321,6 @@ Levels: A B C D E</code></pre>
 </div></div>
 
 </section></section>
-
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
