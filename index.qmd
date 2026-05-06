@@ -163,7 +163,7 @@ Graphics can be built up from a set of components adapted to the `ggplot2` packa
 
 ![](resources/gg2.png)
 
-## The [data]{.fg style="--col: #cb962a"} to be visualized has one column per variable</br>and one row per observation {auto-animate="TRUE"}
+## The [data]{.fg style="--col: #cb962a"} to be visualized must have</br>1 column per variable and 1 row per observation {auto-animate="TRUE"}
 
 ```{r}
 #| label: data
@@ -227,7 +227,7 @@ library(ggplot2)
 ggplot(
   mpg,
   mapping = aes(
-    x = cty,
+    x = displ,
     y = hwy
   )
 ) +
@@ -525,15 +525,15 @@ c(a_boolean, b_boolean)
 #| warning: true
 #| message: true
 #| output-location: column
-#| classes: columns5050
-a_null <- NULL
-a_missing <- NA
-a_nan <- NaN
-a_inf <- Inf
-a_minus_inf <- -Inf
-char_missing <- NA_character_
-real_missing <- NA_real_
-int_missing <- NA_integer_
+#| classes: columns6040
+a_null <- NULL # absence of value
+a_missing <- NA # missing value
+a_nan <- NaN # not a number
+a_inf <- Inf # infinity
+a_minus_inf <- -Inf # negative infinity
+char_missing <- NA_character_ # missing character
+real_missing <- NA_real_ # missing real number
+int_missing <- NA_integer_ # missing integer
 
 str(
   list(
@@ -549,7 +549,7 @@ str(
 )
 ```
 
-## A NULL value is not missing {auto-animate="TRUE"}
+## A NULL value is not missing {auto-animate="TRUE" .code7}
 
 ```{r}
 #| label: base_r_var_2second2
@@ -579,7 +579,7 @@ cat(
 )
 ```
 
-## Factors are important for ordering elements in visualizations {auto-animate="TRUE"}
+## Factors are important for ordering elements {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_var_2third
@@ -623,13 +623,15 @@ droplevels(a_factor, "medium")
 new_data <- c("very high", "low")
 factor_vec <- c(
   a_factor,
-  factor(new_data, levels = c(levels(a_factor), "very high"))
+  factor(
+    new_data, 
+    levels = c(levels(a_factor), "very high"))
 )
 factor_vec
 ```
 :::
 
-## Creating vectors {.out7 auto-animate="TRUE"}
+## Creating vectors {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_var_3
@@ -676,7 +678,7 @@ a_vector <- c(1:10, "coucou")
 class(a_vector)
 ```
 
-## Subsetting vectors by position, logical and negative indexing {auto-animate="TRUE"}
+## Subsetting vectors by position,</br>logical and negative indexing {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_var_3second
@@ -966,7 +968,7 @@ all(a_list$nested_list$character_vector == a_list$character_vector)
 #| message: true
 #| output-location: column
 #| classes: columns8020
-all(a_list$nested_list$character_vector == a_list$character_vector)
+all(a_list$nested_list$character_vector != a_list$character_vector)
 ```
 :::
 
@@ -1117,7 +1119,7 @@ a < b
 #| output-location: column
 #| classes: columns5050
 
-a == b 
+a == b # 2=
 ```
 :::
 
@@ -1131,7 +1133,7 @@ a == b
 #| output-location: column
 #| classes: columns5050
 
-a != b 
+a != b # !+=
 ```
 :::
 
@@ -1145,7 +1147,7 @@ a != b
 #| output-location: column
 #| classes: columns5050
 
-c >= b
+c >= b # > + =
 ```
 :::
 
@@ -1164,7 +1166,7 @@ a <- TRUE
 b <- FALSE
 c <- TRUE
 
-a & b
+a & b # and
 ```
 
 ::: fragment
@@ -1177,7 +1179,7 @@ a & b
 #| output-location: column
 #| classes: columns5050
 
-a | b
+a | b # or
 ```
 :::
 
@@ -1191,7 +1193,7 @@ a | b
 #| output-location: column
 #| classes: columns5050
 
-!a
+!a # not
 ```
 :::
 
@@ -1205,10 +1207,25 @@ a | b
 #| output-location: column
 #| classes: columns5050
 
-# n& has higher precedence than |
+# & has higher precedence than |
 # parentheses are needed here 
 # to ensure the correct order of operations
 (a | b) & c 
+
+```
+:::
+
+::: fragment
+```{r}
+#| label: base_r_op_5_4b
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+
+a | b & c 
 
 ```
 :::
@@ -1242,7 +1259,7 @@ if (x > 0) {
 #| warning: true
 #| message: true
 #| output-location: column
-#| classes: columns5050
+#| classes: columns6040
 
 
 # not efficient 
@@ -1917,7 +1934,7 @@ sort(a_df$value, decreasing = TRUE)
 #| warning: true
 #| message: true
 #| output-location: column
-#| classes: columns5050
+#| classes: columns6040
 a_df <- data.frame(
   id = 1:5,
   group = c("A", "A", "B", "B", "C"),
@@ -1936,7 +1953,7 @@ a_df[c(1, 3), ]
 #| warning: true
 #| message: true
 #| output-location: column
-#| classes: columns5050
+#| classes: columns6040
 # Select all rows, columns 1 and 3
 a_df[, c(1, 3)]
 ```
@@ -1950,7 +1967,7 @@ a_df[, c(1, 3)]
 #| warning: true
 #| message: true
 #| output-location: column
-#| classes: columns5050
+#| classes: columns6040
 # Select rows 1 to 3, columns "id" + "value"
 a_df[1:3, c("id", "value")]
 ```
@@ -2377,7 +2394,7 @@ linear_tb |>
 
 ```
 
-## Dataframes can be subsetted with `dplyr::select()` {auto-animate="TRUE"}
+## Subsetting with `dplyr::filter()` and `dplyr::select()` {auto-animate="TRUE"}
 
 ```{r}
 #| label: base_r_var_14
@@ -2857,7 +2874,7 @@ as.data.table(c_tb)[
 ```
 
 
-## Pivoting data from wide to long format with `data.table::melt()` {auto-animate="TRUE" .out7 .code6}
+## Pivoting data from wide to long format</br>with `data.table::melt()` {auto-animate="TRUE" .out7 .code6}
 
 ```{r}
 #| label: base_r_var_16_1
@@ -3955,7 +3972,7 @@ ggplot(
   )
 ```
 
-## It may be cleaner to specify aesthetics in geometries 🔬{auto-animate="TRUE"}
+## It may be cleaner to specify aesthetics in geometries {auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_aes_3_5
@@ -3967,7 +3984,6 @@ ggplot(
 #| classes: columns5050
 #| fig-height: 6
 #| fig-width: 6
-#| code-line-numbers: "1-18|17"
 ggplot(
   data = iris,
   aes(
@@ -3984,7 +4000,7 @@ ggplot(
     linewidth = 0.75
   )
 ```
-## A geometry can be a model, *e.g*., linear with `lm` 🔬{auto-animate="TRUE"}
+## A geometry can be a model, e.g., linear with `lm` 🔬{auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_aes_3_6
@@ -4017,7 +4033,7 @@ ggplot(
   )
 ```
 
-## A geometry can be a model, *e.g*., nonlinear with `nls` 🔬{auto-animate="TRUE" .code5}
+## A geometry can be a model, e.g., nonlinear with `nls` 🔬{auto-animate="TRUE" .code5}
 
 ```{r}
 #| label: ggplot_aes_3_6b
@@ -4387,7 +4403,7 @@ ggplot(
 #| classes: columns5050
 #| fig-height: 6
 #| fig-width: 6
-#| code-line-numbers: "14-18|19-23"
+#| code-line-numbers: "14-19|20-25"
 ggplot(
   data = iris |>
     group_by(Species) |>
@@ -4501,7 +4517,7 @@ ggplot(
 #| message: false
 #| output-location: column
 #| classes: columns5050
-#| fig-height: 7
+#| fig-height: 5
 #| fig-width: 4.5
 #| code-line-numbers: "|5"
 ggplot(
@@ -4521,7 +4537,7 @@ ggplot(
 #| message: false
 #| output-location: column
 #| classes: columns5050
-#| fig-height: 7
+#| fig-height: 5
 #| fig-width: 4.5
 #| code-line-numbers: "5"
 ggplot(
@@ -4819,7 +4835,7 @@ ggplot(
 #| classes: columns5050
 #| fig-height: 6
 #| fig-width: 6
-#| code-line-numbers: "15"
+#| code-line-numbers: "16-25"
 ggplot(
   data = diamonds,
   aes(
@@ -5226,7 +5242,7 @@ ggplot(
 
 ```
 
-# 4.2 scales {background-color="#a5ca0f"}
+# 4.2 Colour scales {background-color="#a5ca0f"}
 
 ## Discrete coloring by default for categorical variables {auto-animate="TRUE" .code7}
 
@@ -5722,7 +5738,7 @@ ggplot(
 #| classes: columns5050
 #| fig-height: 6
 #| fig-width: 6
-#| code-line-numbers: "6,22|7,23-30"
+#| code-line-numbers: "6,22|7,23-29"
 ggplot(
   data = iris,
   aes(
@@ -6032,7 +6048,7 @@ ggplot(
   )
 ```
 
-## Make a grid of panels along 2 variableswith `facet_grid()` {auto-animate="TRUE"}
+## Make a grid of panels along 2 variable swith `facet_grid()` {auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_aes_3_14f
@@ -6136,18 +6152,16 @@ ggplot(
 #| classes: columns5050
 #| fig-height: 6
 #| fig-width: 6
-
 set.seed(42)
 
-data.frame(x = 1:10, y = sample(1:10)) |> 
+data.frame(x = 1:10, y = sample(1:10)) |>
   ggplot(aes(x, y)) +
   geom_bar(stat = "identity") +
   coord_cartesian(
-    xlim = c(1.5, 8.5), 
+    xlim = c(1.5, 8.5),
     ylim = c(0, NA),
-  expand = FALSE
+    expand = FALSE
   )
-
 ```
 
 ## Flipped cartesian coordinates {auto-animate="TRUE"}
@@ -6162,18 +6176,16 @@ data.frame(x = 1:10, y = sample(1:10)) |>
 #| classes: columns5050
 #| fig-height: 6
 #| fig-width: 6
-
 set.seed(42)
 
-data.frame(x = 1:10, y = sample(1:10)) |> 
+data.frame(x = 1:10, y = sample(1:10)) |>
   ggplot(aes(x, y)) +
   geom_bar(stat = "identity") +
   coord_flip(
-    xlim = c(1.5, 8.5), 
+    xlim = c(1.5, 8.5),
     ylim = c(0, NA),
-  expand = FALSE
+    expand = FALSE
   )
-
 ```
 
 ## Log cartesian coordinates {auto-animate="TRUE"}
@@ -6188,16 +6200,14 @@ data.frame(x = 1:10, y = sample(1:10)) |>
 #| classes: columns5050
 #| fig-height: 6
 #| fig-width: 6
-
 set.seed(42)
 
-data.frame(x = 1:10, y = sample(1:10)) |> 
+data.frame(x = 1:10, y = sample(1:10)) |>
   ggplot(aes(x, y)) +
   geom_bar(stat = "identity") +
   coord_trans(
     x = 'log10' #show non-transformed data
   )
-
 ```
 
 ## Polar coordinates, *&theta;* = *x* {auto-animate="TRUE"}
@@ -6212,10 +6222,9 @@ data.frame(x = 1:10, y = sample(1:10)) |>
 #| classes: columns5050
 #| fig-height: 6
 #| fig-width: 6
-
 set.seed(42)
 
-data.frame(x = 1:10, y = sample(1:10)) |> 
+data.frame(x = 1:10, y = sample(1:10)) |>
   ggplot(aes(x, y)) +
   geom_bar(stat = "identity") +
   coord_radial(expand = FALSE) #also coord_polar()
@@ -6233,18 +6242,102 @@ data.frame(x = 1:10, y = sample(1:10)) |>
 #| classes: columns5050
 #| fig-height: 6
 #| fig-width: 6
-
 set.seed(42)
 
-data.frame(x = 1:10, y = sample(1:10)) |> 
+data.frame(x = 1:10, y = sample(1:10)) |>
   ggplot(aes(x, y)) +
   geom_bar(stat = "identity") +
   coord_radial(theta = "y") #also coord_polar()
 ```
 
-## Map projections {auto-animate="TRUE"}
+## Map projections {auto-animate="TRUE" .code7}
 
-https://r-charts.com/ggplot2/coordinate-systems/
+```{r}
+#| label: ggplot_aes_3_16b22
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns4060
+#| fig-height: 6
+#| fig-width: 6
+library("sf")
+library("rnaturalearth")
+library("rnaturalearthdata")
+ggplot(
+  data = ne_countries(
+    scale = "medium",
+    returnclass = "sf"
+  )
+) +
+  geom_sf() +
+  theme_bw()
+```
+
+## Map projections {auto-animate="TRUE" .code7}
+
+```{r}
+#| label: ggplot_aes_3_16b2
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns4060
+#| fig-height: 6
+#| fig-width: 6
+library("sf")
+library("rnaturalearth")
+library("rnaturalearthdata")
+ggplot(
+  data = ne_countries(
+    scale = "medium",
+    returnclass = "sf"
+  )
+) +
+  geom_sf(aes(fill = pop_est)) +
+  scale_fill_viridis_c(
+    option = "plasma",
+    trans = "sqrt"
+  ) +
+  theme_bw()
+```
+
+## Map projections {auto-animate="TRUE" .code7}
+
+```{r}
+#| label: ggplot_aes_3_16b3
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns4060
+#| fig-height: 6
+#| fig-width: 6
+library("sf")
+library("rnaturalearth")
+library("rnaturalearthdata")
+ggplot(
+  data = ne_countries(
+    scale = "medium",
+    returnclass = "sf"
+  )
+) +
+  geom_sf(aes(fill = pop_est)) +
+  coord_sf(
+    xlim = c(-11, 31),
+    ylim = c(35, 72),
+    crs = st_crs(4326),
+    expand = FALSE
+  ) +
+  scale_fill_viridis_c(
+    option = "plasma",
+    trans = "sqrt"
+  ) +
+  theme_bw()
+```
 
 # 6. Themes {background-color="#ff69b4"}
 
@@ -6269,7 +6362,7 @@ ggplot(
   scale_color_viridis_d() 
 ```
 
-## Preset themes from `ggplot2` 🔬{auto-animate="TRUE" background-color="#002b36"}
+## Preset themes from `ggplot2` 🔬{auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_aes_6_1b
@@ -6292,7 +6385,7 @@ ggplot(
   theme_minimal()
 ```
 
-## Preset themes from `ggplot2` 🔬{auto-animate="TRUE" background-color="#002b36"}
+## Preset themes from `ggplot2` 🔬{auto-animate="TRUE"}
 
 ```{r}
 #| label: ggplot_aes_6_1c
@@ -6315,28 +6408,6 @@ ggplot(
   theme_bw()
 ```
 
-## Preset themes from `ggplot2` 🔬{auto-animate="TRUE" background-color="#002b36"}
-
-```{r}
-#| label: ggplot_aes_6_1d
-#| echo: true
-#| eval: true
-#| warning: false
-#| message: false
-#| output-location: column
-#| classes: columns5050
-#| fig-height: 6
-#| fig-width: 6
-#| code-line-numbers: "7"
-
-ggplot(
-  data = diamonds,
-  aes(x = carat, y = price, color = cut)
-) +
-  geom_point(alpha = 0.25) +
-  scale_color_viridis_d() +
-  ggthemes::theme_solarized(light = FALSE)
-```
 
 ## Preset themes from other libraries 🔬{auto-animate="TRUE" background-color="#002b36"}
 
@@ -8649,7 +8720,7 @@ dh %>%
 
 ```
 
-## Highlighting, axis simplification, scaling, grid elements🔬{.code5}
+## Highlighting, axis simplification, scaling, grid elements{.code5}
 
 ```{r}
 #| label: simplif
