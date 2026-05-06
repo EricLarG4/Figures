@@ -4451,6 +4451,46 @@ ggplot(
   )
 ```
 
+## There are many `geoms_*` to choose from 🔬{auto-animate="TRUE" .code6}
+
+```{r}
+#| label: ggplot_aes_3_9g2
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 7
+#| fig-width: 4.5
+#| code-line-numbers: "|5"
+ggplot(
+  diamonds[diamonds$carat < 1.5, ],
+  aes(x = cut, y = carat, fill = price)
+) +
+  geom_tile()
+```
+
+## There are many `geoms_*` to choose from 🔬{auto-animate="TRUE" .code6}
+
+```{r}
+#| label: ggplot_aes_3_9g3
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 7
+#| fig-width: 4.5
+#| code-line-numbers: "5"
+ggplot(
+  diamonds[diamonds$carat < 1.5, ],
+  aes(x = cut, y = carat, fill = price)
+) +
+  geom_raster() #high performance tiles
+```
+
 ## Going further with text and labelling
 
 Strongly advised libraries to explore:
@@ -6792,16 +6832,15 @@ You can use the grammar of graphics approach to pick the different necessary ele
     -   Distributional information
     -   Uncertainty
 
-## Bar plots
+## Bar plots are popular but often a bad choice
 
--   Bar plots are popular but often a bad choice
-    -   Low data density
-    -   Always start at zero, they can be misleading
-    -   Part of the range covered by the bar might have never been observed
+-   Low data density
+-   Always start at zero, they can be misleading
+-   Part of the range covered by the bar might have never been observed
 -   Good use of a bar plot: show counts of something
 -   Poor use of a bar plot: show group means
 
-## Bar plots: showing counts
+## Bar plots to show counts
 
 Example with a [Drug review dataset from WebMD](https://www.kaggle.com/datasets/rohanharode07/webmd-drug-reviews-dataset):
 
@@ -6853,7 +6892,7 @@ df.webmd %>%
 
 ```
 
-## Bar plots: showing counts
+## Bar plots to show counts
 
 Bar plot shows data counts with very low information density
 
@@ -6888,7 +6927,7 @@ What differences do you notice?
 
 Which is best? Would you change anything?
 
-## Compositions
+## Compositions with pie charts do not work
 
 Goal: For each *Ease of use* score, what is the proportion of females/males?
 
@@ -6928,7 +6967,7 @@ patchwork::wrap_plots(lapply(1:5, pieR)) +
     -   Inherent difficulties in making visual comparisons
 -   Prefer e.g., stacked or clustered bar plots
 
-## Stacked and clustered bars
+## Stacked and clustered bars are preferable
 
 For each *Ease of use* score, what is the proportion of females/males?
 
@@ -6957,9 +6996,8 @@ For each *Ease of use* score, what is the proportion of females/males?
 
 Is the message clear? What would you change?
 
-## Normalized bars
+## Normalized bars better show composition
 
--   *Normalized* bars better show the composition
 -   Loss of information on counts
     -   But was it the intended message?
 
@@ -7033,7 +7071,7 @@ For each gender, what is the proportion of *Ease of use* ?
 
 - Data
   - [Source](https://www.kaggle.com/datasets/rohanharode07/webmd-drug-reviews-dataset)
-  - [Pre-cleaned dataset](https://raw.githubusercontent.com/EricLarG4/Figures/a10b6fdc24cfaa421b98aeae2f97544fe624bbba/data/webmd_clean.csv?token=GHSAT0AAAAAAD4ISQMEZNXUKFXHIJDANEYS2P3EGHA)
+  - [Pre-cleaned dataset](https://raw.githubusercontent.com/EricLarG4/Figures/refs/heads/main/data/webmd_clean.csv)
 
 - Remember: you can read the file directly from the URL with 
   - `read.csv()`
@@ -7055,7 +7093,7 @@ For each gender, what is the proportion of *Ease of use* ?
 #| code-line-numbers: "|5-9|11-18|22|23-25|26-32|33-34"
 library(data.table)
 fread(
-  "https://raw.githubusercontent.com/EricLarG4/Figures/a10b6fdc24cfaa421b98aeae2f97544fe624bbba/data/webmd_clean.csv?token=GHSAT0AAAAAAD4ISQMEZNXUKFXHIJDANEYS2P3EGHA"
+  "https://raw.githubusercontent.com/EricLarG4/Figures/refs/heads/main/data/webmd_clean.csv"
 ) |>
   _[
     Condition == "Stuffy Nose" & Age != "",
@@ -7099,10 +7137,9 @@ fread(
     -   Density plot
 -   Better to show the data
 
-## Distributions
+## Example of a [water temperature in Antibes dataset](https://www.data.gouv.fr/fr/datasets/temperature-de-leau-de-mer-a-antibes-juan-les-pins/)
 
--   Example of a [water temperature in Antibes dataset](https://www.data.gouv.fr/fr/datasets/temperature-de-leau-de-mer-a-antibes-juan-les-pins/)
-    -   Goal: compare temperatures across years
+-   Goal: compare temperatures across years
     -   6 first data points:
 
 ```{r}
@@ -7146,9 +7183,7 @@ df.antibes %>%
   tab_options(column_labels.background.color = "pink")
 ```
 
-## Bar plots: showing mean :vomiting_face:
-
-No distribution information (only mean) and suggests data starts at 0!
+## Bar plots are not appropriate for showing means</br>no distribution information and suggesest start at 0! :vomiting_face:
 
 ```{r}
 #| label: geom_col
@@ -7168,9 +7203,7 @@ df.antibes %>%
   scale_y_continuous(limits = c(NA, 30))
 ```
 
-## Introducing data spread info
-
-Using error bars, but what do they represent here?
+## Introducing data spread info with error bars</br>but what do they represent here?
 
 ```{r}
 #| label: errorbars
@@ -7195,9 +7228,7 @@ df.antibes %>%
   scale_y_continuous(limits = c(NA, 30))
 ```
 
-## Scatter is less misleading
-
-But the distribution information is still lacking
+## Scatter is less misleading</br>but the distribution information is still lacking
 
 ```{r}
 #| label: misled
@@ -7222,9 +7253,7 @@ df.antibes %>%
   scale_y_continuous(limits = c(0, 30))
 ```
 
-## Is mean ± sd not enough?
-
-Still insufficient to differentiate these (fake) distributions
+## Mean ± sd are identical for these (fake) distributions
 
 ```{r}
 #| label: rnormy
@@ -7270,9 +7299,7 @@ df.norm <- data.frame(
   scale_y_continuous(limits = c(0,30)) 
 ```
 
-## Box plots are much better
-
-Box plots show the *spread* of data through their quartiles.
+## Box plots show the *spread* of data through their quartiles
 
 ```{r}
 #| label: boxyboxes
@@ -7288,9 +7315,7 @@ df.antibes %>%
   scale_y_continuous(limits = c(NA, 30))
 ```
 
-## Data points may be added
-
-*Density* can be shown with individual data points with *transparency*
+## Density can be shown adding transparent data points
 
 ```{r}
 #| label: box and points
@@ -7307,9 +7332,7 @@ df.antibes %>%
   scale_y_continuous(limits = c(NA, 30))
 ```
 
-## Data points may be added
-
-Or with *jitter*
+## Density can be shown adding jittered data points
 
 ```{r}
 #| label: jittery
@@ -7326,9 +7349,7 @@ df.antibes %>%
   scale_y_continuous(limits = c(NA, 30))
 ```
 
-## Data points may be added
-
-Or *both*
+## Combining jitter and transparency can be effective
 
 ```{r}
 #| label: transparentjitter
@@ -7344,9 +7365,7 @@ df.antibes %>%
   scale_y_continuous(limits = c(NA, 30))
 ```
 
-## Violin plots
-
-Violin plots even more effective to compare (probability) distributions
+## Violin plots are effective to compare distributions
 
 ```{r}
 #| label: jitteredviolins
@@ -7363,9 +7382,7 @@ df.antibes %>%
   scale_y_continuous(limits = c(NA, 30))
 ```
 
-## Violin + boxes
-
-Quantiles can be shown directly of via superimposed boxes
+## Quantiles can be superimposed 
 
 ```{r}
 #| label: violin and box
@@ -7382,7 +7399,7 @@ df.antibes %>%
   scale_y_continuous(limits = c(NA, 30))
 ```
 
-## Most presentations of x- and y-coordinate data are relationships
+## Most presentations of x- and y-coordinate data</br>are relationships
 
 -   Scatter plots are simple and effective
 -   Lines may be shown
@@ -7392,9 +7409,7 @@ df.antibes %>%
     -   color
     -   line type (e.g. dashed vs. plain)
 
-## Scatter plot
-
-Temperature vs. time with *points*
+## Scatter plot starts with points
 
 ```{r}
 #| label: scatterplot
@@ -7408,9 +7423,7 @@ df.antibes %>%
 
 ```
 
-## Scatter plot
-
-Temperature vs. time with *points* and *line*
+## Scatter plot can include lines
 
 ```{r}
 #| label: plot and lines
@@ -7425,9 +7438,7 @@ df.antibes %>%
 
 ```
 
-## Scatter plot
-
-Temperature vs. time with *points* and *smoothed line*
+## Scatter plot can include models
 
 ```{r}
 #| label: smoothed
@@ -7447,8 +7458,8 @@ df.antibes %>%
 - Try to reproduce, improve or create your own figure with the Antibes dataset
 - Data
   - [Up-to-data source](https://www.data.gouv.fr/datasets/temperature-de-leau-de-mer-a-antibes-juan-les-pins)
-  - [Dataset used here](https://raw.githubusercontent.com/EricLarG4/Figures/refs/heads/main/data/antibes-eau-temperature-est-cap.csv?token=GHSAT0AAAAAAD4ISQMFWXQFKRDPMZXIQTJA2P3ENSQ)
-  - [Pre-cleaned dataset](https://raw.githubusercontent.com/EricLarG4/Figures/refs/heads/main/data/antibes_clean.csv?token=GHSAT0AAAAAAD4ISQMEKGQSFYOGXXL4CTQE2P3ENZA)
+  - [Dataset used here](https://raw.githubusercontent.com/EricLarG4/Figures/refs/heads/main/data/antibes-eau-temperature-est-cap.csv)
+  - [Pre-cleaned dataset](https://raw.githubusercontent.com/EricLarG4/Figures/refs/heads/main/data/antibes_clean.csv)
 - Remember: you can read the file directly from the URL with 
   - `read.csv()`
   - `readr::read_csv()`
@@ -7478,9 +7489,7 @@ penguins %>%
 :::
 :::::
 
-## Distributions
-
-Bad and good ways to plot distributions
+## Bad and good ways to plot distributions
 
 ```{r}
 #| label: distripenguins
@@ -7546,9 +7555,7 @@ Bad and good ways to plot distributions
 ) 
 ```
 
-## Bubble plot
-
-Adds a symbol scale aesthetics to map an additional variable
+## Bubble plot adds a symbol scale aesthetics</br>to map an additional variable
 
 ```{r}
 #| label: bubble plot
@@ -7573,9 +7580,7 @@ penguins %>%
     )
 ```
 
-## Lollipop plot (Lolliplot)
-
-Analogous to a barplot but less misleading
+## Lollipop plots are less misleading</br>to show group means than bar plots
 
 ```{r}
 #| label: lollipop
@@ -7602,9 +7607,7 @@ penguins %>%
   scale_y_continuous(expand = c(0,NA), limits = c(0,6000), breaks = c((1:5)*1000))
 ```
 
-## Dumbbell plot
-
-Multiple comparisons between two points.
+## Dumbbell plot allows multiple comparisons</br>between two points.
 
 ```{r}
 #| label: dumbbell
@@ -7645,7 +7648,7 @@ penguins %>%
 -   Must make the message easier to understand
     -   Not just to make the figure pretty
 
-**Colors should be strategically used to amplify your visual message**
+[**Colors should be strategically used to amplify your visual message**]{.fg style="--col: #fcbac5"}
 
 ## Classes disinguish between</br>sequential and diverging schemes
 
@@ -7655,7 +7658,7 @@ penguins %>%
 
 ![[Source](https://www.nature.com/articles/s41467-020-19160-7)](resources/color_types.png){fig.cap="right aligned" fig-align="center"}
 
-## Sequential coloring can be light to dark</br>with one hue
+## Sequential coloring can be light to dark</br>with [one hue]{style="background: linear-gradient(-90deg, #fde0dd, #fa9fb5, #f768a1, #c51b8a, #7a0177); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;"}
 
 ```{r}
 #| label: single hue
@@ -7672,7 +7675,7 @@ df.antibes %>%
 
 ```
 
-## Sequential coloring can be light to dark</br>with several hues
+## Sequential coloring can be light to dark</br>with [several hues]{style="background: linear-gradient(90deg, #440154, #3b528b, #21908d, #5dc863, #fde725); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;"}
 
 ```{r}
 #| label: multiple hues
@@ -7689,7 +7692,7 @@ df.antibes %>%
 
 ```
 
-## Diverging coloring uses two sequential schemes</br>and one neutral color
+## Diverging coloring uses</br>[two sequential schemes and one neutral color]{style="background: linear-gradient(90deg, #d73027, #ffffbf, #4575b4); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;"}
 
 ```{r}
 #| label: div colors
@@ -7796,7 +7799,7 @@ df.antibes %>%
 
 ```
 
-## Highlighting discrete values can be very effective</br>to convey a message
+## [Highlighting]{.fg style="--col: #eb5181"} discrete values can be very effective</br>to convey a message
 
 ```{r}
 #| label: high2
@@ -7818,7 +7821,7 @@ df.antibes %>%
 
 ```
 
-## Data highlighting can be reinfored by *few* other elements
+## Data highlighting can be reinfored</br> using <span style="text-decoration-line: underline; text-decoration-style: dashed; text-decoration-color: #eb5181; text-underline-offset: 0.1em;">*few* other elements</span>
 
 ```{r}
 #| label: high3
@@ -7842,17 +7845,117 @@ df.antibes %>%
 
 ```
 
+## Make your own figure 🧪
+
+- Try to reproduce, improve or create your own figure with the Antibes dataset
+  - Idea: highlight outlying water temperatures in any given year in Antibes
+- Data
+  - [Up-to-data source](https://www.data.gouv.fr/fr/datasets/temperature-de-leau-de-mer-a-antibes-juan-les-pins)
+  - [Dataset used here](https://raw.githubusercontent.com/EricLarG4/Figures/refs/heads/main/data/antibes-eau-temperature-est-cap.csv)
+  - [Pre-cleaned dataset](https://raw.githubusercontent.com/EricLarG4/Figures/refs/heads/main/data/antibes_clean.csv)
+
+## Make your own figure 🧪 {.code5}
+
+```{r}
+#| label: high3b
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns6040
+#| fig-width: 6
+#| fig-height: 6
+#| code-line-numbers: "|5|7-16|18-25|26-28|29-38|39-51|52-55|56-67|68-76"
+library(data.table)
+library(ggplot2)
+library(ggtext)
+
+thresholds <- c('cold' = 13, 'mild' = (13 + 27) / 2, 'hot' = 27)
+
+dt_antibes <- fread(
+  "https://raw.githubusercontent.com/EricLarG4/Figures/refs/heads/main/data/antibes_clean.csv"
+) |>
+  _[,
+    category := fcase(
+      temp < min(thresholds) , "cold" ,
+      temp > max(thresholds) , "hot"  ,
+      default = "mild"
+    )
+  ]
+
+dt_antibes |>
+  ggplot(
+    aes(
+      x = year,
+      y = temp,
+      group = year
+    )
+  ) +
+  geom_violin(
+    trim = FALSE
+  ) +
+  geom_hline(
+    yintercept = thresholds,
+    linetype = "dashed",
+    color = c(
+      "steelblue",
+      "grey70",
+      "tomato"
+    ),
+    linewidth = 1
+  ) +
+  geom_jitter(
+    data = dt_antibes[category == "mild"],
+    aes(color = category),
+    width = 0.2,
+    size = 3,
+    alpha = 0.2
+  ) +
+  geom_jitter(
+    data = dt_antibes[category != "mild"],
+    aes(color = category),
+    width = 0.2,
+    size = 3
+  ) +
+  scale_colour_manual(
+    name = "Temperature category",
+    values = c("cold" = "steelblue", "mild" = "grey30", "hot" = "tomato")
+  ) +
+  scale_y_continuous(
+    breaks = thresholds,
+    labels = paste0(
+      '<b>',
+      c(
+        '<span style="color:steelblue">13</span>',
+        '<span style="color:grey30">20</span>',
+        '<span style="color:tomato">27</span>'
+      ),
+      '</b>'
+    )
+  ) +
+  theme_classic(base_size = 14) +
+  theme(
+    legend.position = "none",
+    axis.text.y = element_markdown()
+  ) +
+  labs(
+    x = "",
+    y = "Water temperature (°C)"
+  )
+```
+
 ## Design figures that work for everyone
 
 -   Use colors that can be distinguished by colorblind people
     -   [Okabe Ito](https://mikemol.github.io/technique/colorblind/2018/02/11/color-safe-palette.html)
 -   Use color schemes that are perceptually uniform to prevent data distortion
     -   [Viridis](https://waldyrious.net/viridis-palette-generator/), [Cividis](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0199239), [Brewer](https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3)
--   Combine colors with symbols, line type and other elements to convey same information
+-   Combine colors with symbols, line type and other elements</br>to convey the same information
 -   Use effective redundancy to increase understanding and accessibility
 -   Use transparency instead of color for density, background info
 
-## Use effective redundancy to increase understanding and accessibility
+## Use effective redundancy</br>to increase understanding and accessibility
 
 Note: use of symbols, direct labeling in title and inset figure (same color, same order)
 
@@ -8236,7 +8339,7 @@ df.antibes %>%
     custom.theme(1.5)
 ```
 
-## Integrating uncertainty with other elements can be effective
+## Integrating uncertainty with other elements</br>can be effective
 
 ```{r}
 #| label: more ribbons
@@ -8254,7 +8357,7 @@ p_penguins +
   ) 
 ```
 
-## Many common metrics but each represents a different measure
+## Many common metrics</br>but each represents a different measure
 
 -   Standard deviation
     -   Spread of data: information about entire population
@@ -8348,14 +8451,14 @@ fixed_scales <- penguins %>%
 fixed_scales
 ```
 
-## Are symbol colors and shapes still necessary?
+## When several aesthetics are redundant...
 
 ```{r}
 #| label: facet penguins_2
 fixed_scales
 ```
 
-## Colors can be used to map an additional variable
+## ...one can be remapped to an additional variable
 
 ```{r}
 #| label: facet penguins more vars
@@ -8376,9 +8479,14 @@ penguins %>%
   scale_y_continuous(breaks = c(170, 200, 230))
 ```
 
-## Exercice: Conveying a message by faceting
+## Convey a message by faceting 🧪
 
-Example data [Surface water quality in Loire-Atlantique](https://www.data.gouv.fr/fr/datasets/suivi-qualite-des-eaux-superficielles-en-loire-atlantique-stations-du-reseau-departemental/)
+- Goal: Highlight *where* (in which station) and *when* the pH deviated from 7
+- Data
+  - [Surface water quality in Loire-Atlantique](https://www.data.gouv.fr/fr/datasets/suivi-qualite-des-eaux-superficielles-en-loire-atlantique-stations-du-reseau-departemental/)
+  - [Dataset used here](https://raw.githubusercontent.com/EricLarG4/Figures/refs/heads/main/data/qualite-eaux.csv)
+  - [Pre-cleaned dataset](https://raw.githubusercontent.com/EricLarG4/Figures/refs/heads/main/data/qualite-eaux-clean.csv)
+
 
 ```{r}
 #| label: small
@@ -8402,6 +8510,8 @@ dh <- fread('data/qualite-eaux.csv') %>%
     'value' = 'resultat'
   )
 
+fwrite(dh, 'data/qualite-eaux-clean.csv')
+
 dh %>% 
   sample_n(6) %>%
   gt() %>% 
@@ -8409,7 +8519,6 @@ dh %>%
   tab_options(column_labels.background.color = "pink")
 ```
 
-Goal: Highlight *where* (in which station) and *when* the pH deviated from 7
 
 ## Facetting might be necessary
 
