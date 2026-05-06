@@ -91,6 +91,45 @@ cat(rep(unlist(strsplit(hello, " "))[[1]], 12), sep = "")
 :::
 ::::
 
+# Setup of the environment {background-color="#184669"}
+
+## Tidyverse install verification {.out7 .code7}
+
+```{r}
+#| label: check_environment
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+if (!requireNamespace("tidyverse", quietly = TRUE)) {
+  install.packages("tidyverse")
+}
+
+library(tidyverse)
+```
+
+## Data.table install verification {.out7 .code7}
+
+```{r}
+#| label: check_environment_2
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+if (!requireNamespace("data.table", quietly = TRUE)) {
+  install.packages("data.table")
+}
+
+library(data.table)
+
+# version check
+packageVersion("data.table")
+```
+
 # This presentation is not exhaustive {background-color="#c9521a"}
 
 Experiment</br>
@@ -944,7 +983,7 @@ all(a_list$nested_list$character_vector == a_list$character_vector)
 ```
 :::
 
-## Subsetting lists: `[ ]` vs. `[[ ]]` {auto-animate="TRUE"}
+## Subsetting lists: `[ ]` vs. `[[ ]]` {auto-animate="TRUE" .code7}
 
 ```{r}
 #| label: base_r_var_7
@@ -6763,7 +6802,7 @@ library(plotly)
 
 # Elements of visual communication {background-color="#184669"}
 
-## Visuals are an increasingly important form of science communication
+## Visuals are an increasingly important</br>form of science communication
 
 Many scientists not well trained in design *principles* for [**effective**]{.fg style="--col: #fcbac5"} messaging
 
@@ -8153,7 +8192,7 @@ Two primary issues with uncertainty:
     -   e.g. inference on the mean
 -   Misrepresentation (or misinterpretation) of uncertainty
 
-## There are simple ways to include uncertainty in your figures
+## There are simple ways to include uncertainty 
 
 -   Classicly:
     -   Error bars
@@ -8610,7 +8649,7 @@ dh %>%
 
 ```
 
-## Highlighting, axis simplification, scaling, grid elements 🔬{.code5}
+## Highlighting, axis simplification, scaling, grid elements🔬{.code5}
 
 ```{r}
 #| label: simplif
@@ -9020,7 +9059,7 @@ df.fakir %>%
 
 ```
 
-# Principle 7:</br>Data and models are different things {background-color="#ffdae0"}
+# Principle 7:</br>Data and models</br>are different things {background-color="#ffdae0"}
 
 ## Plotted information
 
@@ -9032,7 +9071,7 @@ Typically takes the form of:
     -   Box plot
     -   Violin plot
 -   Inferential statistic
-    -   Fitter regression line
+    -   Fitted regression line
 
 ## Provide necessary information on models
 
@@ -9097,7 +9136,7 @@ dh %>%
   )
 ```
 
-## 🧪 Model the pH vs. water T° relationship per city group
+## Model the pH vs. water T° relationship per city group 🧪
 
 ```{r}
 #| label: panels0
@@ -9137,6 +9176,62 @@ dh %>%
     plot.caption = element_markdown(size = 14)
   ) +
   scale_y_continuous(expand = c(0,0), limits = c(5,10), breaks = c(5, 7.5, 10))
+```
+
+## Model the pH vs. water T° relationship per city group 🧪 {.code5}
+
+```{r}
+#| label: panels0b
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "|1-17|18-26|"
+dt <- fread(
+  "https://raw.githubusercontent.com/EricLarG4/Figures/refs/heads/main/data/qualite-eaux-clean.csv"
+) |>
+  _[city_group != '', .(parameter, value, date, city_group)]
+
+dt_water <- dt[
+  parameter == "Température de l'Eau",
+  .(temp = value, date, city_group)
+]
+
+dt_pH <- dt[
+  parameter == "pH",
+  .(pH = value, date, city_group)
+]
+
+dt_water[dt_pH, on = .(date, city_group), allow.cartesian = TRUE] |>
+  _[temp < 40, .(temp, pH, date, city_group)] |>
+  ggplot(aes(temp, pH)) +
+  geom_point(alpha = 0.05) +
+  geom_smooth(
+    method = 'lm',
+    formula = y ~ x,
+    color = 'coral',
+    fill = 'coral',
+    level = 0.9
+  ) +
+  custom.theme(1) +
+  labs(
+    x = 'Water T (°C)',
+    caption = "*Correlation between the pH and the water temperature, for each city group.<br /> The orange line is the result of linear regression. The grey ribbon is the confidence interval at the 0.99 level.*"
+  ) +
+  facet_wrap(~city_group, ncol = 4) +
+  theme(
+    strip.text.x = element_text(size = 6),
+    plot.caption = element_markdown(size = 14)
+  ) +
+  scale_y_continuous(
+    expand = c(0, 0),
+    limits = c(5, 10),
+    breaks = c(5, 7.5, 10)
+  )
 ```
 
 # Principle 8:</br>Simple visuals, detailed captions {background-color="#ffdae0"}
@@ -9227,7 +9322,7 @@ df.antibes %>%
 
 ```
 
-## Legends and axis should be clear and complete,</br>clear and simple
+## Legends and axis should be clear, complete and simple
 
 -   Names must be understandable
 -   Units should be given
@@ -9275,7 +9370,7 @@ df.antibes %>%
     custom.theme(1.5)
 ```
 
-## 🧪 Produce an improved version of this figure
+## Produce an improved version of this figure 🧪
 
 ```{r}
 #| label: unclear
@@ -9344,7 +9439,7 @@ di %>%
 
 ```
 
-## 🧪 Label points of interest</br>to get message across *in vacuo*
+## Label points of interest</br>to get message across *in vacuo* 🧪
 
 ```{r}
 #| label: Label points of interest
@@ -9619,42 +9714,3 @@ readxl::read_excel('data/series_offres_difusees.xlsx') %>%
 Most effective visuals are the ones with which readers connect
 
 Seek external reviews of your figures
-
-# Setup of the environment {background-color="#184669"}
-
-## Tidyverse install verification {.out7 .code7}
-
-```{r}
-#| label: check_environment
-#| echo: true
-#| eval: true
-#| warning: true
-#| message: true
-#| output-location: column
-#| classes: columns5050
-if (!requireNamespace("tidyverse", quietly = TRUE)) {
-  install.packages("tidyverse")
-}
-
-library(tidyverse)
-```
-
-## Data.table install verification {.out7 .code7}
-
-```{r}
-#| label: check_environment_2
-#| echo: true
-#| eval: true
-#| warning: true
-#| message: true
-#| output-location: column
-#| classes: columns5050
-if (!requireNamespace("data.table", quietly = TRUE)) {
-  install.packages("data.table")
-}
-
-library(data.table)
-
-# version check
-packageVersion("data.table")
-```
