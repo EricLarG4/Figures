@@ -51,7 +51,7 @@ Use R to create figures from raw data that:
     -   Patterns (N Y). **2020.** *1*, 100141
     -   Nature Communications. **2020**. *11*, 5444
 
-# This presentation is available on [R.largy.fr](https://r.largy.fr) {background-color="#184669"}
+# This presentation is available</br>on [R.largy.fr](https://r.largy.fr) {background-color="#184669"}
 
 ## This presentation is available on [R.largy.fr](https://r.largy.fr) {.code6}
 
@@ -63,8 +63,6 @@ Use R to create figures from raw data that:
     - Ctrl+Shift+F, enter word, press Enter
 - Copy code cells 
   - "Copy code" button top right of code cells
-- Code under the microscope: 🔬
-- Test it by yourself: 🧪
 :::
 
 :::{.column width="50%"}
@@ -84,9 +82,20 @@ hello <- "👋 Welcome!
 cat(rep(unlist(strsplit(hello, " "))[[1]], 12), sep = "")
 
 ```
+</br>
 
+- Code under the microscope: 🔬
+- Test it by yourself: 🧪
 :::
 ::::
+
+# This presentation is not exhaustive {background-color="#c9521a"}
+
+Experiment</br>
+Ask questions</br>
+Explore packages</br>
+Read documentations</br>
+Practice, practice, practice!
 
 # The Grammar of Graphics {background-color="#184669"}
 
@@ -1901,7 +1910,7 @@ a_df[, c(1, 3)]
 #| message: true
 #| output-location: column
 #| classes: columns5050
-# Select rows 1 to 3, columns "id" and "value"
+# Select rows 1 to 3, columns "id" + "value"
 a_df[1:3, c("id", "value")]
 ```
 :::
@@ -1923,6 +1932,68 @@ a_df[
 ]
 ```
 :::
+
+## Subsetting dataframes by row/column indices {auto-animate="TRUE"}
+
+```{r}
+#| label: base_r_var_11s1b
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+a_df <- data.frame(
+  id = 1:5,
+  group = c("A", "A", "B", "B", "C"),
+  value = c(10.2, 12.5, 9.8, 11.1, 13.0)
+)
+
+# Select rows 1 and 3, all columns
+a_df[c(1, 3), ]
+```
+
+```{r}
+#| label: base_r_var_11s2b
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+# Select all rows, columns 1 and 3
+a_df[, c(1, 3)]
+```
+
+```{r}
+#| label: base_r_var_11s3b
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+# Select rows 1 to 3, columns "id" + "value"
+a_df[1:3, c("id", "value")]
+```
+
+
+```{r}
+#| label: base_r_var_11s4b
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+# Select rows where group is "A" or "B",
+# and columns 1 to 3
+a_df[
+  a_df$group %notin% c("A", "B"),
+  1:3
+]
+```
+
 
 ## Subsetting dataframes by column names {auto-animate="TRUE"}
 
@@ -3584,7 +3655,7 @@ data.table(mpg)[
 
 ```
 
-## Example for ggplots {auto-animate="TRUE"}
+## Example for ggplots {auto-animate="TRUE" .code7}
 
 ```{r}
 #| label: base_r_fun_6
@@ -6356,10 +6427,120 @@ ggplot(
 
 # 7. Saving and exporting {background-color="#184669"}
 
-## Saving plots {auto-animate="TRUE"}
+## Combine figures with `patchwork` 🔬{auto-animate="TRUE"}
 
 ```{r}
-#| label: ggplot_aes_7
+#| label: ggplot_aes_7_1
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 10
+#| fig-width: 10
+#| code-line-numbers: "1-10|6"
+library(patchwork)
+
+plot_iris(
+  "Sepal.Length",
+  "Petal.Length"
+) +
+  plot_iris(
+    "Sepal.Length",
+    "Petal.Width"
+  )
+```
+
+## Combine figures with `patchwork` 🔬{auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_7_2
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 10
+#| fig-width: 10
+#| code-line-numbers: "6"
+library(patchwork)
+
+plot_iris(
+  "Sepal.Length",
+  "Petal.Length"
+) /
+  plot_iris(
+    "Sepal.Length",
+    "Petal.Width"
+  )
+```
+
+## Increase layout control with `plot_layout` 🔬{auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_7_3
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 10
+#| fig-width: 10
+#| code-line-numbers: "1-11|1,10|11"
+
+patchwork::wrap_plots(
+  plot_iris(
+    "Sepal.Length",
+     "Petal.Length"
+     ),
+  plot_iris(
+    "Sepal.Length", 
+    "Petal.Width"
+    )
+) +
+  patchwork::plot_layout(ncol = 1) 
+```
+
+## Apply a layout with `plot_layout` 🔬{auto-animate="TRUE"}
+
+```{r}
+#| label: ggplot_aes_7_4
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 10
+#| fig-width: 10
+#| code-line-numbers: "11-16"
+
+patchwork::wrap_plots(
+  plot_iris(
+    "Sepal.Length",
+     "Petal.Length"
+     ),
+  plot_iris(
+    "Sepal.Length", 
+    "Petal.Width"
+    )
+) +
+  patchwork::plot_layout(
+    design = "
+    AA
+    #B
+    "
+  ) 
+
+```
+
+## Apply themes and annotations globally with `&` 🔬{auto-animate="TRUE" .code7}
+
+```{r}
+#| label: ggplot_aes_7_5
 #| echo: true
 #| eval: true
 #| warning: false
@@ -6368,24 +6549,91 @@ ggplot(
 #| classes: columns5050
 #| fig-height: 6
 #| fig-width: 6
+#| code-line-numbers: "11-13|14-19"
 
-tiny_plot <- ggplot(
-  iris,
-  aes(x = Sepal.Length, y = Petal.Length)
+patch_iris <- patchwork::wrap_plots(
+  plot_iris(
+    "Sepal.Length",
+     "Petal.Length"
+     ),
+  plot_iris(
+    "Sepal.Length", 
+    "Petal.Width"
+    )
 ) +
-  geom_point()
+  patchwork::plot_layout(ncol = 1) &
+  my_project_theme(0.8) &
+  theme(plot.tag = element_text(color = 'coral')) &
+  patchwork::plot_annotation(
+    tag_levels = "A",
+    title = "Example of patchwork",
+    subtitle = "Global annotations and themes with &",
+    caption = "Data from ggplot2::iris"
+  ) 
+patch_iris
+
+```
+
+## Exporting plots with `ggsave` {auto-animate="TRUE"}
+
+:::: columns
+
+::: {.column width="50%"}
+
+```{r}
+#| label: ggplot_aes_8a
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| fig-height: 6
+#| fig-width: 6
 
 ggsave(
-  filename = "resources/tiny_plot.png",
-  plot = tiny_plot,
+  filename = "resources/iris_patch.png",
+  plot = patch_iris,
   width = 8,
   height = 8,
   units = "cm",
-  dpi = 300
+  dpi = 300,
+  scale = 2
 )
 ```
+:::
+::: {.column width="50%"}
+![](resources/iris_patch.png)
+:::
+::::
 
-ggsave png, pdf, dimensions, scaling, dpi
+## Multiple formats are available {auto-animate="TRUE"}
+
+:::: columns
+
+::: {.column width="50%"}
+```{r}
+#| label: ggplot_aes_8b
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| fig-height: 6
+#| fig-width: 6
+
+ggsave(
+  filename = "resources/iris_patch.svg",
+  plot = patch_iris,
+  width = 8,
+  height = 8,
+  units = "cm",
+  dpi = 300,
+  scale = 2
+)
+```
+:::
+::: {.column width="50%"}
+![](resources/iris_patch.svg)
+:::
+::::
 
 # Elements of visual communication {background-color="#184669"}
 
