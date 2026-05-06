@@ -11,6 +11,7 @@ format:
         code-summary: "Show code"
         highlight-style: dracula
         code-block-height: 650px
+        fig-dpi: 300
 author:
   - name: Eric Largy
     orcid: 0000-0002-6140-9788
@@ -6103,7 +6104,7 @@ data.frame(x = 1:10, y = sample(1:10)) |>
   ggplot(aes(x, y)) +
   geom_bar(stat = "identity") +
   coord_cartesian(
-    xlim = c(2, 8), 
+    xlim = c(1.5, 8.5), 
     ylim = c(0, NA),
   expand = FALSE
   )
@@ -6129,7 +6130,7 @@ data.frame(x = 1:10, y = sample(1:10)) |>
   ggplot(aes(x, y)) +
   geom_bar(stat = "identity") +
   coord_flip(
-    xlim = c(2, 8), 
+    xlim = c(1.5, 8.5), 
     ylim = c(0, NA),
   expand = FALSE
   )
@@ -6739,8 +6740,8 @@ ggsave(
 #| message: false
 #| output-location: column
 #| classes: columns4060
-#| fig-height: 6
-#| fig-width: 6
+#| fig-height: 1.5
+#| fig-width: 2
 #| code-line-numbers: "16"
 library(plotly)
 
@@ -7078,7 +7079,7 @@ For each gender, what is the proportion of *Ease of use* ?
   - `readr::read_csv()`
   - `data.table::fread()`
 
-## Make your own figure 🧪 {auto-animate=TRUE .code5}
+## Make your own figure 🧪🔬 {auto-animate=TRUE .code5}
 
 ```{r}
 #| label: ggplot_aes_10
@@ -7446,8 +7447,10 @@ df.antibes %>%
   ggplot(aes(date, temp)) +
   geom_point(size = 1.5) +
   geom_smooth(method = 'gam') +
-  labs(y = 'Water T (°C)',
-       x = 'Date') +
+  labs(
+    y = 'Water T (°C)',
+       x = 'Date'
+       ) +
   scale_y_continuous(limits = c(9, 30)) +
   custom.theme(1.5)
 
@@ -7553,6 +7556,7 @@ penguins %>%
   scale_color_manual(values = rev(c("#999999", "#CC79A7"))) +
   custom.theme(0.9)
 ) 
+
 ```
 
 ## Bubble plot adds a symbol scale aesthetics</br>to map an additional variable
@@ -7854,7 +7858,7 @@ df.antibes %>%
   - [Dataset used here](https://raw.githubusercontent.com/EricLarG4/Figures/refs/heads/main/data/antibes-eau-temperature-est-cap.csv)
   - [Pre-cleaned dataset](https://raw.githubusercontent.com/EricLarG4/Figures/refs/heads/main/data/antibes_clean.csv)
 
-## Make your own figure 🧪 {.code5}
+## Make your own figure 🧪🔬 {.code5}
 
 ```{r}
 #| label: high3b
@@ -8513,14 +8517,14 @@ dh <- fread('data/qualite-eaux.csv') %>%
 fwrite(dh, 'data/qualite-eaux-clean.csv')
 
 dh %>% 
-  sample_n(6) %>%
+  sample_n(4) %>%
   gt() %>% 
   opt_stylize(style = 6, color = 'pink') %>% 
   tab_options(column_labels.background.color = "pink")
 ```
 
 
-## Facetting might be necessary
+## Facetting is necessary
 
 ```{r}
 #| label: no faceting
@@ -8562,8 +8566,6 @@ dh %>%
   )
 
 ```
-
-What improvements could be made?
 
 ## Highlighting, axis simplification, scaling, grid elements
 
@@ -8608,9 +8610,57 @@ dh %>%
 
 ```
 
-Color *highlights*, axis simplification, scaling, grid elements
+## Highlighting, axis simplification, scaling, grid elements 🔬{.code5}
 
-## Faceting statistics summary
+```{r}
+#| label: simplif
+#| echo: true
+#| eval: true
+#| warning: true
+#| message: true
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "|1-9|10|11-16|17|18|19-24|25-29|30-35"
+fread("https://raw.githubusercontent.com/EricLarG4/Figures/refs/heads/main/data/qualite-eaux-clean.csv") |> 
+  _[parameter == 'pH' & value > 2] |>
+  _[,
+  status := fcase(
+    value > 9 , 'pH > 9'     ,
+    value < 6 , 'pH < 6'     ,
+    default   = '6 ≤ pH ≤ 9'
+  )
+] |>
+  ggplot(aes(x = date, y = value)) +
+  geom_point(aes(color = status), alpha = 0.25) +
+  geom_point(
+    data = . %>% filter(value > 9 | value < 6),
+    aes(color = status)
+  ) +
+  geom_line(color = 'grey', alpha = 0.25) +
+  scale_color_manual(values = c('grey', 'tomato', 'steelblue')) +
+  facet_wrap(~code_station, ncol = 8) +
+  labs(
+    y = 'pH',
+    x = 'Date'
+  ) +
+  scale_y_continuous(breaks = c(6, 9)) +
+  scale_x_date(breaks = '5 years', labels = date_format("%Y")) +
+  geom_hline(
+    yintercept = c(6, 9),
+    color = 'grey',
+    linetype = 'dotted'
+  ) +
+  custom.theme(0.9) +
+  theme(
+    strip.text.x = element_text(size = 7),
+    legend.position = 'none'
+  ) +
+  coord_cartesian(clip = 'off')
+```
+
+## Faceting statistics summary 🧪
 
 Goal: *Where* (groups of cities) did the pH significantly deviate (e.g., more than 1 SD) *over a year* compared to other years?
 
@@ -8622,15 +8672,15 @@ Choose:
 -   faceting
 -   any other plot elements
 
-## Base figure
+## Showing the data to start with
 
 ```{r}
 #| label: base figure
 dh.filtered <- dh %>% 
   filter(
     parameter == 'pH',
-    value > 5,
-    value < 10,
+    # value > 5,
+    # value < 10,
     city_group != ''
   ) %>% 
   mutate(
@@ -8650,7 +8700,7 @@ dh.filtered %>%
 
 ```
 
-## Transparency + trends
+## Adding transparency + trends goes nowhere
 
 ```{r}
 #| label: transp trned
@@ -8666,7 +8716,7 @@ dh.filtered %>%
 
 ```
 
-## Faceting per city group
+## Faceting per city group + trends is useful
 
 ```{r}
 #| label: trendy panels
@@ -8689,7 +8739,7 @@ dh.filtered %>%
 
 ```
 
-## Recoloring
+## Recoloring along the variable of interest
 
 ```{r}
 #| label: recoloring
@@ -8713,7 +8763,7 @@ dh.filtered %>%
 
 ```
 
-## Statistical comparison
+## Statistical comparison to find significant deviations
 
 ```{r}
 #| label: stat cmp
@@ -8743,10 +8793,11 @@ dh.filtered %>%
 
 ```
 
-## Simplification (colors for +/- 1 SD)
+## Simplification to get a clear message
 
 ```{r}
 #| label: simplification
+#| fig-dpi: 300
 dh.filtered %>% 
   group_by(city_group) %>% 
   mutate(
@@ -8804,6 +8855,93 @@ dh.filtered %>%
   ) +
   scale_y_continuous(expand = c(0,0), limits = c(6,9))
 
+```
+
+## Simplification to get a clear message {.code5}
+
+```{r}
+#| label: simplif2
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "|1-26|27-29|30-47|48-58|59|60|61|62-66|67-72"
+fread(
+  "https://raw.githubusercontent.com/EricLarG4/Figures/refs/heads/main/data/qualite-eaux-clean.csv"
+) |>
+  _[parameter == 'pH' & city_group != ''] |>
+  _[,
+    year := as.integer(format(date, "%Y"))
+  ] |>
+  _[,
+    mean.ph := mean(value),
+    by = .(city_group, year)
+  ] |>
+  _[,
+    `:=`(
+      super.mean.ph = mean(value),
+      sd.mean.ph = sd(value)
+    ),
+    by = city_group
+  ] |>
+  _[,
+    status := fcase(
+      mean.ph > super.mean.ph + sd.mean.ph , 'Increase' ,
+      mean.ph < super.mean.ph - sd.mean.ph , 'Decrease' ,
+      default = 'None'
+    ),
+    by = .(city_group, `year`)
+  ] |>
+  ggplot(
+    aes(x = year, y = value)
+  ) +
+  geom_hline(
+    data = . %>%
+      ungroup() %>%
+      select(sd.mean.ph, super.mean.ph, city_group) %>%
+      unique(),
+    aes(yintercept = super.mean.ph - sd.mean.ph),
+    color = 'grey',
+    linetype = 'dotted'
+  ) +
+  geom_hline(
+    data = . %>%
+      ungroup() %>%
+      select(sd.mean.ph, super.mean.ph, city_group) %>%
+      unique(),
+    aes(yintercept = super.mean.ph + sd.mean.ph),
+    color = 'grey',
+    linetype = 'dotted'
+  ) +
+  geom_violin(
+    data = . %>%
+      filter(status == 'None'),
+    aes(group = year, fill = status),
+    alpha = 0.25
+  ) +
+  geom_violin(
+    data = . %>%
+      filter(status != 'None'),
+    aes(group = year, fill = status)
+  ) +
+  geom_jitter(alpha = 0.025, size = 0.5) +
+  facet_wrap(~city_group, ncol = 4) +
+  scale_fill_manual(values = c('steelblue', 'tomato', 'grey')) +
+  scale_y_continuous(expand = c(0, 0), limits = c(6, 9)) +
+  labs(
+    y = 'pH',
+    x = 'Year'
+  ) +
+  custom.theme(0.85) +
+  theme(
+    strip.text.x = element_text(size = 7),
+    legend.position = 'none'
+  ) +
+  coord_cartesian(clip = 'off')
 ```
 
 ## Application to a grid
