@@ -4727,6 +4727,50 @@ ggplot(
   )
 ```
 
+## Same goes for discrete values with `scale_*_discrete` 🔬{auto-animate="TRUE" .code6}
+
+```{r}
+#| label: ggplot_aes_3_10b3
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "15"
+ggplot(
+  data = diamonds,
+  aes(
+    x = cut,
+    y = price,
+    group = cut
+  )
+) +
+  geom_violin(
+    outlier.shape = NA
+  ) +
+  geom_jitter(
+    width = 0.2,
+    alpha = 0.01
+  ) +
+  scale_x_discrete(
+    name = "Cut Quality",
+    limits = c(
+      "Fair",
+      "Good",
+      "Very Good",
+      "Premium",
+      "Ideal"
+    )
+  ) +
+  scale_y_continuous(
+    name = "Price (USD)",
+    expand = c(0, 0)
+  )
+```
+
 ## Aesthetics can be scaled with `scale_*` 🔬{auto-animate="TRUE" .code7}
 
 ```{r}
@@ -6982,9 +7026,10 @@ For each gender, what is the proportion of *Ease of use* ?
   scale_fill_discrete('Ease of use')
 ```
 
-## Make your own figure 🧪
+## Make your own figure 🧪 {auto-animate=TRUE}
 
 - Try to reproduce, improve or create your own figure with the WebMD dataset
+  - Idea: show the spread of *Stuffy Nose* `Condition` across `Age` and `Gender`
 
 - Data
   - [Source](https://www.kaggle.com/datasets/rohanharode07/webmd-drug-reviews-dataset)
@@ -6994,6 +7039,55 @@ For each gender, what is the proportion of *Ease of use* ?
   - `read.csv()`
   - `readr::read_csv()`
   - `data.table::fread()`
+
+## Make your own figure 🧪 {auto-animate=TRUE .code5}
+
+```{r}
+#| label: ggplot_aes_10
+#| echo: true
+#| eval: true
+#| warning: false
+#| message: false
+#| output-location: column
+#| classes: columns5050
+#| fig-height: 6
+#| fig-width: 6
+#| code-line-numbers: "|5-9|11-18|22|23-25|26-32|33-34"
+library(data.table)
+fread(
+  "https://raw.githubusercontent.com/EricLarG4/Figures/a10b6fdc24cfaa421b98aeae2f97544fe624bbba/data/webmd_clean.csv?token=GHSAT0AAAAAAD4ISQMEZNXUKFXHIJDANEYS2P3EGHA"
+) |>
+  _[
+    Condition == "Stuffy Nose" & Age != "",
+    .(n = .N),
+    by = c("Age", "Gender")
+  ] |>
+  ggplot(aes(
+    x = factor(
+      Age,
+      levels = c(
+        "0-2", "7-12", "13-18",
+        "19-24", "25-34", "35-44",
+        "45-54", "55-64", "65-74",
+        "75 or over"
+      )
+    ),
+    y = n, fill = Gender
+  )) +
+  geom_col() +
+  scale_x_discrete("Age") +
+  scale_y_continuous(expand = c(0, 0)) +
+  coord_flip() +
+  scale_fill_manual(
+    values = c(
+      'NA' = "grey10",
+      'Female' = "lightblue",
+      'Male' = "palegoldenrod"
+    )
+  ) +
+  theme_classic(base_size = 18) +
+  theme(legend.position = "bottom")
+```
 
 ## Distributions are an underused category
 
@@ -7288,9 +7382,8 @@ df.antibes %>%
   scale_y_continuous(limits = c(NA, 30))
 ```
 
-## Relationship
+## Most presentations of x- and y-coordinate data are relationships
 
--   Most presentations of x- and y-coordinate data
 -   Scatter plots are simple and effective
 -   Lines may be shown
 -   Information can be layered
@@ -7348,6 +7441,18 @@ df.antibes %>%
   custom.theme(1.5)
 
 ```
+
+## Make your own figure 🧪
+
+- Try to reproduce, improve or create your own figure with the Antibes dataset
+- Data
+  - [Up-to-data source](https://www.data.gouv.fr/datasets/temperature-de-leau-de-mer-a-antibes-juan-les-pins)
+  - [Dataset used here](https://raw.githubusercontent.com/EricLarG4/Figures/refs/heads/main/data/antibes-eau-temperature-est-cap.csv?token=GHSAT0AAAAAAD4ISQMFWXQFKRDPMZXIQTJA2P3ENSQ)
+  - [Pre-cleaned dataset](https://raw.githubusercontent.com/EricLarG4/Figures/refs/heads/main/data/antibes_clean.csv?token=GHSAT0AAAAAAD4ISQMEKGQSFYOGXXL4CTQE2P3ENZA)
+- Remember: you can read the file directly from the URL with 
+  - `read.csv()`
+  - `readr::read_csv()`
+  - `data.table::fread()`
 
 ## Penguin dataset
 
