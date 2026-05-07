@@ -4012,7 +4012,7 @@ ggplot(
 #| classes: columns5050
 #| fig-height: 6
 #| fig-width: 6
-#| code-line-numbers: "|13-18|19-28"
+#| code-line-numbers: "|13-18"
 ggplot(
   data = iris,
   aes(
@@ -4031,11 +4031,17 @@ ggplot(
     se = FALSE,
     linewidth = 0.75
   ) +
+  # ggpubr::stat_cor(
+  #   aes(
+  #     label.y = 9,
+  #     color = Species
+  #   )
+  # ) +
   ggpubr::stat_regline_equation(
     aes(
       label.y = 9,
       color = Species,
-      label = paste(..eq.label.., ..rr.label.., sep="~`,`~")
+      label = paste(..eq.label.., ..rr.label.., sep = ',')
     ),
     label.x = 2,
     size = 4

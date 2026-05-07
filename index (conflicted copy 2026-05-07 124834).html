@@ -3637,7 +3637,7 @@ Levels: A B C D E</code></pre>
 <span id="cb353-9"><a href=""></a><span class="fu">cat</span>(<span class="st">'The current time is:'</span>, <span class="fu">format</span>(<span class="fu">Sys.time</span>(), <span class="st">"%H:%M:%S"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
-<pre><code>The current time is: 12:52:38</code></pre>
+<pre><code>The current time is: 12:48:26</code></pre>
 </div>
 </div></div>
 </div>
@@ -4230,7 +4230,7 @@ Levels: A B C D E</code></pre>
 <h2 data-id="quarto-animate-title">A geometry can be a model, e.g., linear with <code>lm</code> 🔬</h2>
 <div class="cell columns5050 columns column-output-location">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb399" data-code-line-numbers="|13-18|19-28"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb399-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb399" data-code-line-numbers="|13-18"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb399-1" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(</span>
 <span id="cb399-2" class="hljs-ln-code"><a href=""></a>  <span class="at">data =</span> iris,</span>
 <span id="cb399-3" class="hljs-ln-code"><a href=""></a>  <span class="fu">aes</span>(</span>
 <span id="cb399-4" class="hljs-ln-code"><a href=""></a>    <span class="at">x =</span> Sepal.Length,</span>
@@ -4248,15 +4248,21 @@ Levels: A B C D E</code></pre>
 <span id="cb399-16" class="hljs-ln-code"><a href=""></a>    <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb399-17" class="hljs-ln-code"><a href=""></a>    <span class="at">linewidth =</span> <span class="fl">0.75</span></span>
 <span id="cb399-18" class="hljs-ln-code"><a href=""></a>  ) <span class="sc">+</span></span>
-<span id="cb399-19" class="hljs-ln-code"><a href=""></a>  ggpubr<span class="sc">::</span><span class="fu">stat_regline_equation</span>(</span>
+<span id="cb399-19" class="hljs-ln-code"><a href=""></a>  ggpubr<span class="sc">::</span><span class="fu">stat_cor</span>(</span>
 <span id="cb399-20" class="hljs-ln-code"><a href=""></a>    <span class="fu">aes</span>(</span>
 <span id="cb399-21" class="hljs-ln-code"><a href=""></a>      <span class="at">label.y =</span> <span class="dv">9</span>,</span>
-<span id="cb399-22" class="hljs-ln-code"><a href=""></a>      <span class="at">color =</span> Species,</span>
-<span id="cb399-23" class="hljs-ln-code"><a href=""></a>      <span class="at">label =</span> <span class="fu">paste</span>(..eq.label.., ..rr.label.., <span class="at">sep=</span><span class="st">"~`,`~"</span>)</span>
-<span id="cb399-24" class="hljs-ln-code"><a href=""></a>    ),</span>
-<span id="cb399-25" class="hljs-ln-code"><a href=""></a>    <span class="at">label.x =</span> <span class="dv">2</span>,</span>
-<span id="cb399-26" class="hljs-ln-code"><a href=""></a>    <span class="at">size =</span> <span class="dv">4</span></span>
-<span id="cb399-27" class="hljs-ln-code"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb399-22" class="hljs-ln-code"><a href=""></a>      <span class="at">color =</span> Species</span>
+<span id="cb399-23" class="hljs-ln-code"><a href=""></a>    )</span>
+<span id="cb399-24" class="hljs-ln-code"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb399-25" class="hljs-ln-code"><a href=""></a>  ggpubr<span class="sc">::</span><span class="fu">stat_regline_equation</span>(</span>
+<span id="cb399-26" class="hljs-ln-code"><a href=""></a>    <span class="fu">aes</span>(</span>
+<span id="cb399-27" class="hljs-ln-code"><a href=""></a>      <span class="at">label.y =</span> <span class="dv">9</span>,</span>
+<span id="cb399-28" class="hljs-ln-code"><a href=""></a>      <span class="at">color =</span> Species,</span>
+<span id="cb399-29" class="hljs-ln-code"><a href=""></a>      <span class="at">label =</span> ..eq.label..</span>
+<span id="cb399-30" class="hljs-ln-code"><a href=""></a>    ),</span>
+<span id="cb399-31" class="hljs-ln-code"><a href=""></a>    <span class="at">label.x =</span> <span class="dv">2</span>,</span>
+<span id="cb399-32" class="hljs-ln-code"><a href=""></a>    <span class="at">size =</span> <span class="dv">4</span></span>
+<span id="cb399-33" class="hljs-ln-code"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
